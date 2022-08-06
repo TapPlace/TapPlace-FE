@@ -1,0 +1,37 @@
+#serviceContainer {
+  display: flex;
+  flex-direction: column;
+  #serviceHeader {
+    border: 1px solid black;
+    height: 5vh;
+    #title {
+      display: inline;
+    }
+    #serviceNav {
+      display: inline-block;
+      width: auto;
+      ul {
+        display: flex;
+        li {
+          list-style: none;
+          padding: 1rem;
+          a {
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+  #mainContainer {
+    display: flex;
+    flex-direction: column;
+    .mainDivideContainer {
+      border: 1px solid blue;
+      height: 40vh;
+    }
+  }
+  #footer {
+    border: 1px solid red;
+  }
+}
