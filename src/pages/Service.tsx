@@ -27,7 +27,44 @@ function Service() {
       </header>
       <main id="mainContainer">
         <div id="main1" className="mainDivideContainer">
-          메인
+          <div id="main1Container">
+            <article className="contentContainer">
+              <h1>
+                간편결제 가맹점 확인
+                <br /> 한곳에서 간편하게
+              </h1>
+              <p>
+                힘들게 찾아다닐 필요없이 한번에 확인할 수 있어요.
+                <br />
+                탭플레이스에서 내 주변 간편결제 가맹점을 확인해보세요.
+              </p>
+              <ul id="logoContainer">
+                <li>
+                  <Link to="/">
+                    <img
+                      src={require('../img/appleLogo.png')}
+                      alt="appleLogo"
+                    />
+                    <p>App Store</p>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/">
+                    <img
+                      src={require('../img/googleLogo.png')}
+                      alt="appleLogo"
+                    />
+                    <p>Play Store</p>
+                  </Link>
+                </li>
+              </ul>
+            </article>
+            <img
+              id="main1_mokupImg"
+              src={require('../img/mokup-1.png')}
+              alt="mokup"
+            />
+          </div>
         </div>
         <div id="main2" className="mainDivideContainer">
           메인
