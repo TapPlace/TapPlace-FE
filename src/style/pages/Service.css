@@ -1,6 +1,7 @@
 #serviceHeader,
 #main1Container,
-#main3Container {
+#main3Container,
+#main4Container {
   padding: 0 19vw;
 }
 
@@ -203,6 +204,7 @@
 #mainContainer #main3 {
   height: 64rem;
   padding-top: 9rem;
+  background: #f7f7f7;
 }
 
 #mainContainer #main3 #main3Container #main3contentContainer {
@@ -229,7 +231,128 @@
 }
 
 #mainContainer #main4 {
-  height: 93rem;
+  height: 92rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#mainContainer #main4 #main4Container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#mainContainer #main4 #main4Container #main4_title {
+  font-weight: 500;
+  display: inline;
+  text-align: center;
+  font-size: 3rem;
+}
+
+#mainContainer #main4 #main4Container #main4_subTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #9e9e9e;
+}
+
+#mainContainer #main4 #main4Container #main4_subTitle #main4_subTitleCnt {
+  display: inline;
+  color: black;
+  font-size: 2.4rem;
+  padding: 0 0.6rem;
+}
+
+#mainContainer #main4 #main4Container #addStoreForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 5rem;
+}
+
+#mainContainer #main4 #main4Container #addStoreForm .addStoreFormExplain {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+#mainContainer #main4 #main4Container #addStoreForm .main4InputText {
+  border: none;
+  background: #fafafa;
+  width: 100%;
+  height: 3rem;
+  padding-left: 1rem;
+  border-radius: 10px;
+  margin: 0.8rem 0 2rem 0;
+}
+
+#mainContainer #main4 #main4Container #addStoreForm .main4InputText::-webkit-input-placeholder {
+  color: #9e9e9e;
+}
+
+#mainContainer #main4 #main4Container #addStoreForm .main4InputText:-ms-input-placeholder {
+  color: #9e9e9e;
+}
+
+#mainContainer #main4 #main4Container #addStoreForm .main4InputText::-ms-input-placeholder {
+  color: #9e9e9e;
+}
+
+#mainContainer #main4 #main4Container #addStoreForm .main4InputText::placeholder {
+  color: #9e9e9e;
+}
+
+#mainContainer #main4 #main4Container #addStoreForm .checkboxContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#mainContainer #main4 #main4Container #addStoreForm .checkboxContainer .clickBtn {
+  border: 1px solid #f2f2f2;
+  color: #9e9e9e;
+  padding: 0.7rem 1rem 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 18px;
+  font-weight: lighter;
+  font-size: 0.9rem;
+  margin: 0.8rem 0.5rem 1.8rem 0;
+}
+
+#mainContainer #main4 #main4Container #addStoreForm #submitBtn {
+  width: 13.7rem;
+  padding: 0.8rem 0;
+  border: none;
+  color: white;
+  background: black;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 3rem;
 }
 
 #mainContainer #main5 {
