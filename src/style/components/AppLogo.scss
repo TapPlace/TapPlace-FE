@@ -1,0 +1,11 @@
+.appLogoContainer {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  .applicationLogo {
+    width: 100%;
+    height: 100%;
+    background: #efefef;
+  }
+}

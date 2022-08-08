@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AppLogo from '../components/AppLogo';
 
 import '../style/pages/Service.scss';
 
@@ -89,15 +90,13 @@ function Service() {
             alt="mokup-2"
           />
           <article id="main2contentContainer" className="contentContainer">
-            <div id="appLogoContainer">
-              <img className="applicationLogo" src="" alt="" />
-            </div>
-            <h1 id="main2_line1" className="line1">
+            <AppLogo />
+            <h1 id="main2_line1">
               내 주변 간편결제 가맹점을
               <br />
               한눈에 확인하세요
             </h1>
-            <p id="main2_line2" className="line2">
+            <p id="main2_line2">
               이제 간편결제 안될까봐 걱정하지 마세요
               <br />
               결제 가능여부를 미리 알려드릴께요.
@@ -105,16 +104,36 @@ function Service() {
           </article>
         </div>
         <div id="main3" className="mainDivideContainer">
-          메인
+          <div id="main3Container">
+            <article id="main3contentContainer">
+              <AppLogo />
+              <h1 id="main3_line1">
+                새로운 가맹점을 발견하고
+                <br />
+                언제든지 등록해보세요
+              </h1>
+              <p id="main3_line2">
+                언제 어디서든, 새로운 가맹점을 발견하면
+                <br />
+                간편하게 등록할 수 있어요
+              </p>
+            </article>
+            <img
+              id="main3_mokupImg"
+              className="mokupImg"
+              src={require('../img/mokup-3.png')}
+              alt="mokup-3"
+            />
+          </div>
         </div>
         <div id="main4" className="mainDivideContainer">
-          메인
+          메인4
         </div>
         <div id="main5" className="mainDivideContainer">
-          메인
+          메인5
         </div>
         <div id="main6" className="mainDivideContainer">
-          메인
+          메인6
         </div>
       </main>
       <footer id="footer">푸터</footer>

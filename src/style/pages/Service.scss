@@ -1,15 +1,19 @@
 @mixin line1 {
-  font-weight: 400;
+  font-weight: 500;
 }
 @mixin line2 {
   color: #707070;
   padding-top: 1.8rem;
-  font-size: 1.2rem;
-  line-height: 1.8rem;
+  font-size: 1.1rem;
+  line-height: 1.6rem;
 }
 #serviceHeader,
-#main1Container {
+#main1Container,
+#main3Container {
   padding: 0 19vw;
+}
+.mokupImg {
+  filter: drop-shadow(-15px 0 10px rgb(185, 184, 184));
 }
 
 #serviceHeader {
@@ -17,7 +21,7 @@
   width: 100vw;
   z-index: 1;
   background: white;
-  height: 5.8vh;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,24 +47,22 @@
 #mainContainer {
   display: flex;
   flex-direction: column;
-  padding-top: 5.8vh;
+  padding-top: 4rem;
   .mainDivideContainer {
     border: 1px solid blue;
   }
   #main1 {
-    height: 70vh;
+    height: 44rem;
     background: #f7f7f7;
     #main1Container {
       display: flex;
       justify-content: space-between;
-      height: 100%;
       align-items: center;
-      margin-top: 2rem;
       .contentContainer {
         display: flex;
         flex-direction: column;
         #main1_line1 {
-          font-size: 3.6rem;
+          font-size: 3.1rem;
           @include line1;
         }
         #main1_line2 {
@@ -96,50 +98,40 @@
         }
       }
       #main1_mokupImg {
-        height: 91%;
-        padding-top: 7rem;
-        filter: drop-shadow(-15px 0 10px rgb(185, 184, 184));
+        height: 44rem;
+        padding-top: 4rem;
       }
     }
   }
   #main2 {
-    height: 105vh;
+    height: 64rem;
     #main2_lineTop {
       color: #9e9e9e;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 300;
       text-align: center;
       padding: 9rem 0 4rem 0;
     }
     #main2LogoContainer {
+      display: block;
+      height: 2.4rem;
       display: flex;
       justify-content: space-around;
       width: 100vw;
       overflow: hidden;
     }
     #main2_mokupImg {
-      position: absolute;
-      left: 19vw;
-      padding-top: 13rem;
+      height: 47rem;
+      padding-left: 19vw;
+      margin-top: 13rem;
     }
     #main2contentContainer {
       float: right;
-      padding: 17rem 19vw 0 0;
-      #appLogoContainer {
-        width: 5rem;
-        height: 5rem;
-        border-radius: 10px;
-        overflow: hidden;
-        .applicationLogo {
-          width: 100%;
-          height: 100%;
-          background: #efefef;
-        }
-      }
+      padding: 18.6rem 19vw 0 0;
       #main2_line1 {
+        @include line1;
         padding-top: 2rem;
         font-size: 2.5rem;
-        @include line1;
       }
       #main2_line2 {
         @include line2;
@@ -147,20 +139,40 @@
     }
   }
   #main3 {
-    height: 105vh;
+    height: 64rem;
+    padding-top: 9rem;
+    #main3Container {
+      #main3contentContainer {
+        float: left;
+        margin-top: 19rem;
+        #main3_line1 {
+          @include line1;
+          padding-top: 2rem;
+          font-size: 2.5rem;
+        }
+        #main3_line2 {
+          @include line2;
+        }
+      }
+    }
+    #main3_mokupImg {
+      float: right;
+      height: 47rem;
+    }
   }
   #main4 {
-    height: 150vh;
+    height: 93rem;
   }
   #main5 {
-    height: 170vh;
+    height: 107rem;
   }
   #main6 {
-    height: 50vh;
+    height: 32rem;
   }
 }
 #footer {
   border: 1px solid red;
+  height: 11rem;
 }
 
 // 모바일
