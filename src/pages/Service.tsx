@@ -66,9 +66,7 @@ function Service() {
             />
           </div>
         </div>
-        <div id="main2" className="mainDivideContainer">
-          메인
-        </div>
+        <div id="main2" className="mainDivideContainer"></div>
         <div id="main3" className="mainDivideContainer">
           메인
         </div>

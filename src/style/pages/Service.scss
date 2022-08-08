@@ -1,15 +1,17 @@
+// PC
 @media (min-width: 576px) {
   #serviceHeader,
   #main1Container {
     padding: 0 24vw;
   }
 }
-
+// 모바일
 @media (max-width: 576px) {
   #main1_mokupImg {
     display: none;
   }
 }
+
 #serviceContainer {
   display: flex;
   flex-direction: column;
@@ -45,7 +47,7 @@
     flex-direction: column;
     .mainDivideContainer {
       border: 1px solid blue;
-      height: 40vh;
+      height: 50vh;
     }
     #main1 {
       background: #f7f7f7;
@@ -97,9 +99,15 @@
         }
         #main1_mokupImg {
           height: 100%;
-          box-shadow: -0.6rem 0 1rem 0 gray;
+          filter: drop-shadow(-15px 0 10px rgb(185, 184, 184));
         }
       }
+    }
+    #main2 {
+    }
+    #main3 {
+    }
+    #main4 {
     }
   }
   #footer {
