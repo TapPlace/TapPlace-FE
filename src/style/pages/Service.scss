@@ -227,8 +227,9 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
+      grid-gap: 2rem;
       .developerContainer {
-        width: 20rem;
+        // width: 20rem;
         display: inline-block;
         &:nth-child(2),
         &:nth-child(5) {
