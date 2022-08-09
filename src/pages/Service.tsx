@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppLogo from '../components/AppLogo';
+import StoreButton from '../components/StoreButton';
 
 import '../style/pages/Service.scss';
 
 function Service() {
   return (
-    <>
+    <div id="noneScroll">
       <header id="serviceHeader">
         <h1 id="title">Tap Place</h1>
         <nav id="serviceNav">
@@ -27,7 +28,7 @@ function Service() {
         </nav>
       </header>
       <main id="mainContainer">
-        <div id="main1" className="mainDivideContainer">
+        <div id="main1">
           <div id="main1Container">
             <article className="contentContainer">
               <h1 id="main1_line1" className="line1">
@@ -39,26 +40,7 @@ function Service() {
                 <br />
                 탭플레이스에서 내 주변 간편결제 가맹점을 확인해보세요
               </p>
-              <ul id="logoContainer">
-                <li>
-                  <Link to="/">
-                    <img
-                      src={require('../img/appleLogo.png')}
-                      alt="appleLogo"
-                    />
-                    <p>App Store</p>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <img
-                      src={require('../img/googleLogo.png')}
-                      alt="appleLogo"
-                    />
-                    <p>Play Store</p>
-                  </Link>
-                </li>
-              </ul>
+              <StoreButton />
             </article>
             <img
               id="main1_mokupImg"
@@ -68,7 +50,7 @@ function Service() {
             />
           </div>
         </div>
-        <div id="main2" className="mainDivideContainer">
+        <div id="main2">
           <h4 id="main2_lineTop">
             탭플레이스와 함께라면 이 모든 간편결제 가맹점을 쉽게 확인할 수
             있어요
@@ -103,7 +85,7 @@ function Service() {
             </p>
           </article>
         </div>
-        <div id="main3" className="mainDivideContainer">
+        <div id="main3">
           <div id="main3Container">
             <article id="main3contentContainer">
               <AppLogo />
@@ -126,7 +108,7 @@ function Service() {
             />
           </div>
         </div>
-        <div id="main4" className="mainDivideContainer">
+        <div id="main4">
           <div id="main4Container">
             <h1 id="main4_title">신규 가맹점 등록</h1>
             <p id="main4_subTitle">
@@ -193,7 +175,7 @@ function Service() {
             </form>
           </div>
         </div>
-        <div id="main5" className="mainDivideContainer">
+        <div id="main5">
           <div id="main5Container">
             <h1 id="main5_title">편리한 서비스를 만듭니다</h1>
             <div id="main5subContainer">
@@ -266,12 +248,33 @@ function Service() {
             </div>
           </div>
         </div>
-        <div id="main6" className="mainDivideContainer">
-          메인6
+        <div id="main6">
+          <div id="main6Container">
+            <h1 id="main6_line1">
+              탭플레이스에서 쉽고 간편하게
+              <br />
+              가맹점을 확인하세요
+            </h1>
+            <p id="main6_line2">지금 내 주변의 간편결제 가맹점을 찾아보세요</p>
+            <StoreButton />
+          </div>
         </div>
       </main>
-      <footer id="footer">푸터</footer>
-    </>
+      <footer id="footer">
+        <div id="footerContainer">
+          <div id="footer_line1">
+            <h4 id="footerTitle">Tap Place</h4>
+            <ul id="footerList">
+              <li className="footerItem">서비스 이용약관</li>
+              <li className="footerItem">개인정보 처리방침</li>
+              <li className="footerItem">E-mail : http://tapplace.co.kr</li>
+            </ul>
+          </div>
+          <hr id="footerHr" />
+          <h4 id="footer_line2">Copyright Tap Place.All rights reserved</h4>
+        </div>
+      </footer>
+    </div>
   );
 }
 

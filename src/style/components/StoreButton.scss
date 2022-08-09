@@ -1,0 +1,28 @@
+#logoContainer {
+  margin-top: 3.4rem;
+  list-style: none;
+  li {
+    float: left;
+    &:first-child {
+      padding-right: 0.4rem;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #333333;
+      padding: 0.8rem 2.4rem 0.8rem 2.2rem;
+      border-radius: 10px;
+      img {
+        float: left;
+        width: 1.5rem;
+      }
+      p {
+        float: right;
+        padding-left: 0.4em;
+        color: white;
+        font-size: 1rem;
+      }
+    }
+  }
+}

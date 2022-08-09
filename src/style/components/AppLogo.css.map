@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EAChB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,IAAI;EACnB,QAAQ,EAAE,MAAM;CAMjB;;AAVD,AAKE,iBALe,CAKf,gBAAgB,CAAC;EACf,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,OAAO;CACpB",
-    "sources": [
-        "AppLogo.scss"
-    ],
-    "names": [],
-    "file": "AppLogo.css"
-}
