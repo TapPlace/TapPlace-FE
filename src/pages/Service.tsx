@@ -194,7 +194,77 @@ function Service() {
           </div>
         </div>
         <div id="main5" className="mainDivideContainer">
-          메인5
+          <div id="main5Container">
+            <h1 id="main5_title">편리한 서비스를 만듭니다</h1>
+            <div id="main5subContainer">
+              <div className="developerContainer" id="developer1">
+                <img src="" alt="" className="developerImg" />
+                <div className="developerText">
+                  <h1 className="developerName">홍길동</h1>
+                  <p className="developerPart">디자이너</p>
+                  <p className="developerWord">
+                    UI 디자인, 로고, 웹디자인, PC프로그램 디자인까지 모든 것을
+                    시도하고 발전해 나갈 수 있는 뜻깊은 시간이 되었다
+                  </p>
+                </div>
+              </div>
+              <div className="developerContainer" id="developer2">
+                <img src="" alt="" className="developerImg" />
+                <div className="developerText">
+                  <h1 className="developerName">홍길동</h1>
+                  <p className="developerPart">디자이너</p>
+                  <p className="developerWord">
+                    UI 디자인, 로고, 웹디자인, PC프로그램 디자인까지 모든 것을
+                    시도하고 발전해 나갈 수 있는 뜻깊은 시간이 되었다
+                  </p>
+                </div>
+              </div>
+              <div className="developerContainer" id="developer3">
+                <img src="" alt="" className="developerImg" />
+                <div className="developerText">
+                  <h1 className="developerName">홍길동</h1>
+                  <p className="developerPart">디자이너</p>
+                  <p className="developerWord">
+                    UI 디자인, 로고, 웹디자인, PC프로그램 디자인까지 모든 것을
+                    시도하고 발전해 나갈 수 있는 뜻깊은 시간이 되었다
+                  </p>
+                </div>
+              </div>
+              <div className="developerContainer" id="developer4">
+                <img src="" alt="" className="developerImg" />
+                <div className="developerText">
+                  <h1 className="developerName">홍길동</h1>
+                  <p className="developerPart">디자이너</p>
+                  <p className="developerWord">
+                    UI 디자인, 로고, 웹디자인, PC프로그램 디자인까지 모든 것을
+                    시도하고 발전해 나갈 수 있는 뜻깊은 시간이 되었다
+                  </p>
+                </div>
+              </div>
+              <div className="developerContainer" id="developer5">
+                <img src="" alt="" className="developerImg" />
+                <div className="developerText">
+                  <h1 className="developerName">홍길동</h1>
+                  <p className="developerPart">디자이너</p>
+                  <p className="developerWord">
+                    UI 디자인, 로고, 웹디자인, PC프로그램 디자인까지 모든 것을
+                    시도하고 발전해 나갈 수 있는 뜻깊은 시간이 되었다
+                  </p>
+                </div>
+              </div>
+              <div className="developerContainer" id="developer6">
+                <img src="" alt="" className="developerImg" />
+                <div className="developerText">
+                  <h1 className="developerName">홍길동</h1>
+                  <p className="developerPart">디자이너</p>
+                  <p className="developerWord">
+                    UI 디자인, 로고, 웹디자인, PC프로그램 디자인까지 모든 것을
+                    시도하고 발전해 나갈 수 있는 뜻깊은 시간이 되었다
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div id="main6" className="mainDivideContainer">
           메인6
