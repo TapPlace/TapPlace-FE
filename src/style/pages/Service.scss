@@ -225,11 +225,11 @@
     }
     #main5subContainer {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      width: 100%;
+      grid-template-columns: 21rem 21rem 21rem;
       grid-template-rows: 1fr 1fr;
-      grid-gap: 2rem;
+      justify-content: space-between;
       .developerContainer {
-        // width: 20rem;
         display: inline-block;
         &:nth-child(2),
         &:nth-child(5) {
