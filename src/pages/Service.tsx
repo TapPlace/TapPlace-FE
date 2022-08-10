@@ -8,22 +8,22 @@ import '../style/pages/Service.scss';
 
 function Service() {
   return (
-    <div id="noneScroll">
+    <>
       <header id="serviceHeader">
         <h1 id="title">Tap Place</h1>
         <nav id="serviceNav">
           <ul>
             <li>
-              <Link to="#main1">서비스</Link>
+              <a href="#main1">서비스</a>
             </li>
             <li>
-              <Link to="#main2">가맹점등록</Link>
+              <a href="#main4">가맹점등록</a>
             </li>
             <li>
-              <Link to="#main3">멤버소개</Link>
+              <a href="#main5">멤버소개</a>
             </li>
             <li>
-              <Link to="#main4">다운로드</Link>
+              <a href="#main6">다운로드</a>
             </li>
           </ul>
         </nav>
@@ -266,7 +266,7 @@ function Service() {
           <h4 id="footer_line2">Copyright Tap Place.All rights reserved</h4>
         </div>
       </footer>
-    </div>
+    </>
   );
 }
 
