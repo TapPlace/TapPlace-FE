@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppLogo from '../components/AppLogo';
+import PayLogoSlider from '../components/PayLogoSlider';
 import StoreButton from '../components/StoreButton';
 
 import '../style/pages/Service.scss';
@@ -55,16 +56,7 @@ function Service() {
             탭플레이스와 함께라면 이 모든 간편결제 가맹점을 쉽게 확인할 수
             있어요
           </h4>
-          <div id="main2LogoContainer">
-            <img src={require('../img/visa.png')} alt="visaLogo" />
-            <img src={require('../img/payco.png')} alt="paycoLogo" />
-            <img src={require('../img/apple.png')} alt="appleLogo" />
-            <img src={require('../img/zero.png')} alt="zeroLogo" />
-            <img src={require('../img/google.png')} alt="googleLogo" />
-            <img src={require('../img/kakao.png')} alt="kakaoLogo" />
-            <img src={require('../img/naver.png')} alt="naverLogo" />
-            <img src={require('../img/master.png')} alt="masterLogo" />
-          </div>
+          <PayLogoSlider />
           <img
             id="main2_mokupImg"
             className="mokupImg"
