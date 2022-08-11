@@ -9,6 +9,7 @@
   line-height: 1.6rem;
 }
 #serviceHeader,
+#serviceHeaderOpacity,
 #main1Container,
 #main3Container,
 #main4Container,
@@ -20,7 +21,9 @@
 .mokupImg {
   filter: drop-shadow(-15px -10px 8px rgb(185, 184, 184));
 }
-#serviceHeader {
+
+#serviceHeader,
+#serviceHeaderOpacity {
   position: fixed;
   width: 100%;
   display: flex;
@@ -245,6 +248,10 @@
       font-weight: 300;
     }
   }
+}
+
+#serviceHeaderOpacity {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 // 태블릿

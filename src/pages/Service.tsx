@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TapPlaceAppLogo from '../components/TapPlaceAppLogo';
 import PayLogoSlider from '../components/PayLogoSlider';
 import StoreButton from '../components/StoreButton';
@@ -7,9 +7,19 @@ import '../style/pages/Service.scss';
 import Main4 from '../components/Main4';
 
 function Service() {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const updateScroll = () => {
+    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', updateScroll);
+  });
+
   return (
     <>
-      <header id="serviceHeader">
+      <header
+        id={scrollPosition < 50 ? 'serviceHeader' : 'serviceHeaderOpacity'}
+      >
         <h1 id="title">Tap Place</h1>
         <nav id="serviceNav">
           <ul>
