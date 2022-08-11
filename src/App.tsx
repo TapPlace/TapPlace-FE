@@ -8,9 +8,6 @@ import Service from './pages/Service';
 function App() {
   return (
     <>
-      {/* <Helmet htmlAttributes={{ lang: 'ko' }}>
-        <title>TapPlace</title>
-      </Helmet> */}
       <Routes>
         <Route path="/" element={<Service />} />
       </Routes>
