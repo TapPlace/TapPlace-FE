@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 
 import './App.scss';
 import Service from './pages/Service';
