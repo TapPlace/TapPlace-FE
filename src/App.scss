@@ -5,8 +5,13 @@
   ::-webkit-scrollbar {
     display: none;
   }
+  scroll-behavior: smooth;
 }
 
 #root {
   width: 100vw;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import '../style/components/AppLogo.scss';
+import '../style/components/TapPlaceAppLogo.scss';
 
-function AppLogo() {
+function TapPlaceAppLogo() {
   return (
     <div className="appLogoContainer">
       <img className="applicationLogo" src="" alt="" />
@@ -10,4 +10,4 @@ function AppLogo() {
   );
 }
 
-export default AppLogo;
+export default TapPlaceAppLogo;

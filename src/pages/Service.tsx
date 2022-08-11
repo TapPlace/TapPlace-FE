@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import AppLogo from '../components/AppLogo';
+import TapPlaceAppLogo from '../components/TapPlaceAppLogo';
 import PayLogoSlider from '../components/PayLogoSlider';
 import StoreButton from '../components/StoreButton';
 
 import '../style/pages/Service.scss';
+import Main4 from '../components/Main4';
 
 function Service() {
   return (
@@ -64,7 +64,7 @@ function Service() {
             alt="mokup-2"
           />
           <article id="main2contentContainer" className="contentContainer">
-            <AppLogo />
+            <TapPlaceAppLogo />
             <h1 id="main2_line1">
               내 주변 간편결제 가맹점을
               <br />
@@ -80,7 +80,7 @@ function Service() {
         <div id="main3">
           <div id="main3Container">
             <article id="main3contentContainer">
-              <AppLogo />
+              <TapPlaceAppLogo />
               <h1 id="main3_line1">
                 새로운 가맹점을 발견하고
                 <br />
@@ -100,73 +100,7 @@ function Service() {
             />
           </div>
         </div>
-        <div id="main4">
-          <div id="main4Container">
-            <h1 id="main4_title">신규 가맹점 등록</h1>
-            <p id="main4_subTitle">
-              현재까지<h4 id="main4_subTitleCnt">835</h4>개의 가맹점이
-              등록되었습니다
-            </p>
-            <form id="addStoreForm">
-              <h4 className="addStoreFormExplain">가맹점 이름</h4>
-              <input
-                type="text"
-                name="storeName"
-                className="main4InputText"
-                placeholder="예) CU 역삼점, CU 강남논현타운점"
-              />
-              <h4 className="addStoreFormExplain">가맹점 주소</h4>
-              <input
-                type="text"
-                name="storeAddress"
-                className="main4InputText"
-                placeholder="예) 서울 강남구 테헤란로51길 10"
-              />
-              <h4 className="addStoreFormExplain">결제수단</h4>
-              <div className="checkboxContainer">
-                <div className="clickBtn">카카오페이</div>
-                <div className="clickBtn">네이버페이</div>
-                <div className="clickBtn">페이코</div>
-                <div className="clickBtn">제로페이</div>
-                <div className="clickBtn">미래에셋페이</div>
-              </div>
-              <p className="paymentMethod">애플페이</p>
-              <div className="checkboxContainer">
-                <div className="clickBtn">zen</div>
-                <div className="clickBtn">vivid</div>
-                <div className="clickBtn">wise</div>
-                <div className="clickBtn">N26</div>
-                <div className="clickBtn">monzo</div>
-                <div className="clickBtn">monese</div>
-                <div className="clickBtn">giftcard[MASTER]</div>
-              </div>
-              <p className="paymentMethod">구글페이</p>
-              <div className="checkboxContainer">
-                <div className="clickBtn">zen</div>
-                <div className="clickBtn">vivid</div>
-                <div className="clickBtn">wise</div>
-                <div className="clickBtn">N26</div>
-                <div className="clickBtn">bunq</div>
-              </div>
-              <p className="paymentMethod">컨택리스 카드</p>
-              <div className="checkboxContainer">
-                <div className="clickBtn">VISA</div>
-                <div className="clickBtn">MASTER CARD</div>
-                <div className="clickBtn">AMERICAN EXPRESS</div>
-                <div className="clickBtn">Union Pay</div>
-                <div className="clickBtn">JCB</div>
-              </div>
-              <h4 className="addStoreFormExplain">등록자 닉네임</h4>
-              <input
-                type="text"
-                name=""
-                className="main4InputText"
-                placeholder="닉네임을 알려주세요"
-              />
-              <button id="submitBtn">등록하기</button>
-            </form>
-          </div>
-        </div>
+        <Main4 />
         <div id="main5">
           <div id="main5Container">
             <h1 id="main5_title">편리한 서비스를 만듭니다</h1>

@@ -1,0 +1,87 @@
+@import '../pages/Service.scss';
+
+#main4 {
+  height: 92rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  #main4Container {
+    display: flex;
+    flex-direction: column;
+    #main4_title {
+      @include line1;
+      display: inline;
+      text-align: center;
+      font-size: 3rem;
+    }
+    #main4_subTitle {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      padding-top: 2rem;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #9e9e9e;
+      #main4_subTitleCnt {
+        display: inline;
+        color: black;
+        font-size: 2.4rem;
+        padding: 0 0.6rem;
+      }
+    }
+    #addStoreForm {
+      display: flex;
+      flex-direction: column;
+      padding-top: 5rem;
+      .addStoreFormExplain {
+        font-weight: 500;
+        font-size: 1.25rem;
+      }
+      .main4InputText {
+        border: none;
+        background: #fafafa;
+        width: 100%;
+        height: 3rem;
+        padding-left: 1rem;
+        border-radius: 10px;
+        margin: 0.8rem 0 2rem 0;
+        color: #4d4d4d;
+        &::placeholder {
+          color: #9e9e9e;
+          font-weight: 500;
+          font-size: 0.94rem;
+        }
+      }
+      .checkboxContainer {
+        display: flex;
+        list-style: none;
+        .clickBtn {
+          border: 1px solid #f2f2f2;
+          color: #9e9e9e;
+          padding: 0.65rem 1rem 0.5rem 1rem;
+          font-size: 1rem;
+          border-radius: 18px;
+          font-weight: lighter;
+          font-size: 0.9rem;
+          margin: 0.8rem 0.5rem 1.8rem 0;
+          cursor: pointer;
+        }
+        .active {
+          color: black;
+          border: 1px solid black;
+        }
+      }
+      #submitBtn {
+        width: 13.7rem;
+        padding: 0.8rem 0;
+        border: none;
+        color: white;
+        background: black;
+        border-radius: 10px;
+        margin: 0 auto;
+        margin-top: 3rem;
+      }
+    }
+  }
+}
