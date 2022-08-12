@@ -1,14 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import useInput from '../hooks/useInput';
+import { useInput } from '../hooks/useInput';
 
 import '../style/components/Main4.scss';
 
 function Main4() {
-  const [location, setLoaction] = useState('');
-  const [recomendStore, setRecomendStore] = useState('');
+  const [location, setLoaction] = useState<string>('');
+  const [recommendStore, setRecommendStore] = useState<string>('');
+  const [storeAddress, setStoreAddress] = useState<string>('');
   const [storeName, setStoreName] = useInput('');
-  const [storeAddress, setStoreAddress] = useState('');
   const [nickname, SetNickname] = useInput('');
 
   async function findAddress() {
@@ -24,14 +24,21 @@ function Main4() {
       .then(res => {
         const location = res.data.documents;
         let locationArray: any = [];
-        for (let i = 0; i < 3; i++) {
-          locationArray.push(location[i].place_name + ' ');
+        let ArrayCount = location.length > 3 ? 3 : location.length;
+        for (let i = 0; i < ArrayCount; i++) {
+          locationArray.push(' ' + location[i].place_name);
         }
-        setLoaction(locationArray);
-        setRecomendStore(res.data.documents[0].place_name);
-        setStoreAddress(res.data.documents[0].address_name);
+        if ((location.length === 0) === true) {
+          setLoaction(locationArray);
+          setRecommendStore('');
+          setStoreAddress('');
+        } else {
+          setLoaction(locationArray);
+          setRecommendStore(res.data.documents[0].place_name);
+          setStoreAddress(res.data.documents[0].address_name);
+        }
       })
-      .catch(err => {
+      .catch((err: string) => {
         console.error(err);
       });
   }
@@ -44,6 +51,7 @@ function Main4() {
   }
 
   function onClickSubmit(e: React.MouseEvent<HTMLElement>) {
+    // 여러가지 결제수단 중 어느 수단을 선택했는지
     let payArray: Array<string> = [];
     const siblings = (el: any) =>
       [...el.parentElement.children].filter(node => node != el);
@@ -53,7 +61,25 @@ function Main4() {
         if (ele.className === 'clickBtn active') payArray.push(ele.id);
       }
     });
-    console.log(storeName, storeAddress, payArray, nickname);
+    console.log(recommendStore, storeAddress, payArray, nickname);
+    // 에러 메시지(선택하지 않은 요소가 하나 이상일 때) 추가 구문
+    let errorMsg = '';
+    if (recommendStore === '') errorMsg += '가맹점 정보,';
+    if (payArray.length === 0) errorMsg += '결제 수단,';
+    if (nickname === '') errorMsg += '닉네임,';
+    // 에러메시지가 없으면 POST, 있으면 alert
+    if (errorMsg === '') {
+      axios.post('https://humhaebot.cafe24.com', {
+        recommendStore,
+        storeAddress,
+        payArray,
+        nickname,
+      });
+    } else if (errorMsg !== '') {
+      errorMsg =
+        errorMsg.slice(0, -1).replace(',', ', ') + '을(를) 확인해주세요';
+      alert(errorMsg);
+    }
   }
 
   useEffect(() => {
@@ -75,7 +101,7 @@ function Main4() {
             name="storeName"
             className="main4InputText"
             placeholder="예) CU 역삼점, CU 강남논현타운점"
-            value={storeName}
+            defaultValue={storeName}
             onChange={setStoreName}
           />
           <h4 id="recommendStoreName">
@@ -87,7 +113,7 @@ function Main4() {
             name="storeAddress"
             className="main4InputText"
             placeholder="자동 완성"
-            value={storeAddress}
+            defaultValue={storeAddress}
           />
           <h4 id="recommendStoreName">
             {storeName.length >= 1 &&
