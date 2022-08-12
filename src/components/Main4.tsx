@@ -6,6 +6,7 @@ import '../style/components/Main4.scss';
 
 function Main4() {
   const [location, setLoaction] = useState<string>('');
+  const [storeId, setStoreId] = useState<Number | undefined>();
   const [recommendStore, setRecommendStore] = useState<string>('');
   const [storeAddress, setStoreAddress] = useState<string>('');
   const [storeName, setStoreName] = useInput('');
@@ -34,8 +35,9 @@ function Main4() {
           setStoreAddress('');
         } else {
           setLoaction(locationArray);
-          setRecommendStore(res.data.documents[0].place_name);
-          setStoreAddress(res.data.documents[0].address_name);
+          setStoreId(location[0].id);
+          setRecommendStore(location[0].place_name);
+          setStoreAddress(location[0].address_name);
         }
       })
       .catch((err: string) => {
@@ -70,6 +72,7 @@ function Main4() {
     // 에러메시지가 없으면 POST, 있으면 alert
     if (errorMsg === '') {
       axios.post('https://humhaebot.cafe24.com', {
+        storeId,
         recommendStore,
         storeAddress,
         payArray,
@@ -114,6 +117,7 @@ function Main4() {
             className="main4InputText"
             placeholder="자동 완성"
             defaultValue={storeAddress}
+            disabled
           />
           <h4 id="recommendStoreName">
             {storeName.length >= 1 &&
