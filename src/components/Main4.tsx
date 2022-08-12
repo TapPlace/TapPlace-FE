@@ -1,12 +1,40 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import useInput from '../hooks/useInput';
 
 import '../style/components/Main4.scss';
 
 function Main4() {
+  const [location, setLoaction] = useState('');
+  const [recomendStore, setRecomendStore] = useState('');
   const [storeName, setStoreName] = useInput('');
-  const [storeAddress, setStoreAddress] = useInput('');
+  const [storeAddress, setStoreAddress] = useState('');
   const [nickname, SetNickname] = useInput('');
+
+  async function findAddress() {
+    await axios
+      .get(
+        `https://dapi.kakao.com/v2/local/search/keyword.json?query=${storeName}`,
+        {
+          headers: {
+            Authorization: `KakaoAK ${process.env.REACT_APP_KAKAO_RESTAPI_KEY}`,
+          },
+        },
+      )
+      .then(res => {
+        const location = res.data.documents;
+        let locationArray: any = [];
+        for (let i = 0; i < 3; i++) {
+          locationArray.push(location[i].place_name + ' ');
+        }
+        setLoaction(locationArray);
+        setRecomendStore(res.data.documents[0].place_name);
+        setStoreAddress(res.data.documents[0].address_name);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
 
   function onClickBtn(e: React.MouseEvent<HTMLElement>) {
     const target = e.target as HTMLElement;
@@ -28,6 +56,10 @@ function Main4() {
     console.log(storeName, storeAddress, payArray, nickname);
   }
 
+  useEffect(() => {
+    findAddress();
+  }, [storeName]);
+
   return (
     <div id="main4">
       <div id="main4Container">
@@ -46,15 +78,21 @@ function Main4() {
             value={storeName}
             onChange={setStoreName}
           />
+          <h4 id="recommendStoreName">
+            {storeName.length >= 1 && `추천 가맹점 이름 : ${location}`}
+          </h4>
           <h4 className="addStoreFormExplain">가맹점 주소</h4>
           <input
             type="text"
             name="storeAddress"
             className="main4InputText"
-            placeholder="예) 서울 강남구 테헤란로51길 10"
+            placeholder="자동 완성"
             value={storeAddress}
-            onChange={setStoreAddress}
           />
+          <h4 id="recommendStoreName">
+            {storeName.length >= 1 &&
+              '추천 가맹점에 뜬 첫 번째 가맹점의 이름과 주소로 등록됩니다'}
+          </h4>
           <h4 className="addStoreFormExplain">결제수단</h4>
           <ul className="checkboxContainer">
             <li id="KakaoPay" className="clickBtn" onClick={onClickBtn}>

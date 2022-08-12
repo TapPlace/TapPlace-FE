@@ -37,6 +37,7 @@
       .addStoreFormExplain {
         font-weight: 500;
         font-size: 1.25rem;
+        margin-top: 1rem;
       }
       .main4InputText {
         border: none;
@@ -45,7 +46,7 @@
         height: 3rem;
         padding-left: 1rem;
         border-radius: 10px;
-        margin: 0.8rem 0 2rem 0;
+        margin-top: 0.8rem;
         color: #4d4d4d;
         &::placeholder {
           color: #9e9e9e;
@@ -55,6 +56,12 @@
         &:focus {
           outline: none;
         }
+      }
+      #recommendStoreName {
+        height: 2rem;
+        padding: 0.4rem 0 0 1rem;
+        color: gray;
+        font-weight: 500;
       }
       .checkboxContainer {
         display: flex;
