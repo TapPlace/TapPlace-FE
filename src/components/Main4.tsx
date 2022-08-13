@@ -11,6 +11,8 @@ function Main4() {
   const [storeAddress, setStoreAddress] = useState<string>('');
   const [storeName, setStoreName] = useInput('');
   const [nickname, SetNickname] = useInput('');
+  const [x, setX] = useState('');
+  const [y, setY] = useState('');
 
   async function findAddress() {
     await axios
@@ -24,6 +26,7 @@ function Main4() {
       )
       .then(res => {
         const location = res.data.documents;
+        console.log(location[0]);
         let locationArray: any = [];
         let ArrayCount = location.length > 3 ? 3 : location.length;
         for (let i = 0; i < ArrayCount; i++) {
@@ -33,11 +36,15 @@ function Main4() {
           setLoaction(locationArray);
           setRecommendStore('');
           setStoreAddress('');
+          setX('');
+          setY('');
         } else {
           setLoaction(locationArray);
           setStoreId(location[0].id);
           setRecommendStore(location[0].place_name);
           setStoreAddress(location[0].address_name);
+          setX(location[0].x);
+          setY(location[0].y);
         }
       })
       .catch((err: string) => {
@@ -53,6 +60,11 @@ function Main4() {
   }
 
   function onClickSubmit(e: React.MouseEvent<HTMLElement>) {
+    let etcArray: Array<string> = [];
+    let appleArray: Array<string> = [];
+    let googleArray: Array<string> = [];
+    let contactlessArray: Array<string> = [];
+
     // 여러가지 결제수단 중 어느 수단을 선택했는지
     let payArray: Array<string> = [];
     const siblings = (el: any) =>
@@ -60,10 +72,33 @@ function Main4() {
     const element = siblings(e.target).filter(tag => tag.tagName === 'UL');
     element.forEach(item => {
       for (const ele of item.children) {
-        if (ele.className === 'clickBtn active') payArray.push(ele.id);
+        if (ele.className === 'clickBtn active') {
+          payArray.push(ele.id);
+        }
       }
     });
-    console.log(recommendStore, storeAddress, payArray, nickname);
+    payArray.forEach(item => {
+      if (item.indexOf('etc') === 0) {
+        etcArray.push(item);
+      } else if (item.indexOf('Apple') === 0) {
+        appleArray.push(item);
+      } else if (item.indexOf('Google') === 0) {
+        googleArray.push(item);
+      } else if (item.indexOf('Contact') === 0) {
+        contactlessArray.push(item);
+      }
+    });
+    console.log(
+      recommendStore,
+      storeAddress,
+      x,
+      y,
+      nickname,
+      etcArray,
+      appleArray,
+      googleArray,
+      contactlessArray,
+    );
     // 에러 메시지(선택하지 않은 요소가 하나 이상일 때) 추가 구문
     let errorMsg = '';
     if (recommendStore === '') errorMsg += '가맹점 정보,';
@@ -71,18 +106,36 @@ function Main4() {
     if (nickname === '') errorMsg += '닉네임,';
     // 에러메시지가 없으면 POST, 있으면 alert
     if (errorMsg === '') {
-      axios.post('https://humhaebot.cafe24.com', {
-        storeId,
-        recommendStore,
-        storeAddress,
-        payArray,
-        nickname,
-      });
+      axios
+        .post('/tapplace/add_update.php', {
+          id: storeId,
+          place: recommendStore,
+          address: storeAddress,
+          region_x: x,
+          region_y: y,
+          nickname: nickname,
+          etc: etcArray,
+          applepay: appleArray,
+          googlepay: googleArray,
+          conatctless: contactlessArray,
+        })
+        .then(res => {
+          console.log('send data', res.data);
+        })
+        .catch(err => console.error(err));
     } else if (errorMsg !== '') {
       errorMsg =
         errorMsg.slice(0, -1).replace(',', ', ') + '을(를) 확인해주세요';
       alert(errorMsg);
     }
+    // 초기화
+    payArray = [];
+    etcArray = [];
+    appleArray = [];
+    googleArray = [];
+    contactlessArray = [];
+    setX('');
+    setY('');
   }
 
   useEffect(() => {
@@ -125,16 +178,16 @@ function Main4() {
           </h4>
           <h4 className="addStoreFormExplain">결제수단</h4>
           <ul className="checkboxContainer">
-            <li id="KakaoPay" className="clickBtn" onClick={onClickBtn}>
+            <li id="etcKakao" className="clickBtn" onClick={onClickBtn}>
               카카오페이
             </li>
-            <li id="NaverPay" className="clickBtn" onClick={onClickBtn}>
+            <li id="etcNaver" className="clickBtn" onClick={onClickBtn}>
               네이버페이
             </li>
-            <li id="Payco" className="clickBtn" onClick={onClickBtn}>
+            <li id="etcPayco" className="clickBtn" onClick={onClickBtn}>
               페이코
             </li>
-            <li id="ZeroPay" className="clickBtn" onClick={onClickBtn}>
+            <li id="etcZeroPay" className="clickBtn" onClick={onClickBtn}>
               제로페이
             </li>
           </ul>
