@@ -107,7 +107,7 @@ function Main4() {
     // 에러메시지가 없으면 POST, 있으면 alert
     if (errorMsg === '') {
       axios
-        .post('/tapplace/add_update.php', {
+        .post('https://tapplace.co.kr/tapplace/test_update.php', {
           id: storeId,
           place: recommendStore,
           address: storeAddress,
@@ -120,7 +120,7 @@ function Main4() {
           conatctless: contactlessArray,
         })
         .then(res => {
-          console.log('send data', res.data);
+          console.log(res);
         })
         .catch(err => console.error(err));
     } else if (errorMsg !== '') {

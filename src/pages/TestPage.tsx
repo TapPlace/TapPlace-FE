@@ -5,9 +5,9 @@ import MobileApp from '../components/MobileApp';
 function TestPage() {
   async function btn() {
     await axios
-      .get('kjhhome.ddns.net:3000/paylist')
+      .get('https://tapplace.co.kr/tapplace/test_update.php?address=123')
       .then(res => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch(err => console.error(err));
   }

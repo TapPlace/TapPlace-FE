@@ -45,6 +45,5 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.5"
-  },
-  "proxy": "https://tapplace.co.kr/"
+  }
 }
