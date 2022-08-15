@@ -1,0 +1,25 @@
+#searchContainer {
+  position: absolute;
+  top: 52px;
+  left: 20px;
+  #searchStore {
+    display: block;
+    width: 335px;
+    height: 50px;
+    padding-left: 44px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  }
+}
+section {
+  position: absolute;
+  top: 114px;
+  left: 20px;
+  width: 350px;
+  #searchCategoryContainer {
+    height: 30px;
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+}

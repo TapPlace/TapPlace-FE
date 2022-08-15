@@ -6,9 +6,17 @@
   transform: translate(-50%, -50%);
   width: 375px;
   height: 667px;
-  #mobileUpperBar {
-    background: gray;
-    width: 100%;
-    height: 44px;
+  #kakaoUpperContainer {
+    z-index: 1;
+    & {
+      z-index: 2;
+    }
+    #mobileUpperBar {
+      border-bottom: 1px solid black;
+      width: 100%;
+      height: 52px;
+      position: absolute;
+      top: 0;
+    }
   }
 }
