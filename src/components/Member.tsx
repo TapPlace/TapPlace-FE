@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MutableRefObject, useRef } from 'react';
 
 import '../style/components/Member.scss';
 

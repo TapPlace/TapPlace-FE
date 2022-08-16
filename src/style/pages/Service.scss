@@ -27,7 +27,6 @@
 }
 
 #serviceHeader,
-#serviceHeaderOpacity,
 #main1Container,
 #main4,
 #footerContainer {
@@ -39,8 +38,7 @@
   filter: drop-shadow(-15px 0px 10px rgb(185, 184, 184));
 }
 
-#serviceHeader,
-#serviceHeaderOpacity {
+#serviceHeader {
   position: fixed;
   width: 100%;
   display: flex;
@@ -55,15 +53,33 @@
   }
   #serviceNav {
     width: 30%;
+    height: 60px;
     ul {
       display: flex;
       justify-content: space-between;
+      line-height: 56px;
       li {
         list-style: none;
+        &::before {
+          content: '';
+          display: block;
+          width: 100%;
+          border-top: 4px solid white;
+        }
         a {
+          height: 100%;
           text-decoration: none;
           color: #4d4d4d;
           font-size: 15px;
+        }
+        .active {
+          color: #4e77fb;
+          &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            border-bottom: 2px solid #4e77fb;
+          }
         }
       }
     }

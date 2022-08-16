@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PayLogoSlider from '../components/PayLogoSlider';
 import StoreButton from '../components/StoreButton';
 
@@ -15,32 +15,55 @@ function Service() {
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
   }, []);
-
-  // 멤버 x축 스크롤
-  const [memberScroll, setMemberScroll] = useState(0);
-  useEffect(() => {
-    const firstMember: any = document.querySelector('#firstMember');
-    console.log(firstMember.getBoundingClientRect().x);
-  });
-  // 360 ~ -570 , 930
-  //
+  // 멤버 x축 스크롤 몇 퍼센트 스크롤
+  const [scrollX, setScrollX]: any = useState();
+  const memberSlider: any = document.querySelector('#memberSlider');
+  function onScrollX() {
+    let xPercent =
+      memberSlider.scrollLeft === 0
+        ? 0
+        : (100 * memberSlider.scrollLeft) /
+          (memberSlider.scrollWidth - memberSlider.clientWidth);
+    setScrollX(xPercent * 10.3);
+  }
+  // 구한 퍼센트로 프로그레스바 움직임
+  const scrollStyle = {
+    left: scrollX,
+  };
 
   return (
     <>
-      <header
-        id={scrollPosition < 50 ? 'serviceHeader' : 'serviceHeaderOpacity'}
-      >
+      <header id="serviceHeader">
         <h1 id="title">Tap Place</h1>
         <nav id="serviceNav">
           <ul>
             <li>
-              <a href="#main1">서비스</a>
+              <a
+                className={scrollPosition < 2962 ? 'active' : ''}
+                href="#mainContainer"
+              >
+                서비스
+              </a>
             </li>
             <li>
-              <a href="#main4">가맹점등록</a>
+              <a
+                className={
+                  scrollPosition >= 2962 && scrollPosition < 4242
+                    ? 'active'
+                    : ''
+                }
+                href="#main4"
+              >
+                가맹점등록
+              </a>
             </li>
             <li>
-              <a href="#main5">멤버소개</a>
+              <a
+                className={scrollPosition >= 4242 ? 'active' : ''}
+                href="#main3Container"
+              >
+                멤버소개
+              </a>
             </li>
             <li>
               <a href="#main6">다운로드</a>
@@ -120,8 +143,15 @@ function Service() {
         <Main4 />
         <div id="main3Container">
           <h1 id="main3title">탭플레이스 멤버들을 소개합니다</h1>
-          <div id="memberSlider">
-            <Member id="firstMember" name="박상현" position="IOS Developer" />
+          <div id="memberSlider" onScroll={onScrollX}>
+            {/* <div className="memberContainer">
+              <img id="firstMember" src="" alt="" className="memberImg" />
+              <div className="memberSubContainer">
+                <h1 className="memberName">박상현</h1>
+                <p className="memberPosition">IOS Developer</p>
+              </div>
+            </div> */}
+            <Member name="박상현" position="IOS Developer" />
             <Member name="이상준" position="IOS Developer" />
             <Member name="지경희" position="Android Developer" />
             <Member name="김지훈" position="BackEnd Developer" />
@@ -129,7 +159,7 @@ function Service() {
             <Member name="고은혜" position="UIUX Designer" />
           </div>
           <div id="memberProgressContainer">
-            <div id="progressBar" />
+            <div id="progressBar" style={scrollStyle} />
           </div>
         </div>
         {/* <div id="main6">
