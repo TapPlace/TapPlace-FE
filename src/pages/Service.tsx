@@ -144,13 +144,6 @@ function Service() {
         <div id="main3Container">
           <h1 id="main3title">탭플레이스 멤버들을 소개합니다</h1>
           <div id="memberSlider" onScroll={onScrollX}>
-            {/* <div className="memberContainer">
-              <img id="firstMember" src="" alt="" className="memberImg" />
-              <div className="memberSubContainer">
-                <h1 className="memberName">박상현</h1>
-                <p className="memberPosition">IOS Developer</p>
-              </div>
-            </div> */}
             <Member name="박상현" position="IOS Developer" />
             <Member name="이상준" position="IOS Developer" />
             <Member name="지경희" position="Android Developer" />
