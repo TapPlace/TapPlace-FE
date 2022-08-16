@@ -1,25 +1,42 @@
+@mixin line0 {
+  color: #4e77fb;
+  font-size: 25px;
+  font-weight: 400;
+}
 @mixin line1 {
   font-weight: 500;
-  font-size: 2.4rem;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 55px;
+  padding-top: 12px;
 }
 @mixin line2 {
   color: #707070;
-  padding-top: 1.8rem;
-  font-size: 1.1rem;
-  line-height: 1.6rem;
+  padding-top: 20px;
+  font-size: 20px;
+  line-height: 26px;
 }
+
+@keyframes progressing {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: 1030px;
+  }
+}
+
 #serviceHeader,
 #serviceHeaderOpacity,
 #main1Container,
-#main3Container,
-#main4Container,
-#main5Container,
-#main6Container,
+#main4,
 #footerContainer {
-  padding: 0 17vw;
+  padding: 0 360px;
 }
-.mokupImg {
-  filter: drop-shadow(-15px -10px 8px rgb(185, 184, 184));
+.mockupImg {
+  width: 384px;
+  height: 763px;
+  filter: drop-shadow(-15px 0px 10px rgb(185, 184, 184));
 }
 
 #serviceHeader,
@@ -31,9 +48,10 @@
   justify-content: space-between;
   z-index: 1;
   background: white;
-  height: 4rem;
+  height: 60px;
   #title {
-    font-size: 1.2rem;
+    color: #4e77fb;
+    font-size: 20px;
   }
   #serviceNav {
     width: 30%;
@@ -44,8 +62,8 @@
         list-style: none;
         a {
           text-decoration: none;
-          color: black;
-          font-size: 0.9rem;
+          color: #4d4d4d;
+          font-size: 15px;
         }
       }
     }
@@ -54,136 +72,109 @@
 #mainContainer {
   display: flex;
   flex-direction: column;
-  padding-top: 4rem;
-  #main1 {
-    height: 44rem;
-    background: #f7f7f7;
-    #main1Container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      .contentContainer {
-        display: flex;
-        flex-direction: column;
-        #main1_line1 {
-          font-size: 3.1rem;
-          @include line1;
-        }
-        #main1_line2 {
-          @include line2;
-        }
+  padding-top: 60px;
+  #main1Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 170px;
+    .contentContainer {
+      padding-bottom: 70px;
+      #main1_line1 {
+        @include line1;
+        font-size: 60px;
+        line-height: 81px;
       }
-      #main1_mokupImg {
-        height: 44rem;
-        padding-top: 4rem;
+      #main1_line2 {
+        @include line2;
+        line-height: 30px;
+        padding-top: 24px;
       }
+    }
+    #main1_mockupImg {
+      width: 417px;
+      height: 100%;
+      filter: none;
     }
   }
-  #main2 {
-    height: 64rem;
+  #main2Container {
     #main2_lineTop {
-      color: #9e9e9e;
-      font-size: 1.4rem;
-      font-weight: 300;
+      @include line2;
+      font-size: 24px;
       text-align: center;
-      padding: 9rem 0 4rem 0;
+      padding: 110px 0 65px 0;
     }
-    #main2_mokupImg {
-      height: 47rem;
-      padding-left: 19vw;
-      margin-top: 13rem;
+    #main2_mockupImg {
+      margin-left: 462px;
     }
-    #main2contentContainer {
+    #main2contentContainer_top {
       float: right;
-      padding: 18.6rem 19vw 0 0;
-      #main2_line1 {
-        @include line1;
-        padding-top: 2rem;
-        font-size: 2.5rem;
+      padding: 205px 462px 0 0;
+      #main2_line0_top {
+        @include line0;
       }
-      #main2_line2 {
+      #main2_line1_top {
+        @include line1;
+      }
+      #main2_line2_top {
         @include line2;
       }
     }
-  }
-  #main3 {
-    height: 64rem;
-    padding-top: 9rem;
-    background: #f7f7f7;
-    #main3Container {
+
+    #main2background {
+      background: #f4f5fa;
+      width: 1200px;
+      height: 679px;
+      border-radius: 60px;
+      margin: 255px 0 0 360px;
+      z-index: 1;
+
       #main3contentContainer {
-        float: left;
-        margin-top: 19rem;
-        #main3_line1 {
-          @include line1;
-          padding-top: 2rem;
-          font-size: 2.5rem;
+        z-index: 2;
+        padding: 186px 0 0 138px;
+        #main2_line0_bottom {
+          @include line0;
         }
-        #main3_line2 {
+        #main2_line1_bottom {
+          @include line1;
+        }
+        #main2_line2_bottom {
           @include line2;
         }
       }
     }
-    #main3_mokupImg {
-      float: right;
-      height: 47rem;
+    #main2_mockupImg_bottom {
+      position: absolute;
+      top: 2105px;
+      right: 462px;
     }
   }
-  #main5 {
-    height: 100rem;
-    background: #f5f5f5;
-    #main5Container {
+  #main3Container {
+    display: flex;
+    flex-direction: column;
+    #main3title {
       @include line1;
-      display: flex;
-      flex-direction: column;
-      height: inherit;
-      #main5_title {
-        text-align: center;
-        font-size: 3.2rem;
-        padding: 7.6rem 0;
-      }
+      padding: 260px 0 88px 0;
+      font-size: 50px;
+      text-align: center;
     }
-    #main5subContainer {
+    #memberSlider {
       display: flex;
-      justify-content: space-between;
+      white-space: nowrap;
       overflow-y: scroll;
-      flex-wrap: wrap;
-      .developerContainer {
-        display: inline-block;
-        width: 22rem;
-        &:nth-child(2),
-        &:nth-child(5) {
-          padding-top: 7rem;
-        }
-        &:nth-child(3),
-        &:nth-child(6) {
-          margin-top: 3rem;
-        }
-        .developerImg {
-          width: 100%;
-          height: 22rem;
-          border: 1px solid black;
-        }
-        .developerText {
-          padding: 1rem 1rem 0 1rem;
-          .developerName {
-            @include line1;
-            font-size: 2.5rem;
-            display: inline;
-            padding-right: 0.6rem;
-          }
-          .developerPart {
-            @include line2;
-            display: inline;
-            font-size: 1.5rem;
-            color: #9e9e9e;
-          }
-          .developerWord {
-            font-size: 1rem;
-            color: #707070;
-            padding-top: 0.7rem;
-          }
-        }
+    }
+    #memberProgressContainer {
+      background: #ecf0f3;
+      width: 1200px;
+      height: 4px;
+      margin: 88px 0 240px 360px;
+      #progressBar {
+        margin-left: 360px;
+        width: 170px;
+        height: 4px;
+        left: 0;
+        position: absolute;
+        background: #4e77fb;
       }
     }
   }
@@ -207,7 +198,7 @@
   }
 }
 #footer {
-  height: 11rem;
+  height: 245px;
   background: #fafafa;
   display: flex;
   flex-direction: column;
@@ -256,7 +247,7 @@
 
 // 태블릿
 @media all and (min-width: 768px) and (max-width: 1023px) {
-  .mokupImg {
+  .mockupImg {
     display: none;
   }
 }
@@ -266,7 +257,7 @@
   #main1Container {
     padding: 0;
   }
-  .mokupImg {
+  .mockupImg {
     display: none;
   }
   #serviceHeader {

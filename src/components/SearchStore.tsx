@@ -1,29 +1,52 @@
 import React from 'react';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { searchStorePage } from '../redux/reducers/showPage';
 
 import '../style/components/SearchStore.scss';
 import SearchCategory from './SearchCategory';
 
 function SearchStore() {
+  const dispatch = useAppDispatch();
+  const pageValue = useAppSelector(state => state.page.value);
+
   return (
     <>
-      <div id="searchContainer">
-        <input
-          type="text"
-          name="searchStore"
-          id="searchStore"
-          placeholder="가맹점을 찾아보세요"
-        />
-      </div>
-      <section>
-        <ul id="searchCategoryContainer">
-          <SearchCategory category="카페/디저트" />
-          <SearchCategory category="음식점" />
-          <SearchCategory category="편의점" />
-          <SearchCategory category="마트" />
-          <SearchCategory category="주유소" />
-          <SearchCategory category="주유소" />
-        </ul>
-      </section>
+      {pageValue === 'home' ? (
+        <>
+          <div
+            id="searchContainer"
+            onClick={() => {
+              dispatch(searchStorePage());
+            }}
+          >
+            <input
+              type="text"
+              name="searchStore"
+              id="searchStore"
+              placeholder="가맹점을 찾아보세요"
+              disabled
+            />
+          </div>
+          <section>
+            <ul id="searchCategoryContainer">
+              <SearchCategory category="카페/디저트" />
+              <SearchCategory category="음식점" />
+              <SearchCategory category="편의점" />
+              <SearchCategory category="마트" />
+              <SearchCategory category="주유소" />
+              <SearchCategory category="주유소" />
+            </ul>
+          </section>
+        </>
+      ) : pageValue === 'searchStorePage' ? (
+        <></>
+      ) : pageValue === 'prevPage' ? (
+        <></>
+      ) : pageValue === 'detailPage' ? (
+        <></>
+      ) : (
+        pageValue === 'myPage' && <></>
+      )}
     </>
   );
 }

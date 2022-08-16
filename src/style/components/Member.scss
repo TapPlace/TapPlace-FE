@@ -1,0 +1,22 @@
+.memberContainer {
+  text-align: center;
+  padding: 0 30px;
+  &:first-child {
+    padding-left: 360px;
+  }
+  .memberImg {
+    width: 360px;
+    height: 412px;
+    border: 1px solid black;
+  }
+  .memberSubContainer {
+    .memberName {
+      padding: 20px 0 4px 0;
+      font-size: 30px;
+    }
+    .memberPosition {
+      font-size: 25px;
+      color: #a1a6b0;
+    }
+  }
+}

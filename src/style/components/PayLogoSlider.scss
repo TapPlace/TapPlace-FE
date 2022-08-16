@@ -1,13 +1,13 @@
 #payLogoSlider {
   display: block;
-  height: 2.4rem;
-  display: flex;
-  flex-wrap: nowrap;
-  width: 100%;
+  width: 100vw;
+  height: 40px;
+  white-space: nowrap;
   overflow: hidden;
+  padding-bottom: 200px;
   img {
-    animation: slider 14s linear infinite;
-    padding: 0 1.75vw;
+    animation: slider 9s linear infinite;
+    padding: 0 25px;
   }
 }
 
@@ -16,6 +16,6 @@
     transform: translateX(0px);
   }
   100% {
-    transform: translateX(-98vw);
+    transform: translateX(-96vw);
   }
 }
