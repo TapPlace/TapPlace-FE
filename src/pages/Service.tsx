@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PayLogoSlider from '../components/PayLogoSlider';
 import StoreButton from '../components/StoreButton';
 
