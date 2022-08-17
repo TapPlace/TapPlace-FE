@@ -17,6 +17,7 @@
   line-height: 26px;
 }
 
+// PC
 @keyframes progressing {
   0% {
     left: 0px;
@@ -25,7 +26,6 @@
     left: 1030px;
   }
 }
-
 #serviceHeader,
 #main1Container,
 #main4,
@@ -37,7 +37,6 @@
   height: 763px;
   filter: drop-shadow(-15px 0px 10px rgb(185, 184, 184));
 }
-
 #serviceHeader {
   position: fixed;
   width: 100%;
@@ -183,7 +182,7 @@
       background: #ecf0f3;
       width: 1200px;
       height: 4px;
-      margin: 88px 0 240px 360px;
+      margin: 88px 0 0 360px;
       #progressBar {
         margin-left: 360px;
         width: 170px;
@@ -194,28 +193,33 @@
       }
     }
   }
-  #main6 {
-    height: 32rem;
-    #main6Container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding-top: 8rem;
-      #main6_line1 {
-        @include line1;
-      }
-      #main6_line2 {
-        @include line2;
-        font-size: 1.4rem;
-        color: #9e9e9e;
+  #main6Container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 240px;
+    #main6_line1 {
+      @include line1;
+    }
+    #main6_line2 {
+      @include line2;
+      font-size: 24px;
+      color: #9e9e9e;
+    }
+    #logoContainer {
+      padding-top: 52px;
+      li {
+        &:last-child {
+          display: none;
+        }
       }
     }
   }
 }
 #footer {
   height: 245px;
-  background: #fafafa;
+  background: #3f4353;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -225,7 +229,7 @@
   #footerContainer {
     display: flex;
     flex-direction: column;
-    color: #cccccc;
+    color: #9fa1a9;
     #footer_line1 {
       #footertitle {
         float: left;
@@ -233,14 +237,21 @@
       #footerList {
         float: right;
         list-style: none;
-        font-weight: 300;
-        font-size: 0.8rem;
+        font-size: 15px;
         .footerItem {
           display: inline;
-          border-right: 1px solid #e6e6e6;
-          padding: 0 0.8rem;
+          border-right: 1px solid rbga(120, 123, 134, 0.5);
+          padding: 0 7.5px;
           &:last-child {
             border: none;
+          }
+          &:not(:last-child) {
+            &:after {
+              content: '';
+              height: 100%;
+              border-right: 1px solid #9fa1a9;
+              padding: 0 7.5px;
+            }
           }
         }
       }
@@ -256,10 +267,6 @@
     }
   }
 }
-
-// #serviceHeaderOpacity {
-//   background: rgba(255, 255, 255, 0.5);
-// }
 
 // 태블릿
 @media all and (min-width: 768px) and (max-width: 1023px) {

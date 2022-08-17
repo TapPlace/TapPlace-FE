@@ -5,6 +5,7 @@ import StoreButton from '../components/StoreButton';
 import '../style/pages/Service.scss';
 import Main4 from '../components/Main4';
 import Member from '../components/Member';
+import { Link } from 'react-router-dom';
 
 function Service() {
   // 헤더 y축 스크롤
@@ -66,7 +67,7 @@ function Service() {
               </a>
             </li>
             <li>
-              <a href="#main6">다운로드</a>
+              <a href="#none">다운로드</a>
             </li>
           </ul>
         </nav>
@@ -155,17 +156,14 @@ function Service() {
             <div id="progressBar" style={scrollStyle} />
           </div>
         </div>
-        {/* <div id="main6">
-          <div id="main6Container">
-            <h1 id="main6_line1">
-              탭플레이스에서 쉽고 간편하게
-              <br />
-              가맹점을 확인하세요
-            </h1>
-            <p id="main6_line2">지금 내 주변의 간편결제 가맹점을 찾아보세요</p>
-            <StoreButton />
-          </div>
-        </div> */}
+        <div id="main6Container">
+          <h1 id="main6_line1">
+            지금 탭플레이스를 다운받고
+            <br />내 주변 간편결제 가맹점을 바로 확인해보세요
+          </h1>
+          <p id="main6_line2">지금 내 주변의 간편결제 가맹점을 찾아보세요</p>
+          <StoreButton />
+        </div>
       </main>
       <footer id="footer">
         <div id="footerContainer">
@@ -173,7 +171,7 @@ function Service() {
             <h4 id="footerTitle">Tap Place</h4>
             <ul id="footerList">
               <li className="footerItem">서비스 이용약관</li>
-              <li className="footerItem">개인정보 처리방침</li>
+              <li className="footerItem">개인정보처리방침</li>
               <li className="footerItem">E-mail : http://tapplace.co.kr</li>
             </ul>
           </div>
