@@ -1,6 +1,33 @@
+@import '../../App.scss';
+// 모바일 시
+#logoContainerMobile {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0 55px 0;
+  li {
+    .mobileStoreBtn {
+      font-size: 15px;
+      padding: 10px 12px;
+      margin: 0 5px;
+      border-radius: 10px;
+      background: $mainColor;
+      color: white;
+      svg {
+        padding-right: 8px;
+      }
+    }
+    #mobileBtnSecond {
+      border: none;
+      background: none;
+      color: $mainColor;
+    }
+  }
+}
+// 모바일 아닐 시
 #logoContainer {
   padding: 86px 0 165px 0;
-  list-style: none;
+  display: flex;
+  justify-content: space-between;
   li {
     float: left;
     &:first-child {

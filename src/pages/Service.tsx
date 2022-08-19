@@ -5,10 +5,18 @@ import StoreButton from '../components/StoreButton';
 import '../style/pages/Service.scss';
 import Main4 from '../components/Main4';
 import Member from '../components/Member';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { isMobile } from 'react-device-detect';
 
 function Service() {
+  // Nav 숨기기
+  function navNoShow() {
+    setNavToggle('noshow');
+  }
   // 헤더 y축 스크롤
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [navToggle, setNavToggle] = useState('noshow');
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
   };
@@ -30,17 +38,36 @@ function Service() {
   const scrollStyle = {
     left: scrollX,
   };
-
   return (
     <>
       <header id="serviceHeader">
         <h1 id="title">Tap Place</h1>
-        <nav id="serviceNav">
+        {navToggle === 'noshow' && (
+          <FontAwesomeIcon
+            className="navToggleBtn"
+            icon={faBars}
+            onClick={() => {
+              setNavToggle('show');
+            }}
+          />
+        )}
+        {navToggle === 'show' && (
+          <FontAwesomeIcon
+            className="navToggleBtn"
+            icon={faXmark}
+            onClick={navNoShow}
+          />
+        )}
+        <nav
+          className={navToggle === 'show' ? 'navShow' : 'navHide'}
+          id="serviceNav"
+        >
           <ul>
             <li>
               <a
                 className={scrollPosition < 2962 ? 'active' : ''}
                 href="#mainContainer"
+                onClick={navNoShow}
               >
                 서비스
               </a>
@@ -53,6 +80,7 @@ function Service() {
                     : ''
                 }
                 href="#main4"
+                onClick={navNoShow}
               >
                 가맹점등록
               </a>
@@ -61,6 +89,7 @@ function Service() {
               <a
                 className={scrollPosition >= 4242 ? 'active' : ''}
                 href="#main3Container"
+                onClick={navNoShow}
               >
                 멤버소개
               </a>
@@ -74,14 +103,29 @@ function Service() {
       <main id="mainContainer">
         <div id="main1Container">
           <article className="contentContainer">
-            <h1 id="main1_line1" className="line1">
+            <h1 id="main1_line1">
               간편결제 가맹점 확인
               <br /> 한곳에서 간편하게
             </h1>
-            <p id="main1_line2" className="line2">
-              힘들게 찾아다닐 필요없이 한번에 확인할 수 있어요
-              <br />
-              탭플레이스에서 내 주변 간편결제 가맹점을 확인해보세요
+            <p id="main1_line2">
+              {isMobile ? (
+                <>
+                  힘들게 찾아다닐 필요없이
+                  <br />
+                  한번에 확인할 수 있어요
+                  <br />
+                  탭플레이스에서
+                  <br />내 주변 간편결제 가맹점을
+                  <br />
+                  확인해보세요
+                </>
+              ) : (
+                <>
+                  힘들게 찾아다닐 필요없이 한번에 확인할 수 있어요
+                  <br />
+                  탭플레이스에서 내 주변 간편결제 가맹점을 확인해보세요
+                </>
+              )}
             </p>
             <StoreButton />
           </article>
@@ -140,8 +184,8 @@ function Service() {
             alt="mockup-2"
           />
         </div>
-        <Main4 />
-        <div id="main3Container">
+        {/* <Main4 /> */}
+        {/* <div id="main3Container">
           <h1 id="main3title">탭플레이스 멤버들을 소개합니다</h1>
           <div id="memberSlider" onScroll={onScrollX}>
             <Member name="박상현" position="IOS Developer" />
@@ -154,7 +198,7 @@ function Service() {
           <div id="memberProgressContainer">
             <div id="progressBar" style={scrollStyle} />
           </div>
-        </div>
+        </div> */}
         <div id="main6Container">
           <h1 id="main6_line1">
             지금 탭플레이스를 다운받고
