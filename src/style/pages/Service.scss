@@ -12,7 +12,7 @@
   padding-top: 12px;
 }
 @mixin line2 {
-  color: #707070;
+  color: $subTextColor;
   padding-top: 20px;
   font-size: 20px;
   line-height: 26px;
@@ -30,6 +30,7 @@ ul {
 // 모바일
 @media all and (max-width: 767px) {
   .mockupImg {
+    display: block;
     width: 250px;
   }
   #serviceHeader {
@@ -99,6 +100,70 @@ ul {
         }
       }
       #main1_mockupImg {
+        padding-bottom: 88px;
+      }
+    }
+    #main2Container {
+      display: flex;
+      flex-direction: column;
+      #main2_lineTop {
+        color: $subTextColor;
+        font-size: 18px;
+        text-align: center;
+        font-weight: 400;
+        padding-bottom: 28px;
+      }
+      #main2contentContainer_top {
+        float: left;
+        padding: 0 5vw;
+        #main2_line0_top {
+          color: $mainColor;
+        }
+        #main2_line1_top {
+          font-size: 23px;
+          font-weight: 400;
+          line-height: 32px;
+          padding-bottom: 12px;
+        }
+        #main2_line2_top {
+          color: $subTextColor;
+          font-size: 16px;
+          line-height: 21px;
+          padding-bottom: 52px;
+        }
+      }
+      #main2_mockupImg_top {
+        margin: 0 auto;
+        padding-bottom: 105px;
+      }
+      #main2background {
+        height: 820px;
+        background: rgba(244, 245, 250, 0.8);
+        #main2contentContainer_bottom {
+          width: 100vw;
+          padding: 80px 5vw 0 5vw;
+          #main2_line0_bottom {
+            color: $mainColor;
+            font-size: 16px;
+            font-weight: 400;
+          }
+          #main2_line1_bottom {
+            color: #3f4353;
+            font-weight: 400;
+            font-size: 23px;
+            padding: 8px 0 12px 0;
+            line-height: 32px;
+          }
+          #main2_line2_bottom {
+            color: $subTextColor;
+            font-size: 16px;
+            line-height: 21px;
+            padding-bottom: 50px;
+          }
+          #main2_mockupImg_bottom {
+            margin: 0 auto;
+          }
+        }
       }
     }
   }
@@ -238,7 +303,7 @@ ul {
         margin: 255px 0 0 360px;
         z-index: 1;
 
-        #main3contentContainer {
+        #main2contentContainer {
           z-index: 2;
           padding: 186px 0 0 138px;
           #main2_line0_bottom {

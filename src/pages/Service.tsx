@@ -138,16 +138,21 @@ function Service() {
         </div>
         <div id="main2Container">
           <h4 id="main2_lineTop">
-            탭플레이스와 함께라면 이 모든 간편결제 가맹점을 쉽게 확인할 수
-            있어요
+            {isMobile ? (
+              <>
+                탭플레이스와 함께라면
+                <br />이 모든 간편결제 가맹점을
+                <br />
+                쉽게 확인할 수 있어요
+              </>
+            ) : (
+              <>
+                탭플레이스와 함께라면 이 모든 간편결제 가맹점을 쉽게 확인할 수
+                있어요
+              </>
+            )}
           </h4>
           <PayLogoSlider />
-          <img
-            id="main2_mockupImg"
-            className="mockupImg"
-            src={require('../img/mockup-2.png')}
-            alt="mockup-2"
-          />
           <article id="main2contentContainer_top" className="contentContainer">
             <h1 id="main2_line0_top">가맹점 조회</h1>
             <h1 id="main2_line1_top">
@@ -161,8 +166,14 @@ function Service() {
               결제 가능여부를 미리 알려드릴께요.
             </p>
           </article>
+          <img
+            id="main2_mockupImg_top"
+            className="mockupImg"
+            src={require('../img/mockup-2.png')}
+            alt="mockup-2"
+          />
           <div id="main2background">
-            <article id="main3contentContainer">
+            <article id="main2contentContainer_bottom">
               <h1 id="main2_line0_bottom">가맹점 등록</h1>
               <h1 id="main2_line1_bottom">
                 새로운 가맹점을 발견하고
@@ -174,15 +185,24 @@ function Service() {
                 <br />
                 간편하게 등록할 수 있어요
               </p>
+              {isMobile && (
+                <img
+                  id="main2_mockupImg_bottom"
+                  className="mockupImg"
+                  src={require('../img/mockup-2.png')}
+                  alt="mockup-2"
+                />
+              )}
             </article>
           </div>
-
-          <img
-            id="main2_mockupImg_bottom"
-            className="mockupImg"
-            src={require('../img/mockup-2.png')}
-            alt="mockup-2"
-          />
+          {isMobile === false && (
+            <img
+              id="main2_mockupImg_bottom"
+              className="mockupImg"
+              src={require('../img/mockup-2.png')}
+              alt="mockup-2"
+            />
+          )}
         </div>
         {/* <Main4 /> */}
         {/* <div id="main3Container">
