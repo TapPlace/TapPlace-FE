@@ -5,11 +5,10 @@ import { useInput } from '../hooks/useInput';
 import '../style/components/Main4.scss';
 
 function Main4() {
-  const [location, setLoaction] = useState<string>('');
-  // const [storeId, setStoreId] = useState<Number | undefined>();
-  const [storeId, setStoreId] = useState<any>();
-  const [recommendStore, setRecommendStore] = useState<string>('');
-  const [storeAddress, setStoreAddress] = useState<string>('');
+  const [location, setLoaction] = useState<string | undefined>();
+  const [storeId, setStoreId] = useState<Number | undefined>();
+  const [recommendStore, setRecommendStore] = useState<string | undefined>();
+  const [storeAddress, setStoreAddress] = useState<string | undefined>();
   const [storeName, setStoreName] = useInput('');
   const [nickname, SetNickname] = useInput('');
   const [x, setX] = useState('');
@@ -61,14 +60,10 @@ function Main4() {
   }
 
   function onClickSubmit(e: React.MouseEvent<HTMLElement>) {
-    // let etcArray: Array<string> = [];
-    // let appleArray: Array<string> = [];
-    // let googleArray: Array<string> = [];
-    // let contactlessArray: Array<string> = [];
-    let etcArray: any = [];
-    let appleArray: any = [];
-    let googleArray: any = [];
-    let contactlessArray: any = [];
+    let etcArray: Array<string> = [];
+    let appleArray: Array<string> = [];
+    let googleArray: Array<string> = [];
+    let contactlessArray: Array<string> = [];
 
     // 여러가지 결제수단 중 어느 수단을 선택했는지
     let payArray: Array<string> = [];
@@ -101,36 +96,12 @@ function Main4() {
     frm.append('region_y', y);
     frm.append('nickname', nickname);
     frm.append('etc', JSON.stringify(etcArray));
-    frm.append('applepay', JSON.stringify(appleArray));
-    frm.append('googlepay', JSON.stringify(googleArray));
-    frm.append('contactless', JSON.stringify(contactlessArray));
-    // for (let i = 0; i < etcArray.length; i++) {
-    //   frm.append('etc', etcArray[i]);
-    // }
-    // for (let i = 0; i < appleArray.length; i++) {
-    //   frm.append('applepay', appleArray[i]);
-    // }
-    // for (let i = 0; i < googleArray.length; i++) {
-    //   frm.append('googlepay', googleArray[i]);
-    // }
-    // for (let i = 0; i < contactlessArray.length; i++) {
-    //   frm.append('contactless', contactlessArray[i]);
-    // }
+    frm.append('applepay[]', JSON.stringify(appleArray));
+    frm.append('googlepay[]', JSON.stringify(googleArray));
+    frm.append('contactless[]', JSON.stringify(contactlessArray));
     for (let value of frm.values()) {
       console.log(value);
     }
-
-    // console.log(
-    //   recommendStore,
-    //   storeAddress,
-    //   x,
-    //   y,
-    //   nickname,
-    //   etcArray,
-    //   appleArray,
-    //   googleArray,
-    //   contactlessArray,
-    // );
     // 에러 메시지(선택하지 않은 요소가 하나 이상일 때) 추가 구문
     let errorMsg = '';
     if (recommendStore === '') errorMsg += '가맹점 정보,';
@@ -140,19 +111,9 @@ function Main4() {
 
     if (errorMsg === '') {
       axios
-        // .post('https://tapplace.co.kr/tapplace/test_update.php', {
-        //   id: storeId,
-        //   place: recommendStore,
-        //   address: storeAddress,
-        //   region_x: x,
-        //   region_y: y,
-        //   nickname: nickname,
-        //   etc: etcArray,
-        //   applepay: appleArray,
-        //   googlepay: googleArray,
-        //   conatctless: contactlessArray,
-        // })
-        .post('https://tapplace.co.kr/tapplace/test_update.php', frm)
+        .post('https://tapplace.co.kr/tapplace/test_update.php', frm, {
+          headers: frm.getHeaders(),
+        })
         .then(res => {
           console.log('send data');
           console.log(res);

@@ -5,7 +5,6 @@ import StoreButton from '../components/StoreButton';
 import '../style/pages/Service.scss';
 import Main4 from '../components/Main4';
 import Member from '../components/Member';
-import { Link } from 'react-router-dom';
 
 function Service() {
   // 헤더 y축 스크롤
