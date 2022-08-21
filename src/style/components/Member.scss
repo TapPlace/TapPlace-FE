@@ -1,22 +1,60 @@
-.memberContainer {
-  text-align: center;
-  padding: 0 30px;
-  &:first-child {
-    padding-left: 360px;
-  }
-  .memberImg {
-    width: 360px;
-    height: 412px;
-    border: 1px solid black;
-  }
-  .memberSubContainer {
-    .memberName {
-      padding: 20px 0 4px 0;
-      font-size: 30px;
+@import '../../App.scss';
+// 모바일
+@media all and (max-width: 767px) {
+  .memberContainer {
+    text-align: center;
+    padding-right: 24px;
+    &:first-child {
+      padding-left: 5vw;
     }
-    .memberPosition {
-      font-size: 25px;
-      color: #a1a6b0;
+
+    .memberImg {
+      width: 260px;
+      height: 306px;
+      border: 1px solid black;
+    }
+    .memberSubContainer {
+      .memberName {
+        font-size: 23px;
+        padding-top: 20px;
+      }
+      .memberPosition {
+        font-size: 15px;
+        color: #a1a6b0;
+        padding: 2px 0 16px 0;
+      }
+      .memberSay {
+        font-size: 15px;
+        color: $subTextColor;
+      }
+    }
+  }
+}
+// 태블릿
+@media all and (min-width: 768px) and (max-width: 1024px) {
+}
+// PC
+@media all and (min-width: 1024px) {
+  .memberContainer {
+    text-align: center;
+    padding: 0 30px;
+    &:first-child {
+      padding-left: 360px;
+    }
+    .memberImg {
+      width: 360px;
+      height: 412px;
+      border: 1px solid black;
+    }
+    .memberSubContainer {
+      .memberName {
+        padding: 20px 0 4px 0;
+        font-size: 30px;
+      }
+      .memberPosition {
+        font-size: 25px;
+        color: #a1a6b0;
+      }
     }
   }
 }

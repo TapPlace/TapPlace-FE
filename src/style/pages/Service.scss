@@ -166,6 +166,85 @@ ul {
         }
       }
     }
+    #main3Container {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      #main3title {
+        padding-top: 120px;
+        padding: 120px 0 32px 0;
+        font-size: 25px;
+        color: #23252d;
+        text-align: center;
+      }
+      #memberSlider {
+        display: flex;
+        overflow-x: scroll;
+      }
+      #memberProgressContainer {
+        background: #ecf0f3;
+        width: 90vw;
+        height: 4px;
+        margin: 50px 0 110px 5vw;
+        #progressBar {
+          width: 10vw;
+          height: 4px;
+          position: absolute;
+          margin-left: 5vw;
+          left: 0;
+          background: #4e77fb;
+        }
+      }
+    }
+    #main6Container {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      #main6_line1 {
+        font-size: 25px;
+        font-weight: 400;
+        padding-bottom: 20px;
+      }
+      #main6_line2 {
+        font-size: 18px;
+        color: $subTextColor;
+        line-height: 26px;
+      }
+      #mobileBtnSecond {
+        display: none;
+      }
+    }
+  }
+  #footer {
+    width: 100vw;
+    background: #3f4353;
+    padding: 48px 5vw;
+    #footerContainer {
+      display: flex;
+      flex-direction: column;
+      color: white;
+      opacity: 0.5;
+      #footer_line1 {
+        #footerTitle {
+          font-weight: 400;
+          font-size: 20px;
+        }
+        #footerList {
+          .footerItem {
+            padding: 2px 0;
+            &:first-child {
+              padding-top: 24px;
+            }
+            &:last-child {
+              padding-bottom: 24px;
+            }
+          }
+        }
+      }
+      #footer_line2 {
+        font-weight: 400;
+      }
+    }
   }
 }
 
@@ -339,15 +418,17 @@ ul {
       }
       #memberProgressContainer {
         background: #ecf0f3;
-        width: 1200px;
+        // width: 300px;
+        width: 90%;
+        margin-left: 5%;
         height: 4px;
-        margin: 88px 0 0 360px;
+        // margin-left: 40px;
         #progressBar {
-          margin-left: 360px;
-          width: 170px;
+          width: 10%;
           height: 4px;
-          left: 0;
           position: absolute;
+          margin-left: 5%;
+          left: 0;
           background: #4e77fb;
         }
       }

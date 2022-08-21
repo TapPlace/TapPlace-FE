@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useInput } from '../hooks/useInput';
 
 import '../style/components/Main4.scss';
@@ -144,8 +145,18 @@ function Main4() {
       <div id="main4Container">
         <h1 id="main4_title">신규 가맹점 등록</h1>
         <p id="main4_subTitle">
-          현재까지<h4 id="main4_subTitleCnt">835</h4>개의 가맹점이
-          등록되었습니다
+          {isMobile ? (
+            <>
+              현재까지 <h4 id="main4_subTitleCnt">835</h4>개의
+              <br />
+              가맹점이 등록되었습니다
+            </>
+          ) : (
+            <>
+              현재까지<h4 id="main4_subTitleCnt">835</h4>개의 가맹점이
+              등록되었습니다
+            </>
+          )}
         </p>
         <form id="addStoreForm">
           <h4 className="addStoreFormExplain">가맹점 이름</h4>
@@ -170,10 +181,11 @@ function Main4() {
             disabled
           />
           <h4 id="recommendStoreName">
-            {storeName.length >= 1 &&
-              '추천 가맹점에 뜬 첫 번째 가맹점의 이름과 주소로 등록됩니다'}
+            {storeName.length >= 1 && '추천 가맹점에 뜬 첫 번째 가맹점의 주소'}
           </h4>
-          <h4 className="addStoreFormExplain">결제수단</h4>
+          <h4 className="addStoreFormExplain" id="payment">
+            결제수단
+          </h4>
           <ul className="checkboxContainer">
             <li id="etcKakao" className="clickBtn" onClick={onClickBtn}>
               카카오페이
@@ -220,11 +232,11 @@ function Main4() {
             <li id="ContactMASTER" className="clickBtn" onClick={onClickBtn}>
               MASTER CARD
             </li>
-            <li id="ContactAMEX" className="clickBtn" onClick={onClickBtn}>
-              AMERICAN EXPRESS (AMEX)
-            </li>
             <li id="ContactUnion" className="clickBtn" onClick={onClickBtn}>
               Union Pay
+            </li>
+            <li id="ContactAMEX" className="clickBtn" onClick={onClickBtn}>
+              AMERICAN EXPRESS (AMEX)
             </li>
             <li id="ContactJCB" className="clickBtn" onClick={onClickBtn}>
               JCB
