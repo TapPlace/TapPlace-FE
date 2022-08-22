@@ -60,11 +60,21 @@ ul {
       width: 100vw;
       background: white;
       z-index: 10;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100vw;
+        top: 212px;
+        height: 100vh;
+        background: black;
+        opacity: 0.5;
+      }
     }
     ul {
       display: flex;
       flex-direction: column;
       z-index: 10;
+      height: 172px;
       li {
         background: white;
         padding-left: 5vw;
