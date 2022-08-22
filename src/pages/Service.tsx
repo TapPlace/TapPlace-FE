@@ -7,9 +7,12 @@ import Main4 from '../components/Main4';
 import Member from '../components/Member';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { isMobile } from 'react-device-detect';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { setResize } from '../redux/reducers/resizeSlice';
 
 function Service() {
+  const { windowX } = useAppSelector(state => state.resize);
+  const dispatch = useAppDispatch();
   // Nav 숨기기
   function navNoShow() {
     setNavToggle('noshow');
@@ -22,6 +25,9 @@ function Service() {
   };
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
+    window.addEventListener('resize', () => {
+      dispatch(setResize(window.innerWidth));
+    });
   }, []);
   // 멤버 x축 스크롤 몇 퍼센트 스크롤
   const [scrollX, setScrollX]: any = useState();
@@ -43,6 +49,7 @@ function Service() {
     left: `${scrollX}%`,
     transform: `translateX(-${rightX}%)`,
   };
+  console.log(scrollPosition);
   return (
     <>
       <header id="serviceHeader">
@@ -70,7 +77,7 @@ function Service() {
           <ul>
             <li>
               <a
-                className={scrollPosition < 2962 ? 'active' : ''}
+                className={scrollPosition < 2934 ? 'active' : ''}
                 href="#mainContainer"
                 onClick={navNoShow}
               >
@@ -80,7 +87,7 @@ function Service() {
             <li>
               <a
                 className={
-                  scrollPosition >= 2962 && scrollPosition < 4242
+                  scrollPosition >= 2934 && scrollPosition < 4174
                     ? 'active'
                     : ''
                 }
@@ -92,7 +99,7 @@ function Service() {
             </li>
             <li>
               <a
-                className={scrollPosition >= 4242 ? 'active' : ''}
+                className={scrollPosition >= 4174 ? 'active' : ''}
                 href="#main3Container"
                 onClick={navNoShow}
               >
@@ -113,7 +120,7 @@ function Service() {
               <br /> 한곳에서 간편하게
             </h1>
             <p id="main1_line2">
-              {isMobile ? (
+              {windowX <= 768 ? (
                 <>
                   힘들게 찾아다닐 필요없이
                   <br />
@@ -143,7 +150,7 @@ function Service() {
         </div>
         <div id="main2Container">
           <h4 id="main2_lineTop">
-            {isMobile ? (
+            {windowX <= 768 ? (
               <>
                 탭플레이스와 함께라면
                 <br />이 모든 간편결제 가맹점을
@@ -190,7 +197,7 @@ function Service() {
                 <br />
                 간편하게 등록할 수 있어요
               </p>
-              {isMobile && (
+              {windowX <= 768 && (
                 <img
                   id="main2_mockupImg_bottom"
                   className="mockupImg"
@@ -199,20 +206,20 @@ function Service() {
                 />
               )}
             </article>
+            {windowX > 768 && (
+              <img
+                id="main2_mockupImg_bottom"
+                className="mockupImg"
+                src={require('../img/mockup-2.png')}
+                alt="mockup-2"
+              />
+            )}
           </div>
-          {isMobile === false && (
-            <img
-              id="main2_mockupImg_bottom"
-              className="mockupImg"
-              src={require('../img/mockup-2.png')}
-              alt="mockup-2"
-            />
-          )}
         </div>
         <Main4 />
         <div id="main3Container">
           <h1 id="main3title">
-            {isMobile ? (
+            {windowX <= 768 ? (
               <>
                 탭플레이스 멤버들을
                 <br /> 소개합니다
@@ -259,7 +266,7 @@ function Service() {
         </div>
         <div id="main6Container">
           <h1 id="main6_line1">
-            {isMobile ? (
+            {windowX <= 768 ? (
               <>
                 지금 탭플레이스를 다운받고
                 <br />내 주변 간편결제 가맹점을
@@ -274,7 +281,7 @@ function Service() {
             )}
           </h1>
           <p id="main6_line2">
-            {isMobile ? (
+            {windowX <= 768 ? (
               <>
                 지금 내 주변의
                 <br />
@@ -297,7 +304,7 @@ function Service() {
               <li className="footerItem">E-mail : http://tapplace.co.kr</li>
             </ul>
           </div>
-          {isMobile === false && <hr id="footerHr" />}
+          {windowX > 768 && <hr id="footerHr" />}
           <h4 id="footer_line2">Copyright Tap Place.All rights reserved</h4>
         </div>
       </footer>

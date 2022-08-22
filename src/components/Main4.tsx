@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { isMobile } from 'react-device-detect';
 import { useInput } from '../hooks/useInput';
+import { useAppSelector } from '../redux/hooks';
 
 import '../style/components/Main4.scss';
 
 function Main4() {
+  const { windowX } = useAppSelector(state => state.resize);
   const [location, setLoaction] = useState<string | undefined>();
   const [storeId, setStoreId] = useState<Number | undefined>();
   const [recommendStore, setRecommendStore] = useState<string | undefined>();
@@ -145,7 +146,7 @@ function Main4() {
       <div id="main4Container">
         <h1 id="main4_title">신규 가맹점 등록</h1>
         <p id="main4_subTitle">
-          {isMobile ? (
+          {windowX <= 768 ? (
             <>
               현재까지 <h4 id="main4_subTitleCnt">835</h4>개의
               <br />

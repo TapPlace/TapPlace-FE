@@ -1,12 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { resizeSlice } from './reducers/resizeSlice';
 import showPage from './reducers/showPage';
 // import counterReducer from '../features/counter/counterSlice'
 
+const rootReducer = combineReducers({
+  page: showPage.reducer,
+  resize: resizeSlice.reducer,
+});
+
 export const store = configureStore({
-  reducer: {
-    page: showPage,
-    // counter: counterReducer,
-  },
+  reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

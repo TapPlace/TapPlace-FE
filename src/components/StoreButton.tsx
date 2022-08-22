@@ -1,15 +1,16 @@
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { isMobile } from 'react-device-detect';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../redux/hooks';
 
 import '../style/components/StoreButton.scss';
 
 function StoreButton() {
+  const { windowX } = useAppSelector(state => state.resize);
   return (
-    <ul id={isMobile ? 'logoContainerMobile' : 'logoContainer'}>
-      {isMobile ? (
+    <ul id="logoContainer">
+      {windowX <= 768 ? (
         <>
           <li>
             <Link to="/" className="mobileStoreBtn">

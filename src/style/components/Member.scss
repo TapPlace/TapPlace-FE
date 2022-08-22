@@ -1,6 +1,6 @@
-@import '../../App.scss';
+@import '../utils.scss';
 // 모바일
-@media all and (max-width: 767px) {
+@include mobile {
   .memberContainer {
     text-align: center;
     padding-right: 24px;
@@ -31,10 +31,36 @@
   }
 }
 // 태블릿
-@media all and (min-width: 768px) and (max-width: 1024px) {
+@include tablet {
+  .memberContainer {
+    text-align: center;
+    padding: 0 40px;
+    &:first-child {
+      padding-left: 5vw;
+    }
+    .memberImg {
+      width: 330px;
+      height: 370px;
+      border: 1px solid black;
+    }
+    .memberSubContainer {
+      .memberName {
+        padding: 20px 0 4px 0;
+        font-size: 25px;
+      }
+      .memberPosition {
+        font-size: 20px;
+        color: #a1a6b0;
+      }
+      .memberSay {
+        font-size: 16px;
+        color: $subTextColor;
+      }
+    }
+  }
 }
 // PC
-@media all and (min-width: 1024px) {
+@include desktop {
   .memberContainer {
     text-align: center;
     padding: 0 30px;
