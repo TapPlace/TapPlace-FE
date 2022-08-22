@@ -7,7 +7,7 @@ import { useAppSelector } from '../redux/hooks';
 import '../style/components/StoreButton.scss';
 
 function StoreButton() {
-  const { windowX } = useAppSelector(state => state.resize);
+  const { windowX } = useAppSelector(state => state.event);
   return (
     <ul id="logoContainer">
       {windowX <= 768 ? (

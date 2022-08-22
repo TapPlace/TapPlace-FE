@@ -10,6 +10,9 @@
 }
 
 // 공통
+.mockupImg {
+  filter: drop-shadow(-15px 0px 10px rgb(185, 184, 184));
+}
 a {
   text-decoration: none;
   color: black;
@@ -66,8 +69,6 @@ ul {
         background: white;
         padding-left: 5vw;
         padding-top: 3px;
-        a {
-        }
       }
     }
   }
@@ -479,12 +480,11 @@ ul {
   #main1Container,
   #main4,
   #footerContainer {
-    padding: 0 360px;
+    padding: 0 20vw;
   }
   .mockupImg {
     width: 384px;
     height: 763px;
-    filter: drop-shadow(-15px 0px 10px rgb(185, 184, 184));
   }
   #serviceHeader {
     @include serviceHeader;
@@ -493,6 +493,9 @@ ul {
     #title {
       color: #4e77fb;
       font-size: 20px;
+    }
+    .navToggleBtn {
+      display: none;
     }
     #serviceNav {
       width: 30%;
@@ -551,7 +554,7 @@ ul {
         }
       }
       #main1_mockupImg {
-        width: 417px;
+        width: 21.6vw;
         height: 100%;
         filter: none;
       }
@@ -563,49 +566,62 @@ ul {
         text-align: center;
         padding: 110px 0 65px 0;
       }
-      #main2_mockupImg {
-        margin-left: 462px;
+      #main2_mockupImg_top {
+        margin-left: 25vw;
+        width: 20vw;
+        height: 39.5vw;
       }
       #main2contentContainer_top {
         float: right;
         padding: 205px 462px 0 0;
         #main2_line0_top {
           @include line0;
+          font-size: 25px;
         }
         #main2_line1_top {
           @include line1;
+          font-size: 40px;
+          line-height: 55px;
         }
         #main2_line2_top {
           @include line2;
+          font-size: 20px;
+          line-height: 25px;
         }
       }
 
       #main2background {
         background: #f4f5fa;
-        width: 1200px;
-        height: 679px;
+        width: 62.15vw;
+        height: 35.15vw;
         border-radius: 60px;
         margin: 255px 0 0 360px;
         z-index: 1;
-
-        #main2contentContainer {
+        #main2contentContainer_bottom {
           z-index: 2;
           padding: 186px 0 0 138px;
           #main2_line0_bottom {
             @include line0;
+            font-size: 25px;
           }
           #main2_line1_bottom {
             @include line1;
+            font-size: 40px;
+            line-height: 55px;
           }
           #main2_line2_bottom {
             @include line2;
+            font-size: 20px;
+            line-height: 25px;
           }
         }
       }
       #main2_mockupImg_bottom {
+        width: 20vw;
+        height: 39.5vw;
         position: absolute;
         top: 2105px;
-        right: 462px;
+        right: 23.9vw;
       }
     }
     #main3Container {
@@ -619,21 +635,18 @@ ul {
       }
       #memberSlider {
         display: flex;
-        white-space: nowrap;
-        overflow-y: scroll;
+        overflow-x: scroll;
       }
       #memberProgressContainer {
         background: #ecf0f3;
-        // width: 300px;
-        width: 90%;
-        margin-left: 5%;
+        width: 60vw;
+        margin: 90px 0 0 20vw;
         height: 4px;
-        // margin-left: 40px;
         #progressBar {
           width: 10%;
           height: 4px;
           position: absolute;
-          margin-left: 5%;
+          margin-left: 20vw;
           left: 0;
           background: #4e77fb;
         }

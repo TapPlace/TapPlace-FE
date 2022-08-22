@@ -8,10 +8,10 @@ import Member from '../components/Member';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { setResize } from '../redux/reducers/resizeSlice';
+import { setMemberScrollX, setResize } from '../redux/reducers/eventSlice';
 
 function Service() {
-  const { windowX } = useAppSelector(state => state.resize);
+  const { windowX, memberScroll } = useAppSelector(state => state.event);
   const dispatch = useAppDispatch();
   // Nav 숨기기
   function navNoShow() {
@@ -28,10 +28,8 @@ function Service() {
     window.addEventListener('resize', () => {
       dispatch(setResize(window.innerWidth));
     });
-  }, []);
+  });
   // 멤버 x축 스크롤 몇 퍼센트 스크롤
-  const [scrollX, setScrollX]: any = useState();
-  const [rightX, setRightX]: any = useState();
   const memberSlider: any = document.querySelector('#memberSlider');
   function onScrollX() {
     let xPercent =
@@ -39,17 +37,38 @@ function Service() {
         ? 0
         : (100 * memberSlider.scrollLeft) /
           (memberSlider.scrollWidth - memberSlider.clientWidth);
-    // setScrollX(xPercent * 10.3); 원래 PCver
-    setScrollX(xPercent);
-    setRightX(xPercent + 100);
-    if (xPercent <= 10) setScrollX(10);
+    // 모바일, 태블릿 시
+    if (windowX <= 1024) {
+      if (xPercent <= 10) {
+        dispatch(
+          setMemberScrollX({
+            scrollX: 0,
+            scrollTransformX: 0,
+          }),
+        );
+      } else {
+        dispatch(
+          setMemberScrollX({
+            scrollX: xPercent,
+            scrollTransformX: xPercent + 100,
+          }),
+        );
+      }
+      // 데스크탑 시
+    } else {
+      dispatch(
+        setMemberScrollX({
+          scrollX: xPercent * 0.5,
+          scrollTransformX: 0,
+        }),
+      );
+    }
   }
   // 구한 퍼센트로 프로그레스바 움직임
   const scrollStyle = {
-    left: `${scrollX}%`,
-    transform: `translateX(-${rightX}%)`,
+    left: `${memberScroll.scrollX}%`,
+    transform: `translateX(-${memberScroll.scrollTransformX}%)`,
   };
-  console.log(scrollPosition);
   return (
     <>
       <header id="serviceHeader">
@@ -77,7 +96,15 @@ function Service() {
           <ul>
             <li>
               <a
-                className={scrollPosition < 2934 ? 'active' : ''}
+                className={
+                  windowX <= 1023
+                    ? scrollPosition < 2934
+                      ? 'active'
+                      : ''
+                    : windowX > 1023 && scrollPosition < 2919
+                    ? 'active'
+                    : ''
+                }
                 href="#mainContainer"
                 onClick={navNoShow}
               >
@@ -87,7 +114,13 @@ function Service() {
             <li>
               <a
                 className={
-                  scrollPosition >= 2934 && scrollPosition < 4174
+                  windowX <= 1023
+                    ? scrollPosition >= 2934 && scrollPosition < 4174
+                      ? 'active'
+                      : ''
+                    : windowX > 1023 &&
+                      scrollPosition >= 2919 &&
+                      scrollPosition < 4255
                     ? 'active'
                     : ''
                 }

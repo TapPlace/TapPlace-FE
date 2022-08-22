@@ -4,7 +4,7 @@ import { useAppSelector } from '../redux/hooks';
 import '../style/components/PayLogoSlider.scss';
 
 function PayLogoSlider() {
-  const { windowX } = useAppSelector(state => state.resize);
+  const { windowX } = useAppSelector(state => state.event);
   return (
     <>
       <div id={windowX > 768 ? 'payLogoSlider' : 'mobilePayLogoSlider'}>

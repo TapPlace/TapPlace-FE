@@ -6,7 +6,7 @@ import { useAppSelector } from '../redux/hooks';
 import '../style/components/Main4.scss';
 
 function Main4() {
-  const { windowX } = useAppSelector(state => state.resize);
+  const { windowX } = useAppSelector(state => state.event);
   const [location, setLoaction] = useState<string | undefined>();
   const [storeId, setStoreId] = useState<Number | undefined>();
   const [recommendStore, setRecommendStore] = useState<string | undefined>();

@@ -36,7 +36,6 @@
 }
 .checkboxContainer {
   display: flex;
-  // padding: 20px 0 12px 0;
   flex-wrap: wrap;
   .clickBtn {
     border: 1px solid #f2f2f2;
@@ -72,7 +71,6 @@
   }
 }
 
-// 모바일
 @include mobile {
   #main4 {
     padding: 104px 5vw 0 5vw;
@@ -140,7 +138,6 @@
   }
 }
 
-// 태블릿
 @include tablet {
   #main4 {
     display: flex;
@@ -227,6 +224,9 @@
           &:not(:first-child) {
             margin-top: 21px;
           }
+        }
+        .paymentMethod {
+          padding-top: 28px;
         }
       }
     }
