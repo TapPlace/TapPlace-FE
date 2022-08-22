@@ -20,6 +20,12 @@ a {
 ul {
   list-style: none;
 }
+.line0_Img {
+  float: left;
+  padding-right: 8px;
+  // height: 25px;
+  // vertical-align: middle;
+}
 @keyframes progressing {
   0% {
     left: 0px;
@@ -122,16 +128,22 @@ ul {
         padding-bottom: 28px;
       }
       #main2contentContainer_top {
-        float: left;
         padding: 0 5vw;
-        #main2_line0_top {
-          color: $mainColor;
+        .line0TitleContainer {
+          display: flex;
+          img {
+            height: 28px;
+          }
+          #main2_line0_top {
+            color: $mainColor;
+          }
         }
         #main2_line1_top {
           font-size: 23px;
           font-weight: 400;
           line-height: 32px;
           padding-bottom: 12px;
+          padding-top: 8px;
         }
         #main2_line2_top {
           color: $subTextColor;
@@ -150,10 +162,14 @@ ul {
         #main2contentContainer_bottom {
           width: 100vw;
           padding: 80px 5vw 0 5vw;
-          #main2_line0_bottom {
-            color: $mainColor;
-            font-size: 16px;
-            font-weight: 400;
+          .line0TitleContainer {
+            display: flex;
+            align-items: baseline;
+            #main2_line0_bottom {
+              color: $mainColor;
+              font-size: 16px;
+              font-weight: 400;
+            }
           }
           #main2_line1_bottom {
             color: #3f4353;
@@ -335,9 +351,12 @@ ul {
         float: right;
         padding-right: 8vw;
         padding-top: 150px;
-        #main2_line0_top {
-          @include line0;
-          font-size: 25px;
+        .line0TitleContainer {
+          display: flex;
+          #main2_line0_top {
+            @include line0;
+            font-size: 25px;
+          }
         }
         #main2_line1_top {
           @include line1;
@@ -363,8 +382,12 @@ ul {
         #main2contentContainer_bottom {
           z-index: 2;
           padding: 174px 0 0 8vw;
-          #main2_line0_bottom {
-            @include line0;
+          .line0TitleContainer {
+            display: flex;
+            align-items: baseline;
+            #main2_line0_bottom {
+              @include line0;
+            }
           }
           #main2_line1_bottom {
             @include line1;
@@ -583,9 +606,12 @@ ul {
       #main2contentContainer_top {
         float: right;
         padding: 205px 462px 0 0;
-        #main2_line0_top {
-          @include line0;
-          font-size: 25px;
+        .line0TitleContainer {
+          display: flex;
+          #main2_line0_top {
+            @include line0;
+            font-size: 25px;
+          }
         }
         #main2_line1_top {
           @include line1;
@@ -609,9 +635,13 @@ ul {
         #main2contentContainer_bottom {
           z-index: 2;
           padding: 186px 0 0 138px;
-          #main2_line0_bottom {
-            @include line0;
-            font-size: 25px;
+          .line0TitleContainer {
+            display: flex;
+            align-items: baseline;
+            #main2_line0_bottom {
+              @include line0;
+              font-size: 25px;
+            }
           }
           #main2_line1_bottom {
             @include line1;

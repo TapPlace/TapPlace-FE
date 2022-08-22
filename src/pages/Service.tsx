@@ -69,7 +69,6 @@ function Service() {
     left: `${memberScroll.scrollX}%`,
     transform: `translateX(-${memberScroll.scrollTransformX}%)`,
   };
-  console.log(scrollPosition);
   return (
     <>
       <header id="serviceHeader">
@@ -200,7 +199,14 @@ function Service() {
           </h4>
           <PayLogoSlider />
           <article id="main2contentContainer_top" className="contentContainer">
-            <h1 id="main2_line0_top">가맹점 조회</h1>
+            <div className="line0TitleContainer">
+              <img
+                src={require('../img/line0Left.png')}
+                className="line0_Img"
+                alt="line0Left"
+              />
+              <h1 id="main2_line0_top">가맹점 조회</h1>
+            </div>
             <h1 id="main2_line1_top">
               내 주변 간편결제 가맹점을
               <br />
@@ -220,7 +226,14 @@ function Service() {
           />
           <div id="main2background">
             <article id="main2contentContainer_bottom">
-              <h1 id="main2_line0_bottom">가맹점 등록</h1>
+              <div className="line0TitleContainer">
+                <img
+                  src={require('../img/line0Left2.png')}
+                  className="line0_Img"
+                  alt="line0Left"
+                />
+                <h1 id="main2_line0_bottom">가맹점 등록</h1>
+              </div>
               <h1 id="main2_line1_bottom">
                 새로운 가맹점을 발견하고
                 <br />
