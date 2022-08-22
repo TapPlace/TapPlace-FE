@@ -69,6 +69,7 @@ function Service() {
     left: `${memberScroll.scrollX}%`,
     transform: `translateX(-${memberScroll.scrollTransformX}%)`,
   };
+  console.log(scrollPosition);
   return (
     <>
       <header id="serviceHeader">
@@ -101,7 +102,7 @@ function Service() {
                     ? scrollPosition < 2934
                       ? 'active'
                       : ''
-                    : windowX > 1023 && scrollPosition < 2919
+                    : windowX > 1023 && scrollPosition < 2914
                     ? 'active'
                     : ''
                 }
@@ -119,8 +120,8 @@ function Service() {
                       ? 'active'
                       : ''
                     : windowX > 1023 &&
-                      scrollPosition >= 2919 &&
-                      scrollPosition < 4255
+                      scrollPosition >= 2914 &&
+                      scrollPosition < 4250
                     ? 'active'
                     : ''
                 }
@@ -132,7 +133,7 @@ function Service() {
             </li>
             <li>
               <a
-                className={scrollPosition >= 4174 ? 'active' : ''}
+                className={scrollPosition >= 4250 ? 'active' : ''}
                 href="#main3Container"
                 onClick={navNoShow}
               >
