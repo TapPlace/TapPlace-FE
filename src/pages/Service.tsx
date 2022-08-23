@@ -23,6 +23,11 @@ function Service() {
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
   };
+  const one: any = document.querySelector('#main1Container')?.scrollHeight;
+  const two: any = document.querySelector('#main2Container')?.scrollHeight;
+  const add: any = document.querySelector('#main4')?.scrollHeight;
+  const addStorePosition = 59 + one + two;
+  const memberIntroPosition = addStorePosition + add;
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
     window.addEventListener('resize', () => {
@@ -69,6 +74,7 @@ function Service() {
     left: `${memberScroll.scrollX}%`,
     transform: `translateX(-${memberScroll.scrollTransformX}%)`,
   };
+
   return (
     <>
       <header id="serviceHeader">
@@ -101,7 +107,7 @@ function Service() {
                     ? scrollPosition < 2934
                       ? 'active'
                       : ''
-                    : windowX > 1023 && scrollPosition < 2914
+                    : windowX > 1023 && scrollPosition < addStorePosition
                     ? 'active'
                     : ''
                 }
@@ -119,8 +125,8 @@ function Service() {
                       ? 'active'
                       : ''
                     : windowX > 1023 &&
-                      scrollPosition >= 2914 &&
-                      scrollPosition < 4250
+                      scrollPosition >= addStorePosition &&
+                      scrollPosition < memberIntroPosition
                     ? 'active'
                     : ''
                 }
@@ -132,7 +138,9 @@ function Service() {
             </li>
             <li>
               <a
-                className={scrollPosition >= 4250 ? 'active' : ''}
+                className={
+                  scrollPosition >= memberIntroPosition ? 'active' : ''
+                }
                 href="#main3Container"
                 onClick={navNoShow}
               >

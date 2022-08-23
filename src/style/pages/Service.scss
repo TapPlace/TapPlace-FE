@@ -13,6 +13,9 @@
 .mockupImg {
   filter: drop-shadow(-15px 0px 10px rgb(185, 184, 184));
 }
+#main1_mockupImg {
+  filter: none;
+}
 a {
   text-decoration: none;
   color: black;
@@ -23,8 +26,6 @@ ul {
 .line0_Img {
   float: left;
   padding-right: 8px;
-  // height: 25px;
-  // vertical-align: middle;
 }
 @keyframes progressing {
   0% {
@@ -65,7 +66,6 @@ ul {
     #serviceNav {
       width: 100vw;
       background: white;
-      z-index: 10;
       &::before {
         content: '';
         position: absolute;
@@ -79,7 +79,6 @@ ul {
     ul {
       display: flex;
       flex-direction: column;
-      z-index: 10;
       height: 172px;
       li {
         background: white;
@@ -287,13 +286,14 @@ ul {
       display: none;
     }
     #serviceNav {
-      width: 30%;
       height: 60px;
       ul {
         display: flex;
         justify-content: space-between;
         line-height: 56px;
         li {
+          height: 60px;
+          padding: 0 1vw;
           &::before {
             content: '';
             display: block;
@@ -378,9 +378,7 @@ ul {
         margin-top: 160px;
         background: #f4f5fa;
         height: 624px;
-        z-index: 1;
         #main2contentContainer_bottom {
-          z-index: 2;
           padding: 174px 0 0 8vw;
           .line0TitleContainer {
             display: flex;
@@ -531,7 +529,6 @@ ul {
       display: none;
     }
     #serviceNav {
-      width: 30%;
       height: 60px;
       ul {
         display: flex;
@@ -539,6 +536,7 @@ ul {
         line-height: 56px;
         li {
           list-style: none;
+          padding: 0 1vw;
           &::before {
             content: '';
             display: block;
@@ -571,25 +569,24 @@ ul {
     #main1Container {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
       padding-top: 170px;
+      align-items: center;
       .contentContainer {
-        padding-bottom: 70px;
         #main1_line1 {
           @include line1;
-          font-size: 60px;
-          line-height: 81px;
+          font-size: 3.1vw;
+          line-height: 4.2vw;
         }
         #main1_line2 {
           @include line2;
-          line-height: 30px;
+          font-size: 1vw;
+          line-height: 1.6vw;
           padding-top: 24px;
         }
       }
       #main1_mockupImg {
         width: 21.6vw;
         height: 100%;
-        filter: none;
       }
     }
     #main2Container {
@@ -600,66 +597,82 @@ ul {
         padding: 110px 0 65px 0;
       }
       #main2_mockupImg_top {
-        margin-left: 25vw;
+        margin-left: 24vw;
         width: 20vw;
+        height: 39.8vw;
       }
       #main2contentContainer_top {
         float: right;
         padding: 205px 462px 0 0;
+        padding-right: 24vw;
         .line0TitleContainer {
           display: flex;
+          align-items: baseline;
           #main2_line0_top {
             @include line0;
             font-size: 25px;
+            font-size: 1.3vw;
           }
         }
         #main2_line1_top {
           @include line1;
           font-size: 40px;
+          font-size: 2.1vw;
           line-height: 55px;
+          line-height: 2.7vw;
         }
         #main2_line2_top {
           @include line2;
           font-size: 20px;
+          font-size: 1vw;
           line-height: 25px;
+          line-height: 1.25vw;
         }
       }
 
       #main2background {
+        position: relative;
         background: #f4f5fa;
         width: 62.15vw;
         height: 35.15vw;
         border-radius: 60px;
         margin: 255px 0 0 360px;
-        z-index: 1;
+        margin-left: 19vw;
         #main2contentContainer_bottom {
-          z-index: 2;
           padding: 186px 0 0 138px;
+          padding-top: 9.7vw;
+          padding-left: 7.2vw;
           .line0TitleContainer {
             display: flex;
             align-items: baseline;
             #main2_line0_bottom {
               @include line0;
               font-size: 25px;
+              font-size: 1.3vw;
             }
           }
           #main2_line1_bottom {
             @include line1;
             font-size: 40px;
+            font-size: 2.1vw;
             line-height: 55px;
+            line-height: 2.7vw;
           }
           #main2_line2_bottom {
             @include line2;
             font-size: 20px;
+            font-size: 1vw;
             line-height: 25px;
+            line-height: 1.25vw;
           }
         }
       }
       #main2_mockupImg_bottom {
-        width: 20vw;
         position: absolute;
-        top: 2105px;
-        right: 23.9vw;
+        width: 20vw;
+        height: 39.8vw;
+        top: -6vw;
+        right: 5vw;
       }
     }
     #main3Container {

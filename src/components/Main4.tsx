@@ -28,7 +28,6 @@ function Main4() {
       )
       .then(res => {
         const location = res.data.documents;
-        console.log(location[0]);
         let locationArray: any = [];
         let ArrayCount = location.length > 3 ? 3 : location.length;
         for (let i = 0; i < ArrayCount; i++) {
@@ -44,7 +43,9 @@ function Main4() {
           setLoaction(locationArray);
           setStoreId(location[0].id);
           setRecommendStore(location[0].place_name);
-          setStoreAddress(location[0].address_name);
+          if (!location[0].road_address_name === false) {
+            setStoreAddress(location[0].road_address_name);
+          } else setStoreAddress(location[0].address_name);
           setX(location[0].x);
           setY(location[0].y);
         }
@@ -101,9 +102,6 @@ function Main4() {
     frm.append('applepay[]', JSON.stringify(appleArray));
     frm.append('googlepay[]', JSON.stringify(googleArray));
     frm.append('contactless[]', JSON.stringify(contactlessArray));
-    for (let value of frm.values()) {
-      console.log(value);
-    }
     // 에러 메시지(선택하지 않은 요소가 하나 이상일 때) 추가 구문
     let errorMsg = '';
     if (recommendStore === '') errorMsg += '가맹점 정보,';
@@ -118,8 +116,6 @@ function Main4() {
         })
         .then(res => {
           console.log('send data');
-          console.log(res);
-          console.log(frm);
         })
         .catch(err => console.error(err));
     } else if (errorMsg !== '') {
