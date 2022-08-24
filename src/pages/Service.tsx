@@ -8,7 +8,7 @@ import Member from '../components/Member';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { setMemberScrollX, setResize } from '../redux/reducers/eventSlice';
+import { setMemberScrollX, setResize } from '../redux/slices/eventSlice';
 
 function Service() {
   const { windowX, memberScroll } = useAppSelector(state => state.event);
@@ -78,7 +78,14 @@ function Service() {
   return (
     <>
       <header id="serviceHeader">
-        <h1 id="title">Tap Place</h1>
+        <h1 id="title">
+          <img
+            className="titleImg"
+            src={require('../img/ServicePage/tap.png')}
+            alt="TapPlace"
+          />
+          Tap Place
+        </h1>
         {navToggle === 'noshow' && (
           <FontAwesomeIcon
             className="navToggleBtn"
@@ -185,7 +192,7 @@ function Service() {
           <img
             id="main1_mockupImg"
             className="mockupImg"
-            src={require('../img/mockup-1.png')}
+            src={require('../img/ServicePage/mockup-1.png')}
             alt="mockup_1"
           />
         </div>
@@ -209,7 +216,7 @@ function Service() {
           <article id="main2contentContainer_top" className="contentContainer">
             <div className="line0TitleContainer">
               <img
-                src={require('../img/line0Left.png')}
+                src={require('../img/ServicePage/line0Left.png')}
                 className="line0_Img"
                 alt="line0Left"
               />
@@ -229,14 +236,14 @@ function Service() {
           <img
             id="main2_mockupImg_top"
             className="mockupImg"
-            src={require('../img/mockup-2.png')}
+            src={require('../img/ServicePage/mockup-2.png')}
             alt="mockup-2"
           />
           <div id="main2background">
             <article id="main2contentContainer_bottom">
               <div className="line0TitleContainer">
                 <img
-                  src={require('../img/line0Left2.png')}
+                  src={require('../img/ServicePage/line0Left2.png')}
                   className="line0_Img"
                   alt="line0Left"
                 />
@@ -256,7 +263,7 @@ function Service() {
                 <img
                   id="main2_mockupImg_bottom"
                   className="mockupImg"
-                  src={require('../img/mockup-2.png')}
+                  src={require('../img/ServicePage/mockup-2.png')}
                   alt="mockup-2"
                 />
               )}
@@ -265,7 +272,7 @@ function Service() {
               <img
                 id="main2_mockupImg_bottom"
                 className="mockupImg"
-                src={require('../img/mockup-2.png')}
+                src={require('../img/ServicePage/mockup-2.png')}
                 alt="mockup-2"
               />
             )}
@@ -352,7 +359,14 @@ function Service() {
       <footer id="footer">
         <div id="footerContainer">
           <div id="footer_line1">
-            <h4 id="footerTitle">Tap Place</h4>
+            <h4 id="footerTitle">
+              <img
+                className="titleImg"
+                src={require('../img/ServicePage/tap2.png')}
+                alt="tapplace"
+              />
+              Tap Place
+            </h4>
             <ul id="footerList">
               <li className="footerItem">서비스 이용약관</li>
               <li className="footerItem">개인정보처리방침</li>

@@ -60,9 +60,14 @@
       #goWeb {
         text-decoration: none;
         p {
+          display: inline;
           font-size: 17px;
           color: #23252d;
           line-height: 54px;
+        }
+        img {
+          padding-bottom: 4px;
+          padding-left: 5px;
         }
       }
     }
@@ -103,9 +108,14 @@
       #goWeb {
         text-decoration: none;
         p {
+          display: inline;
           font-size: 17px;
           color: #23252d;
           line-height: 54px;
+        }
+        img {
+          padding-bottom: 4px;
+          padding-left: 5px;
         }
       }
     }

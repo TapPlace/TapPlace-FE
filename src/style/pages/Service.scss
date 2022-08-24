@@ -13,6 +13,15 @@
 .mockupImg {
   filter: drop-shadow(-15px 0px 10px rgb(185, 184, 184));
 }
+.titleImg {
+  padding: 0 5px 1px 0;
+  &:last-child {
+    width: 16px;
+    height: 14px;
+    // padding-bottom: 0;
+    padding-top: 2px;
+  }
+}
 #main1_mockupImg {
   filter: none;
 }

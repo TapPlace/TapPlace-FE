@@ -8,24 +8,72 @@ function PayLogoSlider() {
   return (
     <>
       <div id={windowX > 768 ? 'payLogoSlider' : 'mobilePayLogoSlider'}>
-        <img src={require('../img/visa.png')} alt="visaLogo" />
-        <img src={require('../img/payco.png')} alt="paycoLogo" />
-        <img src={require('../img/apple.png')} alt="appleLogo" />
-        <img src={require('../img/zero.png')} alt="zeroLogo" />
-        <img src={require('../img/google.png')} alt="googleLogo" />
-        <img src={require('../img/kakao.png')} alt="kakaoLogo" />
-        <img src={require('../img/naver.png')} alt="naverLogo" />
-        <img src={require('../img/master.png')} alt="masterLogo" />
+        <img
+          src={require('../img/ServicePage/PaymentLogo/visa.png')}
+          alt="visaLogo"
+        />
+        <img
+          src={require('../img/ServicePage/PaymentLogo/payco.png')}
+          alt="paycoLogo"
+        />
+        <img
+          src={require('../img/ServicePage/PaymentLogo/apple.png')}
+          alt="appleLogo"
+        />
+        <img
+          src={require('../img/ServicePage/PaymentLogo/zero.png')}
+          alt="zeroLogo"
+        />
+        <img
+          src={require('../img/ServicePage/PaymentLogo/google.png')}
+          alt="googleLogo"
+        />
+        <img
+          src={require('../img/ServicePage/PaymentLogo/kakao.png')}
+          alt="kakaoLogo"
+        />
+        <img
+          src={require('../img/ServicePage/PaymentLogo/naver.png')}
+          alt="naverLogo"
+        />
+        <img
+          src={require('../img/ServicePage/PaymentLogo/master.png')}
+          alt="masterLogo"
+        />
         {windowX > 768 && (
           <>
-            <img src={require('../img/visa.png')} alt="visaLogo" />
-            <img src={require('../img/payco.png')} alt="paycoLogo" />
-            <img src={require('../img/apple.png')} alt="appleLogo" />
-            <img src={require('../img/zero.png')} alt="zeroLogo" />
-            <img src={require('../img/google.png')} alt="googleLogo" />
-            <img src={require('../img/kakao.png')} alt="kakaoLogo" />
-            <img src={require('../img/naver.png')} alt="naverLogo" />
-            <img src={require('../img/master.png')} alt="masterLogo" />
+            <img
+              src={require('../img/ServicePage/PaymentLogo/visa.png')}
+              alt="visaLogo"
+            />
+            <img
+              src={require('../img/ServicePage/PaymentLogo/payco.png')}
+              alt="paycoLogo"
+            />
+            <img
+              src={require('../img/ServicePage/PaymentLogo/apple.png')}
+              alt="appleLogo"
+            />
+            <img
+              src={require('../img/ServicePage/PaymentLogo/zero.png')}
+              alt="zeroLogo"
+            />
+            <img
+              src={require('../img/ServicePage/PaymentLogo/google.png')}
+              alt="googleLogo"
+            />
+            <img
+              src={require('../img/ServicePage/PaymentLogo/kakao.png')}
+              alt="kakaoLogo"
+            />
+            <img
+              src={require('../img/ServicePage/PaymentLogo/naver.png')}
+              alt="naverLogo"
+            />
+            <img
+              src={require('../img/ServicePage/PaymentLogo/master.png')}
+              alt="masterLogo"
+            />
           </>
         )}
       </div>

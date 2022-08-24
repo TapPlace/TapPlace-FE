@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { searchStorePage } from '../redux/reducers/showPage';
+import { searchStorePage } from '../redux/slices/showPage';
 
 import '../style/components/SearchStore.scss';
 import SearchCategory from './SearchCategory';
@@ -29,8 +29,8 @@ function SearchStore() {
           </div>
           <section>
             <ul id="searchCategoryContainer">
-              <SearchCategory category="카페/디저트" />
               <SearchCategory category="음식점" />
+              <SearchCategory category="카페" />
               <SearchCategory category="편의점" />
               <SearchCategory category="마트" />
               <SearchCategory category="주유소" />

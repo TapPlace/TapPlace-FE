@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { eventSlice } from './reducers/eventSlice';
-import showPage from './reducers/showPage';
+import { eventSlice } from './slices/eventSlice';
+import showPage from './slices/showPage';
 // import counterReducer from '../features/counter/counterSlice'
 
 const rootReducer = combineReducers({

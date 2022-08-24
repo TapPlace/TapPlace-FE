@@ -27,9 +27,19 @@ export const showPage = createSlice({
     myPage: state => {
       state.value = 'myPage';
     },
+    // increment: state => {
+    //   state.value = '';
+    // },
+    // decrement: state => {
+    //   state.value = '';
+    // },
+    // incrementByAmount: (state, action: PayloadAction<number>) => {
+    //   state.value += action.payload;
+    // },
   },
 });
 
 export const { searchStorePage, prevPage, detailPage } = showPage.actions;
+// export const { increment, decrement, incrementByAmount } = showPage.actions;
 
 export default showPage;

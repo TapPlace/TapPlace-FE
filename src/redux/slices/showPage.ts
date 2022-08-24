@@ -31,5 +31,6 @@ export const showPage = createSlice({
 });
 
 export const { searchStorePage, prevPage, detailPage } = showPage.actions;
+// export const { increment, decrement, incrementByAmount } = showPage.actions;
 
 export default showPage;

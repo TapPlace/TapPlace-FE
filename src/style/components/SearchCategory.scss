@@ -7,9 +7,23 @@
   .searchCategory {
     border: none;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
+    // filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.23));
     background: white;
     border-radius: 100px;
     font-size: 12px;
-    padding: 6px 12px;
+    // padding: 6px 12px;
+    height: 29px;
+    padding: 0 12px;
+    img {
+      display: inline-block;
+      padding-right: 4px;
+      float: left;
+      margin-top: 2px;
+    }
+    p {
+      display: inline-block;
+      float: right;
+      font-size: 13px;
+    }
   }
 }

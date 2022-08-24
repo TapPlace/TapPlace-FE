@@ -17,10 +17,12 @@ section {
   position: absolute;
   top: 114px;
   left: 20px;
-  width: 350px;
+  width: 352px;
   #searchCategoryContainer {
-    height: 30px;
+    height: 34px;
+    background: none;
     overflow-x: scroll;
     white-space: nowrap;
+    background: none;
   }
 }

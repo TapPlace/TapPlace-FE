@@ -27,19 +27,26 @@ function StoreButton() {
         <>
           <li>
             <Link className="storeBtn" to="/">
-              <img src={require('../img/appleLogo.png')} alt="appleLogo" />
+              <img
+                src={require('../img/ServicePage/appleLogo.png')}
+                alt="appleLogo"
+              />
               <p>App Store</p>
             </Link>
           </li>
           <li>
             <Link className="storeBtn" to="/">
-              <img src={require('../img/googleLogo.png')} alt="appleLogo" />
+              <img
+                src={require('../img/ServicePage/googleLogo.png')}
+                alt="appleLogo"
+              />
               <p>Play Store</p>
             </Link>
           </li>
           <li>
             <Link id="goWeb" to="/">
               <p>WEB으로 이용하기</p>
+              <img src={require('../img/ServicePage/arrow.png')} alt="arrow" />
             </Link>
           </li>
         </>
