@@ -54,45 +54,42 @@ ul {
   #serviceHeader {
     @include serviceHeader;
     flex-wrap: wrap;
-    height: 40px;
-    line-height: 40px;
+    height: 60px;
     #title {
       color: $mainColor;
       font-size: 20px;
       padding-left: 5vw;
+      line-height: 60px;
     }
     .navToggleBtn {
       color: #b8bdcc;
-      padding-top: 11px;
+      padding-top: 22px;
       padding-right: 5vw;
-    }
-    .navActive {
-      display: block;
     }
     .navHide {
       display: none;
     }
+    #navBackground {
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      opacity: 0.5;
+    }
     #serviceNav {
       width: 100vw;
       background: white;
-      &::before {
-        content: '';
-        position: absolute;
-        width: 100vw;
-        top: 212px;
-        height: 100vh;
-        background: black;
-        opacity: 0.5;
-      }
     }
     ul {
       display: flex;
       flex-direction: column;
-      height: 172px;
       li {
+        z-index: 2;
         background: white;
-        padding-left: 5vw;
-        padding-top: 3px;
+        a {
+          width: 100vw;
+          display: inline-block;
+          padding: 20px 0 20px 5vw;
+        }
       }
     }
   }
@@ -720,6 +717,7 @@ ul {
       margin-top: 240px;
       #main6_line1 {
         @include line1;
+        line-height: 55px;
       }
       #main6_line2 {
         @include line2;
@@ -778,10 +776,10 @@ ul {
         height: 1px;
         margin: 2rem 0;
         border: none;
-        background: #f2f2f2;
+        background: rgba(120, 123, 134, 0.5);
       }
       #footer_line2 {
-        font-weight: 300;
+        font-weight: 400;
       }
     }
   }

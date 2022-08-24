@@ -159,6 +159,7 @@ function Service() {
             </li>
           </ul>
         </nav>
+        {navToggle === 'show' && <div id="navBackground" onClick={navNoShow} />}
       </header>
       <main id="mainContainer">
         <div id="main1Container">
@@ -370,7 +371,7 @@ function Service() {
             <ul id="footerList">
               <li className="footerItem">서비스 이용약관</li>
               <li className="footerItem">개인정보처리방침</li>
-              <li className="footerItem">E-mail : http://tapplace.co.kr</li>
+              <li className="footerItem">E-mail : help@tapplace.co.kr</li>
             </ul>
           </div>
           {windowX > 768 && <hr id="footerHr" />}

@@ -10,10 +10,10 @@ function TestPage() {
   }, [pageValue]);
 
   return (
-    <>
+    <div style={{ background: 'lightgray', height: '100vh', width: '100vw' }}>
       <div>테스트페이지입니다</div>
       <MobileApp />
-    </>
+    </div>
   );
 }
 

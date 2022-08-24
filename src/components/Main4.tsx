@@ -15,7 +15,9 @@ function Main4() {
   const [nickname, SetNickname] = useInput('');
   const [x, setX] = useState('');
   const [y, setY] = useState('');
+  const [storeCount, setStoreCount] = useState();
 
+  // 도로명 주소 찾기, 없을 시 지명 주소
   async function findAddress() {
     await axios
       .get(
@@ -98,10 +100,22 @@ function Main4() {
     frm.append('region_x', x);
     frm.append('region_y', y);
     frm.append('nickname', nickname);
-    frm.append('etc', JSON.stringify(etcArray));
+    frm.append('etc[]', JSON.stringify(etcArray));
+    for (let i = 0; i < etcArray.length; i++) {
+      frm.append('etc[]', etcArray[i]);
+    }
     frm.append('applepay[]', JSON.stringify(appleArray));
+    for (let i = 0; i < appleArray.length; i++) {
+      frm.append('applepay[]', appleArray[i]);
+    }
     frm.append('googlepay[]', JSON.stringify(googleArray));
+    for (let i = 0; i < googleArray.length; i++) {
+      frm.append('googlepay[]', googleArray[i]);
+    }
     frm.append('contactless[]', JSON.stringify(contactlessArray));
+    for (let i = 0; i < contactlessArray.length; i++) {
+      frm.append('contactless[]', contactlessArray[i]);
+    }
     // 에러 메시지(선택하지 않은 요소가 하나 이상일 때) 추가 구문
     let errorMsg = '';
     if (recommendStore === '') errorMsg += '가맹점 정보,';
@@ -109,10 +123,11 @@ function Main4() {
     if (nickname === '') errorMsg += '닉네임,';
     // 에러메시지가 없으면 POST, 있으면 alert
 
+    console.log(frm);
     if (errorMsg === '') {
       axios
         .post('https://tapplace.co.kr/tapplace/test_update.php', frm, {
-          headers: frm.getHeaders(),
+          headers: frm.getHeaders,
         })
         .then(res => {
           console.log('send data');
@@ -137,6 +152,16 @@ function Main4() {
     findAddress();
   }, [storeName]);
 
+  // 가맹점 갯수 가져오기
+  useEffect(() => {
+    axios
+      .get('https://tapplace.co.kr/tapplace/load_count.php')
+      .then(res => {
+        setStoreCount(res.data[0].count);
+      })
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <div id="main4">
       <div id="main4Container">
@@ -144,13 +169,13 @@ function Main4() {
         <p id="main4_subTitle">
           {windowX <= 768 ? (
             <>
-              현재까지 <h4 id="main4_subTitleCnt">835</h4>개의
+              현재까지 <h4 id="main4_subTitleCnt">{storeCount}</h4>개의
               <br />
               가맹점이 등록되었습니다
             </>
           ) : (
             <>
-              현재까지<h4 id="main4_subTitleCnt">835</h4>개의 가맹점이
+              현재까지<h4 id="main4_subTitleCnt">{storeCount}</h4>개의 가맹점이
               등록되었습니다
             </>
           )}
