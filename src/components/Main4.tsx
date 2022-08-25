@@ -100,37 +100,32 @@ function Main4() {
     frm.append('region_x', x);
     frm.append('region_y', y);
     frm.append('nickname', nickname);
-    frm.append('etc[]', JSON.stringify(etcArray));
     for (let i = 0; i < etcArray.length; i++) {
       frm.append('etc[]', etcArray[i]);
     }
-    frm.append('applepay[]', JSON.stringify(appleArray));
     for (let i = 0; i < appleArray.length; i++) {
       frm.append('applepay[]', appleArray[i]);
     }
-    frm.append('googlepay[]', JSON.stringify(googleArray));
     for (let i = 0; i < googleArray.length; i++) {
       frm.append('googlepay[]', googleArray[i]);
     }
-    frm.append('contactless[]', JSON.stringify(contactlessArray));
     for (let i = 0; i < contactlessArray.length; i++) {
       frm.append('contactless[]', contactlessArray[i]);
     }
+
     // 에러 메시지(선택하지 않은 요소가 하나 이상일 때) 추가 구문
     let errorMsg = '';
     if (recommendStore === '') errorMsg += '가맹점 정보,';
     if (payArray.length === 0) errorMsg += '결제 수단,';
     if (nickname === '') errorMsg += '닉네임,';
     // 에러메시지가 없으면 POST, 있으면 alert
-
-    console.log(frm);
     if (errorMsg === '') {
       axios
         .post('https://tapplace.co.kr/tapplace/test_update.php', frm, {
           headers: frm.getHeaders,
         })
         .then(res => {
-          console.log('send data');
+          window.location.reload();
         })
         .catch(err => console.error(err));
     } else if (errorMsg !== '') {
@@ -138,14 +133,6 @@ function Main4() {
         errorMsg.slice(0, -1).replace(',', ', ') + '을(를) 확인해주세요';
       alert(errorMsg);
     }
-    // 초기화
-    payArray = [];
-    etcArray = [];
-    appleArray = [];
-    googleArray = [];
-    contactlessArray = [];
-    setX('');
-    setY('');
   }
 
   useEffect(() => {
