@@ -7,6 +7,7 @@
   width: 100vw;
   background: white;
   z-index: 1;
+  height: 60px;
 }
 
 // 공통
@@ -54,7 +55,6 @@ ul {
   #serviceHeader {
     @include serviceHeader;
     flex-wrap: wrap;
-    height: 60px;
     #title {
       color: $mainColor;
       font-size: 20px;
@@ -282,7 +282,6 @@ ul {
   #serviceHeader {
     @include serviceHeader;
     align-items: center;
-    height: 60px;
     padding: 0 5vw;
     #title {
       color: $mainColor;
@@ -526,7 +525,6 @@ ul {
   #serviceHeader {
     @include serviceHeader;
     align-items: center;
-    height: 60px;
     #title {
       color: #4e77fb;
       font-size: 20px;
