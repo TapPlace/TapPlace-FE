@@ -1,10 +1,12 @@
 #searchContainer {
   position: absolute;
-  top: 52px;
-  left: 20px;
+  width: 100%;
   #searchStore {
     display: block;
-    width: 335px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 3vh;
+    margin-bottom: 1.5vh;
     height: 50px;
     padding-left: 44px;
     border-radius: 12px;
@@ -17,7 +19,9 @@ section {
   position: absolute;
   top: 114px;
   left: 20px;
-  width: 352px;
+  // width: 352px;
+  width: 80%;
+  margin-left: 5%;
   #searchCategoryContainer {
     height: 34px;
     background: none;

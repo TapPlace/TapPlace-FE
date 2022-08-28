@@ -1,4 +1,4 @@
-# 유투펀 - YouTooFun, YTF
+# 탭플레이스 - TapPlace
 
 유튜브 펀딩 투자 플랫폼
 
@@ -12,8 +12,8 @@
 
 - Commit Styles
 
-  추가 : ADD
+  추가 : Add
 
-  수정 : MODIFI
+  수정 : Modified
 
-  코드 리팩토링 : REFACTOR
+  코드 리팩토링 : Refactor

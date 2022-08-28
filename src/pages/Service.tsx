@@ -5,35 +5,21 @@ import StoreButton from '../components/StoreButton';
 import '../style/pages/Service.scss';
 import Main4 from '../components/Main4';
 import Member from '../components/Member';
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { setMemberScrollX, setResize } from '../redux/slices/eventSlice';
+import Header from '../components/Header';
 
 function Service() {
   const { windowX, memberScroll } = useAppSelector(state => state.event);
   const dispatch = useAppDispatch();
-  // Nav 숨기기
-  function navNoShow() {
-    setNavToggle('noshow');
-  }
-  // 헤더 y축 스크롤
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [navToggle, setNavToggle] = useState('noshow');
-  const updateScroll = () => {
-    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-  };
-  const one: any = document.querySelector('#main1Container')?.scrollHeight;
-  const two: any = document.querySelector('#main2Container')?.scrollHeight;
-  const add: any = document.querySelector('#main4')?.scrollHeight;
-  const addStorePosition = 59 + one + two;
-  const memberIntroPosition = addStorePosition + add;
+
   useEffect(() => {
-    window.addEventListener('scroll', updateScroll);
     window.addEventListener('resize', () => {
       dispatch(setResize(window.innerWidth));
     });
   });
+
   // 멤버 x축 스크롤 몇 퍼센트 스크롤
   const memberSlider: any = document.querySelector('#memberSlider');
   function onScrollX() {
@@ -77,90 +63,7 @@ function Service() {
 
   return (
     <>
-      <header id="serviceHeader">
-        <h1 id="title">
-          <img
-            className="titleImg"
-            src={require('../img/ServicePage/tap.png')}
-            alt="TapPlace"
-          />
-          Tap Place
-        </h1>
-        {navToggle === 'noshow' && (
-          <FontAwesomeIcon
-            className="navToggleBtn"
-            icon={faBars}
-            onClick={() => {
-              setNavToggle('show');
-            }}
-          />
-        )}
-        {navToggle === 'show' && (
-          <FontAwesomeIcon
-            className="navToggleBtn"
-            icon={faXmark}
-            onClick={navNoShow}
-          />
-        )}
-        <nav
-          className={navToggle === 'show' ? 'navShow' : 'navHide'}
-          id="serviceNav"
-        >
-          <ul>
-            <li>
-              <a
-                className={
-                  windowX <= 1023
-                    ? scrollPosition < 2934
-                      ? 'active'
-                      : ''
-                    : windowX > 1023 && scrollPosition < addStorePosition
-                    ? 'active'
-                    : ''
-                }
-                href="#mainContainer"
-                onClick={navNoShow}
-              >
-                서비스
-              </a>
-            </li>
-            <li>
-              <a
-                className={
-                  windowX <= 1023
-                    ? scrollPosition >= 2934 && scrollPosition < 4174
-                      ? 'active'
-                      : ''
-                    : windowX > 1023 &&
-                      scrollPosition >= addStorePosition &&
-                      scrollPosition < memberIntroPosition
-                    ? 'active'
-                    : ''
-                }
-                href="#main4"
-                onClick={navNoShow}
-              >
-                가맹점등록
-              </a>
-            </li>
-            <li>
-              <a
-                className={
-                  scrollPosition >= memberIntroPosition ? 'active' : ''
-                }
-                href="#main3Container"
-                onClick={navNoShow}
-              >
-                멤버소개
-              </a>
-            </li>
-            <li>
-              <a href="#none">다운로드</a>
-            </li>
-          </ul>
-        </nav>
-        {navToggle === 'show' && <div id="navBackground" onClick={navNoShow} />}
-      </header>
+      <Header />
       <main id="mainContainer">
         <div id="main1Container">
           <article className="contentContainer">
