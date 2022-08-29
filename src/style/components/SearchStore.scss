@@ -1,32 +1,30 @@
-#searchContainer {
-  position: absolute;
-  width: 100%;
-  #searchStore {
-    display: block;
+@import '../utils.scss';
+
+@include desktop {
+  #searchContainer {
+    position: relative;
     width: 80%;
-    margin: 0 auto;
-    margin-top: 3vh;
-    margin-bottom: 1.5vh;
-    height: 50px;
-    padding-left: 44px;
-    border-radius: 12px;
-    border: none;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
-    background: white;
-  }
-}
-section {
-  position: absolute;
-  top: 114px;
-  left: 20px;
-  // width: 352px;
-  width: 80%;
-  margin-left: 5%;
-  #searchCategoryContainer {
-    height: 34px;
-    background: none;
-    overflow-x: scroll;
-    white-space: nowrap;
-    background: none;
+    #searchIcon {
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      left: 18px;
+      top: 64%;
+    }
+    #searchStore {
+      border: 2px solid #4e77fb;
+      padding-top: 3px;
+      width: 100%;
+      margin-top: 44px;
+      height: 50px;
+      padding-left: 44px;
+      border-radius: 12px;
+      box-shadow: 0px 0px 12px rgba(78, 119, 251, 0.4);
+      background: white;
+      font-size: 17px;
+      &::placeholder {
+        font-size: 17px;
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PayLogoSlider from '../components/PayLogoSlider';
 import StoreButton from '../components/StoreButton';
 
@@ -21,8 +21,8 @@ function Service() {
   });
 
   // 멤버 x축 스크롤 몇 퍼센트 스크롤
-  const memberSlider: any = document.querySelector('#memberSlider');
   function onScrollX() {
+    const memberSlider: any = document.querySelector('#memberSlider');
     let xPercent =
       memberSlider.scrollLeft === 0
         ? 0

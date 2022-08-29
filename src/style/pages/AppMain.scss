@@ -1,7 +1,11 @@
-#mobileMain {
-  width: 70vw;
-  height: calc(100vh - 60px);
-  position: absolute;
-  top: 60px;
-  right: 0;
+@import '../utils.scss';
+
+@include desktop {
+  #mobileMain {
+    width: 75vw;
+    height: calc(100vh - 60px);
+    position: absolute;
+    top: 60px;
+    right: 0;
+  }
 }

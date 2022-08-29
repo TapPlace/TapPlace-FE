@@ -1,0 +1,27 @@
+@import '../utils';
+
+.snsLink {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 14px;
+}
+
+// @include mobile {
+//   .snsLink {
+//     width: 70%;
+//   }
+// }
+
+// @include tablet {
+//   .snsLink {
+//     width: 70%;
+//   }
+// }
+
+@include desktop {
+  .snsLink {
+    width: 50%;
+  }
+}

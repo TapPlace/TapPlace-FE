@@ -25,6 +25,7 @@
       }
       .memberSay {
         font-size: 15px;
+        padding: 15px 0 28px 0;
         color: $subTextColor;
       }
     }
@@ -56,6 +57,7 @@
       .memberSay {
         font-size: 16px;
         color: $subTextColor;
+        padding: 16px 0 28px 0;
       }
     }
   }
@@ -92,11 +94,6 @@
       font-size: 20px;
       line-height: 27px;
       padding-bottom: 14px;
-    }
-    .snsLink {
-      display: flex;
-      justify-content: space-between;
-      padding-top: 14px;
     }
   }
   .memberSubContainer {

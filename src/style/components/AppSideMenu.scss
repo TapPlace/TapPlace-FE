@@ -1,8 +1,29 @@
-#appSideMenu {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  height: calc(100vh - 60px);
-  width: 30vw;
-  background: white;
+@import '../utils.scss';
+
+@include desktop {
+  #appSideMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    height: 100vh;
+    width: 25vw;
+    background: white;
+    #searchCategoryContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 80%;
+      padding-top: 1.5vh;
+      #seeMoreImg {
+        height: 5px;
+      }
+    }
+    #aroundMyLocation {
+      font-size: 20px;
+      font-size: 1.04vw;
+      padding: 40px 0 20px 0;
+      width: 80%;
+    }
+  }
 }
