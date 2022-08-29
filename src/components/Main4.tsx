@@ -7,7 +7,7 @@ import '../style/components/Main4.scss';
 
 function Main4() {
   const { windowX } = useAppSelector(state => state.event);
-  const [location, setLoaction] = useState<string | undefined>();
+  const [location, setLocation] = useState<any>();
   const [storeId, setStoreId] = useState<Number | undefined>();
   const [recommendStore, setRecommendStore] = useState<string | undefined>();
   const [storeAddress, setStoreAddress] = useState<string | undefined>();
@@ -16,6 +16,7 @@ function Main4() {
   const [x, setX] = useState('');
   const [y, setY] = useState('');
   const [storeCount, setStoreCount] = useState();
+  const [payActive, setPayActive] = useState<Boolean>(false);
 
   // 도로명 주소 찾기, 없을 시 지명 주소
   async function findAddress() {
@@ -36,13 +37,13 @@ function Main4() {
           locationArray.push(' ' + location[i].place_name);
         }
         if ((location.length === 0) === true) {
-          setLoaction(locationArray);
-          setRecommendStore('');
-          setStoreAddress('');
+          setLocation(locationArray);
+          setRecommendStore(undefined);
+          setStoreAddress(undefined);
           setX('');
           setY('');
         } else {
-          setLoaction(locationArray);
+          setLocation(locationArray);
           setStoreId(location[0].id);
           setRecommendStore(location[0].place_name);
           if (!location[0].road_address_name === false) {
@@ -57,11 +58,16 @@ function Main4() {
       });
   }
 
-  function onClickBtn(e: React.MouseEvent<HTMLElement>) {
+  // 페이 클릭
+  function onClickPay(e: React.MouseEvent<HTMLElement>) {
     const target = e.target as HTMLElement;
-    if (target.className === 'clickBtn') target.className = 'clickBtn active';
-    else if (target.className === 'clickBtn active')
+    if (target.className === 'clickBtn') {
+      target.className = 'clickBtn activePay';
+    } else if (target.className === 'clickBtn activePay') {
       target.className = 'clickBtn';
+    }
+    if (document.querySelectorAll('.activePay').length > 0) setPayActive(true);
+    else setPayActive(false);
   }
 
   function onClickSubmit(e: React.MouseEvent<HTMLElement>) {
@@ -77,7 +83,7 @@ function Main4() {
     const element = siblings(e.target).filter(tag => tag.tagName === 'UL');
     element.forEach(item => {
       for (const ele of item.children) {
-        if (ele.className === 'clickBtn active') {
+        if (ele.className === 'clickBtn activePay') {
           payArray.push(ele.id);
         }
       }
@@ -113,31 +119,33 @@ function Main4() {
       frm.append('contactless[]', contactlessArray[i]);
     }
 
-    // 에러 메시지(선택하지 않은 요소가 하나 이상일 때) 추가 구문
-    let errorMsg = '';
-    if (recommendStore === '') errorMsg += '가맹점 정보,';
-    if (payArray.length === 0) errorMsg += '결제 수단,';
-    if (nickname === '') errorMsg += '닉네임,';
-    // 에러메시지가 없으면 POST, 있으면 alert
-    if (errorMsg === '') {
-      axios
-        .post('https://tapplace.co.kr/tapplace/test_update.php', frm, {
-          headers: frm.getHeaders,
-        })
-        .then(res => {
-          window.location.reload();
-        })
-        .catch(err => console.error(err));
-    } else if (errorMsg !== '') {
-      errorMsg =
-        errorMsg.slice(0, -1).replace(',', ', ') + '을(를) 확인해주세요';
-      alert(errorMsg);
-    }
+    axios
+      .post('https://tapplace.co.kr/tapplace/test_update.php', frm, {
+        headers: frm.getHeaders,
+      })
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => console.error(err));
   }
 
   useEffect(() => {
     findAddress();
   }, [storeName]);
+
+  // 클릭 다 되어있으면 버튼 활성화
+  useEffect(() => {
+    const submitBtn: any = document.querySelector('#submitBtn');
+    if (storeName.length > 0 && payActive === true && nickname.length > 0) {
+      submitBtn.style.backgroundColor = '#4e77fb';
+      submitBtn.style.color = 'white';
+      submitBtn.style.pointerEvents = 'all';
+    } else {
+      submitBtn.style.backgroundColor = '#f4f5fa';
+      submitBtn.style.color = '#bdc2cd';
+      submitBtn.style.pointerEvents = 'none';
+    }
+  }, [storeName, payActive, nickname]);
 
   // 가맹점 갯수 가져오기
   useEffect(() => {
@@ -196,58 +204,58 @@ function Main4() {
             결제수단
           </h4>
           <ul className="checkboxContainer">
-            <li id="etcKakao" className="clickBtn" onClick={onClickBtn}>
+            <li id="etcKakao" className="clickBtn" onClick={onClickPay}>
               카카오페이
             </li>
-            <li id="etcNaver" className="clickBtn" onClick={onClickBtn}>
+            <li id="etcNaver" className="clickBtn" onClick={onClickPay}>
               네이버페이
             </li>
-            <li id="etcPayco" className="clickBtn" onClick={onClickBtn}>
+            <li id="etcPayco" className="clickBtn" onClick={onClickPay}>
               페이코
             </li>
-            <li id="etcZeroPay" className="clickBtn" onClick={onClickBtn}>
+            <li id="etcZeroPay" className="clickBtn" onClick={onClickPay}>
               제로페이
             </li>
           </ul>
           <p className="paymentMethod">애플페이</p>
           <ul className="checkboxContainer">
-            <li id="AppleVISA" className="clickBtn" onClick={onClickBtn}>
+            <li id="AppleVISA" className="clickBtn" onClick={onClickPay}>
               VISA
             </li>
-            <li id="AppleMASTER" className="clickBtn" onClick={onClickBtn}>
+            <li id="AppleMASTER" className="clickBtn" onClick={onClickPay}>
               MASTER CARD
             </li>
-            <li id="AppleJCB" className="clickBtn" onClick={onClickBtn}>
+            <li id="AppleJCB" className="clickBtn" onClick={onClickPay}>
               JCB
             </li>
           </ul>
           <p className="paymentMethod">구글페이</p>
           <ul className="checkboxContainer">
-            <li id="GoogleVISA" className="clickBtn" onClick={onClickBtn}>
+            <li id="GoogleVISA" className="clickBtn" onClick={onClickPay}>
               VISA
             </li>
-            <li id="GoogleMASTER" className="clickBtn" onClick={onClickBtn}>
+            <li id="GoogleMASTER" className="clickBtn" onClick={onClickPay}>
               MASTER CARD
             </li>
-            <li id="GoogleJCB" className="clickBtn" onClick={onClickBtn}>
+            <li id="GoogleJCB" className="clickBtn" onClick={onClickPay}>
               JCB
             </li>
           </ul>
           <p className="paymentMethod">컨택리스 카드</p>
           <ul className="checkboxContainer">
-            <li id="ContactVISA" className="clickBtn" onClick={onClickBtn}>
+            <li id="ContactVISA" className="clickBtn" onClick={onClickPay}>
               VISA
             </li>
-            <li id="ContactMASTER" className="clickBtn" onClick={onClickBtn}>
+            <li id="ContactMASTER" className="clickBtn" onClick={onClickPay}>
               MASTER CARD
             </li>
-            <li id="ContactUnion" className="clickBtn" onClick={onClickBtn}>
+            <li id="ContactUnion" className="clickBtn" onClick={onClickPay}>
               Union Pay
             </li>
-            <li id="ContactAMEX" className="clickBtn" onClick={onClickBtn}>
+            <li id="ContactAMEX" className="clickBtn" onClick={onClickPay}>
               AMERICAN EXPRESS (AMEX)
             </li>
-            <li id="ContactJCB" className="clickBtn" onClick={onClickBtn}>
+            <li id="ContactJCB" className="clickBtn" onClick={onClickPay}>
               JCB
             </li>
           </ul>

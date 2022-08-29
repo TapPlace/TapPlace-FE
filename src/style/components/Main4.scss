@@ -47,7 +47,7 @@
     font-size: 16px;
     margin-right: 8px;
   }
-  .active {
+  .activePay {
     background: rgba(78, 119, 251, 0.06);
     color: #4e77fb;
     font-weight: normal;
@@ -60,15 +60,12 @@
   line-height: 51px;
   border: none;
   color: #bdc2cd;
-  background: #f4f5fa;
   border-radius: 10px;
   margin: 0 auto;
   margin-top: 52px;
   font-size: 18px;
-  &:active {
-    background: #4e77fb;
-    color: white;
-  }
+  pointer-events: none;
+  pointer-events: all;
 }
 
 @include mobile {
