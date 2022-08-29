@@ -198,32 +198,32 @@ function Service() {
             <Member
               name="박상현"
               position="IOS Developer"
-              say="안녕하세요 ~~~파트 ~~~입니다"
+              say='"안녕하세요 아이폰 개발 파트 박상현입니다"'
             />
             <Member
               name="이상준"
               position="IOS Developer"
-              say="안녕하세요 ~~~파트 ~~~입니다"
+              say='"안녕하세요 앱 개발 이상준입니다"'
             />
             <Member
               name="지경희"
               position="Android Developer"
-              say="안녕하세요 ~~~파트 ~~~입니다"
+              say='"안녕하세요 앱 개발 지경희입니다"'
             />
             <Member
               name="김지훈"
               position="BackEnd Developer"
-              say="안녕하세요 ~~~파트 ~~~입니다"
+              say='"안녕하세요 웹 백엔드 김지훈입니다"'
             />
             <Member
               name="임준혁"
               position="FrontEnd Developer"
-              say="안녕하세요 ~~~파트 ~~~입니다"
+              say='"안녕하세요 웹 프론트엔드 임준혁입니다"'
             />
             <Member
               name="고은혜"
               position="UIUX Designer"
-              say="안녕하세요 ~~~파트 ~~~입니다"
+              say='"안녕하세요 UI/UX 고은혜 입니다"'
             />
           </div>
           <div id="memberProgressContainer">

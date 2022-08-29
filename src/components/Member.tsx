@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-
 import { useAppSelector } from '../redux/hooks';
+import SNSLogoContainer from './SNSLogoContainer';
 
 import '../style/components/Member.scss';
-import SNSLogoContainer from './SNSLogoContainer';
 
 type MemberType = {
   id?: string;
