@@ -7,13 +7,6 @@ import PayLogoCollective from './PayLogoCollective';
 function PayLogoSlider() {
   const { windowX } = useAppSelector(state => state.event);
 
-  const paySlider: any = document.querySelector('#paySliderContainer');
-
-  console.log(paySlider.scrollWidth);
-  // memberSlider.scrollLeft === 0
-  //       ? 0`
-  //       : (100 * memberSlider.scrollLeft) /
-  //         (memberSlider.scrollWidth - memberSlider.clientWidth);
   return (
     <>
       <div
