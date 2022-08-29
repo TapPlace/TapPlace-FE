@@ -58,7 +58,7 @@ function Main4() {
       });
   }
 
-  // 페이 클릭
+  // 페이 종류 클릭
   function onClickPay(e: React.MouseEvent<HTMLElement>) {
     const target = e.target as HTMLElement;
     if (target.className === 'clickBtn') {
@@ -99,6 +99,7 @@ function Main4() {
         contactlessArray.push(item);
       }
     });
+    // 폼 데이터로 만들기
     const frm: any = new FormData();
     frm.append('id', storeId);
     frm.append('place', recommendStore);
@@ -133,7 +134,7 @@ function Main4() {
     findAddress();
   }, [storeName]);
 
-  // 클릭 다 되어있으면 버튼 활성화
+  // 클릭, 입력 다 되어있으면 submit 버튼 활성화
   useEffect(() => {
     const submitBtn: any = document.querySelector('#submitBtn');
     if (storeName.length > 0 && payActive === true && nickname.length > 0) {
