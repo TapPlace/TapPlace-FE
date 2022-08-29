@@ -70,6 +70,7 @@ function Main4() {
     else setPayActive(false);
   }
 
+  // 가맹점 등록
   function onClickSubmit(e: React.MouseEvent<HTMLElement>) {
     let etcArray: Array<string> = [];
     let appleArray: Array<string> = [];
