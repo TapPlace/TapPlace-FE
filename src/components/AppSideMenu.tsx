@@ -1,9 +1,10 @@
 import React from 'react';
 import SearchStore from './SearchStore';
 
-import '../style/components/AppSideMenu.scss';
 import SearchCategory from './SearchCategory';
 import { isBrowser } from 'react-device-detect';
+import '../style/components/AppSideMenu.scss';
+import StoreArticle from './StoreArticle';
 
 function AppSideMenu() {
   return (
@@ -23,33 +24,63 @@ function AppSideMenu() {
           />
         )}
       </ul>
-      <div id="aroundMyLocation">강서구 등촌3동 주변 1km</div>
+      <div id="aroundMyLocation">
+        강서구 등촌3동 주변 1km
+        <img
+          id="vButtonLocation"
+          src={require('../img/AppPage/Vbutton.png')}
+          alt="vButton"
+        />
+      </div>
       <ul id="filterContainer">
         <li className="filter">
-          <button></button>
+          <div>
+            매장선택
+            <img
+              className="vButtonFilter"
+              src={require('../img/AppPage/Vbutton.png')}
+              alt="vButton"
+            />
+          </div>
         </li>
         <li className="filter">
-          <button></button>
+          <div>
+            결제수단
+            <img
+              className="vButtonFilter"
+              src={require('../img/AppPage/Vbutton.png')}
+              alt="vButton"
+            />
+          </div>
         </li>
         <li className="filter">
-          <button></button>
+          <div>음식점</div>
         </li>
         <li className="filter">
-          <button></button>
+          <div>카페</div>
         </li>
         <li className="filter">
-          <button></button>
+          <div>카카오페이</div>
         </li>
         <li className="filter">
-          <button></button>
+          <div>네이버페이</div>
         </li>
         <li className="filter">
-          <button></button>
+          <div>애플페이 - VISA</div>
         </li>
         <li className="filter">
-          <button></button>
+          <div>
+            <img
+              id="filterSeeMore"
+              src={require('../img/AppPage/seeMore.png')}
+              alt="seeMore"
+            />
+          </div>
         </li>
       </ul>
+      <section id="storeContainer">
+        <StoreArticle />
+      </section>
     </div>
   );
 }

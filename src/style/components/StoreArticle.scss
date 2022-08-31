@@ -1,0 +1,36 @@
+@import '../utils';
+
+@include mobile {
+}
+@include tablet {
+}
+@include desktop {
+  .storeArticle {
+    border: 1px solid black;
+    height: 150px;
+    padding: 2.2vh 2.1vw;
+    .storeLine1 {
+      display: flex;
+      align-items: flex-end;
+      .storeName {
+        font-size: 0.95vw;
+        font-weight: 400;
+        padding-right: 0.3vw;
+      }
+      .storeCategory {
+        font-size: 0.8vw;
+        color: $subTextColor;
+      }
+    }
+    .storeLine2 {
+      display: flex;
+      color: $subTextColor;
+      font-size: 0.73vw;
+      .storeMeter {
+        padding-right: 0.4vw;
+      }
+      .storeAdderss {
+      }
+    }
+  }
+}
