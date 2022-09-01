@@ -354,28 +354,28 @@ ul {
       }
       #main2contentContainer_top {
         float: right;
-        padding-right: 8vw;
+        padding-right: 13vw;
         padding-top: 150px;
         .line0TitleContainer {
           display: flex;
           #main2_line0_top {
             @include line0;
-            font-size: 25px;
+            font-size: 2.4vw;
           }
         }
         #main2_line1_top {
           @include line1;
-          font-size: 35px;
-          line-height: 48px;
+          font-size: 3.4vw;
+          line-height: 4.6vw;
         }
         #main2_line2_top {
           @include line2;
-          font-size: 20px;
-          line-height: 26px;
+          font-size: 1.95vw;
+          line-height: 2.6vw;
         }
       }
       #main2_mockupImg_top {
-        margin-left: 8vw;
+        margin-left: 11vw;
         width: 300px;
       }
 
@@ -384,32 +384,35 @@ ul {
         background: #f4f5fa;
         height: 624px;
         #main2contentContainer_bottom {
-          padding: 174px 0 0 8vw;
+          padding: 174px 0 0 11vw;
           .line0TitleContainer {
             display: flex;
             align-items: baseline;
             #main2_line0_bottom {
               @include line0;
+              font-size: 3.4vw;
+              line-height: 4.6vw;
             }
           }
           #main2_line1_bottom {
             @include line1;
-            font-size: 35px;
-            line-height: 48px;
+            font-size: 3.4vw;
+            line-height: 4.6vw;
           }
           #main2_line2_bottom {
             @include line2;
-            font-size: 20px;
-            line-height: 26px;
+            font-size: 1.95vw;
+            line-height: 2.6vw;
           }
         }
       }
       #main2_mockupImg_bottom {
-        margin-right: 8vw;
+        margin-right: 10vw;
         width: 300px;
+        float: right;
         position: absolute;
-        right: 0;
-        top: 2220px;
+        // right: 0;
+        // top: 2220px;
       }
     }
     #main3Container {
@@ -573,9 +576,10 @@ ul {
     #main1Container {
       display: flex;
       justify-content: space-between;
-      padding-top: 170px;
+      // padding-top: 170px;
       align-items: center;
       .contentContainer {
+        padding-top: 9vw;
         #main1_line1 {
           @include line1;
           font-size: 3.1vw;
@@ -586,9 +590,12 @@ ul {
           font-size: 1vw;
           line-height: 1.6vw;
           padding-top: 24px;
+          // padding-top: 2.2vh;
+          // padding-top: 1.3vw;
         }
       }
       #main1_mockupImg {
+        padding-top: 9vw;
         width: 21.6vw;
         height: 100%;
       }

@@ -10,7 +10,7 @@ function StoreButton() {
   const { windowX } = useAppSelector(state => state.event);
   return (
     <ul id="logoContainer">
-      {windowX <= 768 ? (
+      {windowX < 768 ? (
         <>
           <li>
             <Link to="/" className="mobileStoreBtn">
