@@ -102,7 +102,7 @@ function Service() {
         </div>
         <div id="main2Container">
           <h4 id="main2_lineTop">
-            {windowX <= 768 ? (
+            {windowX < 768 ? (
               <>
                 탭플레이스와 함께라면
                 <br />이 모든 간편결제 가맹점을
@@ -272,12 +272,12 @@ function Service() {
               Tap Place
             </h4>
             <ul id="footerList">
-              <li className="footerItem">서비스 이용약관</li>
-              <li className="footerItem">개인정보처리방침</li>
+              {/* <li className="footerItem">서비스 이용약관</li>
+              <li className="footerItem">개인정보처리방침</li> */}
               <li className="footerItem">E-mail : help@tapplace.co.kr</li>
             </ul>
           </div>
-          {windowX > 768 && <hr id="footerHr" />}
+          {windowX >= 768 && <hr id="footerHr" />}
           <h4 id="footer_line2">Copyright Tap Place.All rights reserved</h4>
         </div>
       </footer>

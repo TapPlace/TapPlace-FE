@@ -11,10 +11,10 @@ function PayLogoSlider() {
     <>
       <div
         id="paySliderContainer"
-        className={windowX > 768 ? 'payLogoSlider' : 'mobilePayLogoSlider'}
+        className={windowX >= 768 ? 'payLogoSlider' : 'mobilePayLogoSlider'}
       >
         <PayLogoCollective />
-        {windowX > 768 && (
+        {windowX >= 768 && (
           <>
             <PayLogoCollective />
           </>
