@@ -29,7 +29,7 @@ function Service() {
         : (100 * memberSlider.scrollLeft) /
           (memberSlider.scrollWidth - memberSlider.clientWidth);
     // 모바일, 태블릿 시
-    if (windowX <= 1024) {
+    if (windowX < 1024) {
       if (xPercent <= 10) {
         dispatch(
           setMemberScrollX({
