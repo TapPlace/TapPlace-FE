@@ -4,6 +4,7 @@
   .memberContainer {
     text-align: center;
     padding-right: 24px;
+    padding-right: 7vw;
     &:first-child {
       padding-left: 5vw;
     }
@@ -25,7 +26,7 @@
       }
       .memberSay {
         font-size: 15px;
-        padding: 15px 0 28px 0;
+        padding: 10px 0 23px 0;
         color: $subTextColor;
       }
     }
@@ -73,8 +74,8 @@
     }
   }
   .memberImg {
-    width: 360px;
-    height: 400px;
+    width: 19vw;
+    height: 19vw;
     border: 1px solid black;
   }
   .memberHover {
@@ -83,28 +84,28 @@
     justify-content: center;
     text-align: center;
     position: absolute;
-    width: 360px;
-    height: 400px;
+    width: 19vw;
+    height: 20vw;
     top: 0;
     background: $mainColor;
     opacity: 0.8;
     color: white;
     p {
       font-weight: 400;
-      font-size: 20px;
-      line-height: 27px;
-      padding-bottom: 14px;
+      font-size: 1.04vw;
+      line-height: 1.44vw;
+      padding-bottom: 0.7vw;
       width: 80%;
       margin: 0 auto;
     }
   }
   .memberSubContainer {
     .memberName {
-      padding: 20px 0 4px 0;
-      font-size: 30px;
+      padding: 1.04vw 0 0.25vw 0;
+      font-size: 1.55vw;
     }
     .memberPosition {
-      font-size: 25px;
+      font-size: 1.3vw;
       color: #a1a6b0;
     }
   }

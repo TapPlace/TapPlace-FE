@@ -102,7 +102,7 @@ function Header() {
             </a>
           </li>
           <li>
-            <a href="#none">다운로드</a>
+            <a href="#main6Container">다운로드</a>
           </li>
         </ul>
       </nav>

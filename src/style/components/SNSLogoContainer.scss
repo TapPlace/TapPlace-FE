@@ -3,25 +3,30 @@
 .snsLink {
   display: flex;
   justify-content: space-between;
-  width: 70%;
   margin: 0 auto;
   padding-top: 14px;
 }
 
-// @include mobile {
-//   .snsLink {
-//     width: 70%;
-//   }
-// }
+@include mobile {
+  .snsLink {
+    width: 70%;
+  }
+}
 
-// @include tablet {
-//   .snsLink {
-//     width: 70%;
-//   }
-// }
+@include tablet {
+  .snsLink {
+    width: 80%;
+  }
+  img {
+    width: 1.8vw;
+  }
+}
 
 @include desktop {
   .snsLink {
     width: 50%;
+  }
+  img {
+    width: 0.95vw;
   }
 }
