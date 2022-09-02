@@ -19,7 +19,6 @@
   &:last-child {
     width: 16px;
     height: 14px;
-    // padding-bottom: 0;
     padding-top: 2px;
   }
 }
@@ -136,11 +135,14 @@ ul {
         padding: 0 5vw;
         .line0TitleContainer {
           display: flex;
+          align-items: flex-end;
           img {
             height: 28px;
           }
           #main2_line0_top {
             color: $mainColor;
+            font-weight: 400;
+            font-size: 16px;
           }
         }
         #main2_line1_top {
@@ -362,6 +364,7 @@ ul {
         padding-top: 150px;
         .line0TitleContainer {
           display: flex;
+          align-items: flex-end;
           #main2_line0_top {
             @include line0;
             font-size: 2.4vw;
@@ -605,10 +608,8 @@ ul {
     #main2Container {
       #main2_lineTop {
         @include line2;
-        font-size: 24px;
         font-size: 1.25vw;
         text-align: center;
-        padding: 110px 0 65px 0;
         padding: 5.7vw 0 3.4vw 0;
       }
       #main2_mockupImg_top {
@@ -618,11 +619,10 @@ ul {
       }
       #main2contentContainer_top {
         float: right;
-        padding: 205px 462px 0 0;
-        padding-right: 24vw;
+        padding: 10.6vw 24vw 0 0;
         .line0TitleContainer {
           display: flex;
-          align-items: baseline;
+          align-items: flex-end;
           #main2_line0_top {
             @include line0;
             font-size: 1.3vw;

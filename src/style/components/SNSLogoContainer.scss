@@ -16,17 +16,17 @@
 @include tablet {
   .snsLink {
     width: 80%;
-  }
-  img {
-    width: 1.8vw;
+    img {
+      width: 1.8vw;
+    }
   }
 }
 
 @include desktop {
   .snsLink {
     width: 50%;
-  }
-  img {
-    width: 0.95vw;
+    img {
+      width: 0.95vw;
+    }
   }
 }
