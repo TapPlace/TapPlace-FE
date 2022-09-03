@@ -1,10 +1,12 @@
 import React from 'react';
-import SearchStore from './SearchStore';
 
+import SearchStore from './SearchStore';
+import StoreArticle from '../introService/StoreArticle';
 import SearchCategory from './SearchCategory';
+
+import '../../style/components/appService/AppSideMenu.scss';
+
 import { isBrowser } from 'react-device-detect';
-import '../style/components/AppSideMenu.scss';
-import StoreArticle from './StoreArticle';
 
 function AppSideMenu() {
   return (
@@ -19,7 +21,7 @@ function AppSideMenu() {
         {isBrowser && (
           <img
             id="seeMoreImg"
-            src={require('../img/AppPage/seeMore.png')}
+            src={require('../../img/AppPage/seeMore.png')}
             alt="seeMore"
           />
         )}
@@ -28,7 +30,7 @@ function AppSideMenu() {
         강서구 등촌3동 주변 1km
         <img
           id="vButtonLocation"
-          src={require('../img/AppPage/Vbutton.png')}
+          src={require('../../img/AppPage/Vbutton.png')}
           alt="vButton"
         />
       </div>
@@ -38,7 +40,7 @@ function AppSideMenu() {
             매장선택
             <img
               className="vButtonFilter"
-              src={require('../img/AppPage/Vbutton.png')}
+              src={require('../../img/AppPage/Vbutton.png')}
               alt="vButton"
             />
           </div>
@@ -48,7 +50,7 @@ function AppSideMenu() {
             결제수단
             <img
               className="vButtonFilter"
-              src={require('../img/AppPage/Vbutton.png')}
+              src={require('../../img/AppPage/Vbutton.png')}
               alt="vButton"
             />
           </div>
@@ -72,7 +74,7 @@ function AppSideMenu() {
           <div>
             <img
               id="filterSeeMore"
-              src={require('../img/AppPage/seeMore.png')}
+              src={require('../../img/AppPage/seeMore.png')}
               alt="seeMore"
             />
           </div>

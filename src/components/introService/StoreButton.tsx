@@ -2,9 +2,9 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
 
-import '../style/components/StoreButton.scss';
+import '../../style/components/introService/StoreButton.scss';
 
 function StoreButton() {
   const { windowX } = useAppSelector(state => state.event);
@@ -28,7 +28,7 @@ function StoreButton() {
           <li>
             <Link className="storeBtn" to="/">
               <img
-                src={require('../img/ServicePage/appleLogo.png')}
+                src={require('../../img/ServicePage/appleLogo.png')}
                 alt="appleLogo"
               />
               <p>App Store</p>
@@ -37,7 +37,7 @@ function StoreButton() {
           <li>
             <Link className="storeBtn" to="/">
               <img
-                src={require('../img/ServicePage/googleLogo.png')}
+                src={require('../../img/ServicePage/googleLogo.png')}
                 alt="appleLogo"
               />
               <p>Play Store</p>
@@ -46,7 +46,10 @@ function StoreButton() {
           <li>
             <Link id="goWeb" to="/">
               <p>WEB으로 이용하기</p>
-              <img src={require('../img/ServicePage/arrow.png')} alt="arrow" />
+              <img
+                src={require('../../img/ServicePage/arrow.png')}
+                alt="arrow"
+              />
             </Link>
           </li>
         </>

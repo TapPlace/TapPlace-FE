@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../style/components/StoreArticle.scss';
+import '../../style/components/introService/StoreArticle.scss';
 
 function StoreArticle() {
   return (

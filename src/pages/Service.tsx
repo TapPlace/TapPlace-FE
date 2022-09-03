@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react';
-import PayLogoSlider from '../components/PayLogoSlider';
-import StoreButton from '../components/StoreButton';
+import PayLogoSlider from '../components/introService/PayLogoSlider';
+import StoreButton from '../components/introService/StoreButton';
 
 import '../style/pages/Service.scss';
 import Main4 from '../components/Main4';
-import Member from '../components/Member';
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { setMemberScrollX, setResize } from '../redux/slices/eventSlice';
+import { setResize } from '../redux/slices/eventSlice';
 import Header from '../components/Header';
+import Footer from '../components/introService/Footer';
+import Download from '../components/introService/Download';
+import IntroMember from '../components/introService/IntroMember';
 
 function Service() {
-  const { windowX, memberScroll } = useAppSelector(state => state.event);
+  const { windowX } = useAppSelector(state => state.event);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -19,47 +21,6 @@ function Service() {
       dispatch(setResize(window.innerWidth));
     });
   });
-
-  // 멤버 x축 스크롤 몇 퍼센트 스크롤
-  function onScrollX() {
-    const memberSlider: any = document.querySelector('#memberSlider');
-    let xPercent =
-      memberSlider.scrollLeft === 0
-        ? 0
-        : (100 * memberSlider.scrollLeft) /
-          (memberSlider.scrollWidth - memberSlider.clientWidth);
-    // 모바일, 태블릿 시
-    if (windowX < 1024) {
-      if (xPercent <= 10) {
-        dispatch(
-          setMemberScrollX({
-            scrollX: 0,
-            scrollTransformX: 0,
-          }),
-        );
-      } else {
-        dispatch(
-          setMemberScrollX({
-            scrollX: xPercent,
-            scrollTransformX: xPercent + 100,
-          }),
-        );
-      }
-      // 데스크탑 시
-    } else {
-      dispatch(
-        setMemberScrollX({
-          scrollX: xPercent * 0.5,
-          scrollTransformX: 0,
-        }),
-      );
-    }
-  }
-  // 구한 퍼센트로 프로그레스바 움직임
-  const scrollStyle = {
-    left: `${memberScroll.scrollX}%`,
-    transform: `translateX(-${memberScroll.scrollTransformX}%)`,
-  };
 
   return (
     <>
@@ -183,104 +144,10 @@ function Service() {
           </div>
         </div>
         <Main4 />
-        <div id="main3Container">
-          <h1 id="main3title">
-            {windowX <= 768 ? (
-              <>
-                탭플레이스 멤버들을
-                <br /> 소개합니다
-              </>
-            ) : (
-              <>탭플레이스 멤버들을 소개합니다</>
-            )}{' '}
-          </h1>
-          <div id="memberSlider" onScroll={onScrollX}>
-            <Member
-              name="박상현"
-              position="IOS Developer"
-              say='"안녕하세요 아이폰 개발 파트 박상현입니다"'
-            />
-            <Member
-              name="이상준"
-              position="IOS Developer"
-              say='"안녕하세요 앱 개발 이상준입니다"'
-            />
-            <Member
-              name="지경희"
-              position="Android Developer"
-              say='"안녕하세요 앱 개발 지경희입니다"'
-            />
-            <Member
-              name="김지훈"
-              position="BackEnd Developer"
-              say='"안녕하세요 웹 백엔드 김지훈입니다"'
-            />
-            <Member
-              name="임준혁"
-              position="FrontEnd Developer"
-              say='"안녕하세요 웹 프론트엔드 임준혁입니다"'
-            />
-            <Member
-              name="고은혜"
-              position="UIUX Designer"
-              say='"안녕하세요 UI/UX 고은혜 입니다"'
-            />
-          </div>
-          <div id="memberProgressContainer">
-            <div id="progressBar" style={scrollStyle} />
-          </div>
-        </div>
-        <div id="main6Container">
-          <h1 id="main6_line1">
-            {windowX <= 768 ? (
-              <>
-                지금 탭플레이스를 다운받고
-                <br />내 주변 간편결제 가맹점을
-                <br />
-                바로 확인해보세요
-              </>
-            ) : (
-              <>
-                지금 탭플레이스를 다운받고
-                <br />내 주변 간편결제 가맹점을 바로 확인해보세요
-              </>
-            )}
-          </h1>
-          <p id="main6_line2">
-            {windowX <= 768 ? (
-              <>
-                지금 내 주변의
-                <br />
-                간편결제 가맹점을 찾아보세요
-              </>
-            ) : (
-              <>지금 내 주변의 간편결제 가맹점을 찾아보세요</>
-            )}
-          </p>
-          <StoreButton />
-        </div>
+        <IntroMember />
+        <Download />
       </main>
-      <footer id="footer">
-        <div id="footerContainer">
-          <div id="footer_line1">
-            <h4 id="footerTitle">
-              <img
-                className="titleImg"
-                src={require('../img/ServicePage/tap2.png')}
-                alt="tapplace"
-              />
-              Tap Place
-            </h4>
-            <ul id="footerList">
-              {/* <li className="footerItem">서비스 이용약관</li>
-              <li className="footerItem">개인정보처리방침</li> */}
-              <li className="footerItem">E-mail : help@tapplace.co.kr</li>
-            </ul>
-          </div>
-          {windowX >= 768 && <hr id="footerHr" />}
-          <h4 id="footer_line2">Copyright Tap Place.All rights reserved</h4>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

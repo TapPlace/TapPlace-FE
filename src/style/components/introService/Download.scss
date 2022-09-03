@@ -1,0 +1,78 @@
+@import '../../utils';
+
+@include mobile {
+  #main6Container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    #main6_line1 {
+      font-size: 25px;
+      font-weight: 400;
+      padding-bottom: 20px;
+    }
+    #main6_line2 {
+      font-size: 18px;
+      color: $subTextColor;
+      line-height: 26px;
+    }
+    #mobileBtnSecond {
+      display: none;
+    }
+  }
+}
+
+@include tablet {
+  #main6Container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    #main6_line1 {
+      @include line1;
+      font-size: 3.4vw;
+      padding-top: 0;
+      line-height: 4.6vw;
+    }
+    #main6_line2 {
+      @include line2;
+      font-size: 2.35vw;
+      color: #9e9e9e;
+    }
+    #logoContainer {
+      padding-top: 5vw;
+      li {
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@include desktop {
+  #main6Container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 12.5vw;
+    #main6_line1 {
+      @include line1;
+      line-height: 2.8vw;
+      font-size: 1.7vw;
+    }
+    #main6_line2 {
+      @include line2;
+      font-size: 1.25vw;
+      color: #9e9e9e;
+    }
+    #logoContainer {
+      padding-top: 2.7vw;
+      li {
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+}

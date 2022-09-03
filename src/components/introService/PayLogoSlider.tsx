@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAppSelector } from '../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
 
-import '../style/components/PayLogoSlider.scss';
+import '../../style/components/introService/PayLogoSlider.scss';
 import PayLogoCollective from './PayLogoCollective';
 
 function PayLogoSlider() {

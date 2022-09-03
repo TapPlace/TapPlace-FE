@@ -1,7 +1,7 @@
 import React from 'react';
 import { isBrowser } from 'react-device-detect';
 
-import '../style/components/SearchCategory.scss';
+import '../../style/components/appService/SearchCategory.scss';
 
 type categoryProps = {
   category: string;
@@ -15,28 +15,28 @@ function SearchCategory({ category }: categoryProps) {
           <>
             {category === '음식점' ? (
               <img
-                src={require('../img/AppPage/restaurant_black.png')}
+                src={require('../../img/AppPage/restaurant_black.png')}
                 alt="categoryLogo"
               />
             ) : category === '카페' ? (
               <img
-                src={require('../img/AppPage/cafe_black.png')}
+                src={require('../../img/AppPage/cafe_black.png')}
                 alt="categoryLogo"
               />
             ) : category === '편의점' ? (
               <img
-                src={require('../img/AppPage/convenienceStore_black.png')}
+                src={require('../../img/AppPage/convenienceStore_black.png')}
                 alt="categoryLogo"
               />
             ) : category === '마트' ? (
               <img
-                src={require('../img/AppPage/mart_black.png')}
+                src={require('../../img/AppPage/mart_black.png')}
                 alt="categoryLogo"
               />
             ) : (
               category === '주유소' && (
                 <img
-                  src={require('../img/AppPage/gasStation_black.png')}
+                  src={require('../../img/AppPage/gasStation_black.png')}
                   alt="categoryLogo"
                 />
               )
@@ -46,28 +46,28 @@ function SearchCategory({ category }: categoryProps) {
           <>
             {category === '음식점' ? (
               <img
-                src={require('../img/AppPage/restaurant_color.png')}
+                src={require('../../img/AppPage/restaurant_color.png')}
                 alt="categoryLogo"
               />
             ) : category === '카페' ? (
               <img
-                src={require('../img/AppPage/cafe_color.png')}
+                src={require('../../img/AppPage/cafe_color.png')}
                 alt="categoryLogo"
               />
             ) : category === '편의점' ? (
               <img
-                src={require('../img/AppPage/convenienceStore_color.png')}
+                src={require('../../img/AppPage/convenienceStore_color.png')}
                 alt="categoryLogo"
               />
             ) : category === '마트' ? (
               <img
-                src={require('../img/AppPage/mart_color.png')}
+                src={require('../../img/AppPage/mart_color.png')}
                 alt="categoryLogo"
               />
             ) : (
               category === '주유소' && (
                 <img
-                  src={require('../img/AppPage/gasStation_color.png')}
+                  src={require('../../img/AppPage/gasStation_color.png')}
                   alt="categoryLogo"
                 />
               )

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../style/components/SearchStore.scss';
+import '../../style/components/appService/SearchStore.scss';
 
 function SearchStore() {
   return (
@@ -8,7 +8,7 @@ function SearchStore() {
       <div id="searchContainer">
         <img
           id="searchIcon"
-          src={require('../img/AppPage/search.png')}
+          src={require('../../img/AppPage/search.png')}
           alt="searchIcon"
         />
         <input

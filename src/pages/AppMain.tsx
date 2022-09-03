@@ -1,7 +1,7 @@
 import React from 'react';
-import AppSideMenu from '../components/AppSideMenu';
+import AppSideMenu from '../components/appService/AppSideMenu';
+import NaverMap from '../components/appService/NaverMap';
 import Header from '../components/Header';
-import NaverMap from '../components/NaverMap';
 
 import '../style/pages/AppMain.scss';
 

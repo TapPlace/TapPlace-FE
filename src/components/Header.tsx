@@ -3,6 +3,8 @@ import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppSelector } from '../redux/hooks';
 
+import '../style/components/Header.scss';
+
 function Header() {
   const { windowX } = useAppSelector(state => state.event);
   // Nav 숨기기

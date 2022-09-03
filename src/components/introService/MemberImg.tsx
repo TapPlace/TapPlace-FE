@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useAppSelector } from '../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
 import SNSLogoContainer from './SNSLogoContainer';
 
-import '../style/components/Member.scss';
+import '../../style/components/introService/Member.scss';
 
 type MemberType = {
   id?: string;
@@ -11,7 +11,7 @@ type MemberType = {
   say?: string;
 };
 
-function Member({ id, name, position, say }: MemberType) {
+function MemberImg({ id, name, position, say }: MemberType) {
   const { windowX } = useAppSelector(state => state.event);
   const [hover, setHover] = useState(false);
 
@@ -46,4 +46,4 @@ function Member({ id, name, position, say }: MemberType) {
   );
 }
 
-export default Member;
+export default MemberImg;
