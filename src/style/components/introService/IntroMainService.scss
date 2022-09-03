@@ -1,0 +1,82 @@
+@import '../../utils';
+
+@include mobile {
+  #main1Container {
+    padding-top: 50px;
+    .contentContainer {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      #main1_line1 {
+        padding-bottom: 20px;
+        font-size: 25px;
+        color: #23252d;
+        line-height: 34px;
+      }
+      #main1_line2 {
+        font-size: 16px;
+        color: #4d4d4d;
+        line-height: 23px;
+        padding: 0 26vw;
+      }
+    }
+    #main1_mockupImg {
+      padding-bottom: 88px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@include tablet {
+  #main1Container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 88px;
+    align-items: center;
+    .contentContainer {
+      padding-bottom: 70px;
+      text-align: center;
+      #main1_line1 {
+        @include line1;
+        font-size: 4.9vw;
+        line-height: 6.6vw;
+      }
+      #main1_line2 {
+        @include line2;
+        font-size: 1.96vw;
+        line-height: 2.9vw;
+        padding-top: 2.3vw;
+      }
+    }
+    #main1_mockupImg {
+      width: 41vw;
+    }
+  }
+}
+
+@include desktop {
+  #main1Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .contentContainer {
+      padding-top: 9vw;
+      #main1_line1 {
+        @include line1;
+        font-size: 3.1vw;
+        line-height: 4.2vw;
+      }
+      #main1_line2 {
+        @include line2;
+        font-size: 1vw;
+        line-height: 1.6vw;
+        padding-top: 1.3vw;
+      }
+    }
+    #main1_mockupImg {
+      padding-top: 9vw;
+      width: 21.6vw;
+      height: 100%;
+    }
+  }
+}

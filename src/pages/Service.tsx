@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import PayLogoSlider from '../components/introService/PayLogoSlider';
-import StoreButton from '../components/introService/StoreButton';
 
 import '../style/pages/Service.scss';
 import Main4 from '../components/Main4';
@@ -11,6 +10,7 @@ import Header from '../components/Header';
 import Footer from '../components/introService/Footer';
 import Download from '../components/introService/Download';
 import IntroMember from '../components/introService/IntroMember';
+import IntroMainService from '../components/introService/IntroMainService';
 
 function Service() {
   const { windowX } = useAppSelector(state => state.event);
@@ -26,41 +26,7 @@ function Service() {
     <>
       <Header />
       <main id="mainContainer">
-        <div id="main1Container">
-          <article className="contentContainer">
-            <h1 id="main1_line1">
-              간편결제 가맹점 확인
-              <br /> 한곳에서 간편하게
-            </h1>
-            <p id="main1_line2">
-              {windowX <= 768 ? (
-                <>
-                  힘들게 찾아다닐 필요없이
-                  <br />
-                  한번에 확인할 수 있어요
-                  <br />
-                  탭플레이스에서
-                  <br />내 주변 간편결제 가맹점을
-                  <br />
-                  확인해보세요
-                </>
-              ) : (
-                <>
-                  힘들게 찾아다닐 필요없이 한번에 확인할 수 있어요
-                  <br />
-                  탭플레이스에서 내 주변 간편결제 가맹점을 확인해보세요
-                </>
-              )}
-            </p>
-            <StoreButton />
-          </article>
-          <img
-            id="main1_mockupImg"
-            className="mockupImg"
-            src={require('../img/ServicePage/mockup-1.png')}
-            alt="mockup_1"
-          />
-        </div>
+        <IntroMainService />
         <div id="main2Container">
           <h4 id="main2_lineTop">
             {windowX < 768 ? (
