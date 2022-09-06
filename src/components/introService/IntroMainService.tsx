@@ -37,9 +37,9 @@ function IntroMainService() {
         <StoreButton />
       </article>
       <img
-        id="main1_mockupImg"
+        id="appScreenMain"
         className="mockupImg"
-        src={require('../../img/ServicePage/mockup-1.png')}
+        src={require('../../img/ServicePage/appScreenMain.png')}
         alt="mockup_1"
       />
     </div>

@@ -5,76 +5,113 @@
     display: flex;
     flex-direction: column;
     #main2_lineTop {
-      color: $subTextColor;
-      font-size: 18px;
+      @include line2;
       text-align: center;
-      font-weight: 400;
-      padding-bottom: 28px;
+      padding: 5.7vw 0 3.4vw 0;
     }
-    #storeInquiry {
-      padding: 0 5vw;
-      .line0TitleContainer {
+    .functionContainer {
+      display: flex;
+      flex-direction: column;
+      padding: 50px 5vw;
+      .appScreenImg {
+        width: 60vw;
+        margin: 0 auto;
+        margin-top: 52px;
+      }
+      .functionIntroContainer {
         display: flex;
-        align-items: flex-end;
-        img {
-          height: 28px;
-        }
-        #main2_line0_top {
-          color: $mainColor;
-          font-weight: 400;
-          font-size: 16px;
-        }
-      }
-      #main2_line1_top {
-        font-size: 23px;
-        font-weight: 400;
-        line-height: 32px;
-        padding-bottom: 12px;
-        padding-top: 8px;
-      }
-      #main2_line2_top {
-        color: $subTextColor;
-        font-size: 16px;
-        line-height: 21px;
-        padding-bottom: 52px;
-      }
-    }
-    #main2_mockupImg_top {
-      margin: 0 auto;
-      padding-bottom: 105px;
-    }
-    #main2background {
-      height: 820px;
-      background: rgba(244, 245, 250, 0.8);
-      #main2contentContainer_bottom {
-        width: 100vw;
-        padding: 80px 5vw 0 5vw;
-        .line0TitleContainer {
+        flex-direction: column;
+        .functionTitleContainer {
           display: flex;
           align-items: baseline;
-          #main2_line0_bottom {
-            color: $mainColor;
-            font-size: 16px;
-            font-weight: 400;
+          img {
+            padding-right: 6px;
+          }
+          .functionTitle {
+            @include line0;
           }
         }
-        #main2_line1_bottom {
-          color: #3f4353;
-          font-weight: 400;
-          font-size: 23px;
-          padding: 8px 0 12px 0;
-          line-height: 32px;
+        #fTC1 {
+          align-items: flex-end;
         }
-        #main2_line2_bottom {
-          color: $subTextColor;
-          font-size: 16px;
-          line-height: 21px;
-          padding-bottom: 50px;
+        .functionLine1 {
+          @include line1;
         }
-        #main2_mockupImg_bottom {
+        .functionLine2 {
+          @include line2;
+        }
+        .appScreenPreviewImg {
+          display: none;
+        }
+        #regStepContainer {
+          display: flex;
+          flex-direction: column;
+          display: none; // 여기 풀면 보임
+          #stepNumContainer {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            .stepNum {
+              position: relative;
+              border: 1px solid $mainColor;
+              width: 24px;
+              height: 24px;
+              line-height: 24px;
+              border-radius: 50%;
+              color: $mainColor;
+              // &:nth-child(1),
+              // &:nth-child(2) {
+              //   &::after {
+              //     content: '';
+              //     position: absolute;
+              //     top: 50%;
+              //     margin-left: 2vw;
+              //     background: $mainColor;
+              //     width: 35.5vw;
+              //     height: 1px;
+              //   }
+              // }
+              // &:nth-child(1) {
+              //   &::after {
+              //     margin-left: 2.3vw;
+              //   }
+              // }
+            }
+          }
+          #stepTextContainer {
+            display: flex;
+            justify-content: space-around;
+            .stepText {
+              @include line2;
+            }
+          }
+        }
+      }
+      #appScreenStoreRegImgBox {
+        position: relative;
+        background: $mainColor;
+        width: 80vw;
+        height: 70vw;
+        border-radius: 60px;
+        margin: 0 auto;
+        margin-top: 52px;
+        img {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
           margin: 0 auto;
         }
       }
+    }
+    #paymentFeedback {
+      background: linear-gradient(
+        252.25deg,
+        rgba(244, 245, 250, 0.8) 0%,
+        rgba(244, 245, 250, 0.208) 48.86%,
+        rgba(244, 245, 250, 0.8) 100%
+      );
     }
   }
 }
@@ -83,73 +120,121 @@
   #main2Container {
     #main2_lineTop {
       @include line2;
-      font-size: 24px;
+      font-size: 1.25vw;
       text-align: center;
-      padding: 72px 0 36px 0;
+      padding: 5.7vw 0 3.4vw 0;
     }
-    #storeInquiry {
-      float: right;
-      padding-right: 13vw;
-      padding-top: 150px;
-      .line0TitleContainer {
+    .functionContainer {
+      display: flex;
+      justify-content: space-between;
+      padding: 100px 22vw;
+      .appScreenImg {
+        width: 20vw;
+      }
+      .functionIntroContainer {
         display: flex;
-        align-items: flex-end;
-        #main2_line0_top {
-          @include line0;
-          font-size: 2.4vw;
-        }
-      }
-      #main2_line1_top {
-        @include line1;
-        font-size: 3.4vw;
-        line-height: 4.6vw;
-      }
-      #main2_line2_top {
-        @include line2;
-        font-size: 1.95vw;
-        line-height: 2.6vw;
-      }
-    }
-    #main2_mockupImg_top {
-      margin-left: 11vw;
-      width: 29.6vw;
-    }
-
-    #main2background {
-      position: relative;
-      margin-top: 160px;
-      background: #f4f5fa;
-      height: 61vw;
-      #main2contentContainer_bottom {
-        // float: left;
-        padding: 17vw 0 0 11vw;
-        .line0TitleContainer {
+        flex-direction: column;
+        justify-content: center;
+        .functionTitleContainer {
           display: flex;
           align-items: baseline;
-          #main2_line0_bottom {
+          img {
+            padding-right: 6px;
+            height: 1.6vw;
+          }
+          .functionTitle {
             @include line0;
-            font-size: 3.4vw;
-            line-height: 4.6vw;
+            font-size: 1.3vw;
           }
         }
-        #main2_line1_bottom {
-          @include line1;
-          font-size: 3.4vw;
-          line-height: 4.6vw;
+        #fTC1 {
+          align-items: flex-end;
         }
-        #main2_line2_bottom {
+        .functionLine1 {
+          @include line1;
+          font-size: 2.1vw;
+          line-height: 2.7vw;
+        }
+        .functionLine2 {
           @include line2;
-          font-size: 1.95vw;
-          line-height: 2.6vw;
+          font-size: 1vw;
+          line-height: 1.25vw;
+          padding-bottom: 3.76vw;
+        }
+        .appScreenPreviewImg {
+          box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
+          border-radius: 16px;
+          margin: 9px 0;
+          width: 21.7vw;
+        }
+        #regStepContainer {
+          display: flex;
+          flex-direction: column;
+          #stepNumContainer {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            padding: 0 1.1vw 0 1.3vw;
+            .stepNum {
+              position: relative;
+              border: 1px solid $mainColor;
+              width: 1.8vw;
+              height: 1.8vw;
+              line-height: 2vw;
+              border-radius: 50%;
+              color: $mainColor;
+              font-size: 1.05vw;
+              &:nth-child(1),
+              &:nth-child(2) {
+                &::after {
+                  content: '';
+                  position: absolute;
+                  top: 50%;
+                  margin-left: 0.6vw;
+                  background: $mainColor;
+                  width: 6.7vw;
+                  height: 1px;
+                }
+              }
+              &:nth-child(1) {
+                &::after {
+                  margin-left: 0.7vw;
+                }
+              }
+            }
+          }
+          #stepTextContainer {
+            display: flex;
+            justify-content: space-between;
+            .stepText {
+              @include line2;
+              font-size: 1vw;
+            }
+          }
+        }
+      }
+      #appScreenStoreRegImgBox {
+        position: relative;
+        background: $mainColor;
+        width: 31vw;
+        height: 28vw;
+        border-radius: 60px;
+        img {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
         }
       }
     }
-    #main2_mockupImg_bottom {
-      margin-right: 10vw;
-      width: 29.6vw;
-      position: absolute;
-      right: 0;
-      bottom: 12vw;
+    #paymentFeedback {
+      background: linear-gradient(
+        252.25deg,
+        rgba(244, 245, 250, 0.8) 0%,
+        rgba(244, 245, 250, 0.208) 48.86%,
+        rgba(244, 245, 250, 0.8) 100%
+      );
     }
   }
 }
@@ -165,7 +250,7 @@
     .functionContainer {
       display: flex;
       justify-content: space-between;
-      padding: 0 24vw;
+      padding: 100px 22vw;
       .appScreenImg {
         width: 20vw;
       }
@@ -173,16 +258,19 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        .functionTitle {
+        .functionTitleContainer {
           display: flex;
-          align-items: flex-end;
+          align-items: baseline;
           img {
             padding-right: 6px;
           }
-          h1 {
+          .functionTitle {
             @include line0;
             font-size: 1.3vw;
           }
+        }
+        #fTC1 {
+          align-items: flex-end;
         }
         .functionLine1 {
           @include line1;
@@ -195,11 +283,70 @@
           line-height: 1.25vw;
           padding-bottom: 3.76vw;
         }
-        .appScreenInquiryImg {
+        .appScreenPreviewImg {
           box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
           border-radius: 16px;
           margin: 9px 0;
           width: 21.7vw;
+        }
+        #regStepContainer {
+          display: flex;
+          flex-direction: column;
+          #stepNumContainer {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            padding: 0 1.1vw 0 1.3vw;
+            .stepNum {
+              position: relative;
+              border: 1px solid $mainColor;
+              width: 1.8vw;
+              height: 1.8vw;
+              line-height: 2vw;
+              border-radius: 50%;
+              color: $mainColor;
+              font-size: 1.05vw;
+              &:nth-child(1),
+              &:nth-child(2) {
+                &::after {
+                  content: '';
+                  position: absolute;
+                  top: 50%;
+                  margin-left: 0.6vw;
+                  background: $mainColor;
+                  width: 6.7vw;
+                  height: 1px;
+                }
+              }
+              &:nth-child(1) {
+                &::after {
+                  margin-left: 0.7vw;
+                }
+              }
+            }
+          }
+          #stepTextContainer {
+            display: flex;
+            justify-content: space-between;
+            .stepText {
+              @include line2;
+              font-size: 1vw;
+            }
+          }
+        }
+      }
+      #appScreenStoreRegImgBox {
+        position: relative;
+        background: $mainColor;
+        width: 31vw;
+        height: 28vw;
+        border-radius: 60px;
+        img {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
         }
       }
     }
@@ -210,43 +357,6 @@
         rgba(244, 245, 250, 0.208) 48.86%,
         rgba(244, 245, 250, 0.8) 100%
       );
-    }
-
-    #main2background {
-      position: relative;
-      background: #f4f5fa;
-      width: 62.15vw;
-      height: 35.15vw;
-      border-radius: 60px;
-      margin: 13vw 0 0 19vw;
-      #main2contentContainer_bottom {
-        padding: 9.7vw 0 0 7.2vw;
-        .line0TitleContainer {
-          display: flex;
-          align-items: baseline;
-          #main2_line0_bottom {
-            @include line0;
-            font-size: 1.3vw;
-          }
-        }
-        #main2_line1_bottom {
-          @include line1;
-          font-size: 2.1vw;
-          line-height: 2.7vw;
-        }
-        #main2_line2_bottom {
-          @include line2;
-          font-size: 1vw;
-          line-height: 1.25vw;
-        }
-      }
-    }
-    #main2_mockupImg_bottom {
-      position: absolute;
-      width: 20vw;
-      height: 39.8vw;
-      top: -6vw;
-      right: 5vw;
     }
   }
 }
