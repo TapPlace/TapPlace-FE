@@ -3,12 +3,13 @@
 @include mobile {
   #logoContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding: 50px 0 55px 0;
+    padding: 50px 0 55px;
     li {
       .mobileStoreBtn {
         font-size: 15px;
-        padding: 10px 12px;
+        padding: 16px 80px;
         margin: 0 5px;
         border-radius: 10px;
         background: $mainColor;
@@ -18,6 +19,8 @@
         }
       }
       #mobileBtnSecond {
+        display: block;
+        padding-top: 40px;
         border: none;
         background: none;
         color: $mainColor;

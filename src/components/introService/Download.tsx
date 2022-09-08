@@ -10,7 +10,7 @@ function Download() {
   return (
     <div id="main6Container">
       <h1 id="main6_line1">
-        {windowX <= 768 ? (
+        {windowX < 768 ? (
           <>
             지금 탭플레이스를 다운받고
             <br />내 주변 간편결제 가맹점을
@@ -25,7 +25,7 @@ function Download() {
         )}
       </h1>
       <p id="main6_line2">
-        {windowX <= 768 ? (
+        {windowX < 768 ? (
           <>
             지금 내 주변의
             <br />

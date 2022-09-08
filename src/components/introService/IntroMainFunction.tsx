@@ -46,21 +46,22 @@ function IntroMainFunction() {
                 <br />
                 결제 가능여부를 미리 알려드릴께요.
               </h1>
-              <img
-                src={require('../../img/ServicePage/appScreenInquiryImg1.png')}
-                alt="appScreenInquiryImg1"
-                className="appScreenPreviewImg"
-              />
-              <img
-                src={require('../../img/ServicePage/appScreenInquiryImg2.png')}
-                alt="appScreenInquiryImg2"
-                className="appScreenPreviewImg"
-              />
             </div>
             <img
               src={require('../../img/ServicePage/appScreenInquiry.png')}
               alt="appScreenInquiry"
               className="appScreenImg"
+            />
+            <img
+              src={require('../../img/ServicePage/appScreenInquiryImg1.png')}
+              alt="appScreenInquiryImg1"
+              className="appScreenPreviewImg"
+              id="appScreenPreviewImgFirst"
+            />
+            <img
+              src={require('../../img/ServicePage/appScreenInquiryImg2.png')}
+              alt="appScreenInquiryImg2"
+              className="appScreenPreviewImg"
             />
           </>
         ) : (
@@ -103,44 +104,89 @@ function IntroMainFunction() {
         )}
       </article>
       <article id="paymentFeedback" className="functionContainer">
-        <div className="functionIntroContainer">
-          <div className="functionTitleContainer">
+        {windowX < 768 ? (
+          <>
+            <div className="functionIntroContainer">
+              <div className="functionTitleContainer">
+                <img
+                  src={require('../../img/ServicePage/feedbackIcon.png')}
+                  alt="feedbackIcon"
+                  id="feedbackIcon"
+                />
+                <h1 className="functionTitle">결제수단 피드백</h1>
+              </div>
+              <h1 className="functionLine1">
+                최근 결제기록을 통해 확인하는
+                <br />
+                정확한 사용여부
+              </h1>
+              <h1 className="functionLine2">
+                직접 이용했던 사용자들의 피드백으로
+                <br />
+                원하는 결제수단의 사용여부를 확인할 수
+                <br />
+                있어요.
+              </h1>
+            </div>
             <img
-              src={require('../../img/ServicePage/feedbackIcon.png')}
-              alt="feedbackIcon"
+              src={require('../../img/ServicePage/appScreenFeedback.png')}
+              alt="appScreenFeedback"
+              className="appScreenImg"
             />
-            <h1 className="functionTitle">가맹점 피드백</h1>
-          </div>
-          <h1 className="functionLine1">
-            최근 결제기록을 통해
-            <br />
-            확인하는 정확한 사용여부
-          </h1>
-          <h1 className="functionLine2">
-            직접 이용했던 사용자들의 피드백으로
-            <br />
-            원하는 결제수단의 사용여부를 확인할 수 있어요.
-          </h1>
-          <img
-            src={require('../../img/ServicePage/appScreenFeedbackImg.png')}
-            alt="appScreenFeedbackImg"
-            className="appScreenPreviewImg"
-          />
-        </div>
-        <img
-          src={require('../../img/ServicePage/appScreenFeedback.png')}
-          alt="appScreenFeedback"
-          className="appScreenImg"
-        />
+            <img
+              src={require('../../img/ServicePage/appScreenFeedbackImg.png')}
+              alt="appScreenFeedbackImg"
+              className="appScreenPreviewImg"
+              id="appScreenFeedbackImg"
+            />
+          </>
+        ) : (
+          <>
+            <div className="functionIntroContainer">
+              <div className="functionTitleContainer">
+                <img
+                  src={require('../../img/ServicePage/feedbackIcon.png')}
+                  alt="feedbackIcon"
+                  id="feedbackIcon"
+                />
+                <h1 className="functionTitle">결제수단 피드백</h1>
+              </div>
+              <h1 className="functionLine1">
+                최근 결제기록을 통해
+                <br />
+                확인하는 정확한 사용여부
+              </h1>
+              <h1 className="functionLine2">
+                직접 이용했던 사용자들의 피드백으로
+                <br />
+                원하는 결제수단의 사용여부를 확인할 수
+                <br />
+                있어요.
+              </h1>
+              <img
+                src={require('../../img/ServicePage/appScreenFeedbackImg.png')}
+                alt="appScreenFeedbackImg"
+                className="appScreenPreviewImg"
+                id="appScreenFeedbackImg"
+              />
+            </div>
+            <img
+              src={require('../../img/ServicePage/appScreenFeedback.png')}
+              alt="appScreenFeedback"
+              className="appScreenImg"
+            />
+          </>
+        )}
       </article>
       <article id="storeRegistration" className="functionContainer">
-        {windowX < 768 ? (
+        {windowX < 1024 ? (
           <>
             <div className="functionIntroContainer">
               <div className="functionTitleContainer">
                 <img
                   src={require('../../img/ServicePage/registrationIcon.png')}
                   alt="registrationIcon"
+                  id="registrationIcon"
                 />
                 <h1 className="functionTitle">가맹점 등록</h1>
               </div>
@@ -182,7 +228,7 @@ function IntroMainFunction() {
                 alt="appScreenRegistration"
               />
             </div>
-            <div className="functionIntroContainer">
+            <div id="functionRegContainer" className="functionIntroContainer">
               <div className="functionTitleContainer">
                 <img
                   src={require('../../img/ServicePage/registrationIcon.png')}

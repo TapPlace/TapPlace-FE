@@ -14,7 +14,7 @@
       flex-direction: column;
       padding: 50px 5vw;
       .appScreenImg {
-        width: 60vw;
+        width: 260px;
         margin: 0 auto;
         margin-top: 52px;
       }
@@ -25,10 +25,18 @@
           display: flex;
           align-items: baseline;
           img {
-            padding-right: 6px;
+            padding-right: 10px;
+            width: 34px;
+          }
+          #feedbackIcon {
+            width: 30px;
+          }
+          #registrationIcon {
+            width: 48px;
           }
           .functionTitle {
             @include line0;
+            font-size: 16px;
           }
         }
         #fTC1 {
@@ -36,63 +44,81 @@
         }
         .functionLine1 {
           @include line1;
+          font-size: 23px;
+          line-height: 31px;
         }
         .functionLine2 {
           @include line2;
+          font-size: 16px;
+          line-height: 21px;
         }
-        .appScreenPreviewImg {
-          display: none;
-        }
+
         #regStepContainer {
-          display: flex;
-          flex-direction: column;
-          display: none; // 여기 풀면 보임
           #stepNumContainer {
             display: flex;
-            justify-content: space-around;
             text-align: center;
+            margin-top: 20px;
             .stepNum {
               position: relative;
-              border: 1px solid $mainColor;
-              width: 24px;
-              height: 24px;
-              line-height: 24px;
+              border: 2px solid $mainColor;
+              width: 32px;
+              height: 32px;
+              line-height: 32px;
               border-radius: 50%;
               color: $mainColor;
-              // &:nth-child(1),
-              // &:nth-child(2) {
-              //   &::after {
-              //     content: '';
-              //     position: absolute;
-              //     top: 50%;
-              //     margin-left: 2vw;
-              //     background: $mainColor;
-              //     width: 35.5vw;
-              //     height: 1px;
-              //   }
-              // }
-              // &:nth-child(1) {
-              //   &::after {
-              //     margin-left: 2.3vw;
-              //   }
-              // }
+              margin: 0 15px;
+              &:nth-child(1),
+              &:nth-child(2) {
+                &::after {
+                  content: '';
+                  position: absolute;
+                  top: 50%;
+                  background: $mainColor;
+                  width: 96px;
+                  height: 2px;
+                  margin-left: 12px;
+                }
+              }
+              &:nth-child(2) {
+                margin: 0 80px;
+              }
             }
           }
           #stepTextContainer {
             display: flex;
-            justify-content: space-around;
             .stepText {
               @include line2;
+              font-size: 15px;
+              &:nth-child(2) {
+                margin: 0 53px 0 40px;
+              }
             }
           }
         }
       }
+      #appScreenPreviewImgFirst {
+        margin: 0 auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+      .appScreenPreviewImg {
+        width: 350px;
+        border-radius: 10px;
+        box-shadow: 0px 1px 6px rgb(0 0 0 / 16%);
+        margin: 0 auto;
+      }
+      #appScreenFeedbackImg {
+        width: 330px;
+        height: 350px;
+        margin: 0 auto;
+        margin-top: 30px;
+      }
       #appScreenStoreRegImgBox {
         position: relative;
         background: $mainColor;
-        width: 80vw;
-        height: 70vw;
-        border-radius: 60px;
+        width: 330px;
+        height: 360px;
+        border-radius: 40px;
         margin: 0 auto;
         margin-top: 52px;
         img {
@@ -100,7 +126,8 @@
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          width: 60%;
+          width: 260px;
+          height: 325px;
           margin: 0 auto;
         }
       }
@@ -120,16 +147,16 @@
   #main2Container {
     #main2_lineTop {
       @include line2;
-      font-size: 1.25vw;
+      font-size: 2.6vw;
       text-align: center;
       padding: 5.7vw 0 3.4vw 0;
     }
     .functionContainer {
       display: flex;
       justify-content: space-between;
-      padding: 100px 22vw;
+      padding: 100px 10vw;
       .appScreenImg {
-        width: 20vw;
+        width: 33vw;
       }
       .functionIntroContainer {
         display: flex;
@@ -140,11 +167,11 @@
           align-items: baseline;
           img {
             padding-right: 6px;
-            height: 1.6vw;
+            height: 3.2vw;
           }
           .functionTitle {
             @include line0;
-            font-size: 1.3vw;
+            font-size: 2.6vw;
           }
         }
         #fTC1 {
@@ -152,63 +179,60 @@
         }
         .functionLine1 {
           @include line1;
-          font-size: 2.1vw;
-          line-height: 2.7vw;
+          font-size: 3.65vw;
+          line-height: 4.9vw;
         }
         .functionLine2 {
           @include line2;
-          font-size: 1vw;
-          line-height: 1.25vw;
+          font-size: 2.34vw;
+          line-height: 3vw;
           padding-bottom: 3.76vw;
         }
         .appScreenPreviewImg {
           box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
-          border-radius: 16px;
+          border-radius: 10px;
           margin: 9px 0;
-          width: 21.7vw;
+          width: 38vw;
         }
         #regStepContainer {
-          display: flex;
-          flex-direction: column;
           #stepNumContainer {
             display: flex;
-            justify-content: space-between;
             text-align: center;
-            padding: 0 1.1vw 0 1.3vw;
+            margin-top: 20px;
             .stepNum {
               position: relative;
-              border: 1px solid $mainColor;
-              width: 1.8vw;
-              height: 1.8vw;
-              line-height: 2vw;
+              border: 2px solid $mainColor;
+              width: 32px;
+              height: 32px;
+              line-height: 32px;
               border-radius: 50%;
               color: $mainColor;
-              font-size: 1.05vw;
+              margin: 0 15px;
               &:nth-child(1),
               &:nth-child(2) {
                 &::after {
                   content: '';
                   position: absolute;
                   top: 50%;
-                  margin-left: 0.6vw;
                   background: $mainColor;
-                  width: 6.7vw;
-                  height: 1px;
+                  width: 146px;
+                  height: 2px;
+                  margin-left: 12px;
                 }
               }
-              &:nth-child(1) {
-                &::after {
-                  margin-left: 0.7vw;
-                }
+              &:nth-child(2) {
+                margin: 0 130px;
               }
             }
           }
           #stepTextContainer {
             display: flex;
-            justify-content: space-between;
             .stepText {
               @include line2;
-              font-size: 1vw;
+              font-size: 15px;
+              &:nth-child(2) {
+                margin: 0 103px 0 92px;
+              }
             }
           }
         }
@@ -216,8 +240,10 @@
       #appScreenStoreRegImgBox {
         position: relative;
         background: $mainColor;
-        width: 31vw;
-        height: 28vw;
+        width: 81vw;
+        height: 70vw;
+        margin: 0 auto;
+        margin-top: 30px;
         border-radius: 60px;
         img {
           position: absolute;
@@ -227,6 +253,9 @@
           width: 60%;
         }
       }
+    }
+    #storeRegistration {
+      flex-direction: column;
     }
     #paymentFeedback {
       background: linear-gradient(

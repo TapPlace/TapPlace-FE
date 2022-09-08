@@ -55,7 +55,7 @@ function IntroMember() {
   return (
     <div id="main3Container">
       <h1 id="main3title">
-        {windowX <= 768 ? (
+        {windowX < 768 ? (
           <>
             탭플레이스 멤버들을
             <br /> 소개합니다
