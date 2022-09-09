@@ -41,21 +41,10 @@ ul {
     display: block;
     width: 250px;
   }
-  #mainContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 40px;
-  }
 }
 
 // 태블릿
 @include tablet {
-  #mainContainer {
-    display: flex;
-    flex-direction: column;
-    padding-top: 60px;
-  }
 }
 
 // PC
@@ -68,11 +57,5 @@ ul {
   .mockupImg {
     width: 384px;
     height: 763px;
-  }
-
-  #mainContainer {
-    display: flex;
-    flex-direction: column;
-    padding-top: 60px;
   }
 }

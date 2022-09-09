@@ -44,18 +44,9 @@ function StoreButton() {
             <Link className="storeBtn" to="/">
               <img
                 src={require('../../img/ServicePage/googleLogo.png')}
-                alt="appleLogo"
+                alt="googleLogo"
               />
               <p>Play Store</p>
-            </Link>
-          </li>
-          <li onClick={onDownload}>
-            <Link id="goWeb" to="/">
-              <p>WEB으로 이용하기</p>
-              <img
-                src={require('../../img/ServicePage/arrow.png')}
-                alt="arrow"
-              />
             </Link>
           </li>
         </>

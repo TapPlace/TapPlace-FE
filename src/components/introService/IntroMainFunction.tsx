@@ -3,12 +3,14 @@ import { useAppSelector } from '../../redux/hooks';
 import PayLogoSlider from './PayLogoSlider';
 
 import '../../style/components/introService/IntroMainFunction.scss';
+import BetaService from '../BetaService';
 
 function IntroMainFunction() {
   const { windowX } = useAppSelector(state => state.event);
 
   return (
     <div id="main2Container">
+      <BetaService />
       <h4 id="main2_lineTop">
         {windowX < 768 ? (
           <>

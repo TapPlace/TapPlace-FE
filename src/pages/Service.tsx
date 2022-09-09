@@ -5,7 +5,6 @@ import Main4 from '../components/Main4';
 
 import { useAppDispatch } from '../redux/hooks';
 import { setResize } from '../redux/slices/eventSlice';
-import Header from '../components/Header';
 import Footer from '../components/introService/Footer';
 import Download from '../components/introService/Download';
 import IntroMember from '../components/introService/IntroMember';
@@ -23,14 +22,11 @@ function Service() {
 
   return (
     <>
-      <Header />
-      <main id="mainContainer">
-        <IntroMainService />
-        <IntroMainFunction />
-        <Main4 />
-        <IntroMember />
-        <Download />
-      </main>
+      <IntroMainService />
+      <IntroMainFunction />
+      <Main4 />
+      <IntroMember />
+      <Download />
       <Footer />
     </>
   );

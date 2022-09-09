@@ -33,6 +33,7 @@
   #logoContainer {
     padding: 64px 0;
     display: flex;
+    justify-content: center;
     align-items: center;
     li {
       float: left;
@@ -80,7 +81,7 @@
 
 @include desktop {
   #logoContainer {
-    padding: 4.8vw 0 9vw 0;
+    padding: 3vw 0 10vw 0;
     display: flex;
     align-items: center;
     li {

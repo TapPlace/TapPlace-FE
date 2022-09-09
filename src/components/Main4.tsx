@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useInput } from '../hooks/useInput';
 import { useAppSelector } from '../redux/hooks';
 
-import '../style/components/Main4.scss';
+import './Main4.scss';
 
 function Main4() {
   const { windowX } = useAppSelector(state => state.event);
