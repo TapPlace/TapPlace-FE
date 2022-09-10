@@ -6,12 +6,14 @@ import '../../style/components/introService/Member.scss';
 
 type MemberType = {
   id?: string;
+  img: string;
   name: string;
   position: string;
   say?: string;
+  sns?: any;
 };
 
-function MemberImg({ id, name, position, say }: MemberType) {
+function MemberImg({ id, img, name, position, say, sns }: MemberType) {
   const { windowX } = useAppSelector(state => state.event);
   const [hover, setHover] = useState(false);
 
@@ -20,15 +22,15 @@ function MemberImg({ id, name, position, say }: MemberType) {
       <div className="memberContainer">
         <img
           id={id}
-          src=""
-          alt=""
+          src={img}
+          alt="memberImg"
           className="memberImg"
           onMouseOver={() => windowX >= 1024 && setHover(true)}
         />
         {hover && (
           <div className="memberHover" onMouseOut={() => setHover(false)}>
             <p>{say}</p>
-            <SNSLogoContainer />
+            <SNSLogoContainer sns={sns} />
           </div>
         )}
         <div className="memberSubContainer">
@@ -37,7 +39,7 @@ function MemberImg({ id, name, position, say }: MemberType) {
           {windowX < 1024 && (
             <>
               <p className="memberSay">{say}</p>
-              <SNSLogoContainer />
+              <SNSLogoContainer sns={sns} />
             </>
           )}
         </div>

@@ -37,9 +37,11 @@ ul {
 
 // 모바일
 @include mobile {
-  .mockupImg {
+  #appScreenMain {
     display: block;
-    width: 250px;
+    width: 320px;
+    // width: 90vw;
+    filter: none;
   }
 }
 

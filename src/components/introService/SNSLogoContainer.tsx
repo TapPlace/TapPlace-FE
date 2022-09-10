@@ -2,7 +2,11 @@ import React from 'react';
 
 import '../../style/components/introService/SNSLogoContainer.scss';
 
-function SNSLogoContainer() {
+function SNSLogoContainer({ sns }: any) {
+  for (const key in sns) {
+    console.log(key);
+    console.log(sns[key]);
+  }
   return (
     <ul className="snsLink">
       <img

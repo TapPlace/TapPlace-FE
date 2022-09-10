@@ -55,7 +55,7 @@ function Header() {
       >
         <ul>
           <li>
-            <Link to="/" className="headerMenu" onClick={onMovePage}>
+            <Link to="/" className="headerMenu active" onClick={onMovePage}>
               서비스 소개
             </Link>
           </li>

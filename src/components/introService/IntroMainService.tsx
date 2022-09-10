@@ -33,12 +33,25 @@ function IntroMainService() {
         </p>
         <StoreButton />
       </article>
-      <img
-        id="appScreenMain"
-        className="mockupImg"
-        src={require('../../img/ServicePage/appScreenMain.png')}
-        alt="mockup_1"
-      />
+      {windowX < 768 ? (
+        <>
+          <>
+            <img
+              id="appScreenMain"
+              className="mockupImg"
+              src={require('../../img/ServicePage/appScreenMainMobile.png')}
+              alt="mainImg"
+            />
+          </>
+        </>
+      ) : (
+        <img
+          id="appScreenMain"
+          className="mockupImg"
+          src={require('../../img/ServicePage/appScreenMain.png')}
+          alt="mainMobileImg"
+        />
+      )}
     </div>
   );
 }

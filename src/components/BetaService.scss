@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    height: 600px;
+    height: 400px; // 시작되면 500으로
     padding-top: 60px;
     #betaText {
       color: white;
@@ -21,33 +21,14 @@
         line-height: 145%;
       }
     }
-    form {
-      input {
-        border: none;
-        width: 140px;
-        height: 40px;
-        padding-left: 10px;
-        border-radius: 12px;
-        &:first-child {
-          margin-right: 14px;
-        }
-      }
-      input[type='email'] {
-        display: block;
-        margin: 0 auto;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        width: 294px;
-      }
-      button {
-        display: block;
-        border: none;
-        color: white;
-        background: black;
-        border-radius: 12px;
-        padding: 10px 60px;
-        margin: 0 auto;
-      }
+    button {
+      display: block;
+      border: none;
+      color: white;
+      background: black;
+      border-radius: 12px;
+      padding: 10px 60px;
+      margin: 0 auto;
     }
     img {
       width: 221px;
@@ -62,7 +43,7 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    height: 600px;
+    height: 500px;
     padding-top: 40px;
     #betaText {
       color: white;
@@ -78,32 +59,14 @@
         line-height: 145%;
       }
     }
-    form {
-      input {
-        border: none;
-        width: 130px;
-        height: 40px;
-        padding-left: 10px;
-        border-radius: 12px;
-        &:nth-child(2) {
-          margin: 0 14px;
-        }
-      }
-      input[type='email'] {
-        margin: 0 auto;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        width: 234px;
-      }
-      button {
-        display: block;
-        border: none;
-        color: white;
-        background: black;
-        border-radius: 12px;
-        padding: 10px 60px;
-        margin: 0 auto;
-      }
+    button {
+      display: block;
+      border: none;
+      color: white;
+      background: black;
+      border-radius: 12px;
+      padding: 10px 60px;
+      margin: 0 auto;
     }
     img {
       width: 350px;
@@ -135,38 +98,15 @@
         line-height: 145%;
       }
     }
-    form {
-      float: left;
-      input {
-        border: none;
-        width: 7.8vw;
-        // padding: 12px 0;
-        padding: 0.6vw 0;
-        padding-left: 10px;
-        border-radius: 12px;
-        font-size: 0.9vw;
-        &:nth-child(2) {
-          margin: 0 14px;
-        }
-        &::placeholder {
-        }
-      }
-      input[type='email'] {
-        width: 12vw;
-        margin: 0 auto;
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
-      button {
-        padding: 0.6vw 0;
-        font-size: 0.9vw;
-        border: none;
-        color: white;
-        background: black;
-        border-radius: 12px;
-        width: 8.4vw;
-        margin-left: 10px;
-      }
+    button {
+      padding: 0.6vw 0;
+      font-size: 0.9vw;
+      border: none;
+      color: white;
+      background: black;
+      border-radius: 12px;
+      width: 8.4vw;
+      margin-left: 10px;
     }
     img {
       width: 20vw;
