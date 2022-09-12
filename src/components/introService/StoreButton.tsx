@@ -18,13 +18,18 @@ function StoreButton() {
     <ul id="logoContainer">
       {windowX < 768 ? (
         <>
-          <li onClick={onDownload}>
-            <Link to="/" className="mobileStoreBtn">
+          <li>
+            <Link to="/" className="mobileStoreBtn" onClick={onDownload}>
               <FontAwesomeIcon icon={faDownload} />앱 다운로드
             </Link>
           </li>
           <li>
-            <Link to="/" id="mobileBtnSecond" className="mobileStoreBtn">
+            <Link
+              to="/"
+              id="mobileBtnSecond"
+              className="mobileStoreBtn"
+              onClick={onDownload}
+            >
               웹으로 이용하기
             </Link>
           </li>

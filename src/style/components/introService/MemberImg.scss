@@ -74,6 +74,9 @@
     &:first-child {
       margin-left: 20vw;
     }
+    &:last-child {
+      margin-right: 20vw;
+    }
   }
   .memberImg {
     width: 19vw;

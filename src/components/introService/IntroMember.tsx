@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setMemberScrollX } from '../../redux/slices/eventSlice';
 
@@ -7,8 +7,47 @@ import MemberImg from './MemberImg';
 import '../../style/components/introService/IntroMember.scss';
 
 function IntroMember() {
+  console.log(window.navigator.userAgent);
   const { windowX, memberScroll } = useAppSelector(state => state.event);
   const dispatch = useAppDispatch();
+
+  // 마우스로 x축 스크롤 구현
+  const scrollRef: any = useRef(null);
+  const [isDrag, setIsDrag]: any = useState(false);
+  const [startX, setStartX]: any = useState();
+  function onDragStart(e: any) {
+    e.preventDefault();
+    setIsDrag(true);
+    setStartX(e.pageX + scrollRef.current.scrollLeft);
+  }
+  function onDragEnd() {
+    setIsDrag(false);
+  }
+  function onDragMove(e: any) {
+    if (isDrag) {
+      const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
+      scrollRef.current.scrollLeft = startX - e.pageX;
+      if (scrollLeft === 0) {
+        setStartX(e.pageX);
+      } else if (scrollWidth <= clientWidth + scrollLeft) {
+        setStartX(e.pageX + scrollLeft);
+      }
+    }
+  }
+  const throttle = (func: any, ms: any) => {
+    let throttled = false;
+    return (...args: any) => {
+      if (!throttled) {
+        throttled = true;
+        setTimeout(() => {
+          func(...args);
+          throttled = false;
+        }, ms);
+      }
+    };
+  };
+  const delay = 0;
+  const onThrottleDragMove = throttle(onDragMove, delay);
 
   // 멤버 x축 스크롤 몇 퍼센트 스크롤
   function onScrollX() {
@@ -62,9 +101,17 @@ function IntroMember() {
           </>
         ) : (
           <>탭플레이스 멤버들을 소개합니다</>
-        )}{' '}
+        )}
       </h1>
-      <div id="memberSlider" onScroll={onScrollX}>
+      <div
+        id="memberSlider"
+        onScroll={onScrollX}
+        onMouseDown={onDragStart}
+        onMouseMove={onThrottleDragMove}
+        onMouseUp={onDragEnd}
+        onMouseLeave={onDragEnd}
+        ref={scrollRef}
+      >
         <MemberImg
           name="박상현"
           img={require('../../img/ServicePage/Memoji/IOS1.png')}
