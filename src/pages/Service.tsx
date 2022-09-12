@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 
 import '../style/pages/Service.scss';
-import Main4 from '../components/Main4';
 
 import { useAppDispatch } from '../redux/hooks';
 import { setResize } from '../redux/slices/eventSlice';
@@ -24,7 +23,6 @@ function Service() {
     <>
       <IntroMainService />
       <IntroMainFunction />
-      <Main4 />
       <IntroMember />
       <Download />
       <Footer />

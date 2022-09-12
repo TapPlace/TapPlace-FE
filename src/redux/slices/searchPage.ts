@@ -30,7 +30,7 @@ export const showPage = createSlice({
   },
 });
 
-export const {} = showPage.actions;
+// export const {} = showPage.actions;
 // export const { increment, decrement, incrementByAmount } = showPage.actions;
 
 export default showPage.reducer;

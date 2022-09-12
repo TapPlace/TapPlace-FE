@@ -11,7 +11,7 @@ function StoreButton() {
 
   // 현재 다운로드가 안되서 알람 띄우기
   function onDownload() {
-    alert('현재는 가맹점 등록만 가능합니다');
+    alert('서비스 준비중 입니다');
   }
 
   return (

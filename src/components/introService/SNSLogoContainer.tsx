@@ -2,13 +2,24 @@ import React from 'react';
 
 import '../../style/components/introService/SNSLogoContainer.scss';
 
-function SNSLogoContainer({ sns }: any) {
-  for (const key in sns) {
-    console.log(key);
-    console.log(sns[key]);
-  }
+function SNSLogoContainer({ snsLink }: any) {
+  // console.log(snsLink);
+  // for (const key in snsLink) {
+  //   console.log(key);
+  //   console.log(snsLink[key]);
+  //   switch (key) {
+  //     case 'sns':
+  //     case 'mail':
+  //     case 'instargram':
+  //     case 'facebook':
+  //     case 'twitter':
+  //   }
+  // }
+  // console.log(snsLink.mail);
+
   return (
     <ul className="snsLink">
+      {/* {code && <div dangerouslySetInnerHTML={{ __html: code }}></div>} */}
       <img
         src={require('../../img/ServicePage/SNSLogo/sns.png')}
         alt="snsLogo"

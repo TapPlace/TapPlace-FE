@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -20,7 +20,7 @@ function Header() {
   }
 
   function onAlert() {
-    alert('개발중인 페이지입니다.');
+    alert('서비스 준비중입니다.');
   }
 
   return (

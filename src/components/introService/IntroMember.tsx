@@ -74,7 +74,7 @@ function IntroMember() {
         />
         <MemberImg
           name="이상준"
-          img={require('../../img/ServicePage/Memoji/IOS2.jpg')}
+          img={require('../../img/ServicePage/Memoji/IOS2.png')}
           position="IOS Developer"
           say='"안녕하세요 앱 개발 이상준입니다"'
         />

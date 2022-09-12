@@ -17,6 +17,8 @@ function MemberImg({ id, img, name, position, say, sns }: MemberType) {
   const { windowX } = useAppSelector(state => state.event);
   const [hover, setHover] = useState(false);
 
+  // console.log(sns);
+
   return (
     <>
       <div className="memberContainer">
@@ -30,7 +32,7 @@ function MemberImg({ id, img, name, position, say, sns }: MemberType) {
         {hover && (
           <div className="memberHover" onMouseOut={() => setHover(false)}>
             <p>{say}</p>
-            <SNSLogoContainer sns={sns} />
+            {/* <SNSLogoContainer snsLink={sns} /> */}
           </div>
         )}
         <div className="memberSubContainer">
@@ -39,7 +41,7 @@ function MemberImg({ id, img, name, position, say, sns }: MemberType) {
           {windowX < 1024 && (
             <>
               <p className="memberSay">{say}</p>
-              <SNSLogoContainer sns={sns} />
+              {/* <SNSLogoContainer snsLink={sns} /> */}
             </>
           )}
         </div>
