@@ -7,7 +7,7 @@ import MemberImg from './MemberImg';
 import '../../style/components/introService/IntroMember.scss';
 
 function IntroMember() {
-  console.log(window.navigator.userAgent);
+  // console.log(window.navigator.userAgent);
   const { windowX, memberScroll } = useAppSelector(state => state.event);
   const dispatch = useAppDispatch();
 
