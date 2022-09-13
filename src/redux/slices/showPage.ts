@@ -1,36 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface ShowPageState {
-  value: string | undefined;
+  page: string | undefined;
 }
 
 const initialState: ShowPageState = {
-  value: 'home',
+  page: document.location.pathname.substring(1),
 };
 
 export const showPage = createSlice({
   name: 'page',
   initialState,
   reducers: {
-    initalPage: state => {
-      state.value = 'home';
+    initialPage: state => {
+      state.page = '';
     },
-    searchStorePage: state => {
-      state.value = 'searchStorePage';
+    noticePage: state => {
+      state.page = 'notice';
     },
-    prevPage: state => {
-      state.value = 'prevPage';
+    faqPage: state => {
+      state.page = 'faq';
     },
-    detailPage: state => {
-      state.value = 'detailPage';
-    },
-    myPage: state => {
-      state.value = 'myPage';
+    playAppPage: state => {
+      state.page = 'playapp';
     },
   },
 });
 
-export const { searchStorePage, prevPage, detailPage } = showPage.actions;
-// export const { increment, decrement, incrementByAmount } = showPage.actions;
+export const { initialPage, noticePage, faqPage, playAppPage } =
+  showPage.actions;
 
 export default showPage;

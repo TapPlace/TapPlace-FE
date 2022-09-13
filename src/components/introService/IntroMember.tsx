@@ -20,9 +20,6 @@ function IntroMember() {
     setIsDrag(true);
     setStartX(e.pageX + scrollRef.current.scrollLeft);
   }
-  function onDragEnd() {
-    setIsDrag(false);
-  }
   function onDragMove(e: any) {
     if (isDrag) {
       const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
@@ -33,6 +30,9 @@ function IntroMember() {
         setStartX(e.pageX + scrollLeft);
       }
     }
+  }
+  function onDragEnd() {
+    setIsDrag(false);
   }
   const throttle = (func: any, ms: any) => {
     let throttled = false;
@@ -46,7 +46,7 @@ function IntroMember() {
       }
     };
   };
-  const delay = 0;
+  const delay = 10;
   const onThrottleDragMove = throttle(onDragMove, delay);
 
   // 멤버 x축 스크롤 몇 퍼센트 스크롤
@@ -107,7 +107,7 @@ function IntroMember() {
         id="memberSlider"
         onScroll={onScrollX}
         onMouseDown={onDragStart}
-        onMouseMove={onThrottleDragMove}
+        onMouseMove={isDrag && onThrottleDragMove}
         onMouseUp={onDragEnd}
         onMouseLeave={onDragEnd}
         ref={scrollRef}
@@ -116,44 +116,44 @@ function IntroMember() {
           name="박상현"
           img={require('../../img/ServicePage/Memoji/IOS1.png')}
           position="IOS Developer"
-          say='"안녕하세요 아이폰 개발 파트 박상현입니다"'
+          say="안녕하세요 아이폰 개발 박상현입니다"
           sns={{ mail: 'ios.humhae@gmail.com', instargram: '@pshyeonni' }}
         />
         <MemberImg
           name="이상준"
           img={require('../../img/ServicePage/Memoji/IOS2.png')}
           position="IOS Developer"
-          say='"안녕하세요 앱 개발 이상준입니다"'
+          say="안녕하세요 앱 개발 이상준입니다"
         />
         <MemberImg
           name="지경희"
           img={require('../../img/ServicePage/Memoji/Android1.png')}
           position="Android Developer"
-          say='"안녕하세요 앱 개발 지경희입니다"'
+          say="안녕하세요 앱 개발 지경희입니다"
         />
         <MemberImg
           name="김진욱"
           img={require('../../img/ServicePage/Memoji/Android2.png')}
           position="Android Developer"
-          say='"안녕하세요 앱 개발 김진욱입니다"'
+          say="안녕하세요 앱 개발 김진욱입니다"
         />
         <MemberImg
           name="김지훈"
           img={require('../../img/ServicePage/Memoji/Back.png')}
           position="BackEnd Developer"
-          say='"안녕하세요 웹 백엔드 김지훈입니다"'
+          say="안녕하세요 백엔드 김지훈입니다"
         />
         <MemberImg
           name="임준혁"
           img={require('../../img/ServicePage/Memoji/FrontWeb.png')}
           position="FrontEnd Developer"
-          say='"안녕하세요 웹 프론트엔드 임준혁입니다"'
+          say="안녕하세요 프론트엔드 임준혁입니다"
         />
         <MemberImg
           name="고은혜"
           img={require('../../img/ServicePage/Memoji/Design.png')}
           position="UIUX Designer"
-          say='"안녕하세요 UI/UX 고은혜 입니다"'
+          say="안녕하세요 UI/UX 고은혜 입니다"
         />
       </div>
       <div id="memberProgressContainer">

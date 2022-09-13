@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<Service />} />
           {/* <Route path="/notice" element={<Notice />} /> */}
           {/* <Route path="/faq" element={<Faq />} /> */}
-          {/* <Route path="/tapplaceapp" element={<AppMain />} /> */}
+          <Route path="/playapp" element={<AppMain />} />
         </Routes>
       </main>
     </>

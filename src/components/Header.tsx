@@ -4,35 +4,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import '../style/components/Header.scss';
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { initialPage, playAppPage } from '../redux/slices/showPage';
 
 function Header() {
+  const { page } = useAppSelector(state => state.page);
+  const dispatch = useAppDispatch();
+
   // Nav 숨기기
   const [navToggle, setNavToggle] = useState('noshow');
   function navNoShow() {
     setNavToggle('noshow');
   }
-  // 해당 헤더 메뉴 URL 이동 시 글자 색상 바뀌기
-  function onMovePage(e: any) {
-    document.querySelectorAll('.headerMenu').forEach(item => {
-      item.className = 'headerMenu';
-    });
-    e.target.className = 'headerMenu active';
-  }
 
   function onAlert() {
     alert('서비스 준비중입니다.');
   }
+  console.log(page);
 
   return (
     <header id="serviceHeader">
-      <h1 id="title">
-        <img
-          className="titleImg"
-          src={require('../img/ServicePage/tap.png')}
-          alt="TapPlace"
-        />
-        Tap Place
-      </h1>
+      <img
+        id="mainLogo"
+        src={require('../img/tapplaceLogo.png')}
+        alt="tapplaceLogo"
+      />
       {navToggle === 'noshow' && (
         <FontAwesomeIcon
           className="navToggleBtn"
@@ -55,7 +51,13 @@ function Header() {
       >
         <ul>
           <li>
-            <Link to="/" className="headerMenu active" onClick={onMovePage}>
+            <Link
+              to="/"
+              className={page === '' ? 'headerMenu active' : 'headerMenu'}
+              onClick={() => {
+                dispatch(initialPage());
+              }}
+            >
               서비스 소개
             </Link>
           </li>
@@ -70,7 +72,15 @@ function Header() {
             </Link>
           </li>
           <li>
-            <Link to="/" className="headerMenu" onClick={onAlert}>
+            <Link
+              to="/playapp"
+              className={
+                page === 'playapp' ? 'headerMenu active' : 'headerMenu'
+              }
+              onClick={() => {
+                dispatch(playAppPage());
+              }}
+            >
               웹으로 이용하기
             </Link>
           </li>

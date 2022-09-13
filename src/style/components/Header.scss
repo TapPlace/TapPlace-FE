@@ -14,12 +14,9 @@
   #serviceHeader {
     @include serviceHeader;
     flex-wrap: wrap;
-    #title {
-      color: $mainColor;
-      font-size: 20px;
-      padding-left: 5vw;
-      line-height: 60px;
-      white-space: nowrap;
+    #mainLogo {
+      height: 16px;
+      margin: 24px 0 0 5vw;
     }
     .navToggleBtn {
       color: #b8bdcc;
@@ -60,10 +57,9 @@
     @include serviceHeader;
     align-items: center;
     padding: 0 5vw;
-    #title {
-      color: $mainColor;
-      font-size: 20px;
-      white-space: nowrap;
+    #mainLogo {
+      height: 20px;
+      margin-top: 12px;
     }
     .navToggleBtn {
       display: none;
@@ -106,10 +102,9 @@
     @include serviceHeader;
     align-items: center;
     padding: 0 20vw;
-    #title {
-      color: #4e77fb;
-      font-size: 20px;
-      white-space: nowrap;
+    #mainLogo {
+      height: 20px;
+      margin-top: 12px;
     }
     .navToggleBtn {
       display: none;
