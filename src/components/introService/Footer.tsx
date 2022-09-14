@@ -1,10 +1,15 @@
 import React from 'react';
-import { useAppSelector } from '../../redux/hooks';
+import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { consentPage, policyPage } from '../../redux/slices/showPage';
 
 import '../../style/components/introService/Footer.scss';
 
 function Footer() {
   const { windowX } = useAppSelector(state => state.event);
+  const { page } = useAppSelector(state => state.page);
+  const dispatch = useAppDispatch();
+
   return (
     <footer id="footer">
       <div id="footerContainer">
@@ -18,8 +23,26 @@ function Footer() {
             Tap Place
           </h4>
           <ul id="footerList">
-            {/* <li className="footerItem">서비스 이용약관</li>
-              <li className="footerItem">개인정보처리방침</li> */}
+            <li className="footerItem">
+              <Link
+                to="/consent"
+                onClick={() => {
+                  dispatch(consentPage());
+                }}
+              >
+                서비스 이용약관
+              </Link>
+            </li>
+            <li className="footerItem">
+              <Link
+                to="/policy"
+                onClick={() => {
+                  dispatch(policyPage());
+                }}
+              >
+                개인정보처리방침
+              </Link>
+            </li>
             <li className="footerItem">E-mail : help@tapplace.co.kr</li>
           </ul>
         </div>

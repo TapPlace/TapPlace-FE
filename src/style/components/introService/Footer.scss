@@ -99,21 +99,26 @@
           float: left;
         }
         #footerList {
+          display: flex;
           float: right;
           font-size: 0.78vw;
           .footerItem {
-            display: inline;
             border-right: 1px solid rbga(120, 123, 134, 0.5);
-            padding: 0 7.5px;
+            margin-right: 15px;
+            a {
+              color: #9fa1a9;
+            }
             &:last-child {
               border: none;
             }
             &:not(:last-child) {
               &:after {
+                display: inline-block;
                 content: '';
-                height: 100%;
-                border-right: 1px solid #9fa1a9;
-                padding: 0 7.5px;
+                background: #9fa1a9;
+                width: 0.1px;
+                height: 12px;
+                margin-left: 15px;
               }
             }
           }

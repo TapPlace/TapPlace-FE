@@ -24,10 +24,22 @@ export const showPage = createSlice({
     playAppPage: state => {
       state.page = 'playapp';
     },
+    consentPage: state => {
+      state.page = 'consent';
+    },
+    policyPage: state => {
+      state.page = 'policy';
+    },
   },
 });
 
-export const { initialPage, noticePage, faqPage, playAppPage } =
-  showPage.actions;
+export const {
+  initialPage,
+  noticePage,
+  faqPage,
+  playAppPage,
+  consentPage,
+  policyPage,
+} = showPage.actions;
 
 export default showPage;

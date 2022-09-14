@@ -283,7 +283,7 @@
     .functionContainer {
       display: flex;
       justify-content: space-between;
-      padding: 100px 20vw;
+      padding: 100px 24vw;
       .appScreenImg {
         width: 20vw;
       }
@@ -381,6 +381,9 @@
           width: 60%;
         }
       }
+    }
+    #storeRegistration {
+      padding: 100px 20vw;
     }
     #paymentFeedback {
       background: linear-gradient(

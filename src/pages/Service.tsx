@@ -25,7 +25,6 @@ function Service() {
       <IntroMainFunction />
       <IntroMember />
       <Download />
-      <Footer />
     </>
   );
 }

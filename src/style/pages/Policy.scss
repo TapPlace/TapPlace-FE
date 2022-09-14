@@ -1,0 +1,65 @@
+@import '../utils';
+
+#policyContainer {
+  padding: 0 18.75vw;
+  #policyTitle {
+    font-size: 28px;
+    font-weight: 400;
+    padding: 16px 0;
+  }
+  hr {
+    margin-bottom: 32px;
+    border: 1px solid #e6e6e6;
+  }
+  .clauseTitle {
+    font-size: 22px;
+    font-weight: 400;
+    table {
+      border-spacing: 0;
+      width: 100%;
+      margin: 32px 0;
+      table-layout: fixed;
+      td,
+      th {
+        border: 1px solid #e6e6e6;
+        font-size: 16px;
+        font-weight: 400;
+        color: $subTextColor;
+        text-align: center;
+        padding: 12px 20px;
+      }
+      th {
+        border-bottom: none;
+        color: black;
+        background: #f7f7f7;
+      }
+    }
+  }
+  p {
+    font-size: 15px;
+    line-height: 24.8px;
+    font-weight: 400;
+    color: $subTextColor;
+    &:first-child {
+      padding-top: 8px;
+    }
+    &:last-child {
+      padding-bottom: 56px;
+    }
+  }
+  .tab {
+    padding: 16px 0 24px 28px;
+    .tabFontBlack {
+      color: black;
+    }
+  }
+  ul {
+    padding: 10px 0 10px 30px;
+    li {
+      list-style: disc;
+      &::before {
+        font-size: 10px;
+      }
+    }
+  }
+}

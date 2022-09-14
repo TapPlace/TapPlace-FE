@@ -7,8 +7,13 @@ import Notice from './pages/Notice';
 import AppMain from './pages/AppMain';
 import Faq from './pages/Faq';
 import Header from './components/Header';
+import Consent from './pages/Consent';
+import Policy from './pages/Policy';
+import Footer from './components/introService/Footer';
+import { useAppSelector } from './redux/hooks';
 
 function App() {
+  const { page } = useAppSelector(state => state.page);
   return (
     <>
       <Header />
@@ -18,8 +23,11 @@ function App() {
           {/* <Route path="/notice" element={<Notice />} /> */}
           {/* <Route path="/faq" element={<Faq />} /> */}
           <Route path="/playapp" element={<AppMain />} />
+          <Route path="/consent" element={<Consent />} />
+          <Route path="/policy" element={<Policy />} />
         </Routes>
       </main>
+      {page !== 'playapp' && <Footer />}
     </>
   );
 }

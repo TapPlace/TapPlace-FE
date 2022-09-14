@@ -1,0 +1,33 @@
+@import '../utils';
+
+#consentContainer {
+  padding: 0 18.75vw;
+  #consentTitle {
+    font-size: 28px;
+    font-weight: 400;
+    padding: 16px 0;
+  }
+  hr {
+    margin-bottom: 32px;
+    border: 1px solid #e6e6e6;
+  }
+  .clauseTitle {
+    font-size: 22px;
+    font-weight: 400;
+    p {
+      font-size: 15px;
+      line-height: 24.8px;
+      font-weight: 400;
+      color: $subTextColor;
+      &:first-child {
+        padding-top: 8px;
+      }
+      &:last-child {
+        padding-bottom: 56px;
+      }
+      .tap {
+        padding: 16px 0 24px 28px;
+      }
+    }
+  }
+}

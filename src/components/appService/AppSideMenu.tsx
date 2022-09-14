@@ -26,14 +26,7 @@ function AppSideMenu() {
           />
         )}
       </ul>
-      <div id="aroundMyLocation">
-        강서구 등촌3동 주변 1km
-        <img
-          id="vButtonLocation"
-          src={require('../../img/AppPage/Vbutton.png')}
-          alt="vButton"
-        />
-      </div>
+      <div id="aroundMyLocation">강서구 등촌3동 주변 1km</div>
       <ul id="filterContainer">
         <li className="filter">
           <div>
@@ -81,6 +74,10 @@ function AppSideMenu() {
         </li>
       </ul>
       <section id="storeContainer">
+        <StoreArticle />
+        <StoreArticle />
+        <StoreArticle />
+        <StoreArticle />
         <StoreArticle />
       </section>
     </div>
