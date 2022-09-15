@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { consentPage, policyPage } from '../../redux/slices/showPage';
+import {
+  consentPage,
+  initialPage,
+  policyPage,
+} from '../../redux/slices/showPage';
 
 import '../../style/components/introService/Footer.scss';
 
@@ -14,14 +18,27 @@ function Footer() {
     <footer id="footer">
       <div id="footerContainer">
         <div id="footer_line1">
-          <h4 id="footerTitle">
+          {/* <h4 id="footerTitle">
             <img
               className="titleImg"
               src={require('../../img/ServicePage/tap2.png')}
               alt="tapplace"
             />
             Tap Place
-          </h4>
+          </h4> */}
+          <Link
+            to="/"
+            onClick={() => {
+              dispatch(initialPage());
+            }}
+          >
+            <img
+              id="footerLogo"
+              src={require('../../img/tapplaceLogo2.png')}
+              alt=""
+            />
+          </Link>
+
           <ul id="footerList">
             <li className="footerItem">
               <Link

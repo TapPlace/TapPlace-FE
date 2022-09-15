@@ -11,9 +11,8 @@
       color: white;
       opacity: 0.5;
       #footer_line1 {
-        #footerTitle {
-          font-weight: 400;
-          font-size: 20px;
+        #footerLogo {
+          width: 100px;
         }
         #footerList {
           .footerItem {
@@ -50,9 +49,8 @@
       #footer_line1 {
         display: flex;
         justify-content: space-between;
-        #footerTitle {
-          font-weight: 400;
-          font-size: 2vw;
+        #footerLogo {
+          width: 100px;
         }
         #footerList {
           display: flex;
@@ -101,8 +99,8 @@
       color: #9fa1a9;
       #footer_line1 {
         font-size: 0.84vw;
-        #footertitle {
-          float: left;
+        #footerLogo {
+          width: 5.2vw;
         }
         #footerList {
           display: flex;

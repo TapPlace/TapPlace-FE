@@ -73,6 +73,15 @@ function Header() {
           </li>
           <li>
             <Link
+              to="/"
+              className={
+                page === 'playapp' ? 'headerMenu active' : 'headerMenu'
+              }
+              onClick={onAlert}
+            >
+              웹으로 이용하기
+            </Link>
+            {/* <Link
               to="/playapp"
               className={
                 page === 'playapp' ? 'headerMenu active' : 'headerMenu'
@@ -82,7 +91,7 @@ function Header() {
               }}
             >
               웹으로 이용하기
-            </Link>
+            </Link> */}
           </li>
         </ul>
       </nav>
