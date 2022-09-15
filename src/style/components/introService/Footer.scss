@@ -18,6 +18,9 @@
         #footerList {
           .footerItem {
             padding: 2px 0;
+            a {
+              color: white;
+            }
             &:first-child {
               padding-top: 24px;
             }
@@ -55,6 +58,9 @@
           display: flex;
           .footerItem {
             padding-right: 10px;
+            a {
+              color: white;
+            }
             &:last-child {
               border: none;
             }

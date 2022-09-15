@@ -17,8 +17,6 @@ function MemberImg({ id, img, name, position, say, sns }: MemberType) {
   const { windowX } = useAppSelector(state => state.event);
   const [hover, setHover] = useState(false);
 
-  // console.log(sns);
-
   return (
     <>
       <div className="memberContainer">

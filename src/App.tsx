@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import './App.scss';
@@ -14,9 +14,13 @@ import { useAppSelector } from './redux/hooks';
 
 function App() {
   const { page } = useAppSelector(state => state.page);
+  // 탭플레이스 앱에서 들어갈 시 헤더와 푸터를 없앰
+  const userAgent = window.navigator.userAgent.includes('TAPPLACE_APP');
+
   return (
     <>
-      <Header />
+      {userAgent ? <></> : <Header />}
+      {/* <Header /> */}
       <main id="mainContainer">
         <Routes>
           <Route path="/" element={<Service />} />
@@ -27,7 +31,7 @@ function App() {
           <Route path="/policy" element={<Policy />} />
         </Routes>
       </main>
-      {page !== 'playapp' && <Footer />}
+      {page !== 'playapp' && !userAgent && <Footer />}
     </>
   );
 }

@@ -34,6 +34,22 @@
         background: #f7f7f7;
       }
     }
+    .tableName {
+      font-size: 18px;
+      font-weight: 400;
+      padding-top: 24px;
+      color: black;
+    }
+    .tableLongitudinal {
+      border-bottom: 1px solid #e6e6e6;
+      margin: 16px 0 24px 0;
+      th {
+        border-right: none;
+      }
+      td {
+        border-bottom: none;
+      }
+    }
   }
   p {
     font-size: 15px;
@@ -44,13 +60,17 @@
       padding-top: 8px;
     }
     &:last-child {
-      padding-bottom: 56px;
+      padding-bottom: 40px;
     }
   }
   .tab {
-    padding: 16px 0 24px 28px;
+    padding: 16px 0 0 28px;
+    p {
+      padding-bottom: 16px;
+    }
     .tabFontBlack {
       color: black;
+      padding-bottom: 4px;
     }
   }
   ul {
