@@ -7,13 +7,13 @@
 }
 
 @include tablet {
-  #policyConatiner {
+  #policyContainer {
     padding: 0 5vw;
   }
 }
 
 @include desktop {
-  #policyConatiner {
+  #policyContainer {
     padding: 0 18.75vw;
   }
 }

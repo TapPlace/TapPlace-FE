@@ -1,5 +1,23 @@
 @import '../utils';
 
+@include mobile {
+  #consentConatiner {
+    padding: 0 5vw;
+  }
+}
+
+@include tablet {
+  #consentConatiner {
+    padding: 0 5vw;
+  }
+}
+
+@include desktop {
+  #consentConatiner {
+    padding: 0 18.75vw;
+  }
+}
+
 #consentContainer {
   padding: 0 18.75vw;
   #consentTitle {
