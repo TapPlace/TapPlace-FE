@@ -1,7 +1,23 @@
 @import '../utils';
 
+@include mobile {
+  #policyContainer {
+    padding: 0 5vw;
+  }
+}
+
+@include tablet {
+  #policyConatiner {
+    padding: 0 5vw;
+  }
+}
+
+@include desktop {
+  #policyConatiner {
+    padding: 0 18.75vw;
+  }
+}
 #policyContainer {
-  padding: 0 18.75vw;
   #policyTitle {
     font-size: 28px;
     font-weight: 400;
