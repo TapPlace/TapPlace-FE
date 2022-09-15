@@ -1,25 +1,24 @@
 @import '../utils';
 
 @include mobile {
-  #consentConatiner {
+  #consentContainer {
     padding: 0 5vw;
   }
 }
 
 @include tablet {
-  #consentConatiner {
+  #consentContainer {
     padding: 0 5vw;
   }
 }
 
 @include desktop {
-  #consentConatiner {
+  #consentContainer {
     padding: 0 18.75vw;
   }
 }
 
 #consentContainer {
-  padding: 0 18.75vw;
   #consentTitle {
     font-size: 28px;
     font-weight: 400;
