@@ -23,7 +23,12 @@ function Header() {
   console.log(page);
 
   return (
-    <header id="serviceHeader">
+    <header
+      id="serviceHeader"
+      onClick={() => {
+        window.location.href = '/';
+      }}
+    >
       <img
         id="mainLogo"
         src={require('../img/tapplaceLogo.png')}
