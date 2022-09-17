@@ -35,7 +35,13 @@ function BetaService() {
           </>
         )}
       </div>
-      {/* <button>신청하기</button> */}
+      <button
+        onClick={() => {
+          window.open('https://testflight.apple.com/join/zEO2JUai');
+        }}
+      >
+        신청하기
+      </button>
       <img src={require('../img/betaImg.png')} alt="betaImg" />
     </div>
   );

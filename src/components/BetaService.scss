@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    height: 400px; // 시작되면 500으로
+    height: 500px; // 시작되면 500으로
     padding-top: 60px;
     #betaText {
       color: white;
@@ -27,7 +27,7 @@
       color: white;
       background: black;
       border-radius: 12px;
-      padding: 10px 60px;
+      padding: 10px 50px;
       margin: 0 auto;
     }
     img {
@@ -43,7 +43,7 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    height: 500px;
+    height: 600px;
     padding-top: 40px;
     #betaText {
       color: white;
@@ -104,9 +104,8 @@
       border: none;
       color: white;
       background: black;
-      border-radius: 12px;
+      border-radius: 0.8vw;
       width: 8.4vw;
-      margin-left: 10px;
     }
     img {
       width: 20vw;
