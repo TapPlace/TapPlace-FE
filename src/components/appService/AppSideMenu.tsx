@@ -79,6 +79,8 @@ function AppSideMenu() {
         <StoreArticle />
         <StoreArticle />
         <StoreArticle />
+        <StoreArticle />
+        <StoreArticle />
       </section>
     </div>
   );

@@ -4,7 +4,6 @@ import '../style/pages/Service.scss';
 
 import { useAppDispatch } from '../redux/hooks';
 import { setResize } from '../redux/slices/eventSlice';
-import Footer from '../components/introService/Footer';
 import Download from '../components/introService/Download';
 import IntroMember from '../components/introService/IntroMember';
 import IntroMainService from '../components/introService/IntroMainService';

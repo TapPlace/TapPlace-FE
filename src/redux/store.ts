@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { eventSlice } from './slices/eventSlice';
+import naverMap from './slices/naverMap';
 import showPage from './slices/showPage';
-// import counterReducer from '../features/counter/counterSlice'
 
 const rootReducer = combineReducers({
   page: showPage.reducer,
+  naver: naverMap.reducer,
   event: eventSlice.reducer,
 });
 
