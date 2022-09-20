@@ -9,8 +9,10 @@ export interface NaverMapState {
 
 const initialState: NaverMapState = {
   myLocation: {
-    latitude: 37.3595804,
-    longitude: 127.105399,
+    latitude: undefined,
+    longitude: undefined,
+    // latitude: 37.3595804,
+    // longitude: 127.105399,
   },
 };
 
@@ -20,7 +22,7 @@ export const naverMap = createSlice({
   reducers: {
     setMyLocation(
       state,
-      action: PayloadAction<{ latitude: number; longitude: number }>,
+      action: PayloadAction<{ latitude: any; longitude: any }>,
     ) {
       state.myLocation.latitude = action.payload.latitude;
       state.myLocation.longitude = action.payload.longitude;
