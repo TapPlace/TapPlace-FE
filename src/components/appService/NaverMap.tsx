@@ -102,6 +102,8 @@ function NaverMap() {
 
       // 반경 내에 가맹점 마커 표시
       for (let i = 0; i < markers.length; i++) {
+        console.log(markers[i]);
+        console.log(markers[i].y, markers[i].x);
         if (markers[i].category_group_name === '음식점') {
           const otherMarkers = new naver.maps.Marker({
             position: new naver.maps.LatLng(markers[i].y, markers[i].x),
@@ -109,8 +111,26 @@ function NaverMap() {
             icon: {
               content:
                 '<div style="text-align: center;"><img src="/img/AppPage/Marker/restaurant.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">음식점</p></div>',
+              anchor: new naver.maps.Point(18, 30),
             },
           });
+          const markerContent = [
+            '<div className="markerContent">',
+            ` <h4>${markers[i].place_name}</h3>`,
+            ` <p>${markers[i].category_group_name}</p>`,
+            '</div>',
+          ].join('');
+          const infoWindow = new naver.maps.InfoWindow({
+            content: markerContent,
+          });
+          naver.maps.Event.addListener(otherMarkers, 'click', function (e) {
+            if (infoWindow.getMap()) {
+              infoWindow.close();
+            } else {
+              infoWindow.open(map, otherMarkers);
+            }
+          });
+          // infoWindow.open(map, otherMarkers);
         }
         if (markers[i].category_group_name === '편의점') {
           const otherMarkers = new naver.maps.Marker({
@@ -119,7 +139,24 @@ function NaverMap() {
             icon: {
               content:
                 '<div style="text-align: center;"><img src="/img/AppPage/Marker/store.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">편의점</p></div>',
+              // anchor: new naver.maps.Point(32, 30),
             },
+          });
+          const markerContent = [
+            '<div className="markerContent">',
+            ` <h4>${markers[i].place_name}</h3>`,
+            ` <p>${markers[i].category_group_name}</p>`,
+            '</div>',
+          ].join('');
+          const infoWindow = new naver.maps.InfoWindow({
+            content: markerContent,
+          });
+          naver.maps.Event.addListener(otherMarkers, 'click', function (e) {
+            if (infoWindow.getMap()) {
+              infoWindow.close();
+            } else {
+              infoWindow.open(map, otherMarkers);
+            }
           });
         }
         if (markers[i].category_group_name === '카페') {
@@ -165,6 +202,11 @@ function NaverMap() {
       }
 
       // 마커 클릭 이벤트
+      // const infoWindow = new naver.maps.InfoWindow({
+      //   content: markerContent
+      // })
+
+      // 마커 클릭 이벤트 설정
       for (let i = 0; i < markers.length; i++) {
         // naver.maps.Event.addListener()
       }
