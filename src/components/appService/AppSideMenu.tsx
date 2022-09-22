@@ -48,30 +48,6 @@ function AppSideMenu() {
             />
           </div>
         </li>
-        <li className="filter">
-          <div>음식점</div>
-        </li>
-        <li className="filter">
-          <div>카페</div>
-        </li>
-        <li className="filter">
-          <div>카카오페이</div>
-        </li>
-        <li className="filter">
-          <div>네이버페이</div>
-        </li>
-        <li className="filter">
-          <div>애플페이 - VISA</div>
-        </li>
-        <li className="filter">
-          <div>
-            <img
-              id="filterSeeMore"
-              src={require('../../img/AppPage/seeMore.png')}
-              alt="seeMore"
-            />
-          </div>
-        </li>
       </ul>
       <section id="storeContainer">
         <StoreArticle />

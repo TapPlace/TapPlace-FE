@@ -102,8 +102,7 @@ function NaverMap() {
 
       // 반경 내에 가맹점 마커 표시
       for (let i = 0; i < markers.length; i++) {
-        console.log(markers[i]);
-        console.log(markers[i].y, markers[i].x);
+        // console.log(markers[i]);
         if (markers[i].category_group_name === '음식점') {
           const otherMarkers = new naver.maps.Marker({
             position: new naver.maps.LatLng(markers[i].y, markers[i].x),
@@ -143,9 +142,10 @@ function NaverMap() {
             },
           });
           const markerContent = [
-            '<div className="markerContent">',
+            '<div class="markerContent">',
             ` <h4>${markers[i].place_name}</h3>`,
             ` <p>${markers[i].category_group_name}</p>`,
+            // ' <div></div>',
             '</div>',
           ].join('');
           const infoWindow = new naver.maps.InfoWindow({

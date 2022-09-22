@@ -13,28 +13,22 @@ function SearchCategory({ category }: categoryProps) {
       <button className="searchCategory" type="button">
         {category === '음식점' ? (
           <img
-            src={require('../../img/AppPage/restaurant_black.png')}
+            src={require('../../img/AppPage/restaurant.png')}
             alt="categoryLogo"
           />
         ) : category === '카페' ? (
-          <img
-            src={require('../../img/AppPage/cafe_black.png')}
-            alt="categoryLogo"
-          />
+          <img src={require('../../img/AppPage/cafe.png')} alt="categoryLogo" />
         ) : category === '편의점' ? (
           <img
-            src={require('../../img/AppPage/convenienceStore_black.png')}
+            src={require('../../img/AppPage/convenienceStore.png')}
             alt="categoryLogo"
           />
         ) : category === '마트' ? (
-          <img
-            src={require('../../img/AppPage/mart_black.png')}
-            alt="categoryLogo"
-          />
+          <img src={require('../../img/AppPage/mart.png')} alt="categoryLogo" />
         ) : (
           category === '주유소' && (
             <img
-              src={require('../../img/AppPage/gasStation_black.png')}
+              src={require('../../img/AppPage/gasStation.png')}
               alt="categoryLogo"
             />
           )
