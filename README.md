@@ -8,7 +8,7 @@
 
   프레임워크 : React
 
-  라이브러리 : Redux, ReduxToolkit, Axios, SASS, FontAwesome, NaverMaps ... 추가 예정
+  라이브러리 : Redux, ReduxToolkit, Axios, SASS, FontAwesome ... 추가 예정
 
 - Commit Styles
 
