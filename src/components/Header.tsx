@@ -20,7 +20,6 @@ function Header() {
   function onAlert() {
     alert('서비스 준비중입니다.');
   }
-  console.log(page);
 
   return (
     <header id="serviceHeader">
