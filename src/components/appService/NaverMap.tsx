@@ -11,6 +11,10 @@ function NaverMap() {
   const dispatch = useAppDispatch();
   const { myLocation } = useAppSelector(state => state.naver);
 
+  function onClick() {
+    alert('click');
+  }
+
   // 가맹점 찾기 변수들
   let x1: String = String(myLocation.latitude);
   let y1: String = String(myLocation.longitude);
@@ -99,6 +103,7 @@ function NaverMap() {
         //   anchor: new naver.maps.Point(25, 26),
         // },
       });
+      naver.maps.Event.addListener(currentMarker, 'click', function () {});
 
       // 반경 내에 가맹점 마커 표시
       for (let i = 0; i < markers.length; i++) {
@@ -113,6 +118,7 @@ function NaverMap() {
               anchor: new naver.maps.Point(18, 30),
             },
           });
+
           const markerContent = [
             '<div className="markerContent">',
             ` <h4>${markers[i].place_name}</h3>`,
@@ -124,6 +130,7 @@ function NaverMap() {
           });
           naver.maps.Event.addListener(otherMarkers, 'click', function (e) {
             if (infoWindow.getMap()) {
+              otherMarkers.setIcon('/img/AppPage/Marker/restaurant_big.png');
               infoWindow.close();
             } else {
               infoWindow.open(map, otherMarkers);

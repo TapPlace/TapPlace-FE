@@ -23,16 +23,14 @@ function Header() {
   console.log(page);
 
   return (
-    <header
-      id="serviceHeader"
-      onClick={() => {
-        window.location.href = '/';
-      }}
-    >
+    <header id="serviceHeader">
       <img
         id="mainLogo"
         src={require('../img/tapplaceLogo.png')}
         alt="tapplaceLogo"
+        onClick={() => {
+          window.location.href = '/';
+        }}
       />
       {navToggle === 'noshow' && (
         <FontAwesomeIcon

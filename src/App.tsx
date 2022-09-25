@@ -24,9 +24,9 @@ function App() {
       <main id="mainContainer">
         <Routes>
           <Route path="/" element={<Service />} />
-          {/* <Route path="/notice" element={<Notice />} /> */}
+          <Route path="/notice" element={<Notice />} />
           {/* <Route path="/faq" element={<Faq />} /> */}
-          {/* <Route path="/playapp" element={<AppMain />} /> */}
+          <Route path="/playapp" element={<AppMain />} />
           <Route path="/consent" element={<Consent />} />
           <Route path="/policy" element={<Policy />} />
         </Routes>

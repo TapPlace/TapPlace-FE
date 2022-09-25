@@ -1,0 +1,39 @@
+@import '../utils';
+
+#noticeContainer {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 305px);
+}
+
+@include mobile {
+}
+
+@include tablet {
+}
+
+@include desktop {
+  #noticeContainer {
+    padding: 0 360px;
+    h1 {
+      padding: 80px 0 28px 0;
+      font-size: 28px;
+      font-weight: 400;
+    }
+    .noticePost {
+      border-bottom: 1px solid rgba(219, 222, 232, 0.7);
+      .noticeTitle {
+        padding-top: 24px;
+        font-weight: 400;
+        font-size: 19px;
+        color: #4d4d4d;
+      }
+      .noticeDate {
+        padding: 8px 0 20px 0;
+        font-weight: 400;
+        font-size: 15px;
+        color: #9e9e9e;
+      }
+    }
+  }
+}
