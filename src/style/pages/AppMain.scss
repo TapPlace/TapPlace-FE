@@ -11,3 +11,31 @@
   width: 100%;
   height: calc(100vh - 60px);
 }
+
+#detailContainer {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  position: absolute;
+  top: 60px;
+  left: 25vw;
+  width: 470px;
+  margin: 20px 0 20px 20px;
+  padding: 20px;
+  height: calc(100vh - 100px);
+  #nameCategoryClose {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    #nameCategory {
+      display: flex;
+    }
+  }
+  #detailBtnContainer {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    li {
+    }
+  }
+}

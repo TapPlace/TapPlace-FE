@@ -71,7 +71,7 @@ function Notice() {
 
   // 공지사항 가져오기
   // useEffect(() => {
-  //   axios.get('/notice/qna/all/2').then(res => console.log(res));
+  //   axios.get('/notice/faq/all/8').then(res => console.log(res));
   // });
 
   return (

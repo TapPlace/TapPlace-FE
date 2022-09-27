@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { setMyLocation } from '../../redux/slices/naverMap';
+import { setMyLocation, setDetail } from '../../redux/slices/naverMap';
 
 import '../../style/pages/NaverMap.scss';
 
@@ -9,15 +9,37 @@ const { naver } = window;
 
 function NaverMap() {
   const dispatch = useAppDispatch();
-  const { myLocation } = useAppSelector(state => state.naver);
+  const { myLocation, detail } = useAppSelector(state => state.naver);
 
-  function onClick() {
-    alert('click');
+  // 마커 클릭 이벤트
+  function markerClickEvent({ map, otherMarkers, i, imgSrc, category }: any) {
+    const markerContent = [
+      `<div style="display: flex; align-items: ${
+        category === '음식점' ? 'center' : category === '편의점' && 'baseline'
+      }; padding: 10px 20px;">`,
+      ` <img style="padding-right: 8px; height: ${
+        category === '음식점' ? '15px' : category === '편의점' && '14px'
+      };" src=${imgSrc} alt="markerImg" />`,
+      ` <p style="font-size: 16px;">${markers[i].place_name}</p>`,
+      '</div>',
+    ].join('');
+    const infoWindow = new naver.maps.InfoWindow({
+      content: markerContent,
+    });
+    naver.maps.Event.addListener(otherMarkers, 'click', function (e) {
+      if (infoWindow.getMap()) {
+        infoWindow.close();
+        dispatch(setDetail(false));
+      } else {
+        infoWindow.open(map, otherMarkers);
+        dispatch(setDetail(true));
+      }
+    });
   }
 
   // 가맹점 찾기 변수들
-  let x1: String = String(myLocation.latitude);
-  let y1: String = String(myLocation.longitude);
+  // let x1: String = String(myLocation.latitude);
+  // let y1: String = String(myLocation.longitude);
   let markers: any = [];
   let distance: number = 1.5;
   const pays = [
@@ -62,11 +84,12 @@ function NaverMap() {
       .post('/store/around', {
         x1: '127.014383829781',
         y1: '37.4938999991414',
+        distance: distance,
         pays: ['apple_master'],
+        user_id: '',
         // distance: 1,
         // x1: x1,
         // y1: y1,
-        distance: distance,
         // pays: pays,
       })
       .then(res => {
@@ -90,81 +113,35 @@ function NaverMap() {
         zoomControl: false,
       });
 
-      // 내 위치 마커 찍기
-      const currentMarker = await new naver.maps.Marker({
-        position: new naver.maps.LatLng(
-          myLocation.latitude,
-          myLocation.longitude,
-        ),
-        map,
-        // icon: {
-        //   size: new naver.maps.Size(50, 52),
-        //   origin: new naver.maps.Point(0, 0),
-        //   anchor: new naver.maps.Point(25, 26),
-        // },
-      });
-      naver.maps.Event.addListener(currentMarker, 'click', function () {});
-
       // 반경 내에 가맹점 마커 표시
       for (let i = 0; i < markers.length; i++) {
-        // console.log(markers[i]);
         if (markers[i].category_group_name === '음식점') {
+          const imgSrc = '/img/AppPage/restaurant.png';
+          const category = '음식점';
           const otherMarkers = new naver.maps.Marker({
             position: new naver.maps.LatLng(markers[i].y, markers[i].x),
             map,
             icon: {
               content:
-                '<div style="text-align: center;"><img src="/img/AppPage/Marker/restaurant.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">음식점</p></div>',
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/restaurant.png"; alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">음식점</p></div>',
               anchor: new naver.maps.Point(18, 30),
             },
           });
-
-          const markerContent = [
-            '<div className="markerContent">',
-            ` <h4>${markers[i].place_name}</h3>`,
-            ` <p>${markers[i].category_group_name}</p>`,
-            '</div>',
-          ].join('');
-          const infoWindow = new naver.maps.InfoWindow({
-            content: markerContent,
-          });
-          naver.maps.Event.addListener(otherMarkers, 'click', function (e) {
-            if (infoWindow.getMap()) {
-              otherMarkers.setIcon('/img/AppPage/Marker/restaurant_big.png');
-              infoWindow.close();
-            } else {
-              infoWindow.open(map, otherMarkers);
-            }
-          });
-          // infoWindow.open(map, otherMarkers);
+          markerClickEvent({ map, otherMarkers, i, imgSrc, category });
         }
         if (markers[i].category_group_name === '편의점') {
+          const imgSrc = '/img/AppPage/store.png';
+          const category = '편의점';
           const otherMarkers = new naver.maps.Marker({
             position: new naver.maps.LatLng(markers[i].y, markers[i].x),
             map,
             icon: {
               content:
-                '<div style="text-align: center;"><img src="/img/AppPage/Marker/store.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">편의점</p></div>',
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/convenienceStore.png"; alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">편의점</p></div>',
               // anchor: new naver.maps.Point(32, 30),
             },
           });
-          const markerContent = [
-            '<div class="markerContent">',
-            ` <h4>${markers[i].place_name}</h3>`,
-            ` <p>${markers[i].category_group_name}</p>`,
-            // ' <div></div>',
-            '</div>',
-          ].join('');
-          const infoWindow = new naver.maps.InfoWindow({
-            content: markerContent,
-          });
-          naver.maps.Event.addListener(otherMarkers, 'click', function (e) {
-            if (infoWindow.getMap()) {
-              infoWindow.close();
-            } else {
-              infoWindow.open(map, otherMarkers);
-            }
-          });
+          markerClickEvent({ map, otherMarkers, i, imgSrc, category });
         }
         if (markers[i].category_group_name === '카페') {
           const otherMarkers = new naver.maps.Marker({

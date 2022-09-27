@@ -5,6 +5,7 @@ export interface NaverMapState {
     latitude: any;
     longitude: any;
   };
+  detail: boolean;
 }
 
 const initialState: NaverMapState = {
@@ -14,6 +15,7 @@ const initialState: NaverMapState = {
     // latitude: 37.3595804,
     // longitude: 127.105399,
   },
+  detail: false,
 };
 
 export const naverMap = createSlice({
@@ -27,9 +29,12 @@ export const naverMap = createSlice({
       state.myLocation.latitude = action.payload.latitude;
       state.myLocation.longitude = action.payload.longitude;
     },
+    setDetail(state, action: PayloadAction<boolean>) {
+      state.detail = action.payload;
+    },
   },
 });
 
-export const { setMyLocation } = naverMap.actions;
+export const { setMyLocation, setDetail } = naverMap.actions;
 
 export default naverMap;
