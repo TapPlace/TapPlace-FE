@@ -35,6 +35,9 @@
     border: 1px solid black;
     display: flex;
     justify-content: space-around;
+    &:first-child {
+      border-right: 1px solid black;
+    }
     li {
     }
   }
