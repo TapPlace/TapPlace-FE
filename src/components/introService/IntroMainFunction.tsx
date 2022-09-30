@@ -32,10 +32,7 @@ function IntroMainFunction() {
           <>
             <div className="functionIntroContainer">
               <div id="fTC1" className="functionTitleContainer">
-                <img
-                  src={require('../../img/ServicePage/inquiryIcon.png')}
-                  alt="inquiryIcon"
-                />
+                <img src="img/ServicePage/inquiryIcon.png" alt="inquiryIcon" />
                 <h1 className="functionTitle">가맹점 조회</h1>
               </div>
               <h1 className="functionLine1">
@@ -50,18 +47,18 @@ function IntroMainFunction() {
               </h1>
             </div>
             <img
-              src={require('../../img/ServicePage/appScreenInquiry.png')}
+              src="img/ServicePage/appScreenInquiry.png"
               alt="appScreenInquiry"
               className="appScreenImg"
             />
             <img
-              src={require('../../img/ServicePage/appScreenInquiryImg1.png')}
+              src="img/ServicePage/appScreenInquiryImg1.png"
               alt="appScreenInquiryImg1"
               className="appScreenPreviewImg"
               id="appScreenPreviewImgFirst"
             />
             <img
-              src={require('../../img/ServicePage/appScreenInquiryImg2.png')}
+              src="img/ServicePage/appScreenInquiryImg2.png"
               alt="appScreenInquiryImg2"
               className="appScreenPreviewImg"
             />
@@ -69,16 +66,13 @@ function IntroMainFunction() {
         ) : (
           <>
             <img
-              src={require('../../img/ServicePage/appScreenInquiry.png')}
+              src="img/ServicePage/appScreenInquiry.png"
               alt="appScreenInquiry"
               className="appScreenImg"
             />
             <div className="functionIntroContainer">
               <div id="fTC1" className="functionTitleContainer">
-                <img
-                  src={require('../../img/ServicePage/inquiryIcon.png')}
-                  alt="inquiryIcon"
-                />
+                <img src="img/ServicePage/inquiryIcon.png" alt="inquiryIcon" />
                 <h1 className="functionTitle">가맹점 조회</h1>
               </div>
               <h1 className="functionLine1">
@@ -92,12 +86,12 @@ function IntroMainFunction() {
                 결제 가능여부를 미리 알려드릴께요.
               </h1>
               <img
-                src={require('../../img/ServicePage/appScreenInquiryImg1.png')}
+                src="img/ServicePage/appScreenInquiryImg1.png"
                 alt="appScreenInquiryImg1"
                 className="appScreenPreviewImg"
               />
               <img
-                src={require('../../img/ServicePage/appScreenInquiryImg2.png')}
+                src="img/ServicePage/appScreenInquiryImg2.png"
                 alt="appScreenInquiryImg2"
                 className="appScreenPreviewImg"
               />
@@ -111,7 +105,7 @@ function IntroMainFunction() {
             <div className="functionIntroContainer">
               <div className="functionTitleContainer">
                 <img
-                  src={require('../../img/ServicePage/feedbackIcon.png')}
+                  src="img/ServicePage/feedbackIcon.png"
                   alt="feedbackIcon"
                   id="feedbackIcon"
                 />
@@ -131,12 +125,12 @@ function IntroMainFunction() {
               </h1>
             </div>
             <img
-              src={require('../../img/ServicePage/appScreenFeedback.png')}
+              src="img/ServicePage/appScreenFeedback.png"
               alt="appScreenFeedback"
               className="appScreenImg"
             />
             <img
-              src={require('../../img/ServicePage/appScreenFeedbackImg.png')}
+              src="img/ServicePage/appScreenFeedbackImg.png"
               alt="appScreenFeedbackImg"
               className="appScreenPreviewImg"
               id="appScreenFeedbackImg"
@@ -147,7 +141,7 @@ function IntroMainFunction() {
             <div className="functionIntroContainer">
               <div className="functionTitleContainer">
                 <img
-                  src={require('../../img/ServicePage/feedbackIcon.png')}
+                  src="img/ServicePage/feedbackIcon.png"
                   alt="feedbackIcon"
                   id="feedbackIcon"
                 />
@@ -166,14 +160,14 @@ function IntroMainFunction() {
                 있어요.
               </h1>
               <img
-                src={require('../../img/ServicePage/appScreenFeedbackImg.png')}
+                src="img/ServicePage/appScreenFeedbackImg.png"
                 alt="appScreenFeedbackImg"
                 className="appScreenPreviewImg"
                 id="appScreenFeedbackImg"
               />
             </div>
             <img
-              src={require('../../img/ServicePage/appScreenFeedback.png')}
+              src="img/ServicePage/appScreenFeedback.png"
               alt="appScreenFeedback"
               className="appScreenImg"
             />
@@ -186,7 +180,7 @@ function IntroMainFunction() {
             <div className="functionIntroContainer">
               <div className="functionTitleContainer">
                 <img
-                  src={require('../../img/ServicePage/registrationIcon.png')}
+                  src="img/ServicePage/registrationIcon.png"
                   alt="registrationIcon"
                   id="registrationIcon"
                 />
@@ -217,7 +211,7 @@ function IntroMainFunction() {
             </div>
             <div id="appScreenStoreRegImgBox">
               <img
-                src={require('../../img/ServicePage/appScreenRegistration.png')}
+                src="img/ServicePage/appScreenRegistration.png"
                 alt="appScreenRegistration"
               />
             </div>
@@ -226,14 +220,14 @@ function IntroMainFunction() {
           <>
             <div id="appScreenStoreRegImgBox">
               <img
-                src={require('../../img/ServicePage/appScreenRegistration.png')}
+                src="img/ServicePage/appScreenRegistration.png"
                 alt="appScreenRegistration"
               />
             </div>
             <div id="functionRegContainer" className="functionIntroContainer">
               <div className="functionTitleContainer">
                 <img
-                  src={require('../../img/ServicePage/registrationIcon.png')}
+                  src="img/ServicePage/registrationIcon.png"
                   alt="registrationIcon"
                 />
                 <h1 className="functionTitle">가맹점 등록</h1>

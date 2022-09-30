@@ -42,7 +42,7 @@ function BetaService() {
       >
         신청하기
       </button>
-      <img src={require('../img/betaImg.png')} alt="betaImg" />
+      <img src="img/betaImg.png" alt="betaImg" />
     </div>
   );
 }

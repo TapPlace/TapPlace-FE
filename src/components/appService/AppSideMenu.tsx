@@ -7,8 +7,12 @@ import SearchCategory from './SearchCategory';
 import '../../style/components/appService/AppSideMenu.scss';
 
 import { isBrowser } from 'react-device-detect';
+import { useAppSelector } from '../../redux/hooks';
 
 function AppSideMenu() {
+  const { markers } = useAppSelector(state => state.naver);
+  // console.log(markers);
+
   return (
     <div id="appSideMenu">
       <SearchStore />
@@ -19,11 +23,7 @@ function AppSideMenu() {
         <SearchCategory category="마트" />
         <SearchCategory category="주유소" />
         {isBrowser && (
-          <img
-            id="seeMoreImg"
-            src={require('../../img/AppPage/seeMore.png')}
-            alt="seeMore"
-          />
+          <img id="seeMoreImg" src="img/AppPage/seeMore.png" alt="seeMore" />
         )}
       </ul>
       <div id="aroundMyLocation">강서구 등촌3동 주변 1km</div>
@@ -33,7 +33,7 @@ function AppSideMenu() {
             매장선택
             <img
               className="vButtonFilter"
-              src={require('../../img/AppPage/Vbutton.png')}
+              src="img/AppPage/Vbutton.png"
               alt="vButton"
             />
           </div>
@@ -43,20 +43,16 @@ function AppSideMenu() {
             결제수단
             <img
               className="vButtonFilter"
-              src={require('../../img/AppPage/Vbutton.png')}
+              src="img/AppPage/Vbutton.png"
               alt="vButton"
             />
           </div>
         </li>
       </ul>
       <section id="storeContainer">
-        <StoreArticle />
-        <StoreArticle />
-        <StoreArticle />
-        <StoreArticle />
-        <StoreArticle />
-        <StoreArticle />
-        <StoreArticle />
+        {markers.map(m => {
+          return <StoreArticle key={m.store_id} option={m} />;
+        })}
       </section>
     </div>
   );

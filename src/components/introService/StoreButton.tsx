@@ -38,19 +38,13 @@ function StoreButton() {
         <>
           <li onClick={onDownload}>
             <Link className="storeBtn" to="/">
-              <img
-                src={require('../../img/ServicePage/appleLogo.png')}
-                alt="appleLogo"
-              />
+              <img src="img/ServicePage/appleLogo.png" alt="appleLogo" />
               <p>App Store</p>
             </Link>
           </li>
           <li onClick={onDownload}>
             <Link className="storeBtn" to="/">
-              <img
-                src={require('../../img/ServicePage/googleLogo.png')}
-                alt="googleLogo"
-              />
+              <img src="img/ServicePage/googleLogo.png" alt="googleLogo" />
               <p>Play Store</p>
             </Link>
           </li>

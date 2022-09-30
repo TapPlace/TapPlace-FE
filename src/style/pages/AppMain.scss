@@ -21,24 +21,73 @@
   left: 25vw;
   width: 470px;
   margin: 20px 0 20px 20px;
-  padding: 20px;
+  padding: 20px 0;
   height: calc(100vh - 100px);
-  #nameCategoryClose {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    #nameCategory {
+  #detailInfo {
+    border-bottom: 8px solid #dbdee866;
+    padding: 0 20px;
+    #nameCategoryClose {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      #nameCategory {
+        display: flex;
+        align-items: baseline;
+        #detailStoreName {
+          font-size: 22px;
+          padding-right: 8px;
+        }
+        #detailStoreCategory {
+          font-size: 16px;
+          color: $subTextColor;
+        }
+      }
+    }
+    #detailBtnContainer {
+      border: 1px solid #4e77fb;
+      color: #4e77fb;
+      display: flex;
+      justify-content: space-around;
+      border-radius: 10px;
+      margin: 32px 0 24px 0;
+      li {
+        padding: 14px;
+        flex: 1;
+        text-align: center;
+        &:first-child {
+          border-right: 1px solid #4e77fb;
+        }
+      }
+    }
+    hr {
+      background: rgba(219, 222, 232, 0.6);
+      margin-top: 20px;
+    }
+    #distanceAddress,
+    #phoneNumber,
+    #infoModified {
+      display: flex;
+      align-items: center;
+      color: $subTextColor;
+      img {
+        padding-right: 10px;
+        height: 18px;
+      }
+    }
+    #distanceAddress {
+      padding-bottom: 15px;
+    }
+    #phoneNumber {
+    }
+    #infoModified {
+      padding: 20px 0;
     }
   }
-  #detailBtnContainer {
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-around;
-    &:first-child {
-      border-right: 1px solid black;
-    }
-    li {
+  #paymentMethod {
+    padding: 20px;
+    h4 {
+      font-weight: 400;
+      font-size: 20px;
     }
   }
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { setMyLocation, setDetail } from '../../redux/slices/naverMap';
+import { setDetail } from '../../redux/slices/naverMap';
 
 import '../../style/pages/NaverMap.scss';
 
@@ -9,7 +9,7 @@ const { naver } = window;
 
 function NaverMap() {
   const dispatch = useAppDispatch();
-  const { myLocation, detail } = useAppSelector(state => state.naver);
+  const { myLocation, markers } = useAppSelector(state => state.naver);
 
   // 마커 클릭 이벤트
   function markerClickEvent({ map, otherMarkers, i, imgSrc, category }: any) {
@@ -37,69 +37,7 @@ function NaverMap() {
     });
   }
 
-  // 가맹점 찾기 변수들
-  // let x1: String = String(myLocation.latitude);
-  // let y1: String = String(myLocation.longitude);
-  let markers: any = [];
-  let distance: number = 1.5;
-  const pays = [
-    'kakaopay',
-    'naverpay',
-    'payco',
-    'zeropay',
-    'apple_visa',
-    'apple_master',
-    'apple_master',
-    'apple_jcb',
-    'conless_visa',
-    'conless_master',
-    'conless_amex',
-    'conless_union',
-    'conless_jcb',
-    'google_visa',
-    'google_master',
-    'google_maestro',
-    'toss',
-  ];
-
-  // 현재 위치 가져오고 distance 반경에 있는 가맹점 찾기
   async function naverFunction() {
-    // 내 위치 가져오기
-    if (navigator.geolocation) {
-      await navigator.geolocation.getCurrentPosition(position => {
-        dispatch(
-          setMyLocation({
-            longitude: '127.014383829718',
-            latitude: '37.4938999991414',
-            // latitude: position.coords.latitude,
-            // longitude: position.coords.longitude,
-          }),
-        );
-      });
-    } else {
-      window.alert('현재위치를 알수 없습니다.');
-    }
-    // 내 위치에서 distance 반경에 있는 가맹점 찾기
-    await axios
-      .post('/store/around', {
-        x1: '127.014383829781',
-        y1: '37.4938999991414',
-        distance: distance,
-        pays: ['apple_master'],
-        user_id: '',
-        // distance: 1,
-        // x1: x1,
-        // y1: y1,
-        // pays: pays,
-      })
-      .then(res => {
-        const stores = res.data.stores;
-        for (let i = 0; i < stores.length; i++) {
-          markers.push(stores[i]);
-        }
-      })
-      .catch(err => console.error(err));
-
     // 네이버 지도 띄우기
     if (typeof myLocation !== 'string') {
       const map = await new naver.maps.Map('map', {
@@ -184,22 +122,12 @@ function NaverMap() {
           });
         }
       }
-
-      // 마커 클릭 이벤트
-      // const infoWindow = new naver.maps.InfoWindow({
-      //   content: markerContent
-      // })
-
-      // 마커 클릭 이벤트 설정
-      for (let i = 0; i < markers.length; i++) {
-        // naver.maps.Event.addListener()
-      }
     }
   }
 
   useEffect(() => {
     naverFunction();
-  }, [myLocation]);
+  }, [markers]);
 
   return (
     <div id="map" style={{ width: '100%', height: 'calc(100vh - 60px)' }} />

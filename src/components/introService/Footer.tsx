@@ -32,11 +32,7 @@ function Footer() {
               dispatch(initialPage());
             }}
           >
-            <img
-              id="footerLogo"
-              src={require('../../img/tapplaceLogo2.png')}
-              alt=""
-            />
+            <img id="footerLogo" src="img/tapplaceLogo2.png" alt="" />
           </Link>
 
           <ul id="footerList">

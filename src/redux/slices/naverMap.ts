@@ -6,16 +6,16 @@ export interface NaverMapState {
     longitude: any;
   };
   detail: boolean;
+  markers: Array<any>;
 }
 
 const initialState: NaverMapState = {
   myLocation: {
     latitude: undefined,
     longitude: undefined,
-    // latitude: 37.3595804,
-    // longitude: 127.105399,
   },
   detail: false,
+  markers: [],
 };
 
 export const naverMap = createSlice({
@@ -32,9 +32,12 @@ export const naverMap = createSlice({
     setDetail(state, action: PayloadAction<boolean>) {
       state.detail = action.payload;
     },
+    setNearbyStore(state, action: PayloadAction<any>) {
+      state.markers = action.payload;
+    },
   },
 });
 
-export const { setMyLocation, setDetail } = naverMap.actions;
+export const { setMyLocation, setDetail, setNearbyStore } = naverMap.actions;
 
 export default naverMap;

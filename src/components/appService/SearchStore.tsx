@@ -6,11 +6,7 @@ function SearchStore() {
   return (
     <>
       <div id="searchContainer">
-        <img
-          id="searchIcon"
-          src={require('../../img/AppPage/search.png')}
-          alt="searchIcon"
-        />
+        <img id="searchIcon" src="img/AppPage/search.png" alt="searchIcon" />
         <input
           type="text"
           name="searchStore"

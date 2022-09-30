@@ -12,25 +12,16 @@ function SearchCategory({ category }: categoryProps) {
     <li className="categoryLi">
       <button className="searchCategory" type="button">
         {category === '음식점' ? (
-          <img
-            src={require('../../img/AppPage/restaurant.png')}
-            alt="categoryLogo"
-          />
+          <img src="img/AppPage/restaurant.png" alt="categoryLogo" />
         ) : category === '카페' ? (
-          <img src={require('../../img/AppPage/cafe.png')} alt="categoryLogo" />
+          <img src="img/AppPage/cafe.png" alt="categoryLogo" />
         ) : category === '편의점' ? (
-          <img
-            src={require('../../img/AppPage/convenienceStore.png')}
-            alt="categoryLogo"
-          />
+          <img src="img/AppPage/store.png" alt="categoryLogo" />
         ) : category === '마트' ? (
-          <img src={require('../../img/AppPage/mart.png')} alt="categoryLogo" />
+          <img src="img/AppPage/mart.png" alt="categoryLogo" />
         ) : (
           category === '주유소' && (
-            <img
-              src={require('../../img/AppPage/gasStation.png')}
-              alt="categoryLogo"
-            />
+            <img src="img/AppPage/gasStation.png" alt="categoryLogo" />
           )
         )}
         <p>{category}</p>

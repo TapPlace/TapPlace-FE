@@ -39,7 +39,7 @@ function IntroMainService() {
             <img
               id="appScreenMain"
               className="mockupImg"
-              src={require('../../img/ServicePage/appScreenMainMobile.png')}
+              src="img/ServicePage/appScreenMainMobile.png"
               alt="mainImg"
             />
           </>
@@ -48,7 +48,7 @@ function IntroMainService() {
         <img
           id="appScreenMain"
           className="mockupImg"
-          src={require('../../img/ServicePage/appScreenMain.png')}
+          src="img/ServicePage/appScreenMain.png"
           alt="mainMobileImg"
         />
       )}

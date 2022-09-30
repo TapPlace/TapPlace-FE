@@ -25,7 +25,7 @@ function Header() {
     <header id="serviceHeader">
       <img
         id="mainLogo"
-        src={require('../img/tapplaceLogo.png')}
+        src="/img/tapplaceLogo.png"
         alt="tapplaceLogo"
         onClick={() => {
           window.location.href = '/';
