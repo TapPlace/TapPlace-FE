@@ -33,6 +33,7 @@ function NaverMap() {
       } else {
         infoWindow.open(map, otherMarkers);
         dispatch(setDetail(true));
+        console.log(markers[i]);
       }
     });
   }
