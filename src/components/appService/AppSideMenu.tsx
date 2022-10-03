@@ -9,9 +9,8 @@ import '../../style/components/appService/AppSideMenu.scss';
 import { isBrowser } from 'react-device-detect';
 import { useAppSelector } from '../../redux/hooks';
 
-function AppSideMenu() {
+function AppSideMenu(map: any) {
   const { markers } = useAppSelector(state => state.naver);
-  // console.log(markers);
 
   return (
     <div id="appSideMenu">
@@ -51,7 +50,7 @@ function AppSideMenu() {
       </ul>
       <section id="storeContainer">
         {markers.map(m => {
-          return <StoreArticle key={m.store_id} option={m} />;
+          return <StoreArticle key={m.store_id} option={m} map={map} />;
         })}
       </section>
     </div>
