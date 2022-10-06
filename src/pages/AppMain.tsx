@@ -83,10 +83,12 @@ function AppMain() {
       })
       .catch(err => console.error(err));
   }
+
   // 내 위치 가져오기
   useEffect(() => {
     bringMyLocation();
   }, [myLocation]);
+
   // 가맹점 상세보기가 띄워졌을 때 피드백 정보를 가져옴
   useEffect(() => {
     axios
@@ -159,7 +161,7 @@ function AppMain() {
               <h4>결제수단</h4>
               {feedback !== undefined &&
                 feedback.map((e: any) => {
-                  return <Feedback options={e} />;
+                  return <Feedback key={e.num} options={e} />;
                 })}
             </article>
             <button id="goApp">앱에서 사용 여부 피드백하기 &gt;</button>

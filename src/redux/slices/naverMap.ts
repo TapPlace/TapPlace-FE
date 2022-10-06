@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface NaverMapState {
+  // 내 위치
   myLocation: {
     latitude: any;
     longitude: any;
   };
+  // 가맹점 상세정보
   detail: {
     store_id: string | undefined;
     place_name: string | undefined;
@@ -17,12 +19,17 @@ export interface NaverMapState {
     x: string | undefined;
     y: string | undefined;
   };
+  // 가맹점 상세정보 플래그
   detailFlag: boolean;
+  // 반경 내 가맹점들
   markers: Array<any>;
+  // 마지막으로 보고 있던 맵의 중앙
   lastLocation: {
     x: any;
     y: any;
   };
+  searchContent: string | undefined;
+  searchStores: Array<any>;
 }
 
 const initialState: NaverMapState = {
@@ -43,11 +50,15 @@ const initialState: NaverMapState = {
     y: undefined,
   },
   detailFlag: false,
+  // 처음 가져온 마커들
   markers: [],
   lastLocation: {
     x: undefined,
     y: undefined,
   },
+  // 처음 가져온 마커거나 필터링 된 마커
+  searchContent: undefined,
+  searchStores: [],
 };
 
 export const naverMap = createSlice({
@@ -88,6 +99,13 @@ export const naverMap = createSlice({
     setNearbyStore(state, action: PayloadAction<any>) {
       state.markers = action.payload;
     },
+    // 검색어 입력
+    setSearchContent(state, action: PayloadAction<string>) {
+      state.searchContent = action.payload;
+    },
+    setSearchStore(state, action: PayloadAction<any>) {
+      state.searchStores = action.payload;
+    },
   },
 });
 
@@ -97,6 +115,8 @@ export const {
   setDetail,
   setDetailFlag,
   setNearbyStore,
+  setSearchContent,
+  setSearchStore,
 } = naverMap.actions;
 
 export default naverMap;
