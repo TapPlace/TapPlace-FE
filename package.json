@@ -57,6 +57,5 @@
   "devDependencies": {
     "@types/navermaps": "^3.0.17",
     "@types/react-helmet": "^6.1.5"
-  },
-  "proxy": "https://api.tapplace.cloud"
+  }
 }

@@ -4,7 +4,6 @@ import {
   SET_DETAIL_FLAG,
   SET_DETAIL_INFO,
   SET_LAST_LOCATION,
-  _SET_STORE_IN_DISTANCE,
 } from '../../redux/slices/PlayApp';
 import '../../style/pages/NaverMap.scss';
 
@@ -32,7 +31,7 @@ function NaverMap(props: any) {
       const map = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(latitude, longitude),
         zoom: zoom,
-        zoomControl: false,
+        zoomControl: true,
       });
 
       // 맵 저장
@@ -53,6 +52,7 @@ function NaverMap(props: any) {
       });
       naver.maps.Event.addListener(map, 'zoom_changed', function () {
         setZoom(map.getZoom());
+        console.log(map.getZoom());
       });
       displayMarkers(map);
       // distance 반경 원 그리기
@@ -62,10 +62,10 @@ function NaverMap(props: any) {
           myLocation.latitude,
           myLocation.longitude,
         ),
-        radius: 1500,
+        radius: 1000,
         fillColor: 'rgba(78, 119, 251, 0.03)',
         strokeColor: 'rgba(78, 119, 251, 0.5)',
-        strokeWeight: 1.5,
+        strokeWeight: 1,
       });
     }
   }
@@ -87,7 +87,7 @@ function NaverMap(props: any) {
           icon: {
             content:
               '<div style="text-align: center;"><img src="/img/AppPage/Marker/restaurant.png"; alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">음식점</p></div>',
-            anchor: new naver.maps.Point(18, 30),
+            // anchor: new naver.maps.Point(18, 30),
           },
         });
         markerClickEvent({ map, marker, i, imgSrc, category });

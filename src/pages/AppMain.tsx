@@ -15,7 +15,7 @@ import '../style/pages/AppMain.scss';
 
 function AppMain() {
   const dispatch = useAppDispatch();
-  let distance: number = 1.5;
+  let distance: number = 1;
   const pays = [
     'kakaopay',
     'naverpay',
@@ -62,7 +62,7 @@ function AppMain() {
     }
     // 내 위치에서 distance 반경 가맹점 가져오기
     axios
-      .post('/store/around', {
+      .post('https://api.tapplace.cloud/store/around', {
         x1: '127.014383829781',
         y1: '37.4938999991414',
         distance: distance,
@@ -86,7 +86,7 @@ function AppMain() {
   // 가맹점 상세보기가 띄워졌을 때 피드백 정보를 가져옴
   useEffect(() => {
     axios
-      .post('/pay/list/more', {
+      .post('https://api.tapplace.cloud//pay/list/more', {
         store_id: storeDetailInfo.store_id,
         pays: storeDetailInfo.pays,
       })
