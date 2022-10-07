@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppDispatch } from '../../redux/hooks';
-import { setDetail, setDetailFlag } from '../../redux/slices/naverMap';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { SET_DETAIL_FLAG, SET_DETAIL_INFO } from '../../redux/slices/PlayApp';
 
 import '../../style/components/introService/StoreArticle.scss';
 
@@ -8,6 +8,7 @@ function StoreArticle({ option, map }: any) {
   const dispatch = useAppDispatch();
   const category = option.category_group_name;
   const name = option.place_name;
+  const { storeDetailFlag } = useAppSelector(state => state.playApp);
   let src = '';
   // 이미지 src 정하기
   switch (category) {
@@ -29,9 +30,9 @@ function StoreArticle({ option, map }: any) {
     <article
       className="storeArticle"
       onClick={() => {
-        dispatch(setDetailFlag(true));
+        if (!storeDetailFlag) dispatch(SET_DETAIL_FLAG(true));
         dispatch(
-          setDetail({
+          SET_DETAIL_INFO({
             store_id: option.store_id,
             place_name: option.place_name,
             phone: option.phone,

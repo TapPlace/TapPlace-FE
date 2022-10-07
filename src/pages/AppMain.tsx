@@ -6,10 +6,10 @@ import Feedback from '../components/appService/Feedback';
 import NaverMap from '../components/appService/NaverMap';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import {
-  setDetailFlag,
-  setMyLocation,
-  setNearbyStore,
-} from '../redux/slices/naverMap';
+  SET_DETAIL_FLAG,
+  SET_MY_LOCATION,
+  SET_STORE_IN_DISTANCE,
+} from '../redux/slices/PlayApp';
 
 import '../style/pages/AppMain.scss';
 
@@ -35,25 +35,21 @@ function AppMain() {
     'google_maestro',
     'toss',
   ];
-  const { detailFlag, myLocation, detail } = useAppSelector(
-    state => state.naver,
+  const { myLocation, storeDetailFlag, storeDetailInfo } = useAppSelector(
+    state => state.playApp,
   );
   // 네이버 Map 객체 저장
   const [map, setMap] = useState();
   const setMapFunction = (maps: any) => {
     setMap(maps);
   };
-  // detail 피드백 변수
-  const [feedback, setFeedback]: any = useState();
 
-  // 내 위치 가져오기
-  async function bringMyLocation() {
+  function bringMyLocation() {
     // 내 위치 가져오기
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         dispatch(
-          setMyLocation({
-            // 이 부분 나중에 수정해야함
+          SET_MY_LOCATION({
             longitude: 127.014383829718,
             latitude: 37.4938999991414,
             // latitude: position.coords.latitude,
@@ -65,21 +61,17 @@ function AppMain() {
       window.alert('현재위치를 알수 없습니다.');
     }
     // 내 위치에서 distance 반경 가맹점 가져오기
-    await axios
+    axios
       .post('/store/around', {
         x1: '127.014383829781',
         y1: '37.4938999991414',
         distance: distance,
         pays: pays,
         user_id: '',
-        // distance: 1,
-        // x1: x1,
-        // y1: y1,
-        // pays: pays,
       })
       .then(res => {
         const stores = res.data.stores;
-        dispatch(setNearbyStore(stores));
+        dispatch(SET_STORE_IN_DISTANCE(stores));
       })
       .catch(err => console.error(err));
   }
@@ -89,18 +81,20 @@ function AppMain() {
     bringMyLocation();
   }, [myLocation]);
 
+  // storeDetailInfo 피드백 변수
+  const [feedback, setFeedback]: any = useState();
   // 가맹점 상세보기가 띄워졌을 때 피드백 정보를 가져옴
   useEffect(() => {
     axios
       .post('/pay/list/more', {
-        store_id: detail.store_id,
-        pays: detail.pays,
+        store_id: storeDetailInfo.store_id,
+        pays: storeDetailInfo.pays,
       })
       .then(res => {
         const data = res.data.feedback;
         setFeedback(data);
       });
-  }, [detail.store_id]);
+  }, [storeDetailInfo.store_id]);
 
   return (
     <>
@@ -108,20 +102,22 @@ function AppMain() {
         <NaverMap propFunction={setMapFunction} />
       </main>
       <AppSideMenu map={map} />
-      {detailFlag && (
+      {storeDetailFlag && (
         <>
           <div id="detailContainer">
             <article id="detailInfo">
               <div id="nameCategoryClose">
                 <div id="nameCategory">
-                  <h1 id="detailStoreName">{detail.place_name}</h1>
-                  <p id="detailStoreCategory">{detail.category_group_name}</p>
+                  <h1 id="detailStoreName">{storeDetailInfo.place_name}</h1>
+                  <p id="detailStoreCategory">
+                    {storeDetailInfo.category_group_name}
+                  </p>
                 </div>
                 <img
                   src="img/close.png"
                   alt="closeDetail"
                   onClick={() => {
-                    dispatch(setDetailFlag(false));
+                    dispatch(SET_DETAIL_FLAG(false));
                   }}
                 />
               </div>
@@ -141,14 +137,14 @@ function AppMain() {
               </ul>
               <div id="distanceAddress">
                 <img src="img/AppPage/location_black.png" alt="location" />
-                {detail.road_address_name
-                  ? detail.road_address_name
-                  : detail.address_name}
+                {storeDetailInfo.road_address_name
+                  ? storeDetailInfo.road_address_name
+                  : storeDetailInfo.address_name}
               </div>
               <div id="phoneNumber">
                 <img src="img/AppPage/call.png" alt="call" />
-                {detail.phone
-                  ? detail.phone
+                {storeDetailInfo.phone
+                  ? storeDetailInfo.phone
                   : '가맹점의 번호가 등록되어있지 않습니다'}
               </div>
               <hr />
