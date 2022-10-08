@@ -4,6 +4,7 @@ import {
   SET_DETAIL_FLAG,
   SET_DETAIL_INFO,
   SET_LAST_LOCATION,
+  SET_MY_ADDRESS,
 } from '../../redux/slices/PlayApp';
 import '../../style/pages/NaverMap.scss';
 
@@ -17,7 +18,7 @@ function NaverMap(props: any) {
   const [zoom, setZoom] = useState(17);
 
   // 네이버 지도 띄우기
-  function naverFunction() {
+  async function naverFunction() {
     if (typeof myLocation !== 'string') {
       let latitude, longitude: number;
       if (lastLocation.latitude !== undefined) {
@@ -28,11 +29,36 @@ function NaverMap(props: any) {
         longitude = myLocation.longitude;
       }
 
-      const map = new naver.maps.Map('map', {
+      const map = await new naver.maps.Map('map', {
         center: new naver.maps.LatLng(latitude, longitude),
         zoom: zoom,
         zoomControl: true,
+        zoomControlOptions: {
+          position: naver.maps.Position.TOP_RIGHT,
+        },
+        scaleControl: false,
       });
+
+      const searchAddress = (latlng: any) => {
+        naver.maps.Service.reverseGeocode(
+          {
+            coords: latlng,
+            orders: [
+              naver.maps.Service.OrderType.ADDR,
+              naver.maps.Service.OrderType.ROAD_ADDR,
+            ].join(','),
+          },
+          function (status: any, response: any) {
+            let myAddress = response.v2.address.jibunAddress;
+            myAddress = myAddress.substr(
+              myAddress.indexOf(' ') + 1,
+              myAddress.length - myAddress.lastIndexOf(' ') + 1,
+            );
+            dispatch(SET_MY_ADDRESS(myAddress));
+          },
+        );
+      };
+      await searchAddress(map.center);
 
       // 맵 저장
       setNaverMap(map);

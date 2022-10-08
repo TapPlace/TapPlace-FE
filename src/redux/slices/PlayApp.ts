@@ -25,6 +25,7 @@ export interface PlayAppState {
   storeInDistance: Array<any>;
   _storeInDistance: Array<any>;
   searchWord: string | undefined;
+  myAddress: string | undefined;
 }
 
 const initialState: PlayAppState = {
@@ -52,6 +53,7 @@ const initialState: PlayAppState = {
   storeInDistance: [],
   _storeInDistance: [],
   searchWord: undefined,
+  myAddress: undefined,
 };
 
 export const playApp = createSlice({
@@ -98,6 +100,9 @@ export const playApp = createSlice({
     SET_SEARCH_WORD(state, action: PayloadAction<string>) {
       state.searchWord = action.payload;
     },
+    SET_MY_ADDRESS(state, action: PayloadAction<string>) {
+      state.myAddress = action.payload;
+    },
   },
 });
 
@@ -109,6 +114,7 @@ export const {
   SET_STORE_IN_DISTANCE,
   _SET_STORE_IN_DISTANCE,
   SET_SEARCH_WORD,
+  SET_MY_ADDRESS,
 } = playApp.actions;
 
 export default playApp;

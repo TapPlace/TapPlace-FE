@@ -23,7 +23,6 @@ function AppMain() {
     'zeropay',
     'apple_visa',
     'apple_master',
-    'apple_master',
     'apple_jcb',
     'conless_visa',
     'conless_master',
@@ -39,7 +38,7 @@ function AppMain() {
     state => state.playApp,
   );
   // 네이버 Map 객체 저장
-  const [map, setMap] = useState();
+  const [map, setMap]: any = useState();
   const setMapFunction = (maps: any) => {
     setMap(maps);
   };
@@ -47,11 +46,11 @@ function AppMain() {
   function bringMyLocation() {
     // 내 위치 가져오기
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
+      navigator.geolocation.getCurrentPosition((position: any) => {
         dispatch(
           SET_MY_LOCATION({
-            longitude: 127.014383829718,
             latitude: 37.4938999991414,
+            longitude: 127.014383829718,
             // latitude: position.coords.latitude,
             // longitude: position.coords.longitude,
           }),
@@ -86,7 +85,7 @@ function AppMain() {
   // 가맹점 상세보기가 띄워졌을 때 피드백 정보를 가져옴
   useEffect(() => {
     axios
-      .post('https://api.tapplace.cloud//pay/list/more', {
+      .post('https://api.tapplace.cloud/pay/list/more', {
         store_id: storeDetailInfo.store_id,
         pays: storeDetailInfo.pays,
       })

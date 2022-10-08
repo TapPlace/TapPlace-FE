@@ -10,7 +10,7 @@ import { isBrowser } from 'react-device-detect';
 import { useAppSelector } from '../../redux/hooks';
 
 function AppSideMenu(map: any) {
-  const { storeInDistance } = useAppSelector(state => state.playApp);
+  const { storeInDistance, myAddress } = useAppSelector(state => state.playApp);
 
   return (
     <div id="appSideMenu">
@@ -25,7 +25,7 @@ function AppSideMenu(map: any) {
           <img id="seeMoreImg" src="img/AppPage/seeMore.png" alt="seeMore" />
         )}
       </ul>
-      <div id="aroundMyLocation">강서구 등촌3동 주변 1km</div>
+      <div id="aroundMyLocation">{myAddress} 주변 1km</div>
       <ul id="filterContainer">
         <li className="filter">
           <div>

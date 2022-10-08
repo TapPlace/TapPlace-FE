@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: calc(100vh - 60px);
     width: 25vw;
     background: white;
     #searchCategoryContainer {
@@ -29,19 +29,23 @@
       flex-wrap: wrap;
       width: 80%;
       .filter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border: 1px solid #dbdee8;
-        padding: 0.4vw 0.7vw 0.3vw 0.7vw;
+        width: 106px;
+        height: 36px;
+        line-height: 36px;
         border-radius: 20px;
         margin: 0 4px 8px 0;
         div {
-          font-size: 0.79vw;
+          font-size: 15px;
           color: #333333;
+          padding-right: 3px;
           .vButtonFilter {
-            padding: 0 0 0.1vw 0.2vw;
-            width: 0.75vw;
-          }
-          #filterSeeMore {
-            margin-bottom: 0.15vw;
+            width: 15px;
+            padding-left: 3px;
+            padding-bottom: 2px;
           }
         }
       }
@@ -49,9 +53,22 @@
     #storeContainer {
       border-top: 1px solid #dbdee8;
       width: 100%;
-      height: 70%;
+      height: 100%;
       margin-top: 24px;
       overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: block;
+        width: 8px;
+        height: 100%;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #4e77fb;
+        border-radius: 100px;
+        height: 180px;
+      }
+      &::-webkit-scrollbar-track {
+        background: rgba(219, 222, 232, 0.4);
+      }
     }
   }
 }
