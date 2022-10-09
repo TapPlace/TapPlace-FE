@@ -55,6 +55,9 @@ function NaverMap(props: any) {
               myAddress.length - myAddress.lastIndexOf(' ') + 1,
             );
             dispatch(SET_MY_ADDRESS(myAddress));
+            if (myAddress) {
+              console.log('hi');
+            }
           },
         );
       };
