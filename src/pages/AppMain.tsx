@@ -41,7 +41,8 @@ function AppMain() {
     storeInDistance,
     storeDetailFlag,
     storeDetailInfo,
-    filterStore,
+    choiceCnt,
+    filterShowFlag,
     filterApplyFlag,
   } = useAppSelector(state => state.playApp);
   // 네이버 Map 객체 저장
@@ -89,81 +90,78 @@ function AppMain() {
 
   // 필터가 클릭되있을 경우
   useEffect(() => {
-    const filterList = document.querySelectorAll('.filter.active');
-    // 필터링 조건
-    let filStore: any = [];
-    let filPay: any = [];
-    // 카테고리만 필터링한 가맹점들
-    let filteringStore: any = [];
-    // 전부 필터링 한 가맹점들
-    let filteringPay: any = [];
+    if (filterApplyFlag === true) {
+      const filterList = document.querySelectorAll('.filter.active');
+      // 필터링 조건
+      let filStore: any = [];
+      let filPay: any = [];
+      // 카테고리만 필터링한 가맹점들
+      let filteringStore: any = [];
+      // 전부 필터링 한 가맹점들
+      let filteringPay: any = [];
 
-    filterList.forEach(filter => {
-      console.log(filter);
-      switch (filter.id) {
-        case 'store0':
-          filStore.push('음식점');
-          break;
-        case 'store1':
-          filStore.push('카페');
-          break;
-        case 'store2':
-          filStore.push('편의점');
-          break;
-        case 'store3':
-          filStore.push('마트');
-          break;
-        case 'store4':
-          filStore.push('주유소');
-          break;
-        case 'store5':
-          filStore.push('주차장');
-          break;
-        case 'store6':
-          filStore.push('병원');
-          break;
-        case 'store7':
-          filStore.push('약국');
-          break;
-        case 'store8':
-          filStore.push('숙박');
-          break;
-        case 'store9':
-          filStore.push('공공기관');
-          break;
-        case 'pay0':
-          filPay.push('kakaopay');
-          break;
-        case 'pay1':
-          filPay.push('naverpay');
-          break;
-        case 'pay2':
-          filPay.push('zeropay');
-          break;
-        case 'pay3':
-          filPay.push('payco');
-          break;
-        case 'apple0':
-          filPay.push('apple_visa');
-          break;
-        case 'apple1':
-          filPay.push('apple_master');
-          break;
-        case 'apple2':
-          filPay.push('apple_jcb');
-          break;
-      }
-    });
+      filterList.forEach(filter => {
+        switch (filter.id) {
+          case 'store0':
+            filStore.push('음식점');
+            break;
+          case 'store1':
+            filStore.push('카페');
+            break;
+          case 'store2':
+            filStore.push('편의점');
+            break;
+          case 'store3':
+            filStore.push('마트');
+            break;
+          case 'store4':
+            filStore.push('주유소');
+            break;
+          case 'store5':
+            filStore.push('주차장');
+            break;
+          case 'store6':
+            filStore.push('병원');
+            break;
+          case 'store7':
+            filStore.push('약국');
+            break;
+          case 'store8':
+            filStore.push('숙박');
+            break;
+          case 'store9':
+            filStore.push('공공기관');
+            break;
+          case 'pay0':
+            filPay.push('kakaopay');
+            break;
+          case 'pay1':
+            filPay.push('naverpay');
+            break;
+          case 'pay2':
+            filPay.push('zeropay');
+            break;
+          case 'pay3':
+            filPay.push('payco');
+            break;
+          case 'apple0':
+            filPay.push('apple_visa');
+            break;
+          case 'apple1':
+            filPay.push('apple_master');
+            break;
+          case 'apple2':
+            filPay.push('apple_jcb');
+            break;
+        }
+      });
 
-    if (filterApplyFlag === false) {
       // 둘다 없는 경우
       if (filStore.length === 0 && filPay.length === 0) {
-        console.log('two null');
         dispatch(SET_FILTER_STORE(storeInDistance));
       }
       // 카테고리만 있는 경우
       if (filStore.length !== 0 && filPay.length === 0) {
-        console.log('only category');
         storeInDistance.forEach(store => {
           filStore.forEach((filter: any) => {
             if (store.category_group_name === filter) filteringPay.push(store);
@@ -174,7 +172,6 @@ function AppMain() {
       }
       // 페이만 있는 경우
       if (filStore.length === 0 && filPay.length !== 0) {
-        console.log('only pay');
         storeInDistance.forEach((store: any) => {
           for (let i = 0; i < filPay.length; i++) {
             if (store.pays.includes(filPay[i]) === false) {
@@ -191,7 +188,6 @@ function AppMain() {
       }
       // 카테고리, 페이가 있는 경우
       if (filStore.lenght !== 0 && filPay.length !== 0) {
-        console.log('category pay');
         storeInDistance.forEach(store => {
           if (filStore.indexOf(store.category_group_name) !== -1)
             filteringStore.push(store);
@@ -212,7 +208,7 @@ function AppMain() {
         filPay = [];
       }
     }
-  }, [filterApplyFlag]);
+  }, [choiceCnt]);
 
   // storeDetailInfo 피드백 변수
   const [feedback, setFeedback]: any = useState();

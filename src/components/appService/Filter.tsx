@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
+  SET_CHOICE_CNT,
   SET_FILTER_APPLY_FLAG,
   SET_FILTER_SHOW_FLAG,
 } from '../../redux/slices/PlayApp';
@@ -34,6 +35,23 @@ function Filter() {
     'AMERICAN EXPRESS (AMEX)',
   ];
 
+  const filterReset = (reset: any) => {
+    const filterList = document.querySelectorAll('.filter.active');
+    filterList.forEach(list => {
+      if (reset === 'all') {
+        list.className = 'filter';
+      } else if (reset === 'category') {
+        if (list.id.includes('store')) {
+          list.className = 'filter';
+        }
+      } else if (reset === 'pay') {
+        if (!list.id.includes('store')) {
+          list.className = 'filter';
+        }
+      }
+    });
+  };
+
   return (
     <div
       id="filterContainer"
@@ -45,17 +63,23 @@ function Filter() {
           src="img/close.png"
           alt="close"
           onClick={() => {
-            const filterList = document.querySelectorAll('.filter.active');
-            filterList.forEach(list => {
-              list.className = 'filter';
-            });
+            filterReset('all');
             dispatch(SET_FILTER_SHOW_FLAG(false));
           }}
         />
       </div>
       <section id="addFilter">
         <article id="storeFilter">
-          <div className="chooseTitle">매장선택</div>
+          <div className="chooseTitle">
+            <p>매장선택</p>
+            <img
+              src="img/reset.png"
+              alt="reset"
+              onClick={() => {
+                filterReset('category');
+              }}
+            />
+          </div>
           <ul className="chooseFilter">
             {chooseStore.map((item, idx) => {
               return (
@@ -69,7 +93,16 @@ function Filter() {
           </ul>
         </article>
         <article id="paymentFilter">
-          <div className="chooseTitle">결제수단</div>
+          <div className="chooseTitle">
+            <p>결제수단</p>
+            <img
+              src="img/reset.png"
+              alt="reset"
+              onClick={() => {
+                filterReset('pay');
+              }}
+            />
+          </div>
           <ul id="payFilter" className="chooseFilter">
             {choosePay.map((item, idx) => {
               return (
@@ -122,7 +155,23 @@ function Filter() {
       <button
         id="applyFilter"
         onClick={() => {
+          const filterList = document.querySelectorAll('.filter.active');
+          let choiceStoreCnt = 0;
+          let choicePayCnt = 0;
+          filterList.forEach(list => {
+            if (list.id.includes('store')) {
+              choiceStoreCnt++;
+            } else {
+              choicePayCnt++;
+            }
+          });
           dispatch(SET_FILTER_APPLY_FLAG(true));
+          dispatch(SET_FILTER_SHOW_FLAG(false));
+          dispatch(
+            SET_CHOICE_CNT({ storeCnt: choiceStoreCnt, payCnt: choicePayCnt }),
+          );
+          choiceStoreCnt = 0;
+          choicePayCnt = 0;
         }}
       >
         적용
