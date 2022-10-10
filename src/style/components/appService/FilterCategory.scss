@@ -1,0 +1,21 @@
+@import '../../utils';
+
+@include mobile {
+}
+@include tablet {
+}
+@include desktop {
+  .filter {
+    border: 1px solid #dbdee8;
+    padding: 6px 16px;
+    margin: 0 4px 10px 4px;
+    border-radius: 1000px;
+    text-align: center;
+    color: #9e9e9e;
+    &.active {
+      border: 1px solid rgba(78, 119, 251, 0.6);
+      background: rgba(78, 119, 251, 0.06);
+      color: #4e77fb;
+    }
+  }
+}

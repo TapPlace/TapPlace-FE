@@ -12,8 +12,13 @@ const { naver }: any = window;
 
 function NaverMap(props: any) {
   const dispatch = useAppDispatch();
-  const { myLocation, lastLocation, storeInDistance, storeDetailFlag } =
-    useAppSelector(state => state.playApp);
+  const {
+    myLocation,
+    lastLocation,
+    storeInDistance,
+    storeDetailFlag,
+    filterStore,
+  } = useAppSelector(state => state.playApp);
   const [naverMap, setNaverMap]: any = useState();
   const [zoom, setZoom] = useState(17);
 
@@ -55,9 +60,6 @@ function NaverMap(props: any) {
               myAddress.length - myAddress.lastIndexOf(' ') + 1,
             );
             dispatch(SET_MY_ADDRESS(myAddress));
-            if (myAddress) {
-              console.log('hi');
-            }
           },
         );
       };
@@ -101,99 +103,181 @@ function NaverMap(props: any) {
   // distance 마커 표시
   function displayMarkers(map: any) {
     // 반경 내에 가맹점 마커 표시
-    for (let i = 0; i < storeInDistance.length; i++) {
-      let key: string = String(storeInDistance[i].num);
-      if (storeInDistance[i].category_group_name === '음식점') {
-        const imgSrc = '/img/AppPage/restaurant.png';
-        const category = '음식점';
-        const marker = new naver.maps.Marker({
-          position: new naver.maps.LatLng(
-            storeInDistance[i].y,
-            storeInDistance[i].x,
-          ),
-          title: key,
-          map,
-          icon: {
-            content:
-              '<div style="text-align: center;"><img src="/img/AppPage/Marker/restaurant.png"; alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">음식점</p></div>',
-            // anchor: new naver.maps.Point(18, 30),
-          },
-        });
-        markerClickEvent({ map, marker, i, imgSrc, category });
+    if (filterStore.length === 0) {
+      console.log('storedis');
+      for (let i = 0; i < storeInDistance.length; i++) {
+        let key: string = String(storeInDistance[i].num);
+        if (storeInDistance[i].category_group_name === '음식점') {
+          const imgSrc = '/img/AppPage/restaurant.png';
+          const category = '음식점';
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(
+              storeInDistance[i].y,
+              storeInDistance[i].x,
+            ),
+            title: key,
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/restaurant.png"; alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">음식점</p></div>',
+              // anchor: new naver.maps.Point(18, 30),
+            },
+          });
+          markerClickEvent({ map, marker, i, imgSrc, category });
+        }
+        if (storeInDistance[i].category_group_name === '편의점') {
+          const imgSrc = '/img/AppPage/store.png';
+          const category = '편의점';
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(
+              storeInDistance[i].y,
+              storeInDistance[i].x,
+            ),
+            title: key,
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/convenienceStore.png"; alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">편의점</p></div>',
+              // anchor: new naver.maps.Point(32, 30),
+            },
+          });
+          markerClickEvent({ map, marker, i, imgSrc, category });
+        }
+        if (storeInDistance[i].category_group_name === '카페') {
+          const imgSrc = 'img/AppPage/cafe.png';
+          const category = '카페';
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(
+              storeInDistance[i].y,
+              storeInDistance[i].x,
+            ),
+            title: key,
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/cafe.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">카페</p></div>',
+            },
+          });
+          markerClickEvent({ map, marker, i, imgSrc, category });
+        }
+        if (storeInDistance[i].category_group_name === '마트') {
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(
+              storeInDistance[i].y,
+              storeInDistance[i].x,
+            ),
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/mart.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">마트</p></div>',
+            },
+          });
+        }
+        if (storeInDistance[i].category_group_name === '병원') {
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(
+              storeInDistance[i].y,
+              storeInDistance[i].x,
+            ),
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/hospital.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">병원</p></div>',
+            },
+          });
+        }
+        if (storeInDistance[i].category_group_name === '주유소') {
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(
+              storeInDistance[i].y,
+              storeInDistance[i].x,
+            ),
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/gasStation.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">주유소</p></div>',
+            },
+          });
+        }
       }
-      if (storeInDistance[i].category_group_name === '편의점') {
-        const imgSrc = '/img/AppPage/store.png';
-        const category = '편의점';
-        const marker = new naver.maps.Marker({
-          position: new naver.maps.LatLng(
-            storeInDistance[i].y,
-            storeInDistance[i].x,
-          ),
-          title: key,
-          map,
-          icon: {
-            content:
-              '<div style="text-align: center;"><img src="/img/AppPage/Marker/convenienceStore.png"; alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">편의점</p></div>',
-            // anchor: new naver.maps.Point(32, 30),
-          },
-        });
-        markerClickEvent({ map, marker, i, imgSrc, category });
-      }
-      if (storeInDistance[i].category_group_name === '카페') {
-        const imgSrc = 'img/AppPage/cafe.png';
-        const category = '카페';
-        const marker = new naver.maps.Marker({
-          position: new naver.maps.LatLng(
-            storeInDistance[i].y,
-            storeInDistance[i].x,
-          ),
-          title: key,
-          map,
-          icon: {
-            content:
-              '<div style="text-align: center;"><img src="/img/AppPage/Marker/cafe.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">카페</p></div>',
-          },
-        });
-        markerClickEvent({ map, marker, i, imgSrc, category });
-      }
-      if (storeInDistance[i].category_group_name === '마트') {
-        const marker = new naver.maps.Marker({
-          position: new naver.maps.LatLng(
-            storeInDistance[i].y,
-            storeInDistance[i].x,
-          ),
-          map,
-          icon: {
-            content:
-              '<div style="text-align: center;"><img src="/img/AppPage/Marker/mart.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">마트</p></div>',
-          },
-        });
-      }
-      if (storeInDistance[i].category_group_name === '병원') {
-        const marker = new naver.maps.Marker({
-          position: new naver.maps.LatLng(
-            storeInDistance[i].y,
-            storeInDistance[i].x,
-          ),
-          map,
-          icon: {
-            content:
-              '<div style="text-align: center;"><img src="/img/AppPage/Marker/hospital.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">병원</p></div>',
-          },
-        });
-      }
-      if (storeInDistance[i].category_group_name === '주유소') {
-        const marker = new naver.maps.Marker({
-          position: new naver.maps.LatLng(
-            storeInDistance[i].y,
-            storeInDistance[i].x,
-          ),
-          map,
-          icon: {
-            content:
-              '<div style="text-align: center;"><img src="/img/AppPage/Marker/gasStation.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">주유소</p></div>',
-          },
-        });
+    } else {
+      console.log('filter');
+      for (let i = 0; i < filterStore.length; i++) {
+        let key: string = String(filterStore[i].num);
+        if (filterStore[i].category_group_name === '음식점') {
+          const imgSrc = '/img/AppPage/restaurant.png';
+          const category = '음식점';
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(filterStore[i].y, filterStore[i].x),
+            title: key,
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/restaurant.png"; alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">음식점</p></div>',
+              // anchor: new naver.maps.Point(18, 30),
+            },
+          });
+          markerClickEvent({ map, marker, i, imgSrc, category });
+        }
+        if (filterStore[i].category_group_name === '편의점') {
+          const imgSrc = '/img/AppPage/store.png';
+          const category = '편의점';
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(filterStore[i].y, filterStore[i].x),
+            title: key,
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/convenienceStore.png"; alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">편의점</p></div>',
+              // anchor: new naver.maps.Point(32, 30),
+            },
+          });
+          markerClickEvent({ map, marker, i, imgSrc, category });
+        }
+        if (filterStore[i].category_group_name === '카페') {
+          const imgSrc = 'img/AppPage/cafe.png';
+          const category = '카페';
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(filterStore[i].y, filterStore[i].x),
+            title: key,
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/cafe.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">카페</p></div>',
+            },
+          });
+          markerClickEvent({ map, marker, i, imgSrc, category });
+        }
+        if (filterStore[i].category_group_name === '마트') {
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(filterStore[i].y, filterStore[i].x),
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/mart.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">마트</p></div>',
+            },
+          });
+        }
+        if (filterStore[i].category_group_name === '병원') {
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(filterStore[i].y, filterStore[i].x),
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/hospital.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">병원</p></div>',
+            },
+          });
+        }
+        if (filterStore[i].category_group_name === '주유소') {
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(filterStore[i].y, filterStore[i].x),
+            map,
+            icon: {
+              content:
+                '<div style="text-align: center;"><img src="/img/AppPage/Marker/gasStation.png" alt="markerImg" /><p style="text-shadow: 1px 0 white, 1px 0 white, 1px 0 white, 1px 0 white; font-size: 13px;">주유소</p></div>',
+            },
+          });
+        }
       }
     }
   }
@@ -234,6 +318,10 @@ function NaverMap(props: any) {
   useEffect(() => {
     naverFunction();
   }, [storeInDistance]);
+  // 필터링 시
+  useEffect(() => {
+    naverFunction();
+  }, [filterStore]);
   // 상세정보 X버튼 누르면 지도를 다시 생성하여 상세정보와 미리보기를 없앰
   useEffect(() => {
     if (!storeDetailFlag) {

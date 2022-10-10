@@ -1,0 +1,134 @@
+import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import {
+  SET_FILTER_APPLY_FLAG,
+  SET_FILTER_SHOW_FLAG,
+} from '../../redux/slices/PlayApp';
+
+import '../../style/components/appService/Filter.scss';
+import FilterCategory from './FilterCategory';
+
+function Filter() {
+  const dispatch = useAppDispatch();
+  const { filterShowFlag } = useAppSelector(state => state.playApp);
+  const chooseStore = [
+    '음식점',
+    '카페',
+    '편의점',
+    '마트',
+    '주유소',
+    '주차장',
+    '병원',
+    '약국',
+    '숙박',
+    '공공기관',
+  ];
+  const choosePay = ['카카오페이', '네이버페이', '제로페이', '페이코'];
+  const chooseApple = ['VISA', 'MASTER CARD', 'JCB'];
+  const chooseGoogle = ['VISA', 'MASTER CARD', 'MAESTRO'];
+  const chooseContactles = [
+    'VISA',
+    'MASTER CARD',
+    'UnionPay',
+    'JCB',
+    'AMERICAN EXPRESS (AMEX)',
+  ];
+
+  return (
+    <div
+      id="filterContainer"
+      className={filterShowFlag ? undefined : 'noShowFilter'}
+    >
+      <div id="filterHeader">
+        <p>필터</p>
+        <img
+          src="img/close.png"
+          alt="close"
+          onClick={() => {
+            const filterList = document.querySelectorAll('.filter.active');
+            filterList.forEach(list => {
+              list.className = 'filter';
+            });
+            dispatch(SET_FILTER_SHOW_FLAG(false));
+          }}
+        />
+      </div>
+      <section id="addFilter">
+        <article id="storeFilter">
+          <div className="chooseTitle">매장선택</div>
+          <ul className="chooseFilter">
+            {chooseStore.map((item, idx) => {
+              return (
+                <FilterCategory
+                  key={'store' + idx}
+                  item={item}
+                  id={'store' + idx}
+                />
+              );
+            })}
+          </ul>
+        </article>
+        <article id="paymentFilter">
+          <div className="chooseTitle">결제수단</div>
+          <ul id="payFilter" className="chooseFilter">
+            {choosePay.map((item, idx) => {
+              return (
+                <FilterCategory
+                  key={'pay' + idx}
+                  item={item}
+                  id={'pay' + idx}
+                />
+              );
+            })}
+          </ul>
+          <h4 className="kindOfPay">애플페이</h4>
+          <ul id="appleFilter" className="chooseFilter">
+            {chooseApple.map((item, idx) => {
+              return (
+                <FilterCategory
+                  key={'apple' + idx}
+                  item={item}
+                  id={'apple' + idx}
+                />
+              );
+            })}
+          </ul>
+          <h4 className="kindOfPay">구글페이</h4>
+          <ul id="googleFilter" className="chooseFilter">
+            {chooseGoogle.map((item, idx) => {
+              return (
+                <FilterCategory
+                  key={'google' + idx}
+                  item={item}
+                  id={'google' + idx}
+                />
+              );
+            })}
+          </ul>
+          <h4 className="kindOfPay">컨택리스 카드</h4>
+          <ul id="conlessFilter" className="chooseFilter">
+            {chooseContactles.map((item, idx) => {
+              return (
+                <FilterCategory
+                  key={'conless' + idx}
+                  item={item}
+                  id={'conless' + idx}
+                />
+              );
+            })}
+          </ul>
+        </article>
+      </section>
+      <button
+        id="applyFilter"
+        onClick={() => {
+          dispatch(SET_FILTER_APPLY_FLAG(true));
+        }}
+      >
+        적용
+      </button>
+    </div>
+  );
+}
+
+export default Filter;

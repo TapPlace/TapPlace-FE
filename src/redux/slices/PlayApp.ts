@@ -24,6 +24,9 @@ export interface PlayAppState {
   };
   storeInDistance: Array<any>;
   _storeInDistance: Array<any>;
+  filterShowFlag: Boolean;
+  filterApplyFlag: Boolean;
+  filterStore: Array<any>;
   searchWord: string | undefined;
   myAddress: string | undefined;
 }
@@ -52,6 +55,9 @@ const initialState: PlayAppState = {
   },
   storeInDistance: [],
   _storeInDistance: [],
+  filterShowFlag: false,
+  filterApplyFlag: false,
+  filterStore: [],
   searchWord: undefined,
   myAddress: undefined,
 };
@@ -97,6 +103,15 @@ export const playApp = createSlice({
     _SET_STORE_IN_DISTANCE(state, action: PayloadAction<any>) {
       state._storeInDistance = action.payload;
     },
+    SET_FILTER_SHOW_FLAG(state, action: PayloadAction<boolean>) {
+      state.filterShowFlag = action.payload;
+    },
+    SET_FILTER_APPLY_FLAG(state, action: PayloadAction<boolean>) {
+      state.filterApplyFlag = action.payload;
+    },
+    SET_FILTER_STORE(state, action: PayloadAction<any>) {
+      state.filterStore = action.payload;
+    },
     SET_SEARCH_WORD(state, action: PayloadAction<string>) {
       state.searchWord = action.payload;
     },
@@ -113,6 +128,9 @@ export const {
   SET_DETAIL_FLAG,
   SET_STORE_IN_DISTANCE,
   _SET_STORE_IN_DISTANCE,
+  SET_FILTER_SHOW_FLAG,
+  SET_FILTER_APPLY_FLAG,
+  SET_FILTER_STORE,
   SET_SEARCH_WORD,
   SET_MY_ADDRESS,
 } = playApp.actions;
