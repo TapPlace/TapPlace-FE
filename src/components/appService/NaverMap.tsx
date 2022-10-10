@@ -83,7 +83,6 @@ function NaverMap(props: any) {
       });
       naver.maps.Event.addListener(map, 'zoom_changed', function () {
         setZoom(map.getZoom());
-        console.log(map.getZoom());
       });
       displayMarkers(map);
       // distance 반경 원 그리기
@@ -104,7 +103,6 @@ function NaverMap(props: any) {
   function displayMarkers(map: any) {
     // 반경 내에 가맹점 마커 표시
     if (filterStore.length === 0) {
-      console.log('storedis');
       for (let i = 0; i < storeInDistance.length; i++) {
         let key: string = String(storeInDistance[i].num);
         if (storeInDistance[i].category_group_name === '음식점') {
@@ -201,7 +199,6 @@ function NaverMap(props: any) {
         }
       }
     } else {
-      console.log('filter');
       for (let i = 0; i < filterStore.length; i++) {
         let key: string = String(filterStore[i].num);
         if (filterStore[i].category_group_name === '음식점') {
