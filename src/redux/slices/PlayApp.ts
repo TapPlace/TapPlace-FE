@@ -31,8 +31,12 @@ export interface PlayAppState {
   filterShowFlag: Boolean;
   filterApplyFlag: Boolean;
   filterStore: Array<any>;
+  searchFlag: boolean;
+  searchStore: Array<any>;
   searchWord: string | undefined;
   myAddress: string | undefined;
+  showSideFlag: boolean;
+  showSearchFlag: boolean;
 }
 
 const initialState: PlayAppState = {
@@ -66,8 +70,12 @@ const initialState: PlayAppState = {
   filterShowFlag: false,
   filterApplyFlag: false,
   filterStore: [],
+  searchFlag: false,
+  searchStore: [],
   searchWord: undefined,
   myAddress: undefined,
+  showSideFlag: false,
+  showSearchFlag: true,
 };
 
 export const playApp = createSlice({
@@ -124,11 +132,23 @@ export const playApp = createSlice({
     SET_FILTER_STORE(state, action: PayloadAction<any>) {
       state.filterStore = action.payload;
     },
+    SET_SEARCH_FLAG(state, action: PayloadAction<boolean>) {
+      state.searchFlag = action.payload;
+    },
+    SET_SEARCH_STORE(state, action: PayloadAction<any>) {
+      state.searchStore = action.payload;
+    },
     SET_SEARCH_WORD(state, action: PayloadAction<string>) {
       state.searchWord = action.payload;
     },
     SET_MY_ADDRESS(state, action: PayloadAction<string>) {
       state.myAddress = action.payload;
+    },
+    SET_SHOW_SIDE_FLAG(state, action: PayloadAction<boolean>) {
+      state.showSideFlag = action.payload;
+    },
+    SET_SHOW_SEARCH_FLAG(state, action: PayloadAction<boolean>) {
+      state.showSearchFlag = action.payload;
     },
   },
 });
@@ -144,8 +164,12 @@ export const {
   SET_FILTER_SHOW_FLAG,
   SET_FILTER_APPLY_FLAG,
   SET_FILTER_STORE,
+  SET_SEARCH_FLAG,
+  SET_SEARCH_STORE,
   SET_SEARCH_WORD,
   SET_MY_ADDRESS,
+  SET_SHOW_SIDE_FLAG,
+  SET_SHOW_SEARCH_FLAG,
 } = playApp.actions;
 
 export default playApp;

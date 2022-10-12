@@ -1,10 +1,15 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { SET_DETAIL_FLAG, SET_DETAIL_INFO } from '../../redux/slices/PlayApp';
+import {
+  SET_DETAIL_FLAG,
+  SET_DETAIL_INFO,
+  SET_SHOW_SEARCH_FLAG,
+  SET_SHOW_SIDE_FLAG,
+} from '../../redux/slices/PlayApp';
 
 import '../../style/components/introService/StoreArticle.scss';
 
-function StoreArticle({ option, map }: any) {
+function StoreArticle({ show, option, map }: any) {
   const dispatch = useAppDispatch();
   const category = option.category_group_name;
   const name = option.place_name;
@@ -30,6 +35,8 @@ function StoreArticle({ option, map }: any) {
     <article
       className="storeArticle"
       onClick={() => {
+        dispatch(SET_SHOW_SIDE_FLAG(false));
+        dispatch(SET_SHOW_SEARCH_FLAG(false));
         if (!storeDetailFlag) dispatch(SET_DETAIL_FLAG(true));
         dispatch(
           SET_DETAIL_INFO({

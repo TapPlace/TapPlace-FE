@@ -10,6 +10,7 @@ import {
   SET_DETAIL_FLAG,
   SET_FILTER_STORE,
   SET_MY_LOCATION,
+  SET_SHOW_SEARCH_FLAG,
   SET_STORE_IN_DISTANCE,
 } from '../redux/slices/PlayApp';
 
@@ -42,7 +43,6 @@ function AppMain() {
     storeDetailFlag,
     storeDetailInfo,
     choiceCnt,
-    filterShowFlag,
     filterApplyFlag,
   } = useAppSelector(state => state.playApp);
   // 네이버 Map 객체 저장
@@ -247,6 +247,7 @@ function AppMain() {
                   src="img/close.png"
                   alt="closeDetail"
                   onClick={() => {
+                    dispatch(SET_SHOW_SEARCH_FLAG(true));
                     dispatch(SET_DETAIL_FLAG(false));
                   }}
                 />

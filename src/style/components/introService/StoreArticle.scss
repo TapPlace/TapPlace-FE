@@ -3,6 +3,45 @@
 @include mobile {
 }
 @include tablet {
+  .storeArticle {
+    border-bottom: 1px solid rgba(219, 222, 232, 0.6);
+    padding: 20px;
+    &:hover {
+      background: #f5f7ff;
+    }
+    .storeLine1 {
+      display: flex;
+      align-items: flex-end;
+      .storeName {
+        font-size: 18px;
+        font-weight: 400;
+        padding-right: 6px;
+      }
+      .storeCategory {
+        font-size: 15px;
+        color: $subTextColor;
+      }
+    }
+    .storeLine2 {
+      display: flex;
+      color: $subTextColor;
+      font-size: 14px;
+      .storeMeter {
+        padding-right: 8px;
+      }
+      .storeAdderss {
+      }
+    }
+    .storePaymentMethod {
+      display: flex;
+      align-items: center;
+      padding-top: 16px;
+      img {
+        height: 38px;
+        padding-right: 6px;
+      }
+    }
+  }
 }
 @include desktop {
   .storeArticle {

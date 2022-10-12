@@ -1,30 +1,142 @@
 @import '../../utils';
 
-@include desktop {
+@include mobile {
+  #search {
+    background: white;
+    #searchContainer {
+      border: 2px solid #4e77fb;
+      box-shadow: 0px 0px 12px rgba(78, 119, 251, 0.4);
+      border-radius: 12px;
+      display: flex;
+      position: relative;
+      width: 90%;
+      margin: 8px 0 8px 5vw;
+      #searchIcon {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      #searchStore {
+        border: none;
+        margin: 1px 0;
+        width: 100%;
+        height: 50px;
+        margin-left: 44px;
+        margin-right: 44px;
+        background: white;
+        font-size: 17px;
+        &::placeholder {
+          font-size: 17px;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      #resetSearch {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      #showBtn {
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+
+@include tablet {
   #searchContainer {
+    border: 2px solid #4e77fb;
+    box-shadow: 0px 0px 12px rgba(78, 119, 251, 0.4);
+    border-radius: 12px;
+    display: flex;
     position: relative;
-    width: 80%;
+    width: 90%;
+    margin: 8px 0 8px 5vw;
     #searchIcon {
-      width: 18px;
-      height: 18px;
       position: absolute;
-      left: 18px;
-      top: 64%;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
     }
     #searchStore {
-      border: 2px solid #4e77fb;
-      padding-top: 3px;
+      border: none;
+      margin: 1px 0;
       width: 100%;
-      margin-top: 44px;
       height: 50px;
-      padding-left: 44px;
-      border-radius: 12px;
-      box-shadow: 0px 0px 12px rgba(78, 119, 251, 0.4);
+      margin-left: 44px;
+      margin-right: 44px;
       background: white;
       font-size: 17px;
       &::placeholder {
         font-size: 17px;
       }
+      &:focus {
+        outline: none;
+      }
+    }
+    #resetSearch {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #showBtn {
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
+}
+
+@include desktop {
+  #searchContainer {
+    border: 2px solid #4e77fb;
+    box-shadow: 0px 0px 12px rgba(78, 119, 251, 0.4);
+    border-radius: 12px;
+    display: flex;
+    position: relative;
+    width: 80%;
+    margin-top: 44px;
+    #searchIcon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #searchStore {
+      border: none;
+      margin: 1px 0;
+      width: 100%;
+      height: 50px;
+      margin-left: 44px;
+      margin-right: 44px;
+      background: white;
+      font-size: 17px;
+      &::placeholder {
+        font-size: 17px;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    #resetSearch {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+#showBtn {
+  // display: none;
 }
