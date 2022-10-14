@@ -6,7 +6,7 @@ import {
   SET_DETAIL_INFO,
   SET_LAST_LOCATION,
   SET_MY_ADDRESS,
-  SET_SHOW_SEARCH_FLAG,
+  SET_MOBILE_SHOW_SEARCH_FLAG,
 } from '../../redux/slices/PlayApp';
 import '../../style/pages/NaverMap.scss';
 
@@ -41,11 +41,17 @@ function NaverMap(props: any) {
       const map = await new naver.maps.Map('map', {
         center: new naver.maps.LatLng(latitude, longitude),
         zoom: zoom,
-        zoomControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+          position: naver.maps.Position.RIGHT_BOTTOM,
+          style: naver.maps.ZoomControlStyle.SMALL,
+        },
+        logoControlOptions: {
+          position: naver.maps.Position.RIGHT_BOTTOM,
+        },
+        mapDataControl: false,
         scaleControl: false,
       });
-
-      map.zoom = 18;
 
       const searchAddress = (latlng: any) => {
         naver.maps.Service.reverseGeocode(
@@ -454,20 +460,27 @@ function NaverMap(props: any) {
       ` <p style="font-size: 16px;">${storeInDistance[i].place_name}</p>`,
       '</div>',
     ].join('');
+
+    const position = { lat: marker.position.y, lng: marker.position.x };
+
     const infoWindow = new naver.maps.InfoWindow({
       content: markerContent,
+      position: position,
+      borderColor: 'white',
+      backgroundColor: '#fff',
+      disableAnchor: false,
     });
     naver.maps.Event.addListener(marker, 'click', function (e: any) {
       if (infoWindow.getMap()) {
         infoWindow.close();
         dispatch(SET_DETAIL_FLAG(false));
-        const bigMarker = marker.getElement();
-        bigMarker.childNodes[0].childNodes[1].src = imgSrc;
+        // const bigMarker = marker.getElement();
+        // bigMarker.childNodes[0].childNodes[1].src = imgSrc;
       } else {
         infoWindow.open(map, marker);
         if (isMobile) {
-          marker.position._lat = marker.position._lat - 0.0036;
-          map.panTo(marker.position, map.zoom);
+          // marker.position._lat = marker.position._lat - 0.0016;
+          // map.panTo(marker.position, map.zoom);
           dispatch(
             SET_LAST_LOCATION({
               latitude: map.getCenter()._lat,
@@ -475,12 +488,6 @@ function NaverMap(props: any) {
             }),
           );
         }
-        const bigImgSrc = [
-          imgSrc.slice(0, imgSrc.indexOf('.')),
-          '_big',
-          imgSrc.slice(imgSrc.indexOf('.')),
-        ].join('');
-        const bigMarker = marker.getElement();
         // marker.setIcon({
         //   url: bigImgSrc,
         // });
@@ -489,7 +496,7 @@ function NaverMap(props: any) {
           dispatch(SET_DETAIL_FLAG(true));
         }
         dispatch(SET_DETAIL_INFO(storeInDistance[i]));
-        dispatch(SET_SHOW_SEARCH_FLAG(false));
+        dispatch(SET_MOBILE_SHOW_SEARCH_FLAG(false));
       }
     });
   }

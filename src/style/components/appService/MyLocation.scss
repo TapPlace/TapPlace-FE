@@ -1,0 +1,27 @@
+@import '../../utils';
+
+@include mobile {
+  #aroundMyLocation {
+    background: white;
+    width: 100vw;
+    padding: 3px 0 12px 0;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
+  }
+}
+
+@include tablet {
+  #aroundMyLocation {
+    display: inline-block;
+    height: 66px;
+    line-height: 66px;
+    padding-left: 5vw;
+  }
+}
+
+@include desktop {
+  #aroundMyLocation {
+    float: left;
+    font-size: 1.04vw;
+    padding: 20px 2.08vw 20px 2.08vw;
+  }
+}

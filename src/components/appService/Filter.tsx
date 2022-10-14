@@ -53,10 +53,7 @@ function Filter() {
   };
 
   return (
-    <div
-      id="filterContainer"
-      className={filterShowFlag ? undefined : 'noShowFilter'}
-    >
+    <div id="filterContainer" className={filterShowFlag ? '' : 'noShowFilter'}>
       <div id="filterHeader">
         <p>필터</p>
         <img
@@ -161,7 +158,7 @@ function Filter() {
           filterList.forEach(list => {
             if (list.id.includes('store')) {
               choiceStoreCnt++;
-            } else {
+            } else if (!list.id.includes('store')) {
               choicePayCnt++;
             }
           });

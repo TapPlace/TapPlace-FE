@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { isMobile } from 'react-device-detect';
+import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import {
-  SET_SEARCH_FLAG,
-  SET_SEARCH_STORE,
-  SET_STORE_IN_DISTANCE,
-  _SET_STORE_IN_DISTANCE,
-} from '../../redux/slices/PlayApp';
+import { SET_SEARCH_FLAG, SET_SEARCH_STORE } from '../../redux/slices/PlayApp';
 
 import '../../style/components/appService/SearchStore.scss';
 
 function SearchStore() {
   const dispatch = useAppDispatch();
-  const { storeInDistance, showSearchFlag } = useAppSelector(
+  const { storeInDistance, mobileShowSearchFlag } = useAppSelector(
     state => state.playApp,
   );
   const [searchWord_InPage, setSearchWord_InPage] = useState('');
@@ -39,15 +33,13 @@ function SearchStore() {
     }
   }
 
-  useEffect(() => {}, []);
-
   return (
     <>
-      {isMobile ? (
+      {window.innerWidth < 1024 ? (
         <div id="search">
           <div
             id="searchContainer"
-            className={showSearchFlag ? '' : 'noShowSide'}
+            className={mobileShowSearchFlag ? '' : 'noShowSide'}
           >
             <img
               id="searchIcon"

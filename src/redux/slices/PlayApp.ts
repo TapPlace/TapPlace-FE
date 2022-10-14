@@ -35,8 +35,8 @@ export interface PlayAppState {
   searchStore: Array<any>;
   searchWord: string | undefined;
   myAddress: string | undefined;
-  showSideFlag: boolean;
-  showSearchFlag: boolean;
+  mobileShowStoreFlag: boolean;
+  mobileShowSearchFlag: boolean;
 }
 
 const initialState: PlayAppState = {
@@ -74,8 +74,8 @@ const initialState: PlayAppState = {
   searchStore: [],
   searchWord: undefined,
   myAddress: undefined,
-  showSideFlag: false,
-  showSearchFlag: true,
+  mobileShowStoreFlag: false,
+  mobileShowSearchFlag: true,
 };
 
 export const playApp = createSlice({
@@ -144,11 +144,11 @@ export const playApp = createSlice({
     SET_MY_ADDRESS(state, action: PayloadAction<string>) {
       state.myAddress = action.payload;
     },
-    SET_SHOW_SIDE_FLAG(state, action: PayloadAction<boolean>) {
-      state.showSideFlag = action.payload;
+    SET_MOBILE_SHOW_STORE_FLAG(state, action: PayloadAction<boolean>) {
+      state.mobileShowStoreFlag = action.payload;
     },
-    SET_SHOW_SEARCH_FLAG(state, action: PayloadAction<boolean>) {
-      state.showSearchFlag = action.payload;
+    SET_MOBILE_SHOW_SEARCH_FLAG(state, action: PayloadAction<boolean>) {
+      state.mobileShowSearchFlag = action.payload;
     },
   },
 });
@@ -168,8 +168,8 @@ export const {
   SET_SEARCH_STORE,
   SET_SEARCH_WORD,
   SET_MY_ADDRESS,
-  SET_SHOW_SIDE_FLAG,
-  SET_SHOW_SEARCH_FLAG,
+  SET_MOBILE_SHOW_STORE_FLAG,
+  SET_MOBILE_SHOW_SEARCH_FLAG,
 } = playApp.actions;
 
 export default playApp;

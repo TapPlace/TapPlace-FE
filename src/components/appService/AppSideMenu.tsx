@@ -1,154 +1,45 @@
 import React, { useState } from 'react';
 
 import SearchStore from './SearchStore';
-import StoreArticle from '../introService/StoreArticle';
+import StoreArticle from './StoreArticle';
 
 import '../../style/components/appService/AppSideMenu.scss';
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import {
-  SET_CHOICE_CNT,
-  SET_FILTER_SHOW_FLAG,
-  SET_SHOW_SIDE_FLAG,
-} from '../../redux/slices/PlayApp';
-import { isMobile } from 'react-device-detect';
+import { SET_MOBILE_SHOW_STORE_FLAG } from '../../redux/slices/PlayApp';
+import MyLocation from './MyLocation';
+import FilterButton from './FilterButton';
 
 function AppSideMenu(map: any) {
   const dispatch = useAppDispatch();
   const {
     storeInDistance,
-    myAddress,
     choiceCnt,
     filterShowFlag,
     filterStore,
     searchStore,
     searchFlag,
-    showSideFlag,
-    showSearchFlag,
+    mobileShowStoreFlag,
+    mobileShowSearchFlag,
   } = useAppSelector(state => state.playApp);
 
   const [showFilterType, setShowFilterType] = useState(false);
 
-  const filterList = document.querySelectorAll('.filter.active');
-
   return (
     <>
-      {isMobile ? (
+      {window.innerWidth < 1024 ? (
         <>
-          <div id="appSideMenu">
+          <div id="appSideMenu" className={filterShowFlag ? 'noShowSide' : ''}>
             <SearchStore />
             <div
               id="locationFilter"
-              className={showSearchFlag ? '' : 'noShowSide'}
+              className={mobileShowSearchFlag ? '' : 'noShowSide'}
             >
-              <div id="aroundMyLocation">{myAddress} 주변 1km</div>
+              <MyLocation />
               {window.innerWidth < 768 ? (
                 <>
                   <ul id={showFilterType ? 'filterTypeContainer' : 'noShow'}>
-                    <li className="filterType">
-                      {choiceCnt.storeCnt === 0 ? (
-                        <div>
-                          <p
-                            onClick={() => {
-                              dispatch(SET_FILTER_SHOW_FLAG(true));
-                            }}
-                          >
-                            매장선택
-                          </p>
-                          <img
-                            className="vButtonFilter"
-                            src="img/AppPage/Vbutton.png"
-                            alt="vButton"
-                          />
-                        </div>
-                      ) : (
-                        <div
-                          className={
-                            window.innerWidth < 768
-                              ? 'choiceFilterPhone'
-                              : 'choiceFilter'
-                          }
-                        >
-                          <p
-                            onClick={() => {
-                              dispatch(SET_FILTER_SHOW_FLAG(true));
-                            }}
-                          >
-                            {'매장선택 ' + choiceCnt.storeCnt}
-                          </p>
-                          <img
-                            className="resetFilter"
-                            src="img/closeBlue.png"
-                            alt="close"
-                            onClick={() => {
-                              filterList.forEach(list => {
-                                if (list.id.includes('store')) {
-                                  list.className = 'filter';
-                                }
-                              });
-                              dispatch(
-                                SET_CHOICE_CNT({
-                                  storeCnt: 0,
-                                  payCnt: choiceCnt.payCnt,
-                                }),
-                              );
-                            }}
-                          />
-                        </div>
-                      )}
-                    </li>
-                    <li className="filterType">
-                      {choiceCnt.payCnt === 0 ? (
-                        <div>
-                          <p
-                            onClick={() => {
-                              dispatch(SET_FILTER_SHOW_FLAG(true));
-                            }}
-                          >
-                            결제수단
-                          </p>
-                          <img
-                            className="vButtonFilter"
-                            src="img/AppPage/Vbutton.png"
-                            alt="vButton"
-                          />
-                        </div>
-                      ) : (
-                        <div
-                          className={
-                            window.innerWidth < 768
-                              ? 'choiceFilterPhone'
-                              : 'choiceFilter'
-                          }
-                        >
-                          <p
-                            onClick={() => {
-                              dispatch(SET_FILTER_SHOW_FLAG(true));
-                            }}
-                          >
-                            {'결제수단 ' + choiceCnt.payCnt}
-                          </p>
-                          <img
-                            className="resetFilter"
-                            src="img/closeBlue.png"
-                            alt="close"
-                            onClick={() => {
-                              filterList.forEach(list => {
-                                if (!list.id.includes('store')) {
-                                  list.className = 'filter';
-                                }
-                              });
-                              dispatch(
-                                SET_CHOICE_CNT({
-                                  storeCnt: choiceCnt.storeCnt,
-                                  payCnt: 0,
-                                }),
-                              );
-                            }}
-                          />
-                        </div>
-                      )}
-                    </li>
+                    <FilterButton />
                     <li className="filterType">
                       <div
                         onClick={() => {
@@ -159,6 +50,7 @@ function AppSideMenu(map: any) {
                       </div>
                     </li>
                   </ul>
+                  {/* 모바일(핸드폰) 화면에서 필터를 숨겼다 보였다 하는 버튼 */}
                   <button
                     id={showFilterType ? 'noShow' : 'showFilterTypeContainer'}
                     onClick={(e: any) => {
@@ -174,105 +66,22 @@ function AppSideMenu(map: any) {
                   </button>
                 </>
               ) : (
-                <ul id="filterTypeContainer">
-                  <li className="filterType">
-                    {choiceCnt.storeCnt === 0 ? (
-                      <div>
-                        <p
-                          onClick={() => {
-                            dispatch(SET_FILTER_SHOW_FLAG(true));
-                          }}
-                        >
-                          매장선택
-                        </p>
-                        <img
-                          className="vButtonFilter"
-                          src="img/AppPage/Vbutton.png"
-                          alt="vButton"
-                        />
-                      </div>
-                    ) : (
-                      <div className="choiceFilter">
-                        <p
-                          onClick={() => {
-                            dispatch(SET_FILTER_SHOW_FLAG(true));
-                          }}
-                        >
-                          {'매장선택 ' + choiceCnt.storeCnt}
-                        </p>
-                        <img
-                          className="resetFilter"
-                          src="img/closeBlue.png"
-                          alt="close"
-                          onClick={() => {
-                            filterList.forEach(list => {
-                              if (list.id.includes('store')) {
-                                list.className = 'filter';
-                              }
-                            });
-                            dispatch(
-                              SET_CHOICE_CNT({
-                                storeCnt: 0,
-                                payCnt: choiceCnt.payCnt,
-                              }),
-                            );
-                          }}
-                        />
-                      </div>
-                    )}
-                  </li>
-                  <li className="filterType">
-                    {choiceCnt.payCnt === 0 ? (
-                      <div>
-                        <p
-                          onClick={() => {
-                            dispatch(SET_FILTER_SHOW_FLAG(true));
-                          }}
-                        >
-                          결제수단
-                        </p>
-                        <img
-                          className="vButtonFilter"
-                          src="img/AppPage/Vbutton.png"
-                          alt="vButton"
-                        />
-                      </div>
-                    ) : (
-                      <div className="choiceFilter">
-                        <p
-                          onClick={() => {
-                            dispatch(SET_FILTER_SHOW_FLAG(true));
-                          }}
-                        >
-                          {'결제수단 ' + choiceCnt.payCnt}
-                        </p>
-                        <img
-                          className="resetFilter"
-                          src="img/closeBlue.png"
-                          alt="close"
-                          onClick={() => {
-                            filterList.forEach(list => {
-                              if (!list.id.includes('store')) {
-                                list.className = 'filter';
-                              }
-                            });
-                            dispatch(
-                              SET_CHOICE_CNT({
-                                storeCnt: choiceCnt.storeCnt,
-                                payCnt: 0,
-                              }),
-                            );
-                          }}
-                        />
-                      </div>
-                    )}
-                  </li>
-                </ul>
+                <>
+                  <ul id="filterTypeContainer">
+                    <FilterButton />
+                  </ul>
+                </>
               )}
             </div>
+            {/* 모바일(핸드폰)화면에서 가맹점 리스트 위에 띄워줄 필터 */}
+            {window.innerWidth < 768 && mobileShowStoreFlag && (
+              <ul id="filterTypeContainer">
+                <FilterButton />
+              </ul>
+            )}
             <section
               id="storeContainer"
-              className={showSideFlag ? '' : 'noShowSide'}
+              className={mobileShowStoreFlag ? '' : 'noShowSide'}
             >
               {searchFlag === false
                 ? filterStore.length === 0
@@ -295,10 +104,10 @@ function AppSideMenu(map: any) {
             <button
               id="showBtn"
               onClick={() => {
-                dispatch(SET_SHOW_SIDE_FLAG(!showSideFlag));
+                dispatch(SET_MOBILE_SHOW_STORE_FLAG(!mobileShowStoreFlag));
               }}
             >
-              {showSideFlag ? (
+              {mobileShowStoreFlag ? (
                 <>
                   <img src="img/showMap.png" alt="showmap" />
                   <p>지도보기</p>
@@ -313,6 +122,7 @@ function AppSideMenu(map: any) {
           </div>
         </>
       ) : (
+        // 데스크톱 화면(모바일 아닐 시)
         <>
           <div id="appSideMenu" className={filterShowFlag ? 'noShowSide' : ''}>
             <SearchStore />
@@ -320,100 +130,9 @@ function AppSideMenu(map: any) {
               id="locationFilter"
               className={filterShowFlag ? 'noShowSide' : ''}
             >
-              <div id="aroundMyLocation">{myAddress} 주변 1km</div>
+              <MyLocation />
               <ul id="filterTypeContainer">
-                <li className="filterType">
-                  {choiceCnt.storeCnt === 0 ? (
-                    <div>
-                      <p
-                        onClick={() => {
-                          dispatch(SET_FILTER_SHOW_FLAG(true));
-                        }}
-                      >
-                        매장선택
-                      </p>
-                      <img
-                        className="vButtonFilter"
-                        src="img/AppPage/Vbutton.png"
-                        alt="vButton"
-                      />
-                    </div>
-                  ) : (
-                    <div className="choiceFilter">
-                      <p
-                        onClick={() => {
-                          dispatch(SET_FILTER_SHOW_FLAG(true));
-                        }}
-                      >
-                        {'매장선택 ' + choiceCnt.storeCnt}
-                      </p>
-                      <img
-                        className="resetFilter"
-                        src="img/closeBlue.png"
-                        alt="close"
-                        onClick={() => {
-                          filterList.forEach(list => {
-                            if (list.id.includes('store')) {
-                              list.className = 'filter';
-                            }
-                          });
-                          dispatch(
-                            SET_CHOICE_CNT({
-                              storeCnt: 0,
-                              payCnt: choiceCnt.payCnt,
-                            }),
-                          );
-                        }}
-                      />
-                    </div>
-                  )}
-                </li>
-                <li className="filterType">
-                  {choiceCnt.payCnt === 0 ? (
-                    <div>
-                      <p
-                        onClick={() => {
-                          dispatch(SET_FILTER_SHOW_FLAG(true));
-                        }}
-                      >
-                        결제수단
-                      </p>
-                      <img
-                        className="vButtonFilter"
-                        src="img/AppPage/Vbutton.png"
-                        alt="vButton"
-                      />
-                    </div>
-                  ) : (
-                    <div className="choiceFilter">
-                      <p
-                        onClick={() => {
-                          dispatch(SET_FILTER_SHOW_FLAG(true));
-                        }}
-                      >
-                        {'결제수단 ' + choiceCnt.payCnt}
-                      </p>
-                      <img
-                        className="resetFilter"
-                        src="img/closeBlue.png"
-                        alt="close"
-                        onClick={() => {
-                          filterList.forEach(list => {
-                            if (!list.id.includes('store')) {
-                              list.className = 'filter';
-                            }
-                          });
-                          dispatch(
-                            SET_CHOICE_CNT({
-                              storeCnt: choiceCnt.storeCnt,
-                              payCnt: 0,
-                            }),
-                          );
-                        }}
-                      />
-                    </div>
-                  )}
-                </li>
+                <FilterButton />
               </ul>
             </div>
             <section

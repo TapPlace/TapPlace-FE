@@ -3,13 +3,13 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   SET_DETAIL_FLAG,
   SET_DETAIL_INFO,
-  SET_SHOW_SEARCH_FLAG,
-  SET_SHOW_SIDE_FLAG,
+  SET_MOBILE_SHOW_STORE_FLAG,
+  SET_MOBILE_SHOW_SEARCH_FLAG,
 } from '../../redux/slices/PlayApp';
 
-import '../../style/components/introService/StoreArticle.scss';
+import '../../style/components/appService/StoreArticle.scss';
 
-function StoreArticle({ show, option, map }: any) {
+function StoreArticle({ option, map }: any) {
   const dispatch = useAppDispatch();
   const category = option.category_group_name;
   const name = option.place_name;
@@ -35,8 +35,8 @@ function StoreArticle({ show, option, map }: any) {
     <article
       className="storeArticle"
       onClick={() => {
-        dispatch(SET_SHOW_SIDE_FLAG(false));
-        dispatch(SET_SHOW_SEARCH_FLAG(false));
+        dispatch(SET_MOBILE_SHOW_STORE_FLAG(false));
+        dispatch(SET_MOBILE_SHOW_SEARCH_FLAG(false));
         if (!storeDetailFlag) dispatch(SET_DETAIL_FLAG(true));
         dispatch(
           SET_DETAIL_INFO({

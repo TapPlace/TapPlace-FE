@@ -40,12 +40,6 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    #aroundMyLocation {
-      background: white;
-      width: 100vw;
-      padding: 3px 0 12px 0;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
-    }
     #filterTypeContainer {
       display: flex;
       background: white;
@@ -124,9 +118,19 @@
     }
   }
   #storeContainer {
+    background: white;
     border-top: 1px solid #dbdee8;
     height: calc(100vh - 204px);
     overflow-y: scroll;
+    #filterTypeContainer {
+      display: flex;
+      position: absolute;
+      top: 111px;
+      width: 100vw;
+      height: 57px;
+      background: white;
+      padding-left: 5vw;
+    }
   }
 }
 
@@ -164,12 +168,6 @@
   }
   #locationFilter {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
-    #aroundMyLocation {
-      display: inline-block;
-      height: 66px;
-      line-height: 66px;
-      padding-left: 5vw;
-    }
     #filterTypeContainer {
       display: inline-block;
       float: right;
@@ -177,31 +175,6 @@
       padding-top: 12px;
       padding-right: 5vw;
       padding: 12px 5vw 0 0;
-      .filterType {
-        display: inline-block;
-        div {
-          display: flex;
-          align-items: flex-end;
-          border: 1px solid #dbdee8;
-          border-radius: 1000px;
-          padding: 8px 16px;
-          margin-left: 8px;
-          p {
-            display: inline-block;
-            margin-right: 2px;
-          }
-          img {
-            margin-left: 2px;
-            width: 22px;
-          }
-        }
-        .choiceFilter {
-          color: $mainColor;
-          border: 1px solid rgba(78, 119, 251, 0.6);
-          background: rgba(78, 119, 251, 0.06);
-          border-radius: 20px;
-        }
-      }
     }
   }
   #storeContainer {
@@ -215,7 +188,6 @@
   #appSideMenu {
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: calc(100vh - 60px);
     width: 25vw;
     background: white;
@@ -233,47 +205,9 @@
       display: flex;
       flex-direction: column;
       width: 80%;
-      #aroundMyLocation {
-        float: left;
-        font-size: 1.04vw;
-        padding: 20px 0 20px 0;
-      }
       #filterTypeContainer {
         display: flex;
-        width: 80%;
-        .filterType {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 6px;
-          border: 1px solid #dbdee8;
-          border-radius: 20px;
-          div {
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            font-size: 15px;
-            color: #333333;
-            padding-right: 3px;
-            .vButtonFilter {
-              width: 13px;
-              margin-top: 2px;
-              margin-right: 12px;
-              margin-left: 6px;
-            }
-            .resetFilter {
-              margin-right: 10px;
-              margin-left: 2px;
-              height: 20px;
-            }
-          }
-          .choiceFilter {
-            color: $mainColor;
-            border: 1px solid rgba(78, 119, 251, 0.6);
-            background: rgba(78, 119, 251, 0.06);
-            border-radius: 20px;
-          }
-        }
+        margin: 0 2.08vw;
       }
     }
     #storeContainer {

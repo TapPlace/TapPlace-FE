@@ -1,0 +1,94 @@
+@import '../../utils';
+
+@include mobile {
+  .filterType {
+    &:first-of-type {
+      padding-right: 10px;
+    }
+    div {
+      display: flex;
+      align-items: flex-end;
+      border: 1px solid #dbdee8;
+      border-radius: 1000px;
+      padding: 8px 16px;
+      p {
+        display: inline-block;
+        margin-right: 2px;
+      }
+      img {
+        margin-left: 2px;
+        width: 22px;
+      }
+    }
+    .choiceFilter {
+      color: $mainColor;
+      border: 1px solid rgba(78, 119, 251, 0.6);
+      background: rgba(78, 119, 251, 0.06);
+      border-radius: 20px;
+    }
+  }
+}
+
+@include tablet {
+  .filterType {
+    display: inline-block;
+    div {
+      display: flex;
+      align-items: flex-end;
+      border: 1px solid #dbdee8;
+      border-radius: 1000px;
+      padding: 8px 16px;
+      margin-left: 8px;
+      p {
+        display: inline-block;
+        margin-right: 2px;
+      }
+      img {
+        margin-left: 2px;
+        width: 22px;
+      }
+    }
+    .choiceFilter {
+      color: $mainColor;
+      border: 1px solid rgba(78, 119, 251, 0.6);
+      background: rgba(78, 119, 251, 0.06);
+      border-radius: 20px;
+    }
+  }
+}
+
+@include desktop {
+  .filterType {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    border: 1px solid #dbdee8;
+    border-radius: 20px;
+    div {
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      color: #333333;
+      padding-right: 3px;
+      .vButtonFilter {
+        width: 13px;
+        margin-top: 2px;
+        margin-right: 12px;
+        margin-left: 6px;
+      }
+      .resetFilter {
+        margin-right: 10px;
+        margin-left: 2px;
+        height: 20px;
+      }
+    }
+    .choiceFilter {
+      color: $mainColor;
+      border: 1px solid rgba(78, 119, 251, 0.6);
+      background: rgba(78, 119, 251, 0.06);
+      border-radius: 20px;
+    }
+  }
+}

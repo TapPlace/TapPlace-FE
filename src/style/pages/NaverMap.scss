@@ -12,7 +12,20 @@
 
 #map {
   div {
-    border-color: white transparent transparent !important;
+    &:nth-of-type(26) {
+      div {
+        div {
+          div {
+            background: black !important;
+            border: 1px solid black !important;
+            div {
+              border: 1px solid black;
+            }
+          }
+        }
+      }
+    }
+    // border-color: white transparent transparent !important;
     div {
       div {
         div {
