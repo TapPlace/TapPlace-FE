@@ -108,17 +108,17 @@
     #searchIcon {
       position: absolute;
       width: 0.92vw;
-      left: 14px;
+      left: 0.76vw;
       top: 50%;
       transform: translateY(-50%);
     }
     #searchStore {
       border: none;
       margin: 1px 0;
-      width: 100%;
+      width: calc(100% - 4.16vw);
       height: 2.55vw;
-      margin-left: 44px;
-      margin-right: 44px;
+      margin-left: 2.08vw;
+      padding-top: 0.18vw;
       background: white;
       font-size: 0.88vw;
       &::placeholder {
@@ -130,7 +130,7 @@
     }
     #resetSearch {
       position: absolute;
-      right: 14px;
+      right: 0.76vw;
       top: 50%;
       transform: translateY(-50%);
       width: 1.28vw;
