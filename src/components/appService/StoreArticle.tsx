@@ -52,28 +52,6 @@ function StoreArticle({ option, map }: any) {
             y: option.y,
           }),
         );
-        const markerContent = [
-          `<div style="display: flex; align-items: ${
-            category === '음식점'
-              ? 'center'
-              : category === '편의점'
-              ? 'baseline'
-              : 'center'
-          }; padding: 10px 20px;">`,
-          ` <img style="padding-right: 8px; height: ${
-            category === '음식점'
-              ? '15px'
-              : category === '편의점'
-              ? '14px'
-              : '15px'
-          };" src=${src} alt="markerImg" />`,
-          ` <p style="font-size: 16px;">${name}</p>`,
-          '</div>',
-        ].join('');
-        const infoWindow = new naver.maps.InfoWindow({
-          content: markerContent,
-        });
-        infoWindow.open(map.map, new naver.maps.LatLng(option.y, option.x));
       }}
     >
       <div className="storeLine1">

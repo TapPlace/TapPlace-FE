@@ -55,15 +55,15 @@ function Filter() {
   return (
     <div id="filterContainer" className={filterShowFlag ? '' : 'noShowFilter'}>
       <div id="filterHeader">
-        <p>필터</p>
         <img
-          src="img/close.png"
-          alt="close"
+          src="img/back.png"
+          alt="back"
           onClick={() => {
             filterReset('all');
             dispatch(SET_FILTER_SHOW_FLAG(false));
           }}
         />
+        <p>필터</p>
       </div>
       <section id="addFilter">
         <article id="storeFilter">

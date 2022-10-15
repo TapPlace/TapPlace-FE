@@ -446,29 +446,12 @@ function NaverMap(props: any) {
   }
   // 마커 클릭 이벤트
   function markerClickEvent({ map, marker, i, imgSrc, category }: any) {
-    const markerContent = [
-      `<div style="display: flex; align-items: ${
-        category === '음식점'
-          ? 'center'
-          : category === '편의점'
-          ? 'baseline'
-          : 'center'
-      }; padding: 10px 20px;">`,
-      ` <img style="padding-right: 8px; height: ${
-        category === '음식점' ? '15px' : category === '편의점' ? '14px' : '15px'
-      };" src=${imgSrc} alt="markerImg" />`,
-      ` <p style="font-size: 16px;">${storeInDistance[i].place_name}</p>`,
-      '</div>',
-    ].join('');
-
     const position = { lat: marker.position.y, lng: marker.position.x };
 
     const infoWindow = new naver.maps.InfoWindow({
-      content: markerContent,
       position: position,
-      borderColor: 'white',
-      backgroundColor: '#fff',
-      disableAnchor: false,
+      borderColor: 'none',
+      backgroundColor: 'none',
     });
     naver.maps.Event.addListener(marker, 'click', function (e: any) {
       if (infoWindow.getMap()) {

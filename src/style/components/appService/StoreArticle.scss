@@ -87,7 +87,7 @@
 @include desktop {
   .storeArticle {
     border-bottom: 1px solid rgba(219, 222, 232, 0.6);
-    padding: 20px 2.08vw;
+    padding: 1vw 2.08vw;
     &:hover {
       background: #f5f7ff;
     }
@@ -95,32 +95,30 @@
       display: flex;
       align-items: flex-end;
       .storeName {
-        font-size: 18px;
+        font-size: 0.92vw;
         font-weight: 400;
-        padding-right: 6px;
+        padding-right: 0.34vw;
       }
       .storeCategory {
-        font-size: 15px;
+        font-size: 0.8vw;
         color: $subTextColor;
       }
     }
     .storeLine2 {
       display: flex;
       color: $subTextColor;
-      font-size: 14px;
+      font-size: 0.76vw;
       .storeMeter {
-        padding-right: 8px;
-      }
-      .storeAdderss {
+        padding-right: 0.42vw;
       }
     }
     .storePaymentMethod {
       display: flex;
       align-items: center;
-      padding-top: 16px;
+      padding-top: 0.84vw;
       img {
-        height: 38px;
-        padding-right: 6px;
+        width: 2.28vw;
+        padding-right: 0.34vw;
       }
     }
   }

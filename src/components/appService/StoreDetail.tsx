@@ -47,16 +47,10 @@ function StoreDetail() {
             }}
           />
         </div>
-        <ul id="detailBtnContainer">
-          <li>
-            <img id="naviImg" src="img/AppPage/navigation.png" alt="navi" />
-            <p>길찾기</p>
-          </li>
-          <li>
-            <img id="shareImg" src="img/AppPage/share.png" alt="share" />
-            <p>공유하기</p>
-          </li>
-        </ul>
+        <button id="detailBtnContainer">
+          <img id="naviImg" src="img/AppPage/navigation.png" alt="navi" />
+          <p>길찾기</p>
+        </button>
         <div id="distanceAddress">
           <img src="img/AppPage/location_black.png" alt="location" />
           {storeDetailInfo.road_address_name

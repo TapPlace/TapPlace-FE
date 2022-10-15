@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 
-import SearchStore from './SearchStore';
-import StoreArticle from './StoreArticle';
-
-import '../../style/components/appService/AppSideMenu.scss';
-
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { SET_MOBILE_SHOW_STORE_FLAG } from '../../redux/slices/PlayApp';
+import SearchStore from './SearchStore';
+import StoreArticle from './StoreArticle';
 import MyLocation from './MyLocation';
 import FilterButton from './FilterButton';
+
+import '../../style/components/appService/AppSideMenu.scss';
 
 function AppSideMenu(map: any) {
   const dispatch = useAppDispatch();
