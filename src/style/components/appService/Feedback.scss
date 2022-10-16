@@ -1,6 +1,65 @@
 @import '../../utils';
 
 @include mobile {
+  .feedbackContainer {
+    border-bottom: 1px solid lightgray;
+    padding: 16px 0 16px 0;
+    height: 160px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    &:last-of-type {
+      margin-bottom: 56px;
+    }
+    .fbTitle {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      img {
+        width: 38px;
+        height: 38px;
+        margin-right: 12px;
+      }
+    }
+    .fbExist {
+      display: flex;
+      align-items: baseline;
+      .fbBoolean {
+        font-size: 16px;
+        padding-right: 8px;
+        color: #9e9e9e;
+      }
+      .T {
+        color: #4e77fb;
+      }
+      .fbDate {
+        font-size: 15px;
+        color: #9e9e9e;
+      }
+    }
+    progress {
+      appearance: none;
+      width: 100%;
+      height: 12px;
+      padding: 0;
+      margin: 0;
+      border-radius: 99px;
+    }
+    progress::-webkit-progress-bar {
+      background: #e6e6e6;
+      border-radius: 99px;
+    }
+    progress::-webkit-progress-value {
+      background: $mainColor;
+      border-radius: 99px;
+    }
+    .fbPercent {
+      display: flex;
+      justify-content: space-between;
+      color: $subTextColor;
+      font-size: 15px;
+    }
+  }
 }
 @include tablet {
   .feedbackContainer {

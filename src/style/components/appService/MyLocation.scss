@@ -1,6 +1,14 @@
 @import '../../utils';
 
 @include mobile {
+  #mobileAroundMyLocation {
+    background: white;
+    width: 100vw;
+    padding: 3px 0 12px 0;
+    text-align: left;
+    padding-left: 5vw;
+    font-size: 15px;
+  }
   #aroundMyLocation {
     background: white;
     width: 100vw;
@@ -10,11 +18,17 @@
 }
 
 @include tablet {
+  #mobileAroundMyLocation {
+    display: inline-block;
+    height: 66px;
+    line-height: 66px;
+    padding: 0 24px;
+  }
   #aroundMyLocation {
     display: inline-block;
     height: 66px;
     line-height: 66px;
-    padding-left: 5vw;
+    padding: 0 24px;
   }
 }
 

@@ -40,7 +40,6 @@ function AppMain() {
     storeDetailFlag,
     choiceCnt,
     filterApplyFlag,
-    filterShowFlag,
   } = useAppSelector(state => state.playApp);
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();

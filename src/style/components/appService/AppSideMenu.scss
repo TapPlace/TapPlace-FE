@@ -3,6 +3,12 @@
 .noShowSide {
   display: none !important;
 }
+#noShow {
+  display: none;
+}
+.noShow {
+  display: none;
+}
 
 @include mobile {
   #appSideMenu {
@@ -34,6 +40,24 @@
         color: white;
       }
     }
+    #mobileFilterTypeContainer {
+      background: white;
+      width: 100vw;
+      display: flex;
+      .filterType {
+        padding-bottom: 16px;
+        &:first-child {
+          padding-left: 5vw;
+        }
+        div {
+          border: 1px solid #dbdee8;
+          p {
+          }
+          img {
+          }
+        }
+      }
+    }
   }
   #locationFilter {
     display: flex;
@@ -46,45 +70,6 @@
       margin-top: 16px;
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
       border-radius: 100px;
-      .filterType {
-        div {
-          display: flex;
-          align-items: flex-end;
-          // border: 1px solid #dbdee8;
-          // border-radius: 1000px;
-          padding: 8px 16px;
-          // margin-left: 8px;
-          p {
-            display: inline-block;
-            margin-right: 2px;
-          }
-          img {
-            margin-left: 2px;
-            width: 22px;
-          }
-        }
-        #folding {
-          font-size: 14px;
-          margin-top: 2px;
-        }
-        .choiceFilter {
-          color: $mainColor;
-          border: 1px solid rgba(78, 119, 251, 0.6);
-          background: rgba(78, 119, 251, 0.06);
-          border-radius: 20px;
-        }
-        .choiceFilterPhone {
-          margin-top: 2px;
-          color: $mainColor;
-          font-size: 14px;
-          img {
-            width: 20px;
-          }
-        }
-      }
-    }
-    #noShow {
-      display: none;
     }
     #showFilterTypeContainer {
       position: relative;
@@ -172,9 +157,7 @@
       display: inline-block;
       float: right;
       height: 66px;
-      padding-top: 12px;
-      padding-right: 5vw;
-      padding: 12px 5vw 0 0;
+      padding: 12px 24px 0 24px;
     }
   }
   #storeContainer {

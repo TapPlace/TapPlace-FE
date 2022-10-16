@@ -7,7 +7,7 @@ import {
 
 import '../../style/components/appService/FilterButton.scss';
 
-function FilterButton({ buttonName }: any) {
+function FilterButton() {
   const dispatch = useAppDispatch();
   const { choiceCnt } = useAppSelector(state => state.playApp);
   // 눌러진 필터링 버튼 리스트

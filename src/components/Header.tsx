@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import '../style/components/Header.scss';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { initialPage, playAppPage } from '../redux/slices/showPage';
+import { initialPage } from '../redux/slices/showPage';
+
+import '../style/components/Header.scss';
 
 function Header() {
   const { page } = useAppSelector(state => state.page);

@@ -37,7 +37,10 @@ function AppSideMenu(map: any) {
               <MyLocation />
               {window.innerWidth < 768 ? (
                 <>
-                  <ul id={showFilterType ? 'filterTypeContainer' : 'noShow'}>
+                  <ul
+                    id={showFilterType ? 'filterTypeContainer' : 'noShow'}
+                    className={mobileShowStoreFlag ? 'noShow' : ''}
+                  >
                     <FilterButton />
                     <li className="filterType">
                       <div
@@ -52,7 +55,8 @@ function AppSideMenu(map: any) {
                   {/* 모바일(핸드폰) 화면에서 필터를 숨겼다 보였다 하는 버튼 */}
                   <button
                     id={showFilterType ? 'noShow' : 'showFilterTypeContainer'}
-                    onClick={(e: any) => {
+                    className={mobileShowStoreFlag ? 'noShow' : ''}
+                    onClick={() => {
                       setShowFilterType(true);
                     }}
                   >
@@ -74,7 +78,7 @@ function AppSideMenu(map: any) {
             </div>
             {/* 모바일(핸드폰)화면에서 가맹점 리스트 위에 띄워줄 필터 */}
             {window.innerWidth < 768 && mobileShowStoreFlag && (
-              <ul id="filterTypeContainer">
+              <ul id="mobileFilterTypeContainer">
                 <FilterButton />
               </ul>
             )}
