@@ -20,7 +20,6 @@ function App() {
   return (
     <>
       {userAgent ? <></> : <Header />}
-      {/* <Header /> */}
       <main id="mainContainer">
         <Routes>
           <Route path="/" element={<Service />} />
@@ -30,8 +29,8 @@ function App() {
           <Route path="/consent" element={<Consent />} />
           <Route path="/policy" element={<Policy />} />
         </Routes>
+        {page !== 'playapp' && !userAgent && <Footer />}
       </main>
-      {page !== 'playapp' && !userAgent && <Footer />}
     </>
   );
 }

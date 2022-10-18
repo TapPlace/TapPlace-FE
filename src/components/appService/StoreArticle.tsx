@@ -52,6 +52,19 @@ function StoreArticle({ option, map }: any) {
             y: option.y,
           }),
         );
+        const bigSrc = src.substring(0, src.indexOf('.')) + '_big.png';
+        // console.log(option);
+        // console.log(bigSrc);
+        // option.setIcon({
+        //   url: bigSrc,
+        // });
+        if (window.innerWidth < 1024) {
+          const latlng = new naver.maps.LatLng(option.y - 0.0016, option.x);
+          map.map.panTo(latlng);
+        } else {
+          const latlng = new naver.maps.LatLng(option.y, option.x);
+          map.map.panTo(latlng);
+        }
       }}
     >
       <div className="storeLine1">

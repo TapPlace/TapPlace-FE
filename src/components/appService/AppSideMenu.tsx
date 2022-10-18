@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { SET_MOBILE_SHOW_STORE_FLAG } from '../../redux/slices/PlayApp';
@@ -9,7 +9,10 @@ import FilterButton from './FilterButton';
 
 import '../../style/components/appService/AppSideMenu.scss';
 
-function AppSideMenu(map: any) {
+function AppSideMenu({ map, setMarkersFunction }: any) {
+  const hi = setMarkersFunction();
+  console.log(hi);
+
   const dispatch = useAppDispatch();
   const {
     storeInDistance,

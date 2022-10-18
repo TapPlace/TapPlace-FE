@@ -9,7 +9,7 @@ import Feedback from './Feedback';
 
 import '../../style/components/appService/StoreDetail.scss';
 
-function StoreDetail() {
+function StoreDetail(markers: any) {
   const dispatch = useAppDispatch();
   const { storeDetailInfo } = useAppSelector(state => state.playApp);
 

@@ -43,8 +43,13 @@ function AppMain() {
   } = useAppSelector(state => state.playApp);
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();
+  const [markers, setMarkers]: any = useState();
   const setMapFunction = (maps: any) => {
     setMap(maps);
+  };
+  const setMarkersFunction = (otherMarkers: any) => {
+    setMarkers(otherMarkers);
+    return markers;
   };
 
   function bringMyLocation() {
@@ -209,9 +214,12 @@ function AppMain() {
   return (
     <>
       <main id="mobileMain">
-        <NaverMap propFunction={setMapFunction} />
+        <NaverMap
+          propFunction={setMapFunction}
+          markersFunction={setMarkersFunction}
+        />
       </main>
-      <AppSideMenu map={map} />
+      <AppSideMenu map={map} setMarkersFunction={setMarkersFunction} />
       <Filter />
       {storeDetailFlag && <StoreDetail />}
     </>
