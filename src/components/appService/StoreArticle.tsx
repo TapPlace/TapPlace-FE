@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   SET_DETAIL_FLAG,
@@ -9,11 +9,27 @@ import {
 
 import '../../style/components/appService/StoreArticle.scss';
 
-function StoreArticle({ option, map }: any) {
+function StoreArticle(props: any) {
+  const { option, map, markers } = props;
   const dispatch = useAppDispatch();
   const category = option.category_group_name;
   const name = option.place_name;
   const { storeDetailFlag } = useAppSelector(state => state.playApp);
+  // Article 클릭 시 맞는 마커 선택하여 상위 컴포넌트로 전달
+  let choiceMarker: any;
+  const choiceArticle = () => {
+    markers.forEach((marker: any) => {
+      if (Number(marker.title) === option.num) {
+        choiceMarker = marker;
+        const bigSrc =
+          marker.icon.url.substring(0, marker.icon.url.indexOf('.')) +
+          '_big.png';
+        marker.setIcon({
+          url: bigSrc,
+        });
+      }
+    });
+  };
   let src = '';
   // 이미지 src 정하기
   switch (category) {
@@ -34,7 +50,7 @@ function StoreArticle({ option, map }: any) {
   return (
     <article
       className="storeArticle"
-      onClick={() => {
+      onClick={async () => {
         dispatch(SET_MOBILE_SHOW_STORE_FLAG(false));
         dispatch(SET_MOBILE_SHOW_SEARCH_FLAG(false));
         if (!storeDetailFlag) dispatch(SET_DETAIL_FLAG(true));
@@ -52,18 +68,18 @@ function StoreArticle({ option, map }: any) {
             y: option.y,
           }),
         );
-        const bigSrc = src.substring(0, src.indexOf('.')) + '_big.png';
-        // console.log(option);
-        // console.log(bigSrc);
-        // option.setIcon({
-        //   url: bigSrc,
-        // });
+        choiceArticle();
+        const lowMarkerComponent = (marker: any) => {
+          return props.propFunction(marker);
+        };
+        lowMarkerComponent(choiceMarker);
+
         if (window.innerWidth < 1024) {
           const latlng = new naver.maps.LatLng(option.y - 0.0016, option.x);
-          map.map.panTo(latlng);
+          map.panTo(latlng);
         } else {
           const latlng = new naver.maps.LatLng(option.y, option.x);
-          map.map.panTo(latlng);
+          map.panTo(latlng);
         }
       }}
     >

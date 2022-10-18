@@ -78,7 +78,7 @@ function NaverMap(props: any) {
 
       // 맵 저장
       setNaverMap(map);
-      // map 객체 저장해서 하위 컴포넌트로 보내기
+      // map 객체 저장해서 상위 컴포넌트로 보내기
       const lowComponent = (map: any) => {
         return props.propFunction(map);
       };
@@ -112,8 +112,8 @@ function NaverMap(props: any) {
   }
   // distance 마커 표시
   function displayMarkers(map: any) {
-    const category = (i: any, key: any) => {
-      if (storeInDistance[i].category_group_name === '음식점') {
+    const category = (item: any, i: any, key: any) => {
+      if (item[i].category_group_name === '음식점') {
         const imgSrc = '/img/AppPage/Marker/restaurant.png';
         const bigImgSrc = '/img/AppPage/Marker/restaurant_big.png';
         const category = '음식점';
@@ -131,7 +131,7 @@ function NaverMap(props: any) {
         otherMarkers.push(marker);
         markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, category });
       }
-      if (storeInDistance[i].category_group_name === '카페') {
+      if (item[i].category_group_name === '카페') {
         const imgSrc = 'img/AppPage/Marker/cafe.png';
         const bigImgSrc = 'img/AppPage/Marker/cafe_big.png';
         const category = '카페';
@@ -149,7 +149,7 @@ function NaverMap(props: any) {
         otherMarkers.push(marker);
         markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, category });
       }
-      if (storeInDistance[i].category_group_name === '편의점') {
+      if (item[i].category_group_name === '편의점') {
         const imgSrc = '/img/AppPage/Marker/store.png';
         const bigImgSrc = '/img/AppPage/Marker/store_big.png';
         const category = '편의점';
@@ -167,7 +167,7 @@ function NaverMap(props: any) {
         otherMarkers.push(marker);
         markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, category });
       }
-      if (storeInDistance[i].category_group_name === '마트') {
+      if (item[i].category_group_name === '마트') {
         const imgSrc = 'img/AppPage/Marker/mart.png';
         const bigImgSrc = 'img/AppPage/Marker/mart_big.png';
         const category = '마트';
@@ -184,7 +184,7 @@ function NaverMap(props: any) {
         otherMarkers.push(marker);
         markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, category });
       }
-      if (storeInDistance[i].category_group_name === '주유소') {
+      if (item[i].category_group_name === '주유소') {
         const imgSrc = 'img/AppPage/Marker/gasStation.png';
         const bigImgSrc = 'img/AppPage/Marker/gasStation_big.png';
         const category = '주유소';
@@ -201,7 +201,7 @@ function NaverMap(props: any) {
         otherMarkers.push(marker);
         markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, category });
       }
-      if (storeInDistance[i].category_group_name === '주차장') {
+      if (item[i].category_group_name === '주차장') {
         const imgSrc = 'img/AppPage/Marker/parking.png';
         const bigImgSrc = 'img/AppPage/Marker/parking.png';
         const category = '주차장';
@@ -218,7 +218,7 @@ function NaverMap(props: any) {
         otherMarkers.push(marker);
         markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, category });
       }
-      if (storeInDistance[i].category_group_name === '병원') {
+      if (item[i].category_group_name === '병원') {
         const imgSrc = 'img/AppPage/Marker/hospital.png';
         const bigImgSrc = 'img/AppPage/Marker/hospital_big.png';
         const category = '병원';
@@ -235,7 +235,7 @@ function NaverMap(props: any) {
         otherMarkers.push(marker);
         markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, category });
       }
-      if (storeInDistance[i].category_group_name === '약국') {
+      if (item[i].category_group_name === '약국') {
         const imgSrc = 'img/AppPage/Marker/drugstore.png';
         const bigImgSrc = 'img/AppPage/Marker/drugstore_big.png';
         const category = '약국';
@@ -252,7 +252,7 @@ function NaverMap(props: any) {
         otherMarkers.push(marker);
         markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, category });
       }
-      if (storeInDistance[i].category_group_name === '숙박') {
+      if (item[i].category_group_name === '숙박') {
         const imgSrc = 'img/AppPage/Marker/accommodation.png';
         const bigImgSrc = 'img/AppPage/Marker/accommodation_big.png';
         const category = '숙박';
@@ -269,7 +269,7 @@ function NaverMap(props: any) {
         otherMarkers.push(marker);
         markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, category });
       }
-      if (storeInDistance[i].category_group_name === '공공기관') {
+      if (item[i].category_group_name === '공공기관') {
         const imgSrc = 'img/AppPage/Marker/institutions.png';
         const bigImgSrc = 'img/AppPage/Marker/institutions_big.png';
         const category = '공공기관';
@@ -286,7 +286,7 @@ function NaverMap(props: any) {
         otherMarkers.push(marker);
         markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, category });
       }
-      if (storeInDistance[i].category_group_name === '기타') {
+      if (item[i].category_group_name === '기타') {
         const imgSrc = 'img/AppPage/Marker/etc.png';
         const bigImgSrc = 'img/AppPage/Marker/etc_big.png';
         const category = '기타';
@@ -308,22 +308,22 @@ function NaverMap(props: any) {
     if (searchFlag === true) {
       for (let i = 0; i < searchStore.length; i++) {
         let key: string = String(searchStore[i].num);
-        category(i, key);
+        category(searchStore, i, key);
       }
     } else if (filterStore.length !== 0) {
       for (let i = 0; i < filterStore.length; i++) {
         let key: string = String(filterStore[i].num);
-        category(i, key);
+        category(filterStore, i, key);
       }
     } else {
       for (let i = 0; i < storeInDistance.length; i++) {
         let key: string = String(storeInDistance[i].num);
-        category(i, key);
+        category(storeInDistance, i, key);
+        const lowMarkerComponent = (otherMarkers: any) => {
+          return props.markersFunction(otherMarkers);
+        };
+        lowMarkerComponent(otherMarkers);
       }
-      const lowMarkerComponent = (otherMarkers: any) => {
-        return props.markersFunction(otherMarkers);
-      };
-      lowMarkerComponent(otherMarkers);
     }
   }
   // 마커 클릭 이벤트

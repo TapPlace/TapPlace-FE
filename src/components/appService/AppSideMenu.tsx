@@ -9,10 +9,7 @@ import FilterButton from './FilterButton';
 
 import '../../style/components/appService/AppSideMenu.scss';
 
-function AppSideMenu({ map, setMarkersFunction }: any) {
-  const hi = setMarkersFunction();
-  console.log(hi);
-
+function AppSideMenu({ map, markers }: any) {
   const dispatch = useAppDispatch();
   const {
     storeInDistance,
@@ -24,6 +21,74 @@ function AppSideMenu({ map, setMarkersFunction }: any) {
     mobileShowStoreFlag,
     mobileShowSearchFlag,
   } = useAppSelector(state => state.playApp);
+  // const choiceArticle = (item: any) => {
+  //   console.log('item');
+  //   console.log(item);
+  //   markers.forEach((marker: any) => {
+  //     if (Number(marker.title) === item.num) {
+  //       console.log('match');
+  //       console.log(marker);
+  //       const bigSrc =
+  //         marker.icon.url.substring(0, marker.icon.url.indexOf('.')) +
+  //         '_big.png';
+  //       marker.setIcon({
+  //         url: bigSrc,
+  //       });
+  //       if (choiceMarker === undefined) {
+  //         console.log('first');
+  //         choiceMarker = marker;
+  //         console.log(choiceMarker);
+  //       } else {
+  //         if ((choiceMarker === marker) === false) {
+  //           const src =
+  //             choiceMarker.icon.url.substring(
+  //               0,
+  //               choiceMarker.icon.url.indexOf('_'),
+  //             ) + '.png';
+  //           choiceMarker.setIcon({
+  //             url: src,
+  //           });
+  //           choiceMarker = marker;
+  //         }
+  //       }
+  //     }
+  //   });
+  // };
+  // const [marker, setMarker] = useState();
+  // let [choiceMarker, setChoiceMarker]: any = useState();
+  let latChoiceMarker: any;
+  // useEffect(() => {
+  //   console.log(latChoiceMarker);
+  //   console.log(choiceMarker);
+  // }, [choiceMarker]);
+
+  function hi(choiceMarker: any) {
+    console.log(choiceMarker);
+    if (latChoiceMarker === undefined) {
+      latChoiceMarker = choiceMarker;
+      console.log('unde');
+      console.log(latChoiceMarker);
+    } else {
+      console.log('de');
+      console.log(latChoiceMarker);
+      if ((latChoiceMarker === choiceMarker) === false) {
+        const src =
+          latChoiceMarker.icon.url.substring(
+            0,
+            latChoiceMarker.icon.url.indexOf('_'),
+          ) + '.png';
+        latChoiceMarker.setIcon({
+          url: src,
+        });
+        latChoiceMarker = choiceMarker;
+      }
+    }
+  }
+
+  const setMarkerFunction = (choiceMarker: any) => {
+    // await setChoiceMarker(choiceMarker);
+    hi(choiceMarker);
+  };
 
   const [showFilterType, setShowFilterType] = useState(false);
 
@@ -93,17 +158,32 @@ function AppSideMenu({ map, setMarkersFunction }: any) {
                 ? filterStore.length === 0
                   ? storeInDistance.map(m => {
                       return (
-                        <StoreArticle key={m.store_id} option={m} map={map} />
+                        <StoreArticle
+                          key={m.store_id}
+                          option={m}
+                          map={map}
+                          propFunction={setMarkerFunction}
+                        />
                       );
                     })
                   : filterStore.map(m => {
                       return (
-                        <StoreArticle key={m.store_id} option={m} map={map} />
+                        <StoreArticle
+                          key={m.store_id}
+                          option={m}
+                          map={map}
+                          propFunction={setMarkerFunction}
+                        />
                       );
                     })
                 : searchStore.map(m => {
                     return (
-                      <StoreArticle key={m.store_id} option={m} map={map} />
+                      <StoreArticle
+                        key={m.store_id}
+                        option={m}
+                        map={map}
+                        propFunction={setMarkerFunction}
+                      />
                     );
                   })}
             </section>
@@ -149,17 +229,35 @@ function AppSideMenu({ map, setMarkersFunction }: any) {
                 ? filterStore.length === 0
                   ? storeInDistance.map(m => {
                       return (
-                        <StoreArticle key={m.store_id} option={m} map={map} />
+                        <StoreArticle
+                          key={m.store_id}
+                          option={m}
+                          map={map}
+                          markers={markers}
+                          propFunction={setMarkerFunction}
+                        />
                       );
                     })
                   : filterStore.map(m => {
                       return (
-                        <StoreArticle key={m.store_id} option={m} map={map} />
+                        <StoreArticle
+                          key={m.store_id}
+                          option={m}
+                          map={map}
+                          markers={markers}
+                          propFunction={setMarkerFunction}
+                        />
                       );
                     })
                 : searchStore.map(m => {
                     return (
-                      <StoreArticle key={m.store_id} option={m} map={map} />
+                      <StoreArticle
+                        key={m.store_id}
+                        option={m}
+                        map={map}
+                        markers={markers}
+                        propFunction={setMarkerFunction}
+                      />
                     );
                   })}
             </section>
