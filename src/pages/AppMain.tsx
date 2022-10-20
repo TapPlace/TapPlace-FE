@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import AppSideMenu from '../components/appService/AppSideMenu';
+import AppVisitAlert from '../components/appService/AppVisitAlert';
 import Filter from '../components/appService/Filter';
 import NaverMap from '../components/appService/NaverMap';
 import StoreDetail from '../components/appService/StoreDetail';
@@ -40,6 +41,7 @@ function AppMain() {
     storeDetailFlag,
     choiceCnt,
     filterApplyFlag,
+    appVisitAlertFlag,
   } = useAppSelector(state => state.playApp);
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();
@@ -223,6 +225,7 @@ function AppMain() {
       <AppSideMenu map={map} markers={markers} />
       <Filter />
       {storeDetailFlag && <StoreDetail />}
+      {appVisitAlertFlag && <AppVisitAlert />}
     </>
   );
 }

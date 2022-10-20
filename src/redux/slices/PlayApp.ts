@@ -37,6 +37,7 @@ export interface PlayAppState {
   myAddress: string | undefined;
   mobileShowStoreFlag: boolean;
   mobileShowSearchFlag: boolean;
+  appVisitAlertFlag: boolean;
 }
 
 const initialState: PlayAppState = {
@@ -76,6 +77,7 @@ const initialState: PlayAppState = {
   myAddress: undefined,
   mobileShowStoreFlag: false,
   mobileShowSearchFlag: true,
+  appVisitAlertFlag: true,
 };
 
 export const playApp = createSlice({
@@ -150,6 +152,9 @@ export const playApp = createSlice({
     SET_MOBILE_SHOW_SEARCH_FLAG(state, action: PayloadAction<boolean>) {
       state.mobileShowSearchFlag = action.payload;
     },
+    SET_APP_VISIT_ALERT_FLAG(state, action: PayloadAction<boolean>) {
+      state.appVisitAlertFlag = action.payload;
+    },
   },
 });
 
@@ -170,6 +175,7 @@ export const {
   SET_MY_ADDRESS,
   SET_MOBILE_SHOW_STORE_FLAG,
   SET_MOBILE_SHOW_SEARCH_FLAG,
+  SET_APP_VISIT_ALERT_FLAG,
 } = playApp.actions;
 
 export default playApp;
