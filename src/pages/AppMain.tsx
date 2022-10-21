@@ -224,7 +224,7 @@ function AppMain() {
       </main>
       <AppSideMenu map={map} markers={markers} />
       <Filter />
-      {storeDetailFlag && <StoreDetail />}
+      {storeDetailFlag && <StoreDetail markers={markers} />}
       {appVisitAlertFlag && <AppVisitAlert />}
     </>
   );

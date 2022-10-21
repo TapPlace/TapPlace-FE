@@ -344,50 +344,34 @@ function NaverMap(props: any) {
     });
 
     naver.maps.Event.addListener(marker, 'click', function (e: any) {
-      if (infoWindow.getMap()) {
-        infoWindow.close();
-        dispatch(SET_DETAIL_FLAG(false));
-        dispatch(SET_MOBILE_SHOW_SEARCH_FLAG(true));
-        marker.setIcon({
-          url: imgSrc,
-        });
+      // 브라우저 크기에 맞는 이벤트 핸들러(마커가 맵 중앙에 가게)
+      if (window.innerWidth < 1024) {
+        const lat = marker.position._lat - 0.0016;
+        const lng = marker.position._lng;
+        const latlng = new naver.maps.LatLng(lat, lng);
+        map.panTo(latlng);
       } else {
-        infoWindow.open(map, marker);
-        // 전에 선택한 마커가 없으면 마커 저장
-        if (choiceMarker === undefined) {
-          choiceMarker = marker;
-        } else {
-          if ((choiceMarker === marker) === false) {
-            const src =
-              choiceMarker.icon.url.substring(
-                0,
-                choiceMarker.icon.url.indexOf('_'),
-              ) + '.png';
-            choiceMarker.setIcon({
-              url: src,
-            });
-            choiceMarker = marker;
-          }
-        }
-        // 브라우저 크기에 맞는 이벤트 핸들러(마커가 맵 중앙에 가게)
-        if (window.innerWidth < 1024) {
-          const lat = marker.position._lat - 0.0016;
-          const lng = marker.position._lng;
-          const latlng = new naver.maps.LatLng(lat, lng);
-          map.panTo(latlng);
-        } else {
-          map.panTo(marker.position);
-        }
-        // 클릭 시 큰 아이콘으로 변경
-        marker.setIcon({
-          url: bigImgSrc,
-        });
-        if (!storeDetailFlag) {
-          dispatch(SET_DETAIL_FLAG(true));
-        }
-        dispatch(SET_DETAIL_INFO(storeInDistance[i]));
-        dispatch(SET_MOBILE_SHOW_SEARCH_FLAG(false));
+        map.panTo(marker.position);
       }
+      // 클릭 시 모든 마커 기본 이미지로 변경
+      otherMarkers.forEach((marker: any) => {
+        if (marker.icon.url.includes('_big')) {
+          let src =
+            marker.icon.url.substring(0, marker.icon.url.indexOf('_')) + '.png';
+          marker.setIcon({
+            url: src,
+          });
+        }
+      });
+      // 클릭한 마커 큰 이미지로 변경
+      marker.setIcon({
+        url: bigImgSrc,
+      });
+      if (!storeDetailFlag) {
+        dispatch(SET_DETAIL_FLAG(true));
+      }
+      dispatch(SET_DETAIL_INFO(storeInDistance[i]));
+      dispatch(SET_MOBILE_SHOW_SEARCH_FLAG(false));
     });
   }
 
@@ -395,10 +379,10 @@ function NaverMap(props: any) {
   useEffect(() => {
     naverFunction();
   }, [storeInDistance]);
-  // 줌 바뀔 시
-  useEffect(() => {
-    naverFunction();
-  }, [lastLocation]);
+  // // 줌 바뀔 시
+  // useEffect(() => {
+  //   naverFunction();
+  // }, [lastLocation]);
   // 필터링 시
   useEffect(() => {
     naverFunction();

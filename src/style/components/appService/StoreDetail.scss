@@ -46,6 +46,9 @@
             color: $subTextColor;
           }
         }
+        img {
+          cursor: pointer;
+        }
       }
       #detailBtnContainer {
         border: 1px solid #4e77fb;
@@ -97,6 +100,7 @@
       }
       #infoModified {
         padding: 17px 0;
+        cursor: pointer;
       }
     }
     #paymentMethod {
@@ -151,6 +155,9 @@
             color: $subTextColor;
           }
         }
+        img {
+          cursor: pointer;
+        }
       }
       #detailBtnContainer {
         border: 1px solid #4e77fb;
@@ -197,6 +204,7 @@
         padding-bottom: 15px;
       }
       #infoModified {
+        cursor: pointer;
         padding: 20px 0;
       }
     }
@@ -257,6 +265,9 @@
             color: $subTextColor;
           }
         }
+        img {
+          cursor: pointer;
+        }
       }
       #detailBtnContainer {
         border: 1px solid #4e77fb;
@@ -307,6 +318,7 @@
       #infoModified {
         font-size: 0.8vw;
         padding: 1vw 0;
+        cursor: pointer;
       }
     }
     #paymentMethod {

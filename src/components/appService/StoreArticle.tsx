@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   SET_DETAIL_FLAG,
@@ -16,16 +16,21 @@ function StoreArticle(props: any) {
   const name = option.place_name;
   const { storeDetailFlag } = useAppSelector(state => state.playApp);
   // Article 클릭 시 맞는 마커 선택하여 상위 컴포넌트로 전달
-  let choiceMarker: any;
   const choiceArticle = () => {
     markers.forEach((marker: any) => {
+      if (marker.icon.url.includes('_big')) {
+        let src =
+          marker.icon.url.substring(0, marker.icon.url.indexOf('_')) + '.png';
+        marker.setIcon({
+          url: src,
+        });
+      }
       if (Number(marker.title) === option.num) {
-        choiceMarker = marker;
-        const bigSrc =
+        const bigImg =
           marker.icon.url.substring(0, marker.icon.url.indexOf('.')) +
           '_big.png';
         marker.setIcon({
-          url: bigSrc,
+          url: bigImg,
         });
       }
     });
@@ -69,10 +74,6 @@ function StoreArticle(props: any) {
           }),
         );
         choiceArticle();
-        const lowMarkerComponent = (marker: any) => {
-          return props.propFunction(marker);
-        };
-        lowMarkerComponent(choiceMarker);
 
         if (window.innerWidth < 1024) {
           const latlng = new naver.maps.LatLng(option.y - 0.0016, option.x);
