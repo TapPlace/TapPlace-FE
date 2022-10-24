@@ -55,6 +55,7 @@ function AppMain() {
   const setMarkersFunction = (otherMarkers: any) => {
     setMarkers(otherMarkers);
   };
+  // http://map.naver.com/index.nhn?slng=lng&slat=lat&stext=출발지이름&elng=lng&elat=lat&etext=도착지이름&menu=route&pathType=1
 
   function bringMyLocation() {
     // 내 위치 가져오기

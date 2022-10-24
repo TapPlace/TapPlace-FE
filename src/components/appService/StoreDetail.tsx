@@ -6,12 +6,16 @@ import {
   SET_MOBILE_SHOW_SEARCH_FLAG,
 } from '../../redux/slices/PlayApp';
 import Feedback from './Feedback';
+// import point from 'ol/geom/Point';
+import proj4 from 'proj4';
 
 import '../../style/components/appService/StoreDetail.scss';
 
 function StoreDetail({ markers, setReqModifyFlagView }: any) {
   const dispatch = useAppDispatch();
-  const { storeDetailInfo } = useAppSelector(state => state.playApp);
+  const { myLocation, storeDetailInfo } = useAppSelector(
+    state => state.playApp,
+  );
 
   // storeDetailInfo 피드백 변수
   const [feedback, setFeedback]: any = useState();
@@ -27,6 +31,17 @@ function StoreDetail({ markers, setReqModifyFlagView }: any) {
         setFeedback(data);
       });
   }, [storeDetailInfo.store_id]);
+  // const pnt = new point([myLocation.longitude, myLocation.latitude]).transform(
+  //   'EPSG:4326',
+  //   'EPSG:3857',
+  // );
+  // const changePoints = pnt.getCoordinates();
+  // function convertCoordinates(lon: number, lat: number) {
+  //   const x = (lon * 20037508.34) / 180;
+  //   const y = Math.log(Math.tan(((90 + lat) * Math.PI) / 360)) / (Math.PI / 180);
+  //   y = (y * 20037508.34) / 180;
+  //   return [x, y];
+  // }
 
   return (
     <>
@@ -61,7 +76,22 @@ function StoreDetail({ markers, setReqModifyFlagView }: any) {
               }}
             />
           </div>
-          <button id="detailBtnContainer">
+          <button
+            id="detailBtnContainer"
+            onClick={() => {
+              const start = proj4('EPSG:4326', 'EPSG:3857', [
+                Number(myLocation.longitude),
+                Number(myLocation.latitude),
+              ]);
+              const arrive = proj4('EPSG:4326', 'EPSG:3857', [
+                Number(storeDetailInfo.x),
+                Number(storeDetailInfo.y),
+              ]);
+              window.open(
+                `https://map.naver.com/v5/directions/${start[0]},${start[1]},내위치,,/${arrive[0]},${arrive[1]},${storeDetailInfo.place_name},,/~/transit?c=${arrive[0]},${arrive[1]},13,0,0,0,dh`,
+              );
+            }}
+          >
             <img id="naviImg" src="img/AppPage/navigation.png" alt="navi" />
             <p>길찾기</p>
           </button>

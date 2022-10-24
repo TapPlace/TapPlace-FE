@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { isMobile } from 'react-device-detect';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   SET_DETAIL_FLAG,
@@ -26,7 +25,6 @@ function NaverMap(props: any) {
   const [naverMap, setNaverMap]: any = useState();
   const [zoom, setZoom] = useState(18);
   const otherMarkers: any = [];
-  let choiceMarker: any;
 
   // 네이버 지도 띄우기
   async function naverFunction() {
