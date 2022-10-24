@@ -1,0 +1,187 @@
+@import '../../utils';
+
+#agreeContainer {
+}
+
+@include mobile {
+  #agreeContainer {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    #agreeHeader {
+      position: sticky;
+      top: 0;
+      background: white;
+      margin-bottom: 20px;
+      padding: 0 24px;
+      text-align: center;
+      height: 60px;
+      line-height: 60px;
+      border-bottom: 1px solid rgba(219, 222, 232, 0.6);
+      p {
+        display: inline-block;
+        font-size: 20px;
+        font-weight: 400;
+      }
+      img {
+        display: inline-block;
+        width: 24px;
+        float: left;
+        margin-top: 20px;
+      }
+    }
+    #agreeContent {
+      margin-bottom: 20px;
+      #policyContainer {
+        padding: 0 24px;
+      }
+      #consentContainer {
+        padding: 0 24px;
+      }
+    }
+    #agreeBtn {
+      position: fixed;
+      bottom: 0px;
+      width: 100vw;
+      border: none;
+      padding: 20px 0;
+      color: #b8bdcc;
+      cursor: pointer;
+      &:disabled {
+        background: #f7f8fa;
+      }
+    }
+    .activeBtn {
+      background: $mainColor;
+      color: white !important;
+    }
+  }
+}
+
+@include tablet {
+  #agreeContainer {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    #agreeHeader {
+      position: sticky;
+      top: 0;
+      background: white;
+      margin-bottom: 20px;
+      padding: 0 24px;
+      text-align: center;
+      height: 60px;
+      line-height: 60px;
+      border-bottom: 1px solid rgba(219, 222, 232, 0.6);
+      p {
+        display: inline-block;
+        font-size: 20px;
+        font-weight: 400;
+      }
+      img {
+        display: inline-block;
+        width: 24px;
+        float: left;
+        margin-top: 20px;
+      }
+    }
+    #agreeContent {
+      overflow-y: scroll;
+      margin-bottom: 20px;
+      #policyContainer {
+        padding: 0 24px;
+      }
+      #consentContainer {
+        padding: 0 24px;
+      }
+    }
+    #agreeBtn {
+      position: fixed;
+      bottom: 0px;
+      width: 100vw;
+      border: none;
+      padding: 20px 0;
+      color: #b8bdcc;
+      cursor: pointer;
+      &:disabled {
+        background: #f7f8fa;
+      }
+    }
+    .activeBtn {
+      background: $mainColor;
+      color: white !important;
+    }
+  }
+}
+
+@include desktop {
+  #agreeContainer {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    height: 100%;
+    border-radius: 12px;
+    &::-webkit-scrollbar {
+      display: block;
+      width: 8px;
+      height: 100%;
+      border-radius: 12px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #b8bdcc;
+      border-radius: 0 100px 100px 0;
+      height: 180px;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(219, 222, 232, 0.4);
+    }
+    #agreeHeader {
+      position: sticky;
+      top: 0;
+      background: white;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15.5px 24px;
+      height: 60px;
+      border-bottom: 1px solid rgba(219, 222, 232, 0.6);
+      p {
+        display: inline-block;
+        font-size: 20px;
+        font-weight: 400;
+      }
+      img {
+        display: inline-block;
+        width: 24px;
+      }
+    }
+    #agreeContent {
+      margin-bottom: 20px;
+      #policyContainer {
+        padding: 0 24px;
+      }
+      #consentContainer {
+        padding: 0 24px;
+      }
+    }
+    #agreeBtn {
+      position: fixed;
+      bottom: 20px;
+      width: 24.5vw;
+      border: none;
+      padding: 20px 0;
+      border-radius: 0 0 6px 12px;
+      color: #b8bdcc;
+      cursor: pointer;
+      &:disabled {
+        background: #f7f8fa;
+      }
+    }
+    .activeBtn {
+      background: $mainColor;
+      color: white !important;
+    }
+  }
+}

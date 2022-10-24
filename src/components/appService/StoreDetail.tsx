@@ -6,11 +6,10 @@ import {
   SET_MOBILE_SHOW_SEARCH_FLAG,
 } from '../../redux/slices/PlayApp';
 import Feedback from './Feedback';
-import ReqModifyInfo from './ReqModifyInfo';
 
 import '../../style/components/appService/StoreDetail.scss';
 
-function StoreDetail({ markers }: any) {
+function StoreDetail({ markers, setReqModifyFlagView }: any) {
   const dispatch = useAppDispatch();
   const { storeDetailInfo } = useAppSelector(state => state.playApp);
 
@@ -28,8 +27,6 @@ function StoreDetail({ markers }: any) {
         setFeedback(data);
       });
   }, [storeDetailInfo.store_id]);
-
-  const [modifyInfoFlag, setModifyInfoFlag] = useState(false);
 
   return (
     <>
@@ -84,7 +81,7 @@ function StoreDetail({ markers }: any) {
           <div
             id="infoModified"
             onClick={() => {
-              setModifyInfoFlag(true);
+              setReqModifyFlagView(true);
             }}
           >
             <img src="img/AppPage/pencil.png" alt="pencil" />
@@ -102,7 +99,6 @@ function StoreDetail({ markers }: any) {
           앱에서 사용 여부 피드백하기 &gt;
         </button>
       </div>
-      {modifyInfoFlag && <ReqModifyInfo setFlag={setModifyInfoFlag} />}
     </>
   );
 }

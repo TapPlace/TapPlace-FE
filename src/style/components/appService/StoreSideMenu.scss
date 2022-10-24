@@ -1,0 +1,36 @@
+@import '../../utils';
+
+@include mobile {
+  #storeSideContainer {
+    z-index: 1000;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: calc(100vh - 60px);
+    overflow-y: scroll;
+  }
+}
+
+@include tablet {
+  #storeSideContainer {
+    z-index: 1000;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: calc(100vh - 60px);
+    overflow-y: scroll;
+  }
+}
+
+@include desktop {
+  #storeSideContainer {
+    position: absolute;
+    top: 60px;
+    left: 25vw;
+    width: 24.5vw;
+    height: calc(100vh - 100px);
+    margin: 20px 0 20px 1vw;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.16);
+    border-radius: 12px;
+  }
+}

@@ -5,6 +5,7 @@ import AppVisitAlert from '../components/appService/AppVisitAlert';
 import Filter from '../components/appService/Filter';
 import NaverMap from '../components/appService/NaverMap';
 import StoreDetail from '../components/appService/StoreDetail';
+import StoreSideMenu from '../components/appService/StoreSideMenu';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import {
   SET_FILTER_STORE,
@@ -224,7 +225,7 @@ function AppMain() {
       </main>
       <AppSideMenu map={map} markers={markers} />
       <Filter />
-      {storeDetailFlag && <StoreDetail markers={markers} />}
+      {storeDetailFlag && <StoreSideMenu markers={markers} />}
       {appVisitAlertFlag && <AppVisitAlert />}
     </>
   );
