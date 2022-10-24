@@ -13,6 +13,7 @@ const { naver }: any = window;
 
 function NaverMap(props: any) {
   const dispatch = useAppDispatch();
+
   const {
     myLocation,
     lastLocation,
@@ -25,6 +26,7 @@ function NaverMap(props: any) {
   const [naverMap, setNaverMap]: any = useState();
   const [zoom, setZoom] = useState(18);
   const otherMarkers: any = [];
+  const [searchCriteriaFlag, setSearchCriteriaFlag] = useState(false);
 
   // 네이버 지도 띄우기
   async function naverFunction() {
@@ -53,6 +55,7 @@ function NaverMap(props: any) {
         scaleControl: false,
       });
 
+      // 주소 검색
       const searchAddress = (latlng: any) => {
         naver.maps.Service.reverseGeocode(
           {
@@ -89,23 +92,39 @@ function NaverMap(props: any) {
             longitude: map.getCenter()._lng,
           }),
         );
+        setSearchCriteriaFlag(true);
       });
       naver.maps.Event.addListener(map, 'zoom_changed', function () {
         setZoom(map.getZoom());
       });
+      // 지도에 마커 찍기
       displayMarkers(map);
       // distance 반경 원 그리기
-      const circle = new naver.maps.Circle({
-        map: map,
-        center: new naver.maps.LatLng(
-          myLocation.latitude,
-          myLocation.longitude,
-        ),
-        radius: 1000,
-        fillColor: 'rgba(78, 119, 251, 0.03)',
-        strokeColor: 'rgba(78, 119, 251, 0.5)',
-        strokeWeight: 1,
-      });
+      if (lastLocation.latitude !== undefined) {
+        const circle = new naver.maps.Circle({
+          map: map,
+          center: new naver.maps.LatLng(
+            lastLocation.latitude,
+            lastLocation.longitude,
+          ),
+          radius: 1000,
+          fillColor: 'rgba(78, 119, 251, 0.03)',
+          strokeColor: 'rgba(78, 119, 251, 0.5)',
+          strokeWeight: 1,
+        });
+      } else {
+        const circle = new naver.maps.Circle({
+          map: map,
+          center: new naver.maps.LatLng(
+            myLocation.latitude,
+            myLocation.longitude,
+          ),
+          radius: 1000,
+          fillColor: 'rgba(78, 119, 251, 0.03)',
+          strokeColor: 'rgba(78, 119, 251, 0.5)',
+          strokeWeight: 1,
+        });
+      }
     }
   }
   // distance 마커 표시
@@ -397,7 +416,24 @@ function NaverMap(props: any) {
   // }, [storeDetailFlag]);
 
   return (
-    <div id="map" style={{ width: '100%', height: 'calc(100vh - 60px)' }} />
+    <>
+      <div id="map" style={{ width: '100%', height: 'calc(100vh - 60px)' }} />
+      {searchCriteriaFlag && (
+        <>
+          <button
+            id="searchCriteriaBtn"
+            onClick={() => {
+              props.bringStores();
+              naverFunction();
+            }}
+          >
+            <img src="img/AppPage/reset.png" alt="reset.png" />
+            <p>현 위치에서 가맹점 재탐색</p>
+          </button>
+          <img id="locationPin" src="img/AppPage/pin.png" alt="locationPin" />
+        </>
+      )}
+    </>
   );
 }
 export default NaverMap;

@@ -38,6 +38,7 @@ function AppMain() {
   ];
   const {
     myLocation,
+    lastLocation,
     storeInDistance,
     storeDetailFlag,
     choiceCnt,
@@ -57,41 +58,69 @@ function AppMain() {
   };
   // http://map.naver.com/index.nhn?slng=lng&slat=lat&stext=출발지이름&elng=lng&elat=lat&etext=도착지이름&menu=route&pathType=1
 
+  // 처음 내 위치 가져오기
   function bringMyLocation() {
     // 내 위치 가져오기
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position: any) => {
         dispatch(
           SET_MY_LOCATION({
-            latitude: 37.4938999991414,
-            longitude: 127.014383829718,
-            // latitude: position.coords.latitude,
-            // longitude: position.coords.longitude,
+            // latitude: 37.4938999991414,
+            // longitude: 127.014383829718,
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
           }),
         );
       });
     } else {
       window.alert('현재위치를 알수 없습니다.');
     }
+  }
+  // 첫 내 위치 반경 가맹점 가져오기
+  function bringStores() {
     // 내 위치에서 distance 반경 가맹점 가져오기
-    axios
-      .post('https://api.tapplace.cloud/store/around', {
-        x1: '127.014383829781',
-        y1: '37.4938999991414',
-        distance: distance,
-        pays: pays,
-        user_id: '',
-      })
-      .then(res => {
-        const stores = res.data.stores;
-        dispatch(SET_STORE_IN_DISTANCE(stores));
-      })
-      .catch(err => console.error(err));
+    if (lastLocation.latitude === undefined) {
+      console.log('첫위치 가맹점가져오기');
+      axios
+        .post('https://api.tapplace.cloud/store/around', {
+          x1: String(myLocation.longitude),
+          y1: String(myLocation.latitude),
+          distance: distance,
+          pays: pays,
+          user_id: '',
+        })
+        .then(res => {
+          const stores = res.data.stores;
+          dispatch(SET_STORE_IN_DISTANCE(stores));
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    } else {
+      console.log('최근위치 가맹점가져오기');
+      axios
+        .post('https://api.tapplace.cloud/store/around', {
+          x1: String(lastLocation.longitude),
+          y1: String(lastLocation.latitude),
+          distance: distance,
+          pays: pays,
+          user_id: '',
+        })
+        .then(res => {
+          const stores = res.data.stores;
+          console.log(res);
+          dispatch(SET_STORE_IN_DISTANCE(stores));
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
   }
 
   // 내 위치 가져오기
   useEffect(() => {
     bringMyLocation();
+    bringStores();
   }, [myLocation]);
 
   // 필터가 클릭되있을 경우
@@ -222,6 +251,8 @@ function AppMain() {
         <NaverMap
           propFunction={setMapFunction}
           markersFunction={setMarkersFunction}
+          pays={pays}
+          bringStores={bringStores}
         />
       </main>
       <AppSideMenu map={map} markers={markers} />
