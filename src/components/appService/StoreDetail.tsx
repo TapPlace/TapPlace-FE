@@ -6,7 +6,6 @@ import {
   SET_MOBILE_SHOW_SEARCH_FLAG,
 } from '../../redux/slices/PlayApp';
 import Feedback from './Feedback';
-// import point from 'ol/geom/Point';
 import proj4 from 'proj4';
 
 import '../../style/components/appService/StoreDetail.scss';
@@ -31,17 +30,6 @@ function StoreDetail({ markers, setReqModifyFlagView }: any) {
         setFeedback(data);
       });
   }, [storeDetailInfo.store_id]);
-  // const pnt = new point([myLocation.longitude, myLocation.latitude]).transform(
-  //   'EPSG:4326',
-  //   'EPSG:3857',
-  // );
-  // const changePoints = pnt.getCoordinates();
-  // function convertCoordinates(lon: number, lat: number) {
-  //   const x = (lon * 20037508.34) / 180;
-  //   const y = Math.log(Math.tan(((90 + lat) * Math.PI) / 360)) / (Math.PI / 180);
-  //   y = (y * 20037508.34) / 180;
-  //   return [x, y];
-  // }
 
   return (
     <>

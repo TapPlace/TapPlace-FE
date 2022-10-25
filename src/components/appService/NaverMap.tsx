@@ -363,9 +363,10 @@ function NaverMap(props: any) {
     naver.maps.Event.addListener(marker, 'click', function (e: any) {
       // 브라우저 크기에 맞는 이벤트 핸들러(마커가 맵 중앙에 가게)
       if (window.innerWidth < 1024) {
-        const lat = marker.position._lat - 0.0016;
+        const lat = marker.position._lat - 0.0012;
         const lng = marker.position._lng;
         const latlng = new naver.maps.LatLng(lat, lng);
+        map.setOptions('zoom', 18);
         map.panTo(latlng);
       } else {
         map.panTo(marker.position);
