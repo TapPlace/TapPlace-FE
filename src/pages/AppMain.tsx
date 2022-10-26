@@ -4,7 +4,6 @@ import AppSideMenu from '../components/appService/AppSideMenu';
 import AppVisitAlert from '../components/appService/AppVisitAlert';
 import Filter from '../components/appService/Filter';
 import NaverMap from '../components/appService/NaverMap';
-import StoreDetail from '../components/appService/StoreDetail';
 import StoreSideMenu from '../components/appService/StoreSideMenu';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import {
@@ -39,8 +38,8 @@ function AppMain() {
   const {
     myLocation,
     lastLocation,
-    storeInDistance,
     storeDetailFlag,
+    choiceCategory,
     choiceCnt,
     filterApplyFlag,
     appVisitAlertFlag,
@@ -48,15 +47,15 @@ function AppMain() {
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();
   const [markers, setMarkers]: any = useState([]);
-
+  const [filterList, setFilterList] = useState([]);
+  // 네이버 맵 객체 저장
   const setMapFunction = (maps: any) => {
     setMap(maps);
   };
-
+  // 네이버 마커 객체 저장
   const setMarkersFunction = (otherMarkers: any) => {
     setMarkers(otherMarkers);
   };
-  // http://map.naver.com/index.nhn?slng=lng&slat=lat&stext=출발지이름&elng=lng&elat=lat&etext=도착지이름&menu=route&pathType=1
 
   // 처음 내 위치 가져오기
   function bringMyLocation() {
@@ -65,8 +64,6 @@ function AppMain() {
       navigator.geolocation.getCurrentPosition((position: any) => {
         dispatch(
           SET_MY_LOCATION({
-            // latitude: 37.4938999991414,
-            // longitude: 127.014383829718,
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           }),
@@ -80,7 +77,6 @@ function AppMain() {
   function bringStores() {
     // 내 위치에서 distance 반경 가맹점 가져오기
     if (lastLocation.latitude === undefined) {
-      console.log('첫위치 가맹점가져오기');
       axios
         .post('https://api.tapplace.cloud/store/around', {
           x1: String(myLocation.longitude),
@@ -92,12 +88,12 @@ function AppMain() {
         .then(res => {
           const stores = res.data.stores;
           dispatch(SET_STORE_IN_DISTANCE(stores));
+          filteringStores(stores);
         })
         .catch(err => {
           console.error(err);
         });
     } else {
-      console.log('최근위치 가맹점가져오기');
       axios
         .post('https://api.tapplace.cloud/store/around', {
           x1: String(lastLocation.longitude),
@@ -108,23 +104,16 @@ function AppMain() {
         })
         .then(res => {
           const stores = res.data.stores;
-          console.log(res);
           dispatch(SET_STORE_IN_DISTANCE(stores));
+          filteringStores(stores);
         })
         .catch(err => {
           console.error(err);
         });
     }
   }
-
-  // 내 위치 가져오기
-  useEffect(() => {
-    bringMyLocation();
-    bringStores();
-  }, [myLocation]);
-
-  // 필터가 클릭되있을 경우
-  useEffect(() => {
+  // 필터링
+  function filteringStores(_store: any) {
     if (filterApplyFlag === true) {
       const filterList = document.querySelectorAll('.filter.active');
       // 필터링 조건
@@ -190,24 +179,24 @@ function AppMain() {
             break;
         }
       });
-
       // 둘다 없는 경우
       if (filStore.length === 0 && filPay.length === 0) {
-        dispatch(SET_FILTER_STORE(storeInDistance));
+        dispatch(SET_FILTER_STORE(_store));
       }
       // 카테고리만 있는 경우
-      if (filStore.length !== 0 && filPay.length === 0) {
-        storeInDistance.forEach(store => {
+      else if (filStore.length !== 0 && filPay.length === 0) {
+        _store.forEach((store: any) => {
           filStore.forEach((filter: any) => {
             if (store.category_group_name === filter) filteringPay.push(store);
           });
         });
         dispatch(SET_FILTER_STORE(filteringPay));
+        setFilterList(filteringPay);
         filStore = [];
       }
       // 페이만 있는 경우
-      if (filStore.length === 0 && filPay.length !== 0) {
-        storeInDistance.forEach((store: any) => {
+      else if (filStore.length === 0 && filPay.length !== 0) {
+        _store.forEach((store: any) => {
           for (let i = 0; i < filPay.length; i++) {
             if (store.pays.includes(filPay[i]) === false) {
               i -= 1;
@@ -219,11 +208,12 @@ function AppMain() {
           }
         });
         dispatch(SET_FILTER_STORE(filteringPay));
+        setFilterList(filteringPay);
         filPay = [];
       }
       // 카테고리, 페이가 있는 경우
-      if (filStore.lenght !== 0 && filPay.length !== 0) {
-        storeInDistance.forEach(store => {
+      else if (filStore.length !== 0 && filPay.length !== 0) {
+        _store.forEach((store: any) => {
           if (filStore.indexOf(store.category_group_name) !== -1)
             filteringStore.push(store);
         });
@@ -239,11 +229,22 @@ function AppMain() {
           }
         });
         dispatch(SET_FILTER_STORE(filteringPay));
+        setFilterList(filteringStore + filteringPay);
         filStore = [];
         filPay = [];
       }
     }
-  }, [choiceCnt]);
+  }
+
+  // 처음 위치 가져오고 가맹점 가져오기
+  useEffect(() => {
+    bringMyLocation();
+    bringStores();
+  }, [myLocation]);
+  // 필터가 클릭되있을 경우
+  useEffect(() => {
+    bringStores();
+  }, [choiceCategory]);
 
   return (
     <>
@@ -253,6 +254,7 @@ function AppMain() {
           markersFunction={setMarkersFunction}
           pays={pays}
           bringStores={bringStores}
+          filteringStores={filteringStores}
         />
       </main>
       <AppSideMenu map={map} markers={markers} />

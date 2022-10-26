@@ -24,6 +24,10 @@ export interface PlayAppState {
   };
   storeInDistance: Array<any>;
   _storeInDistance: Array<any>;
+  choiceCategory: {
+    store: Array<string>;
+    pay: Array<string>;
+  };
   choiceCnt: {
     storeCnt: number;
     payCnt: number;
@@ -64,6 +68,10 @@ const initialState: PlayAppState = {
   },
   storeInDistance: [],
   _storeInDistance: [],
+  choiceCategory: {
+    store: [],
+    pay: [],
+  },
   choiceCnt: {
     storeCnt: 0,
     payCnt: 0,
@@ -121,6 +129,10 @@ export const playApp = createSlice({
     _SET_STORE_IN_DISTANCE(state, action: PayloadAction<any>) {
       state._storeInDistance = action.payload;
     },
+    SET_CHOICE_CATEGORY(state, action: PayloadAction<any>) {
+      state.choiceCategory.store = action.payload.store;
+      state.choiceCategory.pay = action.payload.pay;
+    },
     SET_CHOICE_CNT(state, action: PayloadAction<any>) {
       state.choiceCnt.storeCnt = action.payload.storeCnt;
       state.choiceCnt.payCnt = action.payload.payCnt;
@@ -165,6 +177,7 @@ export const {
   SET_DETAIL_FLAG,
   SET_STORE_IN_DISTANCE,
   _SET_STORE_IN_DISTANCE,
+  SET_CHOICE_CATEGORY,
   SET_CHOICE_CNT,
   SET_FILTER_SHOW_FLAG,
   SET_FILTER_APPLY_FLAG,

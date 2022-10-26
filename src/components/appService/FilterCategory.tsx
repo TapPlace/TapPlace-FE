@@ -3,6 +3,7 @@ import React from 'react';
 import '../../style/components/appService/FilterCategory.scss';
 
 function FilterCategory({ item, id }: any) {
+  // 필터 활성화 토글
   const filterToggle = (e: any) => {
     e.target.className === 'filter'
       ? (e.target.className = 'filter active')

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
+  SET_CHOICE_CATEGORY,
   SET_CHOICE_CNT,
   SET_FILTER_SHOW_FLAG,
 } from '../../redux/slices/PlayApp';
@@ -9,7 +10,7 @@ import '../../style/components/appService/FilterButton.scss';
 
 function FilterButton() {
   const dispatch = useAppDispatch();
-  const { choiceCnt } = useAppSelector(state => state.playApp);
+  const { choiceCnt, choiceCategory } = useAppSelector(state => state.playApp);
   // 눌러진 필터링 버튼 리스트
   const filterList = document.querySelectorAll('.filter.active');
 
@@ -53,6 +54,12 @@ function FilterButton() {
                     SET_CHOICE_CNT({
                       storeCnt: 0,
                       payCnt: choiceCnt.payCnt,
+                    }),
+                  );
+                  dispatch(
+                    SET_CHOICE_CATEGORY({
+                      store: [],
+                      pay: choiceCategory.pay,
                     }),
                   );
                 }}
@@ -99,6 +106,12 @@ function FilterButton() {
                     SET_CHOICE_CNT({
                       storeCnt: choiceCnt.storeCnt,
                       payCnt: 0,
+                    }),
+                  );
+                  dispatch(
+                    SET_CHOICE_CATEGORY({
+                      store: choiceCategory.store,
+                      pay: [],
                     }),
                   );
                 }}

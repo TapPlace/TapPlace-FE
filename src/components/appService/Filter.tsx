@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
+  SET_CHOICE_CATEGORY,
   SET_CHOICE_CNT,
   SET_FILTER_APPLY_FLAG,
   SET_FILTER_SHOW_FLAG,
@@ -34,7 +35,7 @@ function Filter() {
     'JCB',
     'AMERICAN EXPRESS (AMEX)',
   ];
-
+  // 필터를 리셋
   const filterReset = (reset: any) => {
     const filterList = document.querySelectorAll('.filter.active');
     filterList.forEach(list => {
@@ -155,11 +156,15 @@ function Filter() {
           const filterList = document.querySelectorAll('.filter.active');
           let choiceStoreCnt = 0;
           let choicePayCnt = 0;
+          let choiceStore: any = [];
+          let choicePay: any = [];
           filterList.forEach(list => {
             if (list.id.includes('store')) {
               choiceStoreCnt++;
+              choiceStore.push(list.id);
             } else if (!list.id.includes('store')) {
               choicePayCnt++;
+              choicePay.push(list.id);
             }
           });
           dispatch(SET_FILTER_APPLY_FLAG(true));
@@ -167,6 +172,7 @@ function Filter() {
           dispatch(
             SET_CHOICE_CNT({ storeCnt: choiceStoreCnt, payCnt: choicePayCnt }),
           );
+          dispatch(SET_CHOICE_CATEGORY({ store: choiceStore, pay: choicePay }));
           choiceStoreCnt = 0;
           choicePayCnt = 0;
         }}
