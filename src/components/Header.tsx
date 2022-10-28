@@ -3,7 +3,7 @@ import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { initialPage } from '../redux/slices/showPage';
+import { initialPage, playAppPage } from '../redux/slices/showPage';
 
 import '../style/components/Header.scss';
 
@@ -75,15 +75,6 @@ function Header() {
           </li>
           <li>
             <Link
-              to="/"
-              className={
-                page === 'playapp' ? 'headerMenu active' : 'headerMenu'
-              }
-              onClick={onAlert}
-            >
-              웹으로 이용하기
-            </Link>
-            {/* <Link
               to="/playapp"
               className={
                 page === 'playapp' ? 'headerMenu active' : 'headerMenu'
@@ -93,7 +84,7 @@ function Header() {
               }}
             >
               웹으로 이용하기
-            </Link> */}
+            </Link>
           </li>
         </ul>
       </nav>
