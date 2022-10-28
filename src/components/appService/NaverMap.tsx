@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   SET_DETAIL_FLAG,
@@ -22,6 +22,7 @@ function NaverMap(props: any) {
     filterStore,
     searchFlag,
     searchStore,
+    filterApplyFlag,
   } = useAppSelector(state => state.playApp);
   const [naverMap, setNaverMap]: any = useState();
   const [zoom, setZoom] = useState(18);
@@ -55,7 +56,23 @@ function NaverMap(props: any) {
         scaleControl: false,
       });
 
-      await displayMarkers(map);
+      // 마커 찍기
+      // 검색과 필터 둘 다 적용될 경우
+      if (searchFlag && filterApplyFlag) {
+        if (filterStore.length !== 0) await displayMarkers(map);
+      }
+      // 검색만 적용될 경우
+      else if (searchFlag && filterApplyFlag === false) {
+        if (searchStore.length !== 0) await displayMarkers(map);
+      }
+      // 필터만 적용될 경우
+      else if (filterApplyFlag && searchFlag === false) {
+        if (filterStore.length !== 0) await displayMarkers(map);
+      }
+      // 검색과 필터 둘 다 적용되지 않을 경우
+      else {
+        await displayMarkers(map);
+      }
 
       // 주소 검색
       const searchAddress = (latlng: any) => {
@@ -124,8 +141,6 @@ function NaverMap(props: any) {
           strokeWeight: 1,
         });
       }
-      // 지도에 마커 찍기
-      // await displayMarkers(map);
     }
   }
   // distance 마커 표시
@@ -280,16 +295,25 @@ function NaverMap(props: any) {
       }
     };
     // 반경 내에 가맹점 마커 표시
-    if (searchFlag === true) {
+    // 검색과 필터가 둘 다 적용 될 경우
+    if (searchFlag && filterApplyFlag) {
+      for (let i = 0; i < filterStore.length; i++) {
+        let key: string = String(filterStore[i].num);
+        category(filterStore, i, key);
+      }
+      // 검색만 적용 될 경우
+    } else if (searchFlag) {
       for (let i = 0; i < searchStore.length; i++) {
         let key: string = String(searchStore[i].num);
         category(searchStore, i, key);
       }
+      // 필터만 적용 될 경우
     } else if (filterStore.length !== 0) {
       for (let i = 0; i < filterStore.length; i++) {
         let key: string = String(filterStore[i].num);
         category(filterStore, i, key);
       }
+      // 검색과 필터 둘 다 적용되지 않을 경우
     } else {
       for (let i = 0; i < storeInDistance.length; i++) {
         let key: string = String(storeInDistance[i].num);
@@ -352,14 +376,10 @@ function NaverMap(props: any) {
     });
   }
 
-  // 처음 지도 생성
+  // 맵, 마커를 표시 (필터링 된, 되지 않은 가맹점 전부 filterStore에 담김)
   useEffect(() => {
     naverFunction();
-  }, [storeInDistance]);
-  // 검색 시
-  useEffect(() => {
-    naverFunction();
-  }, [searchFlag]);
+  }, [filterStore]);
 
   return (
     <>

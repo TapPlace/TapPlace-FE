@@ -20,6 +20,7 @@ function AppSideMenu({ map, markers }: any) {
     searchFlag,
     mobileShowStoreFlag,
     mobileShowSearchFlag,
+    filterApplyFlag,
   } = useAppSelector(state => state.playApp);
 
   const [showFilterType, setShowFilterType] = useState(false);
@@ -86,23 +87,16 @@ function AppSideMenu({ map, markers }: any) {
               id="storeContainer"
               className={mobileShowStoreFlag ? '' : 'noShowSide'}
             >
-              {searchFlag === false
-                ? filterStore.length === 0
-                  ? storeInDistance.map(m => {
-                      return (
-                        <StoreArticle key={m.store_id} option={m} map={map} />
-                      );
-                    })
-                  : filterStore.map(m => {
-                      return (
-                        <StoreArticle key={m.store_id} option={m} map={map} />
-                      );
-                    })
-                : searchStore.map(m => {
-                    return (
-                      <StoreArticle key={m.store_id} option={m} map={map} />
-                    );
-                  })}
+              {filterStore.map(m => {
+                return (
+                  <StoreArticle
+                    key={m.store_id}
+                    option={m}
+                    map={map}
+                    markers={markers}
+                  />
+                );
+              })}
             </section>
             <button
               id="showBtn"
@@ -142,38 +136,16 @@ function AppSideMenu({ map, markers }: any) {
               id="storeContainer"
               className={filterShowFlag ? 'noShowSide' : ''}
             >
-              {searchFlag === false
-                ? filterStore.length === 0
-                  ? storeInDistance.map(m => {
-                      return (
-                        <StoreArticle
-                          key={m.store_id}
-                          option={m}
-                          map={map}
-                          markers={markers}
-                        />
-                      );
-                    })
-                  : filterStore.map(m => {
-                      return (
-                        <StoreArticle
-                          key={m.store_id}
-                          option={m}
-                          map={map}
-                          markers={markers}
-                        />
-                      );
-                    })
-                : searchStore.map(m => {
-                    return (
-                      <StoreArticle
-                        key={m.store_id}
-                        option={m}
-                        map={map}
-                        markers={markers}
-                      />
-                    );
-                  })}
+              {filterStore.map(m => {
+                return (
+                  <StoreArticle
+                    key={m.store_id}
+                    option={m}
+                    map={map}
+                    markers={markers}
+                  />
+                );
+              })}
             </section>
           </div>
         </>

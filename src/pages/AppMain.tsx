@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import AppSideMenu from '../components/appService/AppSideMenu';
 import AppVisitAlert from '../components/appService/AppVisitAlert';
 import Filter from '../components/appService/Filter';
@@ -40,9 +40,11 @@ function AppMain() {
     lastLocation,
     storeDetailFlag,
     choiceCategory,
-    choiceCnt,
+    searchFlag,
     filterApplyFlag,
     appVisitAlertFlag,
+    searchStore,
+    filterStore,
   } = useAppSelector(state => state.playApp);
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();
@@ -114,16 +116,132 @@ function AppMain() {
   }
   // 필터링
   function filteringStores(_store: any) {
-    if (filterApplyFlag === true) {
-      const filterList = document.querySelectorAll('.filter.active');
-      // 필터링 조건
-      let filStore: any = [];
-      let filPay: any = [];
-      // 카테고리만 필터링한 가맹점들
-      let filteringStore: any = [];
-      // 전부 필터링 한 가맹점들
-      let filteringPay: any = [];
+    const filterList = document.querySelectorAll('.filter.active');
+    // 필터링 조건
+    let filStore: any = [];
+    let filPay: any = [];
+    // 카테고리만 필터링한 가맹점들
+    let filteringStore: any = [];
+    // 전부 필터링 한 가맹점들
+    let filteringPay: any = [];
 
+    // 검색과 필터 둘 다 적용될 경우
+    if (filterApplyFlag && searchFlag) {
+      filterList.forEach(filter => {
+        switch (filter.id) {
+          case 'store0':
+            filStore.push('음식점');
+            break;
+          case 'store1':
+            filStore.push('카페');
+            break;
+          case 'store2':
+            filStore.push('편의점');
+            break;
+          case 'store3':
+            filStore.push('마트');
+            break;
+          case 'store4':
+            filStore.push('주유소');
+            break;
+          case 'store5':
+            filStore.push('주차장');
+            break;
+          case 'store6':
+            filStore.push('병원');
+            break;
+          case 'store7':
+            filStore.push('약국');
+            break;
+          case 'store8':
+            filStore.push('숙박');
+            break;
+          case 'store9':
+            filStore.push('공공기관');
+            break;
+          case 'pay0':
+            filPay.push('kakaopay');
+            break;
+          case 'pay1':
+            filPay.push('naverpay');
+            break;
+          case 'pay2':
+            filPay.push('zeropay');
+            break;
+          case 'pay3':
+            filPay.push('payco');
+            break;
+          case 'apple0':
+            filPay.push('apple_visa');
+            break;
+          case 'apple1':
+            filPay.push('apple_master');
+            break;
+          case 'apple2':
+            filPay.push('apple_jcb');
+            break;
+        }
+      });
+      // 카테고리, 페이 둘 다 없는 경우
+      if (filStore.length === 0 && filPay.length === 0) {
+        dispatch(SET_FILTER_STORE(searchStore));
+      }
+      // 카테고리만 있는 경우
+      else if (filStore.length !== 0 && filPay.length === 0) {
+        searchStore.forEach((store: any) => {
+          filStore.forEach((filter: any) => {
+            if (store.category_group_name === filter) filteringPay.push(store);
+          });
+        });
+        dispatch(SET_FILTER_STORE(filteringPay));
+        setFilterList(filteringPay);
+        filStore = [];
+      }
+      // 페이만 있는 경우
+      else if (filStore.length === 0 && filPay.length !== 0) {
+        searchStore.forEach((store: any) => {
+          for (let i = 0; i < filPay.length; i++) {
+            if (store.pays.includes(filPay[i]) === false) {
+              i -= 1;
+              break;
+            }
+            if (i === filPay.length - 1) {
+              filteringPay.push(store);
+            }
+          }
+        });
+        dispatch(SET_FILTER_STORE(filteringPay));
+        setFilterList(filteringPay);
+        filPay = [];
+      }
+      // 카테고리, 페이가 있는 경우
+      else if (filStore.length !== 0 && filPay.length !== 0) {
+        searchStore.forEach((store: any) => {
+          if (filStore.indexOf(store.category_group_name) !== -1)
+            filteringStore.push(store);
+        });
+        // 필터링 된 배열이 있으면 페이로 한 번 더 필터링
+        if (filteringStore !== undefined) {
+          filteringStore.forEach((store: any) => {
+            for (let i = 0; i < filPay.length; i++) {
+              if (store.pays.includes(filPay[i]) === false) {
+                i -= 1;
+                break;
+              }
+              if (i === filPay.length - 1) {
+                filteringPay.push(store);
+              }
+            }
+          });
+        }
+        dispatch(SET_FILTER_STORE(filteringPay));
+        setFilterList(filteringStore + filteringPay);
+        filStore = [];
+        filPay = [];
+      }
+    }
+    // 필터만 적용될 경우
+    else if (filterApplyFlag && searchFlag === false) {
       filterList.forEach(filter => {
         switch (filter.id) {
           case 'store0':
@@ -234,6 +352,14 @@ function AppMain() {
         filPay = [];
       }
     }
+    // 검색만 적용될 경우
+    else if (searchFlag && filterApplyFlag === false) {
+      dispatch(SET_FILTER_STORE(searchStore));
+    }
+    // 검색과 필터 둘 다 적용되지 않을 경우
+    else {
+      dispatch(SET_FILTER_STORE(_store));
+    }
   }
 
   // 처음 위치 가져오고 가맹점 가져오기
@@ -245,6 +371,10 @@ function AppMain() {
   useEffect(() => {
     bringStores();
   }, [choiceCategory]);
+  // 검색 시
+  useEffect(() => {
+    bringStores();
+  }, [searchFlag]);
 
   return (
     <>

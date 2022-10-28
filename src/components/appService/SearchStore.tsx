@@ -19,8 +19,8 @@ function SearchStore() {
         searchResult.push(storeInDistance[i]);
       }
     }
-    dispatch(SET_SEARCH_FLAG(true));
     dispatch(SET_SEARCH_STORE(searchResult));
+    dispatch(SET_SEARCH_FLAG(true));
     if (searchWord_InPage.length === 0) {
       dispatch(SET_SEARCH_FLAG(false));
       dispatch(SET_SEARCH_STORE([]));
