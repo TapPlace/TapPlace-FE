@@ -393,7 +393,11 @@ function NaverMap(props: any) {
             }}
           >
             <img src="img/AppPage/reset.png" alt="reset.png" />
-            <p>현 위치에서 가맹점 재탐색</p>
+            <p>
+              {window.innerWidth > 1023
+                ? '현 위치에서 가맹점 재탐색'
+                : '위치에서 탐색'}
+            </p>
           </button>
           <img id="locationPin" src="img/AppPage/pin.png" alt="locationPin" />
         </>
