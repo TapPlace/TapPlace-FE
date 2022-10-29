@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { SET_MOBILE_SHOW_STORE_FLAG } from '../../redux/slices/PlayApp';
@@ -12,22 +12,19 @@ import '../../style/components/appService/AppSideMenu.scss';
 function AppSideMenu({ map, markers }: any) {
   const dispatch = useAppDispatch();
   const {
-    storeInDistance,
     choiceCnt,
     filterShowFlag,
     filterStore,
-    searchStore,
-    searchFlag,
     mobileShowStoreFlag,
     mobileShowSearchFlag,
-    filterApplyFlag,
+    windowSize,
   } = useAppSelector(state => state.playApp);
 
   const [showFilterType, setShowFilterType] = useState(false);
 
   return (
     <>
-      {window.innerWidth < 1024 ? (
+      {windowSize.width < 1024 ? (
         <>
           <div id="appSideMenu" className={filterShowFlag ? 'noShowSide' : ''}>
             <SearchStore />
@@ -78,7 +75,7 @@ function AppSideMenu({ map, markers }: any) {
               )}
             </div>
             {/* 모바일(핸드폰)화면에서 가맹점 리스트 위에 띄워줄 필터 */}
-            {window.innerWidth < 768 && mobileShowStoreFlag && (
+            {windowSize.width < 768 && mobileShowStoreFlag && (
               <ul id="mobileFilterTypeContainer">
                 <FilterButton />
               </ul>

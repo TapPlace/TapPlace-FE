@@ -42,6 +42,10 @@ export interface PlayAppState {
   mobileShowStoreFlag: boolean;
   mobileShowSearchFlag: boolean;
   appVisitAlertFlag: boolean;
+  windowSize: {
+    width: number;
+    height: number;
+  };
 }
 
 const initialState: PlayAppState = {
@@ -86,6 +90,10 @@ const initialState: PlayAppState = {
   mobileShowStoreFlag: false,
   mobileShowSearchFlag: true,
   appVisitAlertFlag: true,
+  windowSize: {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  },
 };
 
 export const playApp = createSlice({
@@ -167,6 +175,10 @@ export const playApp = createSlice({
     SET_APP_VISIT_ALERT_FLAG(state, action: PayloadAction<boolean>) {
       state.appVisitAlertFlag = action.payload;
     },
+    SET_WINDOW_SIZE(state, action: PayloadAction<any>) {
+      state.windowSize.width = action.payload.width;
+      state.windowSize.height = action.payload.height;
+    },
   },
 });
 
@@ -189,6 +201,7 @@ export const {
   SET_MOBILE_SHOW_STORE_FLAG,
   SET_MOBILE_SHOW_SEARCH_FLAG,
   SET_APP_VISIT_ALERT_FLAG,
+  SET_WINDOW_SIZE,
 } = playApp.actions;
 
 export default playApp;

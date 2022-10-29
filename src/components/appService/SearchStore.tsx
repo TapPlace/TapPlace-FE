@@ -6,7 +6,7 @@ import '../../style/components/appService/SearchStore.scss';
 
 function SearchStore() {
   const dispatch = useAppDispatch();
-  const { storeInDistance, mobileShowSearchFlag } = useAppSelector(
+  const { storeInDistance, mobileShowSearchFlag, windowSize } = useAppSelector(
     state => state.playApp,
   );
   const [searchWord_InPage, setSearchWord_InPage] = useState('');
@@ -26,7 +26,6 @@ function SearchStore() {
       dispatch(SET_SEARCH_STORE([]));
     }
   };
-
   function onPressEnter(e: any) {
     if (e.key === 'Enter') {
       onClick();
@@ -35,7 +34,7 @@ function SearchStore() {
 
   return (
     <>
-      {window.innerWidth < 1024 ? (
+      {windowSize.width < 1024 ? (
         <div id="search">
           <div
             id="searchContainer"
