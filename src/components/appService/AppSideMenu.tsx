@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { SET_MOBILE_SHOW_STORE_FLAG } from '../../redux/slices/PlayApp';
