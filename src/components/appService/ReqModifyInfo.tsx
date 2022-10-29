@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppDispatch } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { SET_DETAIL_FLAG } from '../../redux/slices/PlayApp';
 
 import '../../style/components/appService/ReqModifyInfo.scss';
@@ -13,6 +13,7 @@ function ReqModifyInfo(props: any) {
     setAgreeViewFlag,
   } = props;
   const dispatch = useAppDispatch();
+  const { windowSize } = useAppSelector(state => state.playApp);
 
   return (
     <article id="modifyInfo">
@@ -25,7 +26,7 @@ function ReqModifyInfo(props: any) {
           }}
         />
         <p>정보 수정 요청</p>
-        {window.innerWidth > 1023 && (
+        {windowSize.width > 1023 && (
           <img
             src="img/close.png"
             alt="close"

@@ -13,9 +13,6 @@ function Header() {
 
   // Nav 숨기기
   const [navToggle, setNavToggle] = useState('noshow');
-  function navNoShow() {
-    setNavToggle('noshow');
-  }
 
   function onAlert() {
     alert('서비스 준비중입니다.');
@@ -44,7 +41,9 @@ function Header() {
         <FontAwesomeIcon
           className="navToggleBtn"
           icon={faXmark}
-          onClick={navNoShow}
+          onClick={() => {
+            setNavToggle('noshow');
+          }}
         />
       )}
       <nav
@@ -58,6 +57,7 @@ function Header() {
               className={page === '' ? 'headerMenu active' : 'headerMenu'}
               onClick={() => {
                 dispatch(initialPage());
+                setNavToggle('noshow');
               }}
             >
               서비스 소개
@@ -81,6 +81,7 @@ function Header() {
               }
               onClick={() => {
                 dispatch(playAppPage());
+                setNavToggle('noshow');
               }}
             >
               웹으로 이용하기
@@ -88,7 +89,14 @@ function Header() {
           </li>
         </ul>
       </nav>
-      {navToggle === 'show' && <div id="navBackground" onClick={navNoShow} />}
+      {navToggle === 'show' && (
+        <div
+          id="navBackground"
+          onClick={() => {
+            setNavToggle('noshow');
+          }}
+        />
+      )}
     </header>
   );
 }

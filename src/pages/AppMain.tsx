@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppSideMenu from '../components/appService/AppSideMenu';
 import AppVisitAlert from '../components/appService/AppVisitAlert';
 import Filter from '../components/appService/Filter';
@@ -44,7 +44,6 @@ function AppMain() {
     filterApplyFlag,
     appVisitAlertFlag,
     searchStore,
-    filterStore,
   } = useAppSelector(state => state.playApp);
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();
@@ -80,7 +79,7 @@ function AppMain() {
     // 내 위치에서 distance 반경 가맹점 가져오기
     if (lastLocation.latitude === undefined) {
       axios
-        .post('https://api.tapplace.cloud/store/around', {
+        .post('https://api.tapplace.co.kr/store/around', {
           x1: String(myLocation.longitude),
           y1: String(myLocation.latitude),
           distance: distance,
@@ -97,7 +96,7 @@ function AppMain() {
         });
     } else {
       axios
-        .post('https://api.tapplace.cloud/store/around', {
+        .post('https://api.tapplace.co.kr/store/around', {
           x1: String(lastLocation.longitude),
           y1: String(lastLocation.latitude),
           distance: distance,

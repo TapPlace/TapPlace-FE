@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useAppDispatch } from '../../redux/hooks';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { SET_DETAIL_FLAG } from '../../redux/slices/PlayApp';
 
 import '../../style/components/appService/SideMenuAgree.scss';
@@ -10,6 +10,7 @@ function SideMenuAgree(props: any) {
   const { markers, setAgreeFlag, setAgreeViewFlag, setReqModifyFlagView } =
     props;
   const dispatch = useAppDispatch();
+  const { windowSize } = useAppSelector(state => state.playApp);
 
   return (
     <article id="agreeContainer">
@@ -22,7 +23,7 @@ function SideMenuAgree(props: any) {
           }}
         />
         <p>개인정보 수집 및 이용동의</p>
-        {window.innerWidth > 1023 && (
+        {windowSize.width > 1023 && (
           <img
             src="img/close.png"
             alt="close"
