@@ -104,7 +104,6 @@ function NaverMap(props: any) {
       lowComponent(map);
       // 마지막 지도 화면의 중앙 좌표, 줌 단계 구하기
       naver.maps.Event.addListener(map, 'idle', function () {
-        console.log('drag');
         dispatch(
           SET_LAST_LOCATION({
             latitude: map.getCenter()._lat,
