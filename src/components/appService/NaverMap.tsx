@@ -294,47 +294,43 @@ function NaverMap(props: any) {
         markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
       }
     };
+    // 마커 상위 컴포넌트로 전달
+    const lowMarkerComponent = (otherMarkers: any) => {
+      return props.markersFunction(otherMarkers);
+    };
     // 반경 내에 가맹점 마커 표시
     // 검색과 필터가 둘 다 적용 될 경우
     if (searchFlag && filterApplyFlag) {
       for (let i = 0; i < filterStore.length; i++) {
         let key: string = String(filterStore[i].num);
         category(filterStore, i, key);
+        lowMarkerComponent(otherMarkers);
       }
       // 검색만 적용 될 경우
     } else if (searchFlag) {
       for (let i = 0; i < searchStore.length; i++) {
         let key: string = String(searchStore[i].num);
         category(searchStore, i, key);
+        lowMarkerComponent(otherMarkers);
       }
       // 필터만 적용 될 경우
     } else if (filterStore.length !== 0) {
       for (let i = 0; i < filterStore.length; i++) {
         let key: string = String(filterStore[i].num);
         category(filterStore, i, key);
+        lowMarkerComponent(otherMarkers);
       }
       // 검색과 필터 둘 다 적용되지 않을 경우
     } else {
       for (let i = 0; i < storeInDistance.length; i++) {
         let key: string = String(storeInDistance[i].num);
         category(storeInDistance, i, key);
-        const lowMarkerComponent = (otherMarkers: any) => {
-          return props.markersFunction(otherMarkers);
-        };
         lowMarkerComponent(otherMarkers);
       }
     }
   }
   // 마커 클릭 이벤트
-  function markerClickEvent({
-    map,
-    marker,
-    i,
-    bigImgSrc,
-    markerInfo,
-  }: // category,
-  // imgSrc,
-  any) {
+  function markerClickEvent({ map, marker, i, bigImgSrc, markerInfo }: any) {
     const position = { lat: marker.position.y, lng: marker.position.x };
 
     const infoWindow = new naver.maps.InfoWindow({
