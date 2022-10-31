@@ -75,6 +75,7 @@ function AppMain() {
     }
   }
   // 첫 내 위치 반경 가맹점 가져오기
+  let myLocFlag = true;
   function bringStores() {
     // 내 위치에서 distance 반경 가맹점 가져오기
     if (lastLocation.latitude === undefined) {
@@ -361,14 +362,14 @@ function AppMain() {
     }
   }
 
-  let mylocFlag = true;
   // 처음 위치 가져오고 가맹점 가져오기
   useEffect(() => {
     console.log('1');
-    if (mylocFlag) {
+    if (myLocFlag) {
       bringMyLocation();
       bringStores();
-      mylocFlag = false;
+      myLocFlag = false;
+      console.log(myLocFlag);
     }
   }, [myLocation]);
   // 필터가 클릭되있을 경우
