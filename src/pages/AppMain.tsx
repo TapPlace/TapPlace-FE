@@ -361,11 +361,15 @@ function AppMain() {
     }
   }
 
+  let mylocFlag = true;
   // 처음 위치 가져오고 가맹점 가져오기
   useEffect(() => {
     console.log('1');
-    bringMyLocation();
-    bringStores();
+    if (mylocFlag) {
+      bringMyLocation();
+      bringStores();
+      mylocFlag = false;
+    }
   }, [myLocation]);
   // 필터가 클릭되있을 경우
   useEffect(() => {
