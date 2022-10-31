@@ -49,6 +49,7 @@ function AppMain() {
   const [map, setMap]: any = useState();
   const [markers, setMarkers]: any = useState([]);
   const [filterList, setFilterList] = useState([]);
+  const [myLocFlag, setMyLocFlag] = useState(true);
   // 네이버 맵 객체 저장
   const setMapFunction = (maps: any) => {
     setMap(maps);
@@ -70,12 +71,12 @@ function AppMain() {
           }),
         );
       });
+      setMyLocFlag(false);
     } else {
       window.alert('현재위치를 알수 없습니다.');
     }
   }
   // 첫 내 위치 반경 가맹점 가져오기
-  let myLocFlag = true;
   function bringStores() {
     // 내 위치에서 distance 반경 가맹점 가져오기
     if (lastLocation.latitude === undefined) {
@@ -368,7 +369,7 @@ function AppMain() {
     if (myLocFlag) {
       bringMyLocation();
       bringStores();
-      myLocFlag = false;
+      setMyLocFlag(false);
       console.log(myLocFlag);
     }
   }, [myLocation]);
