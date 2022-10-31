@@ -16,11 +16,11 @@ function ReqModifyInfo(props: any) {
   const { windowSize } = useAppSelector(state => state.playApp);
 
   return (
-    <article id="modifyInfo">
-      <header id="modifyHeader">
+    <article id='modifyInfo'>
+      <header id='modifyHeader'>
         <img
-          src="img/back.png"
-          alt="back"
+          src='img/back.png'
+          alt='back'
           onClick={() => {
             setReqModifyFlagView(false);
           }}
@@ -28,8 +28,8 @@ function ReqModifyInfo(props: any) {
         <p>정보 수정 요청</p>
         {windowSize.width > 1023 && (
           <img
-            src="img/close.png"
-            alt="close"
+            src='img/close.png'
+            alt='close'
             onClick={() => {
               dispatch(SET_DETAIL_FLAG(false));
               markers.forEach((marker: any) => {
@@ -47,30 +47,30 @@ function ReqModifyInfo(props: any) {
           />
         )}
       </header>
-      <p className="inputTitle">수정내용</p>
+      <p className='inputTitle'>수정내용</p>
       <textarea
-        id="modifyContent"
-        className="inputContent"
-        placeholder="잘못되었거나 변경된 정보가 있다면 알려주세요&#13;&#10;예) 가맹점 이름: OO점 -> OO점"
+        id='modifyContent'
+        className='inputContent'
+        placeholder='잘못되었거나 변경된 정보가 있다면 알려주세요&#13;&#10;예) 가맹점 이름: OO점 -> OO점'
       ></textarea>
-      <p className="inputTitle">이메일 주소</p>
+      <p className='inputTitle'>이메일 주소</p>
       <input
-        type="text"
-        id="email"
-        className="inputContent"
-        placeholder="답변 받을 이메일 주소를 알려주세요"
-        autoComplete="off"
+        type='text'
+        id='email'
+        className='inputContent'
+        placeholder='답변 받을 이메일 주소를 알려주세요'
+        autoComplete='off'
       ></input>
-      <div id="checkContainer">
+      <div id='checkContainer'>
         {agreeFlag ? (
-          <img src="img/AppPage/check.png" alt="check" />
+          <img src='img/AppPage/check.png' alt='check' />
         ) : (
-          <img src="img/AppPage/check_inact.png" alt="check_inact" />
+          <img src='img/AppPage/check_inact.png' alt='check_inact' />
         )}
         <p>[필수]</p>
         <h4>&nbsp;개인정보 수집, 이용동의</h4>
         <p
-          id="view"
+          id='view'
           onClick={() => {
             setAgreeViewFlag(true);
           }}
@@ -80,10 +80,9 @@ function ReqModifyInfo(props: any) {
       </div>
       {agreeFlag ? (
         <button
-          id="reqBtn"
-          className="checkFlag"
+          id='reqBtn'
+          className='checkFlag'
           onClick={() => {
-            console.log('요청');
             setAgreeFlag(false);
             setReqModifyFlagView(false);
           }}
@@ -91,7 +90,7 @@ function ReqModifyInfo(props: any) {
           요청하기
         </button>
       ) : (
-        <button id="reqBtn">요청하기</button>
+        <button id='reqBtn'>요청하기</button>
       )}
     </article>
   );
