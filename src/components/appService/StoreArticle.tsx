@@ -54,7 +54,7 @@ function StoreArticle(props: any) {
 
   return (
     <article
-      className="storeArticle"
+      className='storeArticle'
       onClick={async () => {
         dispatch(SET_MOBILE_SHOW_STORE_FLAG(false));
         dispatch(SET_MOBILE_SHOW_SEARCH_FLAG(false));
@@ -76,7 +76,7 @@ function StoreArticle(props: any) {
         choiceArticle();
 
         if (window.innerWidth < 1024) {
-          const latlng = new naver.maps.LatLng(option.y - 0.0016, option.x);
+          const latlng = new naver.maps.LatLng(option.y - 0.0012, option.x);
           map.panTo(latlng);
         } else {
           const latlng = new naver.maps.LatLng(option.y, option.x);
@@ -84,51 +84,51 @@ function StoreArticle(props: any) {
         }
       }}
     >
-      <div className="storeLine1">
-        <h4 className="storeName">{name}</h4>
-        <p className="storeCategory">{category}</p>
+      <div className='storeLine1'>
+        <h4 className='storeName'>{name}</h4>
+        <p className='storeCategory'>{category}</p>
       </div>
-      <div className="storeLine2">
-        <p className="storeMeter">{option.distance * 1000}m</p>
-        <p className="storeAddress">
+      <div className='storeLine2'>
+        <p className='storeMeter'>{option.distance * 1000}m</p>
+        <p className='storeAddress'>
           {option.road_address_name
             ? `${option.road_address_name}`
             : `${option.place_name}`}
         </p>
       </div>
-      <div className="storePaymentMethod">
+      <div className='storePaymentMethod'>
         {option.pays.map((pay: string) => {
           if (pay === 'kakaopay') {
             return (
-              <img key={pay} src="img/AppPage/PayLogo/kakao.png" alt="kakao" />
+              <img key={pay} src='img/AppPage/PayLogo/kakao.png' alt='kakao' />
             );
           }
           if (pay === 'naverpay') {
             return (
-              <img key={pay} src="img/AppPage/PayLogo/naver.png" alt="naver" />
+              <img key={pay} src='img/AppPage/PayLogo/naver.png' alt='naver' />
             );
           }
           if (pay === 'payco') {
             return (
-              <img key={pay} src="img/AppPage/PayLogo/payco.png" alt="payco" />
+              <img key={pay} src='img/AppPage/PayLogo/payco.png' alt='payco' />
             );
           }
           if (pay === 'zeropay') {
             return (
-              <img key={pay} src="img/AppPage/PayLogo/zero.png" alt="zero" />
+              <img key={pay} src='img/AppPage/PayLogo/zero.png' alt='zero' />
             );
           }
           if (pay === ('apple_visa' || 'apple_master' || 'apple_jcb')) {
             return (
-              <img key={pay} src="img/AppPage/PayLogo/apple.png" alt="apple" />
+              <img key={pay} src='img/AppPage/PayLogo/apple.png' alt='apple' />
             );
           }
           if (pay === ('conless_visa' || 'conless_master' || 'conless_jcb')) {
             return (
               <img
                 key={pay}
-                src="img/AppPage/PayLogo/contactless.png"
-                alt="conless"
+                src='img/AppPage/PayLogo/contactless.png'
+                alt='conless'
               />
             );
           }
@@ -136,14 +136,14 @@ function StoreArticle(props: any) {
             return (
               <img
                 key={pay}
-                src="img/AppPage/PayLogo/google.png"
-                alt="google"
+                src='img/AppPage/PayLogo/google.png'
+                alt='google'
               />
             );
           }
           if (pay === 'toss') {
             return (
-              <img key={pay} src="img/AppPage/PayLogo/toss.png" alt="toss" />
+              <img key={pay} src='img/AppPage/PayLogo/toss.png' alt='toss' />
             );
           } else return '';
         })}
