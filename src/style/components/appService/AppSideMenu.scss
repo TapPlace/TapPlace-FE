@@ -21,7 +21,7 @@
     #showBtn {
       display: flex;
       align-items: flex-end;
-      position: absolute;
+      position: fixed;
       top: calc(100vh - 108px);
       left: 50%;
       transform: translateX(-50%);

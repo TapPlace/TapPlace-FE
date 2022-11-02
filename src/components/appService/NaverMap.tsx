@@ -380,7 +380,14 @@ function NaverMap(props: any) {
   return (
     <>
       {/* <div id='map' style={{ width: '100%', height: 'calc(100vh - 60px)' }} /> */}
-      <div id='map' style={{ width: '100%', height: '100%' }} />
+      <div
+        id='map'
+        style={{
+          width: '100%',
+          height: '100%',
+          position: 'fixed',
+        }}
+      />
       {searchCriteriaFlag && (
         <>
           <button

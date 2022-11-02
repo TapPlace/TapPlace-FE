@@ -26,10 +26,10 @@ function AppSideMenu({ map, markers }: any) {
     <>
       {windowSize.width < 1024 ? (
         <>
-          <div id="appSideMenu" className={filterShowFlag ? 'noShowSide' : ''}>
+          <div id='appSideMenu' className={filterShowFlag ? 'noShowSide' : ''}>
             <SearchStore />
             <div
-              id="locationFilter"
+              id='locationFilter'
               className={mobileShowSearchFlag ? '' : 'noShowSide'}
             >
               <MyLocation />
@@ -40,13 +40,13 @@ function AppSideMenu({ map, markers }: any) {
                     className={mobileShowStoreFlag ? 'noShow' : ''}
                   >
                     <FilterButton />
-                    <li className="filterType">
+                    <li className='filterType'>
                       <div
                         onClick={() => {
                           setShowFilterType(false);
                         }}
                       >
-                        <p id="folding">접어두기</p>
+                        <p id='folding'>접어두기</p>
                       </div>
                     </li>
                   </ul>
@@ -59,16 +59,16 @@ function AppSideMenu({ map, markers }: any) {
                     }}
                   >
                     {choiceCnt.payCnt + choiceCnt.storeCnt !== 0 && (
-                      <div id="filterCnt">
+                      <div id='filterCnt'>
                         <p>{choiceCnt.payCnt + choiceCnt.storeCnt}</p>
                       </div>
                     )}
-                    <img src="img/AppPage/filter.png" alt="showfilter" />
+                    <img src='img/AppPage/filter.png' alt='showfilter' />
                   </button>
                 </>
               ) : (
                 <>
-                  <ul id="filterTypeContainer">
+                  <ul id='filterTypeContainer'>
                     <FilterButton />
                   </ul>
                 </>
@@ -76,12 +76,12 @@ function AppSideMenu({ map, markers }: any) {
             </div>
             {/* 모바일(핸드폰)화면에서 가맹점 리스트 위에 띄워줄 필터 */}
             {windowSize.width < 768 && mobileShowStoreFlag && (
-              <ul id="mobileFilterTypeContainer">
+              <ul id='mobileFilterTypeContainer'>
                 <FilterButton />
               </ul>
             )}
             <section
-              id="storeContainer"
+              id='storeContainer'
               className={mobileShowStoreFlag ? '' : 'noShowSide'}
             >
               {filterStore.map(m => {
@@ -96,19 +96,19 @@ function AppSideMenu({ map, markers }: any) {
               })}
             </section>
             <button
-              id="showBtn"
+              id='showBtn'
               onClick={() => {
                 dispatch(SET_MOBILE_SHOW_STORE_FLAG(!mobileShowStoreFlag));
               }}
             >
               {mobileShowStoreFlag ? (
                 <>
-                  <img src="img/showMap.png" alt="showmap" />
+                  <img src='img/showMap.png' alt='showmap' />
                   <p>지도보기</p>
                 </>
               ) : (
                 <>
-                  <img src="img/showList.png" alt="showlist" />
+                  <img src='img/showList.png' alt='showlist' />
                   <p>목록보기</p>
                 </>
               )}
@@ -118,19 +118,19 @@ function AppSideMenu({ map, markers }: any) {
       ) : (
         // 데스크톱 화면(모바일 아닐 시)
         <>
-          <div id="appSideMenu" className={filterShowFlag ? 'noShowSide' : ''}>
+          <div id='appSideMenu' className={filterShowFlag ? 'noShowSide' : ''}>
             <SearchStore />
             <div
-              id="locationFilter"
+              id='locationFilter'
               className={filterShowFlag ? 'noShowSide' : ''}
             >
               <MyLocation />
-              <ul id="filterTypeContainer">
+              <ul id='filterTypeContainer'>
                 <FilterButton />
               </ul>
             </div>
             <section
-              id="storeContainer"
+              id='storeContainer'
               className={filterShowFlag ? 'noShowSide' : ''}
             >
               {filterStore.map(m => {
