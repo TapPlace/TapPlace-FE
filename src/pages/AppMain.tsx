@@ -365,22 +365,18 @@ function AppMain() {
 
   // 처음 위치 가져오고 가맹점 가져오기
   useEffect(() => {
-    console.log('1');
     if (myLocFlag) {
       bringMyLocation();
       bringStores();
       setMyLocFlag(false);
-      console.log(myLocFlag);
     }
   }, [myLocation]);
   // 필터가 클릭되있을 경우
   useEffect(() => {
-    console.log('2');
     bringStores();
   }, [choiceCategory]);
   // 검색 시
   useEffect(() => {
-    console.log('3');
     bringStores();
   }, [searchFlag]);
 

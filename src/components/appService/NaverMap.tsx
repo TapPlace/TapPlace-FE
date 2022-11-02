@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   SET_DETAIL_FLAG,
@@ -379,23 +379,23 @@ function NaverMap(props: any) {
 
   return (
     <>
-      <div id="map" style={{ width: '100%', height: 'calc(100vh - 60px)' }} />
+      <div id='map' style={{ width: '100%', height: 'calc(100vh - 60px)' }} />
       {searchCriteriaFlag && (
         <>
           <button
-            id="searchCriteriaBtn"
+            id='searchCriteriaBtn'
             onClick={() => {
               props.bringStores();
             }}
           >
-            <img src="img/AppPage/reset.png" alt="reset.png" />
+            <img src='img/AppPage/reset.png' alt='reset.png' />
             <p>
               {window.innerWidth > 1023
                 ? '현 위치에서 가맹점 재탐색'
                 : '위치에서 탐색'}
             </p>
           </button>
-          <img id="locationPin" src="img/AppPage/pin.png" alt="locationPin" />
+          <img id='locationPin' src='img/AppPage/pin.png' alt='locationPin' />
         </>
       )}
     </>
