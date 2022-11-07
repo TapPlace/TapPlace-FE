@@ -48,8 +48,7 @@ function AppMain() {
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();
   const [markers, setMarkers]: any = useState([]);
-  const [filterList, setFilterList] = useState([]);
-  const [myLocFlag, setMyLocFlag] = useState(true);
+  let locFlag = true;
   // 네이버 맵 객체 저장
   const setMapFunction = (maps: any) => {
     setMap(maps);
@@ -60,20 +59,20 @@ function AppMain() {
   };
 
   // 처음 내 위치 가져오기
-  function bringMyLocation() {
+  const bringMyLocation = () => {
     // 내 위치 가져오기
     if ('geolocation' in navigator) {
-      console.log('bring Loc');
       navigator.geolocation.getCurrentPosition((position: any) => {
-        console.log(position);
+        // console.log(position);
         dispatch(
           SET_MY_LOCATION({
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           }),
         );
+        bringStores();
+        if (locFlag) locFlag = false;
       });
-      setMyLocFlag(false);
     } else {
       window.alert('현재위치를 알수 없습니다.');
       dispatch(
@@ -82,10 +81,13 @@ function AppMain() {
           longitude: 127.105499,
         }),
       );
+      bringStores();
+      if (locFlag) locFlag = false;
     }
-  }
+  };
   // 첫 내 위치 반경 가맹점 가져오기
-  function bringStores() {
+  const bringStores = () => {
+    // console.log('store');
     // 내 위치에서 distance 반경 가맹점 가져오기
     if (lastLocation.latitude === undefined) {
       axios
@@ -98,7 +100,7 @@ function AppMain() {
         })
         .then(res => {
           const stores = res.data.stores;
-          console.log(stores);
+          // console.log(stores);
           dispatch(SET_STORE_IN_DISTANCE(stores));
           filteringStores(stores);
         })
@@ -116,7 +118,7 @@ function AppMain() {
         })
         .then(res => {
           const stores = res.data.stores;
-          console.log(stores);
+          // console.log(stores);
           dispatch(SET_STORE_IN_DISTANCE(stores));
           filteringStores(stores);
         })
@@ -124,10 +126,10 @@ function AppMain() {
           console.error(err);
         });
     }
-  }
+  };
   // 필터링
-  function filteringStores(_store: any) {
-    console.log(_store);
+  const filteringStores = (_store: any) => {
+    // console.log(_store);
     const filterList = document.querySelectorAll('.filter.active');
     // 필터링 조건
     let filStore: any = [];
@@ -206,7 +208,6 @@ function AppMain() {
           });
         });
         dispatch(SET_FILTER_STORE(filteringPay));
-        setFilterList(filteringPay);
         filStore = [];
       }
       // 페이만 있는 경우
@@ -223,7 +224,6 @@ function AppMain() {
           }
         });
         dispatch(SET_FILTER_STORE(filteringPay));
-        setFilterList(filteringPay);
         filPay = [];
       }
       // 카테고리, 페이가 있는 경우
@@ -247,7 +247,6 @@ function AppMain() {
           });
         }
         dispatch(SET_FILTER_STORE(filteringPay));
-        setFilterList(filteringStore + filteringPay);
         filStore = [];
         filPay = [];
       }
@@ -321,7 +320,6 @@ function AppMain() {
           });
         });
         dispatch(SET_FILTER_STORE(filteringPay));
-        setFilterList(filteringPay);
         filStore = [];
       }
       // 페이만 있는 경우
@@ -338,7 +336,6 @@ function AppMain() {
           }
         });
         dispatch(SET_FILTER_STORE(filteringPay));
-        setFilterList(filteringPay);
         filPay = [];
       }
       // 카테고리, 페이가 있는 경우
@@ -359,7 +356,6 @@ function AppMain() {
           }
         });
         dispatch(SET_FILTER_STORE(filteringPay));
-        setFilterList(filteringStore + filteringPay);
         filStore = [];
         filPay = [];
       }
@@ -372,13 +368,13 @@ function AppMain() {
     else {
       dispatch(SET_FILTER_STORE(_store));
     }
-  }
+  };
 
   // 처음 위치 가져오고 가맹점 가져오기
   useEffect(() => {
-    bringMyLocation();
-    bringStores();
-    setMyLocFlag(false);
+    if (locFlag) {
+      bringMyLocation();
+    }
   }, [myLocation]);
   // 필터가 클릭되있을 경우
   useEffect(() => {
