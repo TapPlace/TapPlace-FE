@@ -1,3 +1,4 @@
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { SET_DETAIL_FLAG } from '../../redux/slices/PlayApp';
 import { useInput } from '../../hooks/useInput';
