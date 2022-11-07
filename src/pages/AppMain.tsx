@@ -60,6 +60,7 @@ function AppMain() {
 
   // 처음 내 위치 가져오기
   const bringMyLocation = () => {
+    console.log('bring');
     // 내 위치 가져오기
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position: any) => {
