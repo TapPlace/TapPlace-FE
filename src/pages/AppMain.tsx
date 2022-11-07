@@ -48,7 +48,7 @@ function AppMain() {
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();
   const [markers, setMarkers]: any = useState([]);
-  let locFlag = useRef(true);
+  let locFlag = true;
   // 네이버 맵 객체 저장
   const setMapFunction = (maps: any) => {
     setMap(maps);
@@ -72,10 +72,9 @@ function AppMain() {
           }),
         );
         bringStores();
-        locFlag.current = false;
       });
     } else {
-      window.alert('현재위치를 알수 없습니다.');
+      alert('현재위치를 알수 없습니다.');
       dispatch(
         SET_MY_LOCATION({
           latitude: 37.3586704,
@@ -373,7 +372,10 @@ function AppMain() {
   // 처음 위치 가져오고 가맹점 가져오기
   useEffect(() => {
     if (locFlag) {
+      console.log('1');
       bringMyLocation();
+      locFlag = false;
+      console.log(locFlag);
     }
   }, [myLocation]);
   // 필터가 클릭되있을 경우
