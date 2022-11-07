@@ -374,13 +374,9 @@ function AppMain() {
 
   // 처음 위치 가져오고 가맹점 가져오기
   useEffect(() => {
-    console.log('1');
     if (locFlag.current) {
       bringMyLocation();
-      if (myLocation.latitude !== undefined) {
-        locFlag.current = false;
-        console.log(locFlag);
-      }
+      if (myLocation.latitude !== undefined) locFlag.current = false;
     }
   }, [myLocation]);
   // 필터가 클릭되있을 경우
