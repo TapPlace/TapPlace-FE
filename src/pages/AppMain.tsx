@@ -59,12 +59,12 @@ function AppMain() {
   };
 
   // 처음 내 위치 가져오기
-  const bringMyLocation = () => {
+  const bringMyLocation = async () => {
     console.log('bring');
     // 내 위치 가져오기
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position: any) => {
-        // console.log(position);
+        console.log(position);
         dispatch(
           SET_MY_LOCATION({
             latitude: position.coords.latitude,
@@ -72,6 +72,7 @@ function AppMain() {
           }),
         );
         bringStores();
+        locFlag.current = false;
       });
     } else {
       window.alert('현재위치를 알수 없습니다.');
@@ -371,9 +372,8 @@ function AppMain() {
 
   // 처음 위치 가져오고 가맹점 가져오기
   useEffect(() => {
-    if (locFlag.current) {
+    if (locFlag) {
       bringMyLocation();
-      locFlag.current = false;
     }
   }, [myLocation]);
   // 필터가 클릭되있을 경우
