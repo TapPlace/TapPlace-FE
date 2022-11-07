@@ -23,7 +23,7 @@ function StoreSideMenu({ markers }: any) {
   };
 
   return (
-    <article id="storeSideContainer">
+    <article id='storeSideContainer'>
       {reqModifyViewFlag ? (
         agreeViewFlag ? (
           <SideMenuAgree

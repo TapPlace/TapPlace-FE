@@ -30,7 +30,7 @@ function NaverMap(props: any) {
   const [searchCriteriaFlag, setSearchCriteriaFlag] = useState(false);
 
   // 네이버 지도 띄우기
-  async function naverFunction() {
+  const naverFunction = async () => {
     if (typeof myLocation !== 'string') {
       let latitude, longitude: number;
       if (lastLocation.latitude !== undefined) {
@@ -85,6 +85,9 @@ function NaverMap(props: any) {
             ].join(','),
           },
           function (status: any, response: any) {
+            if (status === naver.maps.Service.Status.ERROR) {
+              return console.log('something wrong');
+            }
             let myAddress = response.v2.address.jibunAddress;
             const firstSpace = myAddress.indexOf(' ') + 1;
             const secondSpace = myAddress.indexOf(' ', firstSpace);
@@ -93,7 +96,7 @@ function NaverMap(props: any) {
           },
         );
       };
-      await searchAddress(map.center);
+      searchAddress(map.center);
 
       // 맵 저장
       setNaverMap(map);
@@ -142,7 +145,7 @@ function NaverMap(props: any) {
         });
       }
     }
-  }
+  };
   // distance 마커 표시
   function displayMarkers(map: any) {
     const category = (item: any, i: any, key: any) => {

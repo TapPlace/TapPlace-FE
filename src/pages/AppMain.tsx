@@ -60,10 +60,12 @@ function AppMain() {
   };
 
   // 처음 내 위치 가져오기
-  async function bringMyLocation() {
+  function bringMyLocation() {
     // 내 위치 가져오기
-    if (navigator.geolocation) {
-      await navigator.geolocation.getCurrentPosition((position: any) => {
+    if ('geolocation' in navigator) {
+      console.log('bring Loc');
+      navigator.geolocation.getCurrentPosition((position: any) => {
+        console.log(position);
         dispatch(
           SET_MY_LOCATION({
             latitude: position.coords.latitude,
@@ -71,9 +73,15 @@ function AppMain() {
           }),
         );
       });
-      await setMyLocFlag(false);
+      setMyLocFlag(false);
     } else {
       window.alert('현재위치를 알수 없습니다.');
+      dispatch(
+        SET_MY_LOCATION({
+          latitude: 37.3586704,
+          longitude: 127.105499,
+        }),
+      );
     }
   }
   // 첫 내 위치 반경 가맹점 가져오기
@@ -90,6 +98,7 @@ function AppMain() {
         })
         .then(res => {
           const stores = res.data.stores;
+          console.log(stores);
           dispatch(SET_STORE_IN_DISTANCE(stores));
           filteringStores(stores);
         })
@@ -107,6 +116,7 @@ function AppMain() {
         })
         .then(res => {
           const stores = res.data.stores;
+          console.log(stores);
           dispatch(SET_STORE_IN_DISTANCE(stores));
           filteringStores(stores);
         })
@@ -117,6 +127,7 @@ function AppMain() {
   }
   // 필터링
   function filteringStores(_store: any) {
+    console.log(_store);
     const filterList = document.querySelectorAll('.filter.active');
     // 필터링 조건
     let filStore: any = [];
@@ -365,11 +376,9 @@ function AppMain() {
 
   // 처음 위치 가져오고 가맹점 가져오기
   useEffect(() => {
-    if (myLocFlag) {
-      bringMyLocation();
-      bringStores();
-      setMyLocFlag(false);
-    }
+    bringMyLocation();
+    bringStores();
+    setMyLocFlag(false);
   }, [myLocation]);
   // 필터가 클릭되있을 경우
   useEffect(() => {

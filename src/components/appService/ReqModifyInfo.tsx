@@ -1,8 +1,9 @@
-import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { SET_DETAIL_FLAG } from '../../redux/slices/PlayApp';
+import { useInput } from '../../hooks/useInput';
 
 import '../../style/components/appService/ReqModifyInfo.scss';
+import axios from 'axios';
 
 function ReqModifyInfo(props: any) {
   const {
@@ -13,7 +14,11 @@ function ReqModifyInfo(props: any) {
     setAgreeViewFlag,
   } = props;
   const dispatch = useAppDispatch();
-  const { windowSize } = useAppSelector(state => state.playApp);
+  const { windowSize, storeDetailInfo } = useAppSelector(
+    state => state.playApp,
+  );
+
+  const [content, setContent] = useInput('');
 
   return (
     <article id='modifyInfo'>
@@ -51,16 +56,11 @@ function ReqModifyInfo(props: any) {
       <textarea
         id='modifyContent'
         className='inputContent'
+        value={content}
+        onChange={setContent}
         placeholder='잘못되었거나 변경된 정보가 있다면 알려주세요&#13;&#10;예) 가맹점 이름: OO점 -> OO점'
-      ></textarea>
-      <p className='inputTitle'>이메일 주소</p>
-      <input
-        type='text'
-        id='email'
-        className='inputContent'
-        placeholder='답변 받을 이메일 주소를 알려주세요'
         autoComplete='off'
-      ></input>
+      ></textarea>
       <div id='checkContainer'>
         {agreeFlag ? (
           <img src='img/AppPage/check.png' alt='check' />
@@ -85,6 +85,16 @@ function ReqModifyInfo(props: any) {
           onClick={() => {
             setAgreeFlag(false);
             setReqModifyFlagView(false);
+            axios
+              .post('https://api.tapplace.co.kr/qna/web', {
+                title: storeDetailInfo.place_name,
+                content: content,
+                store_id: storeDetailInfo.store_id,
+              })
+              .then(res => {
+                alert('정보 수정 요청 전송 완료');
+              })
+              .catch(err => console.error(err));
           }}
         >
           요청하기
