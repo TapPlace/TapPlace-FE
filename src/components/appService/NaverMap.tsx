@@ -21,57 +21,83 @@ function NaverMap(props: any) {
     storeDetailFlag,
     filterStore,
     searchFlag,
-    searchStore,
+    choiceCategory,
     filterApplyFlag,
   } = useAppSelector(state => state.playApp);
   const [naverMap, setNaverMap]: any = useState();
   const [zoom, setZoom] = useState(18);
   const otherMarkers: Array<any> = [];
+  const [markers, setMarkers]: any = useState();
   const [searchCriteriaFlag, setSearchCriteriaFlag] = useState(false);
+  const [_circle, _setCircle]: any = useState();
 
   // 네이버 지도 띄우기
+  const renderMap = async () => {
+    let latitude, longitude: number;
+    if (lastLocation.latitude !== undefined) {
+      latitude = lastLocation.latitude;
+      longitude = lastLocation.longitude;
+    } else {
+      latitude = myLocation.latitude;
+      longitude = myLocation.longitude;
+    }
+
+    const map = await new naver.maps.Map('map', {
+      center: new naver.maps.LatLng(latitude, longitude),
+      zoom: zoom,
+      zoomControl: true,
+      zoomControlOptions: {
+        position: naver.maps.Position.RIGHT_BOTTOM,
+        style: naver.maps.ZoomControlStyle.SMALL,
+      },
+      logoControlOptions: {
+        position: naver.maps.Position.RIGHT_BOTTOM,
+      },
+      mapDataControl: false,
+      scaleControl: false,
+    });
+
+    // 맵 저장
+    setNaverMap(map);
+    // map 객체 저장해서 상위 컴포넌트로 보내기
+    const lowComponent = (map: any) => {
+      return props.propFunction(map);
+    };
+    lowComponent(map);
+
+    // 마지막 지도 화면의 중앙 좌표, 줌 단계 구하기
+    naver.maps.Event.addListener(map, 'idle', function () {
+      dispatch(
+        SET_LAST_LOCATION({
+          latitude: map.getCenter()._lat,
+          longitude: map.getCenter()._lng,
+        }),
+      );
+      setSearchCriteriaFlag(true);
+    });
+    naver.maps.Event.addListener(map, 'zoom_changed', function () {
+      setZoom(map.getZoom());
+    });
+  };
+  // 지도 띄우기 제외한 기능
   const naverFunction = async () => {
     if (typeof myLocation !== 'string') {
-      let latitude, longitude: number;
-      if (lastLocation.latitude !== undefined) {
-        latitude = lastLocation.latitude;
-        longitude = lastLocation.longitude;
-      } else {
-        latitude = myLocation.latitude;
-        longitude = myLocation.longitude;
-      }
-
-      const map = await new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(latitude, longitude),
-        zoom: zoom,
-        zoomControl: true,
-        zoomControlOptions: {
-          position: naver.maps.Position.RIGHT_BOTTOM,
-          style: naver.maps.ZoomControlStyle.SMALL,
-        },
-        logoControlOptions: {
-          position: naver.maps.Position.RIGHT_BOTTOM,
-        },
-        mapDataControl: false,
-        scaleControl: false,
-      });
-
       // 마커 찍기
       // 검색과 필터 둘 다 적용될 경우
       if (searchFlag && filterApplyFlag) {
-        if (filterStore.length !== 0) await displayMarkers(map);
+        if (filterStore.length !== 0) await displayMarkers(naverMap);
       }
       // 검색만 적용될 경우
       else if (searchFlag && filterApplyFlag === false) {
-        if (searchStore.length !== 0) await displayMarkers(map);
+        await displayMarkers(naverMap);
       }
       // 필터만 적용될 경우
       else if (filterApplyFlag && searchFlag === false) {
-        if (filterStore.length !== 0) await displayMarkers(map);
+        if (filterStore.length !== 0) await displayMarkers(naverMap);
       }
       // 검색과 필터 둘 다 적용되지 않을 경우
       else {
-        await displayMarkers(map);
+        await displayMarkers(naverMap);
       }
 
       // 주소 검색
@@ -96,32 +122,12 @@ function NaverMap(props: any) {
           },
         );
       };
-      searchAddress(map.center);
+      searchAddress(naverMap.center);
 
-      // 맵 저장
-      setNaverMap(map);
-      // map 객체 저장해서 상위 컴포넌트로 보내기
-      const lowComponent = (map: any) => {
-        return props.propFunction(map);
-      };
-      lowComponent(map);
-      // 마지막 지도 화면의 중앙 좌표, 줌 단계 구하기
-      naver.maps.Event.addListener(map, 'idle', function () {
-        dispatch(
-          SET_LAST_LOCATION({
-            latitude: map.getCenter()._lat,
-            longitude: map.getCenter()._lng,
-          }),
-        );
-        setSearchCriteriaFlag(true);
-      });
-      naver.maps.Event.addListener(map, 'zoom_changed', function () {
-        setZoom(map.getZoom());
-      });
       // distance 반경 원 그리기
       if (lastLocation.latitude !== undefined) {
         const circle = new naver.maps.Circle({
-          map: map,
+          map: naverMap,
           center: new naver.maps.LatLng(
             lastLocation.latitude,
             lastLocation.longitude,
@@ -131,9 +137,10 @@ function NaverMap(props: any) {
           strokeColor: 'rgba(78, 119, 251, 0.5)',
           strokeWeight: 1,
         });
+        _setCircle(circle);
       } else {
         const circle = new naver.maps.Circle({
-          map: map,
+          map: naverMap,
           center: new naver.maps.LatLng(
             myLocation.latitude,
             myLocation.longitude,
@@ -143,6 +150,7 @@ function NaverMap(props: any) {
           strokeColor: 'rgba(78, 119, 251, 0.5)',
           strokeWeight: 1,
         });
+        _setCircle(circle);
       }
     }
   };
@@ -309,15 +317,15 @@ function NaverMap(props: any) {
         category(filterStore, i, key);
         lowMarkerComponent(otherMarkers);
       }
-      // 검색만 적용 될 경우
-    } else if (searchFlag) {
-      for (let i = 0; i < searchStore.length; i++) {
-        let key: string = String(searchStore[i].num);
-        category(searchStore, i, key);
+      // 필터만 적용 될 경우
+    } else if (filterApplyFlag && searchFlag === false) {
+      for (let i = 0; i < filterStore.length; i++) {
+        let key: string = String(filterStore[i].num);
+        category(filterStore, i, key);
         lowMarkerComponent(otherMarkers);
       }
-      // 필터만 적용 될 경우
-    } else if (filterStore.length !== 0) {
+      // 검색만 적용 될 경우
+    } else if (searchFlag && filterApplyFlag === false) {
       for (let i = 0; i < filterStore.length; i++) {
         let key: string = String(filterStore[i].num);
         category(filterStore, i, key);
@@ -331,6 +339,7 @@ function NaverMap(props: any) {
         lowMarkerComponent(otherMarkers);
       }
     }
+    setMarkers(otherMarkers);
   }
   // 마커 클릭 이벤트
   function markerClickEvent({ map, marker, i, bigImgSrc, markerInfo }: any) {
@@ -375,14 +384,34 @@ function NaverMap(props: any) {
     });
   }
 
+  // 위치 받아오면 지도 렌더링
+  useEffect(() => {
+    renderMap();
+  }, [myLocation]);
+
   // 맵, 마커를 표시 (필터링 된, 되지 않은 가맹점 전부 filterStore에 담김)
   useEffect(() => {
+    if (_circle !== undefined) {
+      _circle.setMap(null);
+      markers.forEach((item: any) => {
+        item.setMap(null);
+      });
+    }
     naverFunction();
   }, [filterStore]);
 
+  // 필터 고르면 원,마커 삭제
+  useEffect(() => {
+    if (_circle !== undefined) {
+      _circle.setMap(null);
+      markers.forEach((item: any) => {
+        item.setMap(null);
+      });
+    }
+  }, [choiceCategory]);
+
   return (
     <>
-      {/* <div id='map' style={{ width: '100%', height: 'calc(100vh - 60px)' }} /> */}
       <div
         id='map'
         style={{
@@ -396,6 +425,12 @@ function NaverMap(props: any) {
           <button
             id='searchCriteriaBtn'
             onClick={() => {
+              if (_circle !== undefined) {
+                _circle.setMap(null);
+                markers.forEach((item: any) => {
+                  item.setMap(null);
+                });
+              }
               props.bringStores();
             }}
           >

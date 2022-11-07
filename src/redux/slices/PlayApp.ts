@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { stat } from 'fs';
 
 export interface PlayAppState {
   myLocation: {
@@ -46,6 +47,7 @@ export interface PlayAppState {
     width: number;
     height: number;
   };
+  searchWord_InPage: string;
 }
 
 const initialState: PlayAppState = {
@@ -94,6 +96,7 @@ const initialState: PlayAppState = {
     width: window.innerWidth,
     height: window.innerHeight,
   },
+  searchWord_InPage: '',
 };
 
 export const playApp = createSlice({
@@ -179,6 +182,9 @@ export const playApp = createSlice({
       state.windowSize.width = action.payload.width;
       state.windowSize.height = action.payload.height;
     },
+    SET_SEARCH_WORD_IN_PAGE(state, action: PayloadAction<string>) {
+      state.searchWord_InPage = action.payload;
+    },
   },
 });
 
@@ -202,6 +208,7 @@ export const {
   SET_MOBILE_SHOW_SEARCH_FLAG,
   SET_APP_VISIT_ALERT_FLAG,
   SET_WINDOW_SIZE,
+  SET_SEARCH_WORD_IN_PAGE,
 } = playApp.actions;
 
 export default playApp;

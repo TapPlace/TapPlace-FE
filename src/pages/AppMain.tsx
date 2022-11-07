@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppSideMenu from '../components/appService/AppSideMenu';
 import AppVisitAlert from '../components/appService/AppVisitAlert';
 import Filter from '../components/appService/Filter';
@@ -44,6 +44,7 @@ function AppMain() {
     filterApplyFlag,
     appVisitAlertFlag,
     searchStore,
+    searchWord_InPage,
   } = useAppSelector(state => state.playApp);
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();
@@ -60,11 +61,9 @@ function AppMain() {
 
   // 처음 내 위치 가져오기
   const bringMyLocation = async () => {
-    console.log('bring');
     // 내 위치 가져오기
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position: any) => {
-        console.log(position);
         dispatch(
           SET_MY_LOCATION({
             latitude: position.coords.latitude,
@@ -86,7 +85,6 @@ function AppMain() {
   };
   // 첫 내 위치 반경 가맹점 가져오기
   const bringStores = () => {
-    // console.log('store');
     // 내 위치에서 distance 반경 가맹점 가져오기
     if (lastLocation.latitude === undefined) {
       axios
@@ -99,7 +97,6 @@ function AppMain() {
         })
         .then(res => {
           const stores = res.data.stores;
-          // console.log(stores);
           dispatch(SET_STORE_IN_DISTANCE(stores));
           filteringStores(stores);
         })
@@ -117,7 +114,6 @@ function AppMain() {
         })
         .then(res => {
           const stores = res.data.stores;
-          // console.log(stores);
           dispatch(SET_STORE_IN_DISTANCE(stores));
           filteringStores(stores);
         })
@@ -128,7 +124,6 @@ function AppMain() {
   };
   // 필터링
   const filteringStores = (_store: any) => {
-    // console.log(_store);
     const filterList = document.querySelectorAll('.filter.active');
     // 필터링 조건
     let filStore: any = [];
@@ -195,13 +190,15 @@ function AppMain() {
             break;
         }
       });
-      // 카테고리, 페이 둘 다 없는 경우
-      if (filStore.length === 0 && filPay.length === 0) {
-        dispatch(SET_FILTER_STORE(searchStore));
+      let searchResult = [];
+      for (let i = 0; i < _store.length; i++) {
+        if (_store[i].place_name.includes(searchWord_InPage)) {
+          searchResult.push(_store[i]);
+        }
       }
       // 카테고리만 있는 경우
-      else if (filStore.length !== 0 && filPay.length === 0) {
-        searchStore.forEach((store: any) => {
+      if (filStore.length !== 0 && filPay.length === 0) {
+        searchResult.forEach((store: any) => {
           filStore.forEach((filter: any) => {
             if (store.category_group_name === filter) filteringPay.push(store);
           });
@@ -211,7 +208,7 @@ function AppMain() {
       }
       // 페이만 있는 경우
       else if (filStore.length === 0 && filPay.length !== 0) {
-        searchStore.forEach((store: any) => {
+        searchResult.forEach((store: any) => {
           for (let i = 0; i < filPay.length; i++) {
             if (store.pays.includes(filPay[i]) === false) {
               i -= 1;
@@ -227,7 +224,7 @@ function AppMain() {
       }
       // 카테고리, 페이가 있는 경우
       else if (filStore.length !== 0 && filPay.length !== 0) {
-        searchStore.forEach((store: any) => {
+        searchResult.forEach((store: any) => {
           if (filStore.indexOf(store.category_group_name) !== -1)
             filteringStore.push(store);
         });
@@ -361,7 +358,13 @@ function AppMain() {
     }
     // 검색만 적용될 경우
     else if (searchFlag && filterApplyFlag === false) {
-      dispatch(SET_FILTER_STORE(searchStore));
+      let searchResult = [];
+      for (let i = 0; i < _store.length; i++) {
+        if (_store[i].place_name.includes(searchWord_InPage)) {
+          searchResult.push(_store[i]);
+        }
+      }
+      dispatch(SET_FILTER_STORE(searchResult));
     }
     // 검색과 필터 둘 다 적용되지 않을 경우
     else {
@@ -371,11 +374,10 @@ function AppMain() {
 
   // 처음 위치 가져오고 가맹점 가져오기
   useEffect(() => {
+    console.log('1');
     if (locFlag) {
-      console.log('1');
       bringMyLocation();
       locFlag = false;
-      console.log(locFlag);
     }
   }, [myLocation]);
   // 필터가 클릭되있을 경우
@@ -383,6 +385,10 @@ function AppMain() {
     bringStores();
   }, [choiceCategory]);
   // 검색 시
+  useEffect(() => {
+    bringStores();
+  }, [searchStore]);
+  // 검색 취소 시
   useEffect(() => {
     bringStores();
   }, [searchFlag]);
@@ -398,7 +404,7 @@ function AppMain() {
           filteringStores={filteringStores}
         />
       </main>
-      <AppSideMenu map={map} markers={markers} />
+      <AppSideMenu map={map} markers={markers} bringStores={bringStores} />
       <Filter />
       {storeDetailFlag && <StoreSideMenu markers={markers} />}
       {appVisitAlertFlag && <AppVisitAlert />}

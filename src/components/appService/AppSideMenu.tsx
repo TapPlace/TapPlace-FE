@@ -9,7 +9,7 @@ import FilterButton from './FilterButton';
 
 import '../../style/components/appService/AppSideMenu.scss';
 
-function AppSideMenu({ map, markers }: any) {
+function AppSideMenu({ map, markers, bringStores }: any) {
   const dispatch = useAppDispatch();
   const {
     choiceCnt,
@@ -69,7 +69,7 @@ function AppSideMenu({ map, markers }: any) {
               ) : (
                 <>
                   <ul id='filterTypeContainer'>
-                    <FilterButton />
+                    <FilterButton bringStores={bringStores} />
                   </ul>
                 </>
               )}
