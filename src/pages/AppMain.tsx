@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AppSideMenu from '../components/appService/AppSideMenu';
 import AppVisitAlert from '../components/appService/AppVisitAlert';
 import Filter from '../components/appService/Filter';
@@ -48,7 +48,7 @@ function AppMain() {
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();
   const [markers, setMarkers]: any = useState([]);
-  let locFlag = true;
+  let locFlag = useRef(true);
   // 네이버 맵 객체 저장
   const setMapFunction = (maps: any) => {
     setMap(maps);
@@ -72,7 +72,6 @@ function AppMain() {
           }),
         );
         bringStores();
-        if (locFlag) locFlag = false;
       });
     } else {
       window.alert('현재위치를 알수 없습니다.');
@@ -83,7 +82,6 @@ function AppMain() {
         }),
       );
       bringStores();
-      if (locFlag) locFlag = false;
     }
   };
   // 첫 내 위치 반경 가맹점 가져오기
@@ -373,8 +371,9 @@ function AppMain() {
 
   // 처음 위치 가져오고 가맹점 가져오기
   useEffect(() => {
-    if (locFlag) {
+    if (locFlag.current) {
       bringMyLocation();
+      locFlag.current = false;
     }
   }, [myLocation]);
   // 필터가 클릭되있을 경우
