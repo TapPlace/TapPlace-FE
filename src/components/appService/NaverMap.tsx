@@ -6,6 +6,7 @@ import {
   SET_LAST_LOCATION,
   SET_MY_ADDRESS,
   SET_MOBILE_SHOW_SEARCH_FLAG,
+  SET_SEARCH_CRITERIA_FLAG,
 } from '../../redux/slices/PlayApp';
 import '../../style/pages/NaverMap.scss';
 
@@ -23,12 +24,13 @@ function NaverMap(props: any) {
     searchFlag,
     choiceCategory,
     filterApplyFlag,
+    windowSize,
+    searchCriteriaFlag,
   } = useAppSelector(state => state.playApp);
   const [naverMap, setNaverMap]: any = useState();
   const [zoom, setZoom] = useState(18);
   const otherMarkers: Array<any> = [];
   const [markers, setMarkers]: any = useState();
-  const [searchCriteriaFlag, setSearchCriteriaFlag] = useState(false);
   const [_circle, _setCircle]: any = useState();
 
   // 네이버 지도 띄우기
@@ -73,7 +75,7 @@ function NaverMap(props: any) {
           longitude: map.getCenter()._lng,
         }),
       );
-      setSearchCriteriaFlag(true);
+      dispatch(SET_SEARCH_CRITERIA_FLAG(true));
     });
     naver.maps.Event.addListener(map, 'zoom_changed', function () {
       setZoom(map.getZoom());
@@ -343,24 +345,26 @@ function NaverMap(props: any) {
   }
   // 마커 클릭 이벤트
   function markerClickEvent({ map, marker, i, bigImgSrc, markerInfo }: any) {
-    const position = { lat: marker.position.y, lng: marker.position.x };
-
-    const infoWindow = new naver.maps.InfoWindow({
-      position: position,
-      borderColor: 'none',
-      backgroundColor: 'none',
-    });
-
-    naver.maps.Event.addListener(marker, 'click', function (e: any) {
+    naver.maps.Event.addListener(marker, 'click', function () {
       // 브라우저 크기에 맞는 이벤트 핸들러(마커가 맵 중앙에 가게)
       if (window.innerWidth < 1024) {
-        const lat = marker.position._lat - 0.0012;
+        let lat;
+        if (windowSize.height < 600) {
+          lat = marker.position._lat - windowSize.height / 676670;
+        } else if (windowSize.height < 700) {
+          lat = marker.position._lat - windowSize.height / 676668;
+        } else {
+          lat = marker.position._lat - windowSize.height / 676666;
+        }
         const lng = marker.position._lng;
         const latlng = new naver.maps.LatLng(lat, lng);
         map.setOptions('zoom', 18);
-        map.panTo(latlng);
+        map.setCenter(latlng);
+        dispatch(SET_SEARCH_CRITERIA_FLAG(false));
       } else {
-        map.panTo(marker.position);
+        map.setOptions('zoom', 18);
+        map.setCenter(marker.position);
+        dispatch(SET_SEARCH_CRITERIA_FLAG(false));
       }
       // 클릭 시 모든 마커 기본 이미지로 변경
       otherMarkers.forEach((marker: any) => {

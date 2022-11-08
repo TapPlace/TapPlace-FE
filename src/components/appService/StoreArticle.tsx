@@ -5,6 +5,7 @@ import {
   SET_DETAIL_INFO,
   SET_MOBILE_SHOW_STORE_FLAG,
   SET_MOBILE_SHOW_SEARCH_FLAG,
+  SET_SEARCH_CRITERIA_FLAG,
 } from '../../redux/slices/PlayApp';
 
 import '../../style/components/appService/StoreArticle.scss';
@@ -14,7 +15,9 @@ function StoreArticle(props: any) {
   const dispatch = useAppDispatch();
   const category = option.category_group_name;
   const name = option.place_name;
-  const { storeDetailFlag } = useAppSelector(state => state.playApp);
+  const { storeDetailFlag, windowSize } = useAppSelector(
+    state => state.playApp,
+  );
   // Article 클릭 시 맞는 마커 선택하여 상위 컴포넌트로 전달
   const choiceArticle = () => {
     markers.forEach((marker: any) => {
@@ -55,7 +58,7 @@ function StoreArticle(props: any) {
   return (
     <article
       className='storeArticle'
-      onClick={async () => {
+      onClick={() => {
         dispatch(SET_MOBILE_SHOW_STORE_FLAG(false));
         dispatch(SET_MOBILE_SHOW_SEARCH_FLAG(false));
         if (!storeDetailFlag) dispatch(SET_DETAIL_FLAG(true));
@@ -74,13 +77,32 @@ function StoreArticle(props: any) {
           }),
         );
         choiceArticle();
+        let _marker: any;
+        markers.forEach((marker: any) => {
+          if (marker.icon.url.includes('_big')) {
+            _marker = marker;
+            return;
+          }
+        });
 
         if (window.innerWidth < 1024) {
-          const latlng = new naver.maps.LatLng(option.y - 0.0012, option.x);
-          map.panTo(latlng);
+          let lat;
+          if (windowSize.height < 600) {
+            lat = _marker.position._lat - windowSize.height / 676670;
+          } else if (windowSize.height < 700) {
+            lat = _marker.position._lat - windowSize.height / 676668;
+          } else {
+            lat = _marker.position._lat - windowSize.height / 676666;
+          }
+          const lng = _marker.position._lng;
+          const latlng = new naver.maps.LatLng(lat, lng);
+          map.setOptions('zoom', 18);
+          map.setCenter(latlng);
+          dispatch(SET_SEARCH_CRITERIA_FLAG(false));
         } else {
-          const latlng = new naver.maps.LatLng(option.y, option.x);
-          map.panTo(latlng);
+          map.setOptions('zoom', 18);
+          map.setCenter(_marker.position);
+          dispatch(SET_SEARCH_CRITERIA_FLAG(false));
         }
       }}
     >

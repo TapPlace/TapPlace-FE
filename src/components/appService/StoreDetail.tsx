@@ -4,13 +4,14 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   SET_DETAIL_FLAG,
   SET_MOBILE_SHOW_SEARCH_FLAG,
+  SET_SEARCH_CRITERIA_FLAG,
 } from '../../redux/slices/PlayApp';
 import Feedback from './Feedback';
 import proj4 from 'proj4';
 
 import '../../style/components/appService/StoreDetail.scss';
 
-function StoreDetail({ markers, setReqModifyFlagView }: any) {
+function StoreDetail({ map, markers, setReqModifyFlagView }: any) {
   const dispatch = useAppDispatch();
   const { myLocation, storeDetailInfo } = useAppSelector(
     state => state.playApp,
@@ -50,6 +51,7 @@ function StoreDetail({ markers, setReqModifyFlagView }: any) {
                 dispatch(SET_DETAIL_FLAG(false));
                 markers.forEach((marker: any) => {
                   if (marker.icon.url.includes('_big')) {
+                    map.setCenter(marker.position);
                     let src =
                       marker.icon.url.substring(
                         0,
@@ -61,6 +63,7 @@ function StoreDetail({ markers, setReqModifyFlagView }: any) {
                     return false;
                   }
                 });
+                dispatch(SET_SEARCH_CRITERIA_FLAG(false));
               }}
             />
           </div>

@@ -54,11 +54,11 @@ function Filter() {
   };
 
   return (
-    <div id="filterContainer" className={filterShowFlag ? '' : 'noShowFilter'}>
-      <div id="filterHeader">
+    <div id='filterContainer' className={filterShowFlag ? '' : 'noShowFilter'}>
+      <div id='filterHeader'>
         <img
-          src="img/back.png"
-          alt="back"
+          src='img/back.png'
+          alt='back'
           onClick={() => {
             filterReset('all');
             dispatch(SET_FILTER_SHOW_FLAG(false));
@@ -66,19 +66,19 @@ function Filter() {
         />
         <p>필터</p>
       </div>
-      <section id="addFilter">
-        <article id="storeFilter">
-          <div className="chooseTitle">
+      <section id='addFilter'>
+        <article id='storeFilter'>
+          <div className='chooseTitle'>
             <p>매장선택</p>
             <img
-              src="img/reset.png"
-              alt="reset"
+              src='img/reset.png'
+              alt='reset'
               onClick={() => {
                 filterReset('category');
               }}
             />
           </div>
-          <ul className="chooseFilter">
+          <ul className='chooseFilter'>
             {chooseStore.map((item, idx) => {
               return (
                 <FilterCategory
@@ -90,18 +90,18 @@ function Filter() {
             })}
           </ul>
         </article>
-        <article id="paymentFilter">
-          <div className="chooseTitle">
+        <article id='paymentFilter'>
+          <div className='chooseTitle'>
             <p>결제수단</p>
             <img
-              src="img/reset.png"
-              alt="reset"
+              src='img/reset.png'
+              alt='reset'
               onClick={() => {
                 filterReset('pay');
               }}
             />
           </div>
-          <ul id="payFilter" className="chooseFilter">
+          <ul id='payFilter' className='chooseFilter'>
             {choosePay.map((item, idx) => {
               return (
                 <FilterCategory
@@ -112,8 +112,8 @@ function Filter() {
               );
             })}
           </ul>
-          <h4 className="kindOfPay">애플페이</h4>
-          <ul id="appleFilter" className="chooseFilter">
+          <h4 className='kindOfPay'>애플페이</h4>
+          <ul id='appleFilter' className='chooseFilter'>
             {chooseApple.map((item, idx) => {
               return (
                 <FilterCategory
@@ -124,8 +124,8 @@ function Filter() {
               );
             })}
           </ul>
-          <h4 className="kindOfPay">구글페이</h4>
-          <ul id="googleFilter" className="chooseFilter">
+          <h4 className='kindOfPay'>구글페이</h4>
+          <ul id='googleFilter' className='chooseFilter'>
             {chooseGoogle.map((item, idx) => {
               return (
                 <FilterCategory
@@ -136,8 +136,8 @@ function Filter() {
               );
             })}
           </ul>
-          <h4 className="kindOfPay">컨택리스 카드</h4>
-          <ul id="conlessFilter" className="chooseFilter">
+          <h4 className='kindOfPay'>컨택리스 카드</h4>
+          <ul id='conlessFilter' className='chooseFilter'>
             {chooseContactles.map((item, idx) => {
               return (
                 <FilterCategory
@@ -151,7 +151,7 @@ function Filter() {
         </article>
       </section>
       <button
-        id="applyFilter"
+        id='applyFilter'
         onClick={() => {
           const filterList = document.querySelectorAll('.filter.active');
           let choiceStoreCnt = 0;

@@ -405,7 +405,7 @@ function AppMain() {
       </main>
       <AppSideMenu map={map} markers={markers} bringStores={bringStores} />
       <Filter />
-      {storeDetailFlag && <StoreSideMenu markers={markers} />}
+      {storeDetailFlag && <StoreSideMenu map={map} markers={markers} />}
       {appVisitAlertFlag && <AppVisitAlert />}
     </>
   );

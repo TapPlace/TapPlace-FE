@@ -5,7 +5,7 @@ import StoreDetail from './StoreDetail';
 import '../../style/components/appService/StoreSideMenu.scss';
 import SideMenuAgree from './SideMenuAgree';
 
-function StoreSideMenu({ markers }: any) {
+function StoreSideMenu({ map, markers }: any) {
   const [reqModifyViewFlag, setReqModifyViewFlag] = useState(false);
   const [agreeFlag, setAgreeFlag] = useState(false);
   const [agreeViewFlag, setAgreeViewFlag] = useState(false);
@@ -43,6 +43,7 @@ function StoreSideMenu({ markers }: any) {
         )
       ) : (
         <StoreDetail
+          map={map}
           markers={markers}
           setReqModifyFlagView={_setReqModifyViewFlag}
         />
