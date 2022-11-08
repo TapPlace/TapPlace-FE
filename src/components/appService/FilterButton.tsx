@@ -9,7 +9,7 @@ import {
 
 import '../../style/components/appService/FilterButton.scss';
 
-function FilterButton({ bringStores }: any) {
+function FilterButton() {
   const dispatch = useAppDispatch();
   const { choiceCnt, choiceCategory } = useAppSelector(state => state.playApp);
   // 눌러진 필터링 버튼 리스트
@@ -52,23 +52,22 @@ function FilterButton({ bringStores }: any) {
                 className='resetFilter'
                 src='img/closeBlue.png'
                 alt='close'
-                onClick={async () => {
+                onClick={() => {
                   filterList.forEach((ele: any) => {
                     if (ele.id.includes('store')) ele.className = 'filter';
                   });
-                  await dispatch(
+                  dispatch(
                     SET_CHOICE_CNT({
                       storeCnt: 0,
                       payCnt: choiceCnt.payCnt,
                     }),
                   );
-                  await dispatch(
+                  dispatch(
                     SET_CHOICE_CATEGORY({
                       store: [],
                       pay: choiceCategory.pay,
                     }),
                   );
-                  await bringStores();
                 }}
               />
             </div>
@@ -121,7 +120,6 @@ function FilterButton({ bringStores }: any) {
                       pay: [],
                     }),
                   );
-                  bringStores();
                 }}
               />
             </div>

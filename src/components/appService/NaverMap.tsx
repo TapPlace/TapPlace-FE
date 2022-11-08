@@ -23,6 +23,7 @@ function NaverMap(props: any) {
     filterStore,
     searchFlag,
     choiceCategory,
+    choiceCnt,
     filterApplyFlag,
     windowSize,
     searchCriteriaFlag,
@@ -436,6 +437,7 @@ function NaverMap(props: any) {
                 });
               }
               props.bringStores();
+              dispatch(SET_SEARCH_CRITERIA_FLAG(false));
             }}
           >
             <img src='img/AppPage/reset.png' alt='reset.png' />
