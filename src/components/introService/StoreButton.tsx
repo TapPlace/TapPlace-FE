@@ -15,19 +15,19 @@ function StoreButton() {
   }
 
   return (
-    <ul id="logoContainer">
+    <ul id='logoContainer'>
       {windowX < 768 ? (
         <>
           <li>
-            <Link to="/" className="mobileStoreBtn" onClick={onDownload}>
+            <Link to='/' className='mobileStoreBtn' onClick={onDownload}>
               <FontAwesomeIcon icon={faDownload} />앱 다운로드
             </Link>
           </li>
           <li>
             <Link
-              to="/"
-              id="mobileBtnSecond"
-              className="mobileStoreBtn"
+              to='/'
+              id='mobileBtnSecond'
+              className='mobileStoreBtn'
               onClick={onDownload}
             >
               웹으로 이용하기
@@ -36,15 +36,20 @@ function StoreButton() {
         </>
       ) : (
         <>
-          <li onClick={onDownload}>
-            <Link className="storeBtn" to="/">
-              <img src="img/ServicePage/appleLogo.png" alt="appleLogo" />
+          <li>
+            <a
+              href='https://apps.apple.com/app/%ED%83%AD%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4/id1643830783'
+              target='_blank'
+              className='storeBtn'
+              rel='noreferrer'
+            >
+              <img src='img/ServicePage/appleLogo.png' alt='appleLogo' />
               <p>App Store</p>
-            </Link>
+            </a>
           </li>
           <li onClick={onDownload}>
-            <Link className="storeBtn" to="/">
-              <img src="img/ServicePage/googleLogo.png" alt="googleLogo" />
+            <Link className='storeBtn' to='/'>
+              <img src='img/ServicePage/googleLogo.png' alt='googleLogo' />
               <p>Play Store</p>
             </Link>
           </li>
