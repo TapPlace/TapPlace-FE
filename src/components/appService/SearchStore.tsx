@@ -1,31 +1,41 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   SET_SEARCH_FLAG,
   SET_SEARCH_STORE,
-  SET_SEARCH_WORD_IN_PAGE,
+  SET_SEARCH_WORD,
 } from '../../redux/slices/PlayApp';
 
 import '../../style/components/appService/SearchStore.scss';
 
 function SearchStore() {
   const dispatch = useAppDispatch();
-  const { mobileShowSearchFlag, windowSize, searchWord_InPage, searchFlag } =
-    useAppSelector(state => state.playApp);
-
+  const { mobileShowSearchFlag, windowSize, searchFlag } = useAppSelector(
+    state => state.playApp,
+  );
+  // 검색어 입력
+  const [inputWord, setInputWord] = useState('');
+  const onChangeInputWord = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputWord(e.target.value);
+    },
+    [],
+  );
   // 엔터 키 입력 이벤트
   const onClick = () => {
     if (!searchFlag) dispatch(SET_SEARCH_FLAG(true));
-    if (searchWord_InPage.length === 0) {
+    if (inputWord.length === 0) {
       dispatch(SET_SEARCH_FLAG(false));
       dispatch(SET_SEARCH_STORE([]));
+    } else {
+      dispatch(SET_SEARCH_WORD(inputWord));
     }
   };
-  function onPressEnter(e: any) {
+  const onPressEnter = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.key === 'Enter') {
       onClick();
     }
-  }
+  };
 
   return (
     <>
@@ -44,21 +54,20 @@ function SearchStore() {
               type='text'
               name='searchStore'
               id='searchStore'
-              value={searchWord_InPage}
+              value={inputWord}
               placeholder='가맹점을 찾아보세요'
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                dispatch(SET_SEARCH_WORD_IN_PAGE(e.target.value));
-              }}
+              onChange={onChangeInputWord}
               onKeyPress={onPressEnter}
               autoComplete='off'
             />
-            {searchWord_InPage && (
+            {inputWord && (
               <img
                 id='resetSearch'
                 src='img/close.png'
                 alt='close'
                 onClick={() => {
-                  dispatch(SET_SEARCH_WORD_IN_PAGE(''));
+                  setInputWord('');
+                  dispatch(SET_SEARCH_WORD(''));
                   dispatch(SET_SEARCH_FLAG(false));
                 }}
               />
@@ -77,21 +86,20 @@ function SearchStore() {
               type='text'
               name='searchStore'
               id='searchStore'
-              value={searchWord_InPage}
+              value={inputWord}
               placeholder='가맹점을 찾아보세요'
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                dispatch(SET_SEARCH_WORD_IN_PAGE(e.target.value));
-              }}
+              onChange={onChangeInputWord}
               onKeyPress={onPressEnter}
               autoComplete='off'
             />
-            {searchWord_InPage && (
+            {inputWord && (
               <img
                 id='resetSearch'
                 src='img/close.png'
                 alt='close'
                 onClick={() => {
-                  dispatch(SET_SEARCH_WORD_IN_PAGE(''));
+                  setInputWord('');
+                  dispatch(SET_SEARCH_WORD(''));
                   dispatch(SET_SEARCH_FLAG(false));
                 }}
               />

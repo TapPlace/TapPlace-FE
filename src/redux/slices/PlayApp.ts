@@ -47,7 +47,6 @@ export interface PlayAppState {
     width: number;
     height: number;
   };
-  searchWord_InPage: string;
   searchCriteriaFlag: boolean;
 }
 
@@ -97,7 +96,6 @@ const initialState: PlayAppState = {
     width: window.innerWidth,
     height: window.innerHeight,
   },
-  searchWord_InPage: '',
   searchCriteriaFlag: false,
 };
 
@@ -184,9 +182,6 @@ export const playApp = createSlice({
       state.windowSize.width = action.payload.width;
       state.windowSize.height = action.payload.height;
     },
-    SET_SEARCH_WORD_IN_PAGE(state, action: PayloadAction<string>) {
-      state.searchWord_InPage = action.payload;
-    },
     SET_SEARCH_CRITERIA_FLAG(state, action: PayloadAction<boolean>) {
       state.searchCriteriaFlag = action.payload;
     },
@@ -213,7 +208,6 @@ export const {
   SET_MOBILE_SHOW_SEARCH_FLAG,
   SET_APP_VISIT_ALERT_FLAG,
   SET_WINDOW_SIZE,
-  SET_SEARCH_WORD_IN_PAGE,
   SET_SEARCH_CRITERIA_FLAG,
 } = playApp.actions;
 
