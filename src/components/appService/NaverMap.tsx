@@ -26,6 +26,8 @@ function NaverMap(props: any) {
     choiceCnt,
     filterApplyFlag,
     windowSize,
+    searchStore,
+    searchWord,
     searchCriteriaFlag,
   } = useAppSelector(state => state.playApp);
   const [naverMap, setNaverMap]: any = useState();
@@ -345,7 +347,7 @@ function NaverMap(props: any) {
     setMarkers(otherMarkers);
   }
   // 마커 클릭 이벤트
-  function markerClickEvent({ map, marker, i, bigImgSrc, markerInfo }: any) {
+  function markerClickEvent({ map, marker, bigImgSrc, markerInfo }: any) {
     naver.maps.Event.addListener(marker, 'click', function () {
       // 브라우저 크기에 맞는 이벤트 핸들러(마커가 맵 중앙에 가게)
       if (window.innerWidth < 1024) {

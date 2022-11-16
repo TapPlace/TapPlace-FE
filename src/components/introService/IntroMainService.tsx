@@ -5,16 +5,16 @@ import StoreButton from './StoreButton';
 import '../../style/components/introService/IntroMainService.scss';
 
 function IntroMainService() {
-  const { windowX } = useAppSelector(state => state.event);
+  const { windowX } = useAppSelector(state => state.resize);
 
   return (
-    <div id="main1Container">
-      <article className="contentContainer">
-        <h1 id="main1_line1">
+    <div id='main1Container'>
+      <article className='contentContainer'>
+        <h1 id='main1_line1'>
           간편결제 가맹점 확인
           <br /> 한곳에서 간편하게
         </h1>
-        <p id="main1_line2">
+        <p id='main1_line2'>
           {windowX <= 768 ? (
             <>
               힘들게 찾아다닐 필요없이 한번에 확인할 수 있어요
@@ -37,19 +37,19 @@ function IntroMainService() {
         <>
           <>
             <img
-              id="appScreenMain"
-              className="mockupImg"
-              src="img/ServicePage/appScreenMainMobile.png"
-              alt="mainImg"
+              id='appScreenMain'
+              className='mockupImg'
+              src='img/ServicePage/appScreenMainMobile.png'
+              alt='mainImg'
             />
           </>
         </>
       ) : (
         <img
-          id="appScreenMain"
-          className="mockupImg"
-          src="img/ServicePage/appScreenMain.png"
-          alt="mainMobileImg"
+          id='appScreenMain'
+          className='mockupImg'
+          src='img/ServicePage/appScreenMain.png'
+          alt='mainMobileImg'
         />
       )}
     </div>

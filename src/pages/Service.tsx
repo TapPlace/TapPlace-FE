@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import '../style/pages/Service.scss';
 
 import { useAppDispatch } from '../redux/hooks';
-import { setResize } from '../redux/slices/eventSlice';
+import { SET_RESIZE } from '../redux/slices/resizeSlice';
 import Download from '../components/introService/Download';
 import IntroMember from '../components/introService/IntroMember';
 import IntroMainService from '../components/introService/IntroMainService';
@@ -14,7 +14,7 @@ function Service() {
 
   useEffect(() => {
     window.addEventListener('resize', () => {
-      dispatch(setResize(window.innerWidth));
+      dispatch(SET_RESIZE(window.innerWidth));
     });
   });
 

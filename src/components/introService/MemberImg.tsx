@@ -14,31 +14,31 @@ type MemberType = {
 };
 
 function MemberImg({ id, img, name, position, say, sns }: MemberType) {
-  const { windowX } = useAppSelector(state => state.event);
+  const { windowX } = useAppSelector(state => state.resize);
   const [hover, setHover] = useState(false);
 
   return (
     <>
-      <div className="memberContainer">
+      <div className='memberContainer'>
         <img
           id={id}
           src={img}
-          alt="memberImg"
-          className="memberImg"
+          alt='memberImg'
+          className='memberImg'
           onMouseOver={() => windowX >= 1024 && setHover(true)}
         />
         {hover && (
-          <div className="memberHover" onMouseOut={() => setHover(false)}>
+          <div className='memberHover' onMouseOut={() => setHover(false)}>
             <p>{say}</p>
             {/* <SNSLogoContainer snsLink={sns} /> */}
           </div>
         )}
-        <div className="memberSubContainer">
-          <h1 className="memberName">{name}</h1>
-          <p className="memberPosition">{position}</p>
+        <div className='memberSubContainer'>
+          <h1 className='memberName'>{name}</h1>
+          <p className='memberPosition'>{position}</p>
           {windowX < 1024 && (
             <>
-              <p className="memberSay">{say}</p>
+              <p className='memberSay'>{say}</p>
               {/* <SNSLogoContainer snsLink={sns} /> */}
             </>
           )}

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import AppSideMenu from '../components/appService/AppSideMenu';
 import AppVisitAlert from '../components/appService/AppVisitAlert';
 import Filter from '../components/appService/Filter';
@@ -44,7 +44,7 @@ function AppMain() {
     filterApplyFlag,
     appVisitAlertFlag,
     searchStore,
-    searchWord_InPage,
+    searchWord,
   } = useAppSelector(state => state.playApp);
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();
@@ -192,7 +192,7 @@ function AppMain() {
       });
       let searchResult = [];
       for (let i = 0; i < _store.length; i++) {
-        if (_store[i].place_name.includes(searchWord_InPage)) {
+        if (_store[i].place_name.includes(searchWord)) {
           searchResult.push(_store[i]);
         }
       }
@@ -360,7 +360,7 @@ function AppMain() {
     else if (searchFlag && filterApplyFlag === false) {
       let searchResult = [];
       for (let i = 0; i < _store.length; i++) {
-        if (_store[i].place_name.includes(searchWord_InPage)) {
+        if (_store[i].place_name.includes(searchWord)) {
           searchResult.push(_store[i]);
         }
       }
@@ -386,11 +386,7 @@ function AppMain() {
   // 검색 시
   useEffect(() => {
     bringStores();
-  }, [searchStore]);
-  // 검색 취소 시
-  useEffect(() => {
-    bringStores();
-  }, [searchFlag]);
+  }, [searchWord]);
 
   return (
     <>

@@ -5,12 +5,12 @@ import '../../style/components/introService/PayLogoSlider.scss';
 import PayLogoCollective from './PayLogoCollective';
 
 function PayLogoSlider() {
-  const { windowX } = useAppSelector(state => state.event);
+  const { windowX } = useAppSelector(state => state.resize);
 
   return (
     <>
       <div
-        id="paySliderContainer"
+        id='paySliderContainer'
         className={windowX >= 768 ? 'payLogoSlider' : 'mobilePayLogoSlider'}
       >
         <PayLogoCollective />
