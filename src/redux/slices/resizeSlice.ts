@@ -16,14 +16,14 @@ const initialState: IResize = {
   },
 };
 
-export const eventSlice = createSlice({
+export const resizeSlice = createSlice({
   name: 'event',
   initialState,
   reducers: {
-    setResize(state, action: PayloadAction<number>) {
+    SET_RESIZE(state, action: PayloadAction<number>) {
       state.windowX = action.payload;
     },
-    setMemberScrollX(
+    SET_MEMBER_SCROLLX(
       state,
       action: PayloadAction<{ scrollX: number; scrollTransformX: number }>,
     ) {
@@ -33,6 +33,6 @@ export const eventSlice = createSlice({
   },
 });
 
-export const { setResize, setMemberScrollX } = eventSlice.actions;
+export const { SET_RESIZE, SET_MEMBER_SCROLLX } = resizeSlice.actions;
 
-export default eventSlice;
+export default resizeSlice;

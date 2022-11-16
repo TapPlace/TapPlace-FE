@@ -14,12 +14,13 @@ function FilterButton() {
   const { choiceCnt, choiceCategory } = useAppSelector(state => state.playApp);
   // 눌러진 필터링 버튼 리스트
   const filterList = document.querySelectorAll('.filter.active');
-
+  // 둘 다 0이면 필터 플래그를 false
   useEffect(() => {
     if (choiceCnt.payCnt === 0 && choiceCnt.storeCnt === 0) {
       dispatch(SET_FILTER_APPLY_FLAG(false));
     }
   }, [choiceCnt]);
+
   return (
     <>
       <li className='filterType'>

@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { setMemberScrollX } from '../../redux/slices/eventSlice';
+import { SET_MEMBER_SCROLLX } from '../../redux/slices/resizeSlice';
 
 import MemberImg from './MemberImg';
 
 import '../../style/components/introService/IntroMember.scss';
 
 function IntroMember() {
-  const { windowX, memberScroll } = useAppSelector(state => state.event);
+  const { windowX, memberScroll } = useAppSelector(state => state.resize);
   const dispatch = useAppDispatch();
 
   // 마우스로 x축 스크롤 구현
@@ -60,14 +60,14 @@ function IntroMember() {
     if (windowX < 1024) {
       if (xPercent <= 10) {
         dispatch(
-          setMemberScrollX({
+          SET_MEMBER_SCROLLX({
             scrollX: 0,
             scrollTransformX: 0,
           }),
         );
       } else {
         dispatch(
-          setMemberScrollX({
+          SET_MEMBER_SCROLLX({
             scrollX: xPercent,
             scrollTransformX: xPercent + 100,
           }),
@@ -76,7 +76,7 @@ function IntroMember() {
       // 데스크탑 시
     } else {
       dispatch(
-        setMemberScrollX({
+        SET_MEMBER_SCROLLX({
           scrollX: xPercent * 0.5,
           scrollTransformX: 0,
         }),
@@ -91,8 +91,8 @@ function IntroMember() {
   };
 
   return (
-    <div id="main3Container">
-      <h1 id="main3title">
+    <div id='main3Container'>
+      <h1 id='main3title'>
         {windowX < 768 ? (
           <>
             탭플레이스 멤버들을
@@ -103,7 +103,7 @@ function IntroMember() {
         )}
       </h1>
       <div
-        id="memberSlider"
+        id='memberSlider'
         onScroll={onScrollX}
         onMouseDown={onDragStart}
         onMouseMove={isDrag && onThrottleDragMove}
@@ -112,51 +112,51 @@ function IntroMember() {
         ref={scrollRef}
       >
         <MemberImg
-          name="박상현"
-          img="img/ServicePage/Memoji/IOS1.png"
-          position="IOS Developer"
-          say="안녕하세요 아이폰 개발 박상현입니다"
+          name='박상현'
+          img='img/ServicePage/Memoji/IOS1.png'
+          position='IOS Developer'
+          say='안녕하세요 아이폰 개발 박상현입니다'
           sns={{ mail: 'ios.humhae@gmail.com', instargram: '@pshyeonni' }}
         />
         <MemberImg
-          name="이상준"
-          img="img/ServicePage/Memoji/IOS2.png"
-          position="IOS Developer"
-          say="안녕하세요 앱 개발 이상준입니다"
+          name='이상준'
+          img='img/ServicePage/Memoji/IOS2.png'
+          position='IOS Developer'
+          say='안녕하세요 앱 개발 이상준입니다'
         />
         <MemberImg
-          name="지경희"
-          img="img/ServicePage/Memoji/Android1.png"
-          position="Android Developer"
-          say="안녕하세요 앱 개발 지경희입니다"
+          name='지경희'
+          img='img/ServicePage/Memoji/Android1.png'
+          position='Android Developer'
+          say='안녕하세요 앱 개발 지경희입니다'
         />
         <MemberImg
-          name="김진욱"
-          img="img/ServicePage/Memoji/Android2.png"
-          position="Android Developer"
-          say="안녕하세요 앱 개발 김진욱입니다"
+          name='김진욱'
+          img='img/ServicePage/Memoji/Android2.png'
+          position='Android Developer'
+          say='안녕하세요 앱 개발 김진욱입니다'
         />
         <MemberImg
-          name="김지훈"
-          img="img/ServicePage/Memoji/Back.png"
-          position="BackEnd Developer"
-          say="안녕하세요 백엔드 김지훈입니다"
+          name='김지훈'
+          img='img/ServicePage/Memoji/Back.png'
+          position='BackEnd Developer'
+          say='안녕하세요 백엔드 김지훈입니다'
         />
         <MemberImg
-          name="임준혁"
-          img="img/ServicePage/Memoji/FrontWeb.png"
-          position="FrontEnd Developer"
-          say="안녕하세요 프론트엔드 임준혁입니다"
+          name='임준혁'
+          img='img/ServicePage/Memoji/FrontWeb.png'
+          position='FrontEnd Developer'
+          say='안녕하세요 프론트엔드 임준혁입니다'
         />
         <MemberImg
-          name="고은혜"
-          img="img/ServicePage/Memoji/Design.png"
-          position="UIUX Designer"
-          say="안녕하세요 UI/UX 고은혜 입니다"
+          name='고은혜'
+          img='img/ServicePage/Memoji/Design.png'
+          position='UIUX Designer'
+          say='안녕하세요 UI/UX 고은혜 입니다'
         />
       </div>
-      <div id="memberProgressContainer">
-        <div id="progressBar" style={scrollStyle} />
+      <div id='memberProgressContainer'>
+        <div id='progressBar' style={scrollStyle} />
       </div>
     </div>
   );

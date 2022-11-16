@@ -5,7 +5,7 @@ import PayLogoSlider from './PayLogoSlider';
 import '../../style/components/introService/IntroMainFunction.scss';
 
 function IntroMainFunction() {
-  const { windowX } = useAppSelector(state => state.event);
+  const { windowX } = useAppSelector(state => state.resize);
 
   return (
     <div id='main2Container'>

@@ -5,11 +5,11 @@ import StoreButton from './StoreButton';
 import '../../style/components/introService/Download.scss';
 
 function Download() {
-  const { windowX } = useAppSelector(state => state.event);
+  const { windowX } = useAppSelector(state => state.resize);
 
   return (
-    <div id="main6Container">
-      <h1 id="main6_line1">
+    <div id='main6Container'>
+      <h1 id='main6_line1'>
         {windowX < 768 ? (
           <>
             지금 탭플레이스를 다운받고
@@ -24,7 +24,7 @@ function Download() {
           </>
         )}
       </h1>
-      <p id="main6_line2">
+      <p id='main6_line2'>
         {windowX < 768 ? (
           <>
             지금 내 주변의

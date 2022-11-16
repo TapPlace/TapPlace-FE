@@ -10,14 +10,14 @@ import {
 import '../../style/components/introService/Footer.scss';
 
 function Footer() {
-  const { windowX } = useAppSelector(state => state.event);
+  const { windowX } = useAppSelector(state => state.resize);
   const { page } = useAppSelector(state => state.page);
   const dispatch = useAppDispatch();
 
   return (
-    <footer id="footer">
-      <div id="footerContainer">
-        <div id="footer_line1">
+    <footer id='footer'>
+      <div id='footerContainer'>
+        <div id='footer_line1'>
           {/* <h4 id="footerTitle">
             <img
               className="titleImg"
@@ -27,18 +27,18 @@ function Footer() {
             Tap Place
           </h4> */}
           <Link
-            to="/"
+            to='/'
             onClick={() => {
               dispatch(initialPage());
             }}
           >
-            <img id="footerLogo" src="img/tapplaceLogo2.png" alt="" />
+            <img id='footerLogo' src='img/tapplaceLogo2.png' alt='' />
           </Link>
 
-          <ul id="footerList">
-            <li className="footerItem">
+          <ul id='footerList'>
+            <li className='footerItem'>
               <Link
-                to="/consent"
+                to='/consent'
                 onClick={() => {
                   dispatch(consentPage());
                 }}
@@ -46,9 +46,9 @@ function Footer() {
                 서비스 이용약관
               </Link>
             </li>
-            <li className="footerItem">
+            <li className='footerItem'>
               <Link
-                to="/policy"
+                to='/policy'
                 onClick={() => {
                   dispatch(policyPage());
                 }}
@@ -56,11 +56,11 @@ function Footer() {
                 개인정보처리방침
               </Link>
             </li>
-            <li className="footerItem">E-mail : help@tapplace.co.kr</li>
+            <li className='footerItem'>E-mail : help@tapplace.co.kr</li>
           </ul>
         </div>
-        {windowX >= 768 && <hr id="footerHr" />}
-        <h4 id="footer_line2">Copyright Tap Place.All rights reserved</h4>
+        {windowX >= 768 && <hr id='footerHr' />}
+        <h4 id='footer_line2'>Copyright Tap Place.All rights reserved</h4>
       </div>
     </footer>
   );
