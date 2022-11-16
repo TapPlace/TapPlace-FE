@@ -4,7 +4,7 @@ import StoreButton from './StoreButton';
 
 import '../../style/components/introService/IntroMainService.scss';
 
-function IntroMainService() {
+const IntroMainService = () => {
   const { windowX } = useAppSelector(state => state.resize);
 
   return (
@@ -54,6 +54,6 @@ function IntroMainService() {
       )}
     </div>
   );
-}
+};
 
 export default IntroMainService;

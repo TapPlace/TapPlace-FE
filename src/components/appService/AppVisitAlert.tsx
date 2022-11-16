@@ -4,7 +4,7 @@ import { SET_APP_VISIT_ALERT_FLAG } from '../../redux/slices/PlayApp';
 
 import '../../style/components/appService/AppVisitAlert.scss';
 
-function AppVisitAlert() {
+const AppVisitAlert = () => {
   const dispatch = useAppDispatch();
   const [appVisitAlert, setAppVisitAlert] = useState(true);
 
@@ -38,33 +38,33 @@ function AppVisitAlert() {
   });
 
   return (
-    <article id="alertContainer" className={appVisitAlert ? '' : 'noShowAlert'}>
-      <h1 id="recommendUseApp">
+    <article id='alertContainer' className={appVisitAlert ? '' : 'noShowAlert'}>
+      <h1 id='recommendUseApp'>
         앱을 통해 내 주변의 간편결제 가맹점을
         <br />
         더욱 편리하게 확인해보세요!
       </h1>
-      <img id="alertImg" src="img/AppPage/visitAlert.png" alt="visitAlert" />
-      <ul id="newFeatureContainer">
-        <li className="newFeature">
-          <img src="img/AppPage/check.png" alt="check" />
+      <img id='alertImg' src='img/AppPage/visitAlert.png' alt='visitAlert' />
+      <ul id='newFeatureContainer'>
+        <li className='newFeature'>
+          <img src='img/AppPage/check.png' alt='check' />
           간편결제 가맹점 확인
         </li>
-        <li className="newFeature">
-          <img src="img/AppPage/check.png" alt="check" />
+        <li className='newFeature'>
+          <img src='img/AppPage/check.png' alt='check' />
           결제수단 별 사용여부 피드백
         </li>
-        <li className="newFeature">
-          <img src="img/AppPage/check.png" alt="check" />
+        <li className='newFeature'>
+          <img src='img/AppPage/check.png' alt='check' />
           쉽고 빠른 가맹점 등록
         </li>
       </ul>
-      <button id="appDownloadBtn">
-        <img src="img/AppPage/download.png" alt="download" />
+      <button id='appDownloadBtn'>
+        <img src='img/AppPage/download.png' alt='download' />
         <p>앱 다운로드</p>
       </button>
       <h4
-        id="stillWeb"
+        id='stillWeb'
         onClick={() => {
           setAppVisitAlert(false);
         }}
@@ -72,7 +72,7 @@ function AppVisitAlert() {
         웹으로 계속하기
       </h4>
       <h4
-        id="noShowToday"
+        id='noShowToday'
         onClick={() => {
           setAppVisitAlert(false);
           dispatch(SET_APP_VISIT_ALERT_FLAG(false));
@@ -83,6 +83,6 @@ function AppVisitAlert() {
       </h4>
     </article>
   );
-}
+};
 
 export default AppVisitAlert;

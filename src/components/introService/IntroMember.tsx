@@ -6,7 +6,7 @@ import MemberImg from './MemberImg';
 
 import '../../style/components/introService/IntroMember.scss';
 
-function IntroMember() {
+const IntroMember = () => {
   const { windowX, memberScroll } = useAppSelector(state => state.resize);
   const dispatch = useAppDispatch();
 
@@ -14,12 +14,12 @@ function IntroMember() {
   const scrollRef: any = useRef(null);
   const [isDrag, setIsDrag]: any = useState(false);
   const [startX, setStartX]: any = useState();
-  function onDragStart(e: any) {
+  const onDragStart = (e: any) => {
     e.preventDefault();
     setIsDrag(true);
     setStartX(e.pageX + scrollRef.current.scrollLeft);
-  }
-  function onDragMove(e: any) {
+  };
+  const onDragMove = (e: any) => {
     if (isDrag) {
       const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
       scrollRef.current.scrollLeft = startX - e.pageX;
@@ -29,10 +29,10 @@ function IntroMember() {
         setStartX(e.pageX + scrollLeft);
       }
     }
-  }
-  function onDragEnd() {
+  };
+  const onDragEnd = () => {
     setIsDrag(false);
-  }
+  };
   const throttle = (func: any, ms: any) => {
     let throttled = false;
     return (...args: any) => {
@@ -49,7 +49,7 @@ function IntroMember() {
   const onThrottleDragMove = throttle(onDragMove, delay);
 
   // 멤버 x축 스크롤 몇 퍼센트 스크롤
-  function onScrollX() {
+  const onScrollX = () => {
     const memberSlider: any = document.querySelector('#memberSlider');
     let xPercent =
       memberSlider.scrollLeft === 0
@@ -82,7 +82,7 @@ function IntroMember() {
         }),
       );
     }
-  }
+  };
 
   // 구한 퍼센트로 프로그레스바 움직임
   const scrollStyle = {
@@ -160,6 +160,6 @@ function IntroMember() {
       </div>
     </div>
   );
-}
+};
 
 export default IntroMember;

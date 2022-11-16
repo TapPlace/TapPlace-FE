@@ -6,18 +6,18 @@ import '../../style/components/appService/SideMenuAgree.scss';
 import '../../style/pages/Policy.scss';
 import '../../style/pages/Consent.scss';
 
-function SideMenuAgree(props: any) {
+const SideMenuAgree = (props: any) => {
   const { markers, setAgreeFlag, setAgreeViewFlag, setReqModifyFlagView } =
     props;
   const dispatch = useAppDispatch();
   const { windowSize } = useAppSelector(state => state.playApp);
 
   return (
-    <article id="agreeContainer">
-      <div id="agreeHeader">
+    <article id='agreeContainer'>
+      <div id='agreeHeader'>
         <img
-          src="img/back.png"
-          alt="back"
+          src='img/back.png'
+          alt='back'
           onClick={() => {
             setAgreeViewFlag(false);
           }}
@@ -25,8 +25,8 @@ function SideMenuAgree(props: any) {
         <p>개인정보 수집 및 이용동의</p>
         {windowSize.width > 1023 && (
           <img
-            src="img/close.png"
-            alt="close"
+            src='img/close.png'
+            alt='close'
             onClick={() => {
               dispatch(SET_DETAIL_FLAG(false));
               setReqModifyFlagView(false);
@@ -45,9 +45,9 @@ function SideMenuAgree(props: any) {
           />
         )}
       </div>
-      <div id="agreeContent">
-        <div id="policyContainer">
-          <h1 id="policyTitle">개인정보 처리방침</h1>
+      <div id='agreeContent'>
+        <div id='policyContainer'>
+          <h1 id='policyTitle'>개인정보 처리방침</h1>
           <p>
             &lt;탭플레이스&gt;('https://www.tapplace.co.kr'이하
             '탭플레이스')은(는) 「개인정보 보호법」 제30조에 따라 정보주체의
@@ -58,7 +58,7 @@ function SideMenuAgree(props: any) {
           <p style={{ paddingBottom: '56px', color: '#4d4d4d' }}>
             *이 개인정보처리방침은 2022년 9월 24일부터 적용됩니다.
           </p>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제1조 (개인정보의 처리 목적)
             <p>
               &lt;탭플레이스&gt;('https://www.tapplace.co.kr'이하
@@ -66,19 +66,19 @@ function SideMenuAgree(props: any) {
               처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지
               않으며 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에
               따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
-              <div className="tab">
-                <p className="tabFontBlack">1. 서비스, 정보 제공</p>
+              <div className='tab'>
+                <p className='tabFontBlack'>1. 서비스, 정보 제공</p>
                 <p>
                   신규 서비스(제품) 개발 및 맞춤 서비스 제공, 이벤트 및 광고성
                   정보 제공 및 참여기회 제공 등을 목적으로 개인정보를
                   처리합니다.
                 </p>
-                <p className="tabFontBlack">2. 사용 통계 지표 확인</p>
+                <p className='tabFontBlack'>2. 사용 통계 지표 확인</p>
                 <p>
                   사용자의 이용 빈도 및 통계의 지표 확인 목적으로 개인정보를
                   처리합니다.
                 </p>
-                <p className="tabFontBlack">3. 민원사무 처리</p>
+                <p className='tabFontBlack'>3. 민원사무 처리</p>
                 <p>
                   민원사항 확인, 사실조사를 위한 연락·통지, 처리결과 통보
                   목적으로 개인정보를 처리합니다.
@@ -86,7 +86,7 @@ function SideMenuAgree(props: any) {
               </div>
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제2조 (개인정보의 처리 및 보유 기간)
             <p>
               ① &lt;탭플레이스&gt;은(는) 법령에 따른 개인정보 보유·이용기간 또는
@@ -105,7 +105,7 @@ function SideMenuAgree(props: any) {
               </tr>
             </table>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제3조 (처리하는 개인정보의 항목)
             <p>탭플레이스는 다음의 개인정보 항목을 처리하고 있습니다.</p>
             <table>
@@ -131,7 +131,7 @@ function SideMenuAgree(props: any) {
               </tr>
             </table>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제4조 (개인정보의 파기절차 및 파기방법)
             <p>
               ① &lt;탭플레이스&gt; 은(는) 개인정보 보유기간의 경과, 처리목적
@@ -141,7 +141,7 @@ function SideMenuAgree(props: any) {
               처리목적이 달성되었을때, 개인정보를 별도의 데이터베이스(DB)로
               옮기거나 보관장소를 달리하여 보존하지 않습니다.
               <br />③ 개인정보 파기의 절차 및 방법은 다음과 같습니다.
-              <div className="tab">
+              <div className='tab'>
                 1. 탭플레이스 애플리케이션 내에서 서비스 이용 해지시
                 사용자로부터 수집받은 데이터 중, 아래에 기재된 데이터를 서버에서
                 즉시 삭제합니다.
@@ -158,7 +158,7 @@ function SideMenuAgree(props: any) {
               </div>
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제5조 (정보주체와 법정대리인의 권리⋅의무 및 그 행사방법에 관한 사항)
             <p>
               ① 정보주체는 탭플레이스에 대해 언제든지 개인정보
@@ -180,12 +180,12 @@ function SideMenuAgree(props: any) {
               본인이거나 정당한 대리인인지를 확인합니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제6조 (개인정보의 안전성 확보조치에 관한 사항)
             <p>
               탭플레이스는 개인정보의 안전성 확보를 위해 다음과 같은 조치를
               취하고 있습니다.
-              <div className="tab">
+              <div className='tab'>
                 1. 개인정보 취급 직원의 최소화 및 교육개인정보를 취급하는 직원을
                 지정하고 담당자에 한정시켜 최소화 하여 개인정보를 관리하는
                 대책을 시행하고 있습니다.
@@ -208,7 +208,7 @@ function SideMenuAgree(props: any) {
               </div>
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제7조 (개인정보를 자동으로 수집하는 장치의 설치·운영 및 그 거부에
             관한 사항)
             <p>
@@ -216,14 +216,14 @@ function SideMenuAgree(props: any) {
               ‘쿠키(cookie)’를 사용하지 않습니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제8조 (개인정보 보호책임자에 관한 사항)
             <p>
               ① 탭플레이스 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고,
               개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여
               아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
-              <h2 className="tableName">▶ 개인정보 보호책임자</h2>
-              <table className="tableLongitudinal">
+              <h2 className='tableName'>▶ 개인정보 보호책임자</h2>
+              <table className='tableLongitudinal'>
                 <tr>
                   <th>성명</th>
                   <td>박상현</td>
@@ -244,8 +244,8 @@ function SideMenuAgree(props: any) {
                   </td>
                 </tr>
               </table>
-              <h2 className="tableName">▶ 개인정보 보호 담당부서</h2>
-              <table className="tableLongitudinal">
+              <h2 className='tableName'>▶ 개인정보 보호 담당부서</h2>
+              <table className='tableLongitudinal'>
                 <tr>
                   <th>부서명</th>
                   <td>개발</td>
@@ -266,14 +266,14 @@ function SideMenuAgree(props: any) {
               처리해드릴 것입니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제9조 (개인정보의 열람청구를 접수·처리하는 부서)
             <p>
               정보주체는 ｢개인정보 보호법｣ 제35조에 따른 개인정보의 열람 청구를
               아래의 부서에 할 수 있습니다. &lt;탭플레이스&gt;은(는) 정보주체의
               개인정보 열람청구가 신속하게 처리되도록 노력하겠습니다.
-              <h2 className="tableName">▶ 개인정보 보호 담당부서</h2>
-              <table className="tableLongitudinal">
+              <h2 className='tableName'>▶ 개인정보 보호 담당부서</h2>
+              <table className='tableLongitudinal'>
                 <tr>
                   <th>부서명</th>
                   <td>개발</td>
@@ -289,7 +289,7 @@ function SideMenuAgree(props: any) {
               </table>
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제10조 (정보주체의 권익침해에 대한 구제방법)
             <p>
               정보주체는 개인정보침해로 인한 구제를 받기 위하여
@@ -297,7 +297,7 @@ function SideMenuAgree(props: any) {
               분쟁해결이나 상담 등을 신청할 수 있습니다. 이 밖에 기타
               개인정보침해의 신고, 상담에 대하여는 아래의 기관에 문의하시기
               바랍니다.
-              <div className="table">
+              <div className='table'>
                 1. 개인정보분쟁조정위원회 : (국번없이) 1833-6972
                 (www.kopico.go.kr)
                 <br />
@@ -316,7 +316,7 @@ function SideMenuAgree(props: any) {
               바랍니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제11조 (개인정보 처리방침 변경)
             <p>① 이 개인정보처리방침은 2022년 9월 24일부터 적용됩니다.</p>
             <p>
@@ -326,9 +326,9 @@ function SideMenuAgree(props: any) {
           </h2>
         </div>
         <hr />
-        <div id="consentContainer">
-          <h1 id="consentTitle">서비스 이용약관</h1>
-          <h2 className="clauseTitle">
+        <div id='consentContainer'>
+          <h1 id='consentTitle'>서비스 이용약관</h1>
+          <h2 className='clauseTitle'>
             제1조 (목적)
             <p>
               이 약관은 탭플레이스(이하 "당사"라 합니다)가 운영하는 탭플레이스
@@ -336,11 +336,11 @@ function SideMenuAgree(props: any) {
               관한 제반 사항의 규정을 목적으로 합니다
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제2조 (용어의 정의)
             <p>
               ① 이 약관에서 사용하는 용어의 정의는 다음과 같습니다.
-              <div className="tap">
+              <div className='tap'>
                 1. “서비스”라 함은 구현되는 “앱”을 통하여 “이용자”가 이용할 수
                 있는 당사가 제공하는 모든 서비스를 의미합니다.
                 <br />
@@ -360,7 +360,7 @@ function SideMenuAgree(props: any) {
               정하지 아니한 것은 일반적인 상 관례에 따릅니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제3조 (약관의 효력 및 변경)
             <p>
               ① 본 약관은“앱” 내 또는 그 연결화면에 게시하거나 이용자에게
@@ -384,7 +384,7 @@ function SideMenuAgree(props: any) {
               이용계약을 해지할 수 있습니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제4조 (약관 외 준칙)
             <p>
               이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는
@@ -392,7 +392,7 @@ function SideMenuAgree(props: any) {
               관한 법률」등 관련 법령 또는 상 관례에 따릅니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제5조 (이용자 등록)
             <p>
               ① 이용자는 “앱”에서 약관을 동의하여 “앱”에서 정한 양식에 따라
@@ -404,7 +404,7 @@ function SideMenuAgree(props: any) {
               즉시 전자우편 등을 통하여 당사로 변경을 요청할 수 있습니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제6조 (서비스 이용 해지)
             <p>
               ① 이용자는 서비스 이용을 원하지 않는 경우 언제든지 서비스 이용
@@ -426,7 +426,7 @@ function SideMenuAgree(props: any) {
               이용자에게 통지합니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제7조 (이용자에 대한 통지)
             <p>
               ① 당사가 이용자에 대한 통지를 하는 경우, “앱" 알림을 통해 통지할
@@ -435,7 +435,7 @@ function SideMenuAgree(props: any) {
               “앱”에 게시함으로서 개별 통지에 갈음 할 수 있습니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제8조 (당사의 의무)
             <p>
               ① 당사는 관련 법령, 이 약관에서 정하는 권리의 행사 및 의무의
@@ -452,13 +452,13 @@ function SideMenuAgree(props: any) {
               복구하도록 최선의 노력을 다합니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제9조 (이용자의 의무)
             <p>
               ① 이용자은 당사에서 제공하는 서비스의 이용과 관련하여 다음 각 호에
               해당하는 행위를 해서는 안 됩니다.
               <br />
-              <div className="tap">
+              <div className='tap'>
                 1. 악의의 목적으로 피드백 시스템을 통하여 거짓된 정보를 요청하는
                 행위
                 <br />
@@ -505,7 +505,7 @@ function SideMenuAgree(props: any) {
               합니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제10조 (서비스의 이용)
             <p>
               ① “앱”은 다음과 같은 서비스를 이용자에게 제공합니다. 단,
@@ -513,7 +513,7 @@ function SideMenuAgree(props: any) {
               위치정보이용약관 및 개인정보 제공에 관한 동의를 추가로 요구할 수
               있으며, 동의하지 않을 경우 서비스의 전부 또는 일부가 제한될 수
               있습니다.
-              <div className="tap">
+              <div className='tap'>
                 1. 가맹점 간편결제 결제수단 정보 제공
                 <br />
                 2. 당사는 이용자에게 별도의 동의를 받은 경우 서비스 이용에 대한
@@ -533,7 +533,7 @@ function SideMenuAgree(props: any) {
               </div>
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제11조 (개인정보의 보호 및 사용)
             <p>
               ① 당사는 이용자의 정보 수집시 원활한 서비스 제공을 위해 필요한
@@ -550,7 +550,7 @@ function SideMenuAgree(props: any) {
               개인정보처리방침에 의거합니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제12조 (당사의 면책)
             <p>
               ① 당사는 이 약관 제10조 제3항, 제4항의 사유로 서비스 제공이
@@ -575,7 +575,7 @@ function SideMenuAgree(props: any) {
               경우 당사는 이에 대해 책임을 지지 않습니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제13조 (저작권 등의 귀속)
             <p>
               ① 당사가 제작한 서비스 내의 콘텐츠에 대한 저작권과 기타
@@ -589,7 +589,7 @@ function SideMenuAgree(props: any) {
               이용 해지 후에도 지속적으로 적용됩니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제14조 (이용자의 고충처리 및 분쟁해결)
             <p>
               ① 당사는 이용자의 편의를 고려하여 이용자의 의견이나 불만을
@@ -601,7 +601,7 @@ function SideMenuAgree(props: any) {
               따라 통지합니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제15조 (재판권 및 준거법)
             <p>
               이 약관은 대한민국 법률에 따라 규율되고 해석됩니다. 당사와 이용자
@@ -609,15 +609,15 @@ function SideMenuAgree(props: any) {
               따른 법원을 관할 법원으로 합니다.
             </p>
           </h2>
-          <h2 className="clauseTitle">
+          <h2 className='clauseTitle'>
             제16조 (서비스 이용약관 변경)
             <p>① 이 서비스 이용약관은 2022. 09. 16. 부터 적용됩니다.</p>
           </h2>
         </div>
       </div>
       <button
-        id="agreeBtn"
-        className="activeBtn"
+        id='agreeBtn'
+        className='activeBtn'
         onClick={() => {
           setAgreeFlag(true);
           setAgreeViewFlag(false);
@@ -627,6 +627,6 @@ function SideMenuAgree(props: any) {
       </button>
     </article>
   );
-}
+};
 
 export default SideMenuAgree;

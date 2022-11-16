@@ -2,12 +2,12 @@ import React from 'react';
 
 import '../style/pages/Consent.scss';
 
-function Consent() {
+const Consent = () => {
   return (
-    <div id="consentContainer">
-      <h1 id="consentTitle">탭플레이스 서비스 이용약관</h1>
+    <div id='consentContainer'>
+      <h1 id='consentTitle'>탭플레이스 서비스 이용약관</h1>
       <hr />
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제1조 (목적)
         <p>
           이 약관은 탭플레이스(이하 "당사"라 합니다)가 운영하는 탭플레이스
@@ -15,11 +15,11 @@ function Consent() {
           제반 사항의 규정을 목적으로 합니다
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제2조 (용어의 정의)
         <p>
           ① 이 약관에서 사용하는 용어의 정의는 다음과 같습니다.
-          <div className="tap">
+          <div className='tap'>
             1. “서비스”라 함은 구현되는 “앱”을 통하여 “이용자”가 이용할 수 있는
             당사가 제공하는 모든 서비스를 의미합니다.
             <br />
@@ -39,7 +39,7 @@ function Consent() {
           정하지 아니한 것은 일반적인 상 관례에 따릅니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제3조 (약관의 효력 및 변경)
         <p>
           ① 본 약관은“앱” 내 또는 그 연결화면에 게시하거나 이용자에게
@@ -62,7 +62,7 @@ function Consent() {
           경우 당사 또는 이용자는 서비스 이용계약을 해지할 수 있습니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제4조 (약관 외 준칙)
         <p>
           이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는 「약관의
@@ -70,7 +70,7 @@ function Consent() {
           법률」등 관련 법령 또는 상 관례에 따릅니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제5조 (이용자 등록)
         <p>
           ① 이용자는 “앱”에서 약관을 동의하여 “앱”에서 정한 양식에 따라 이용자
@@ -82,7 +82,7 @@ function Consent() {
           전자우편 등을 통하여 당사로 변경을 요청할 수 있습니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제6조 (서비스 이용 해지)
         <p>
           ① 이용자는 서비스 이용을 원하지 않는 경우 언제든지 서비스 이용 해지를
@@ -103,7 +103,7 @@ function Consent() {
           취해진다는 사실 및 파기될 개인정보 등을 이용자에게 통지합니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제7조 (이용자에 대한 통지)
         <p>
           ① 당사가 이용자에 대한 통지를 하는 경우, “앱" 알림을 통해 통지할 수
@@ -112,7 +112,7 @@ function Consent() {
           게시함으로서 개별 통지에 갈음 할 수 있습니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제8조 (당사의 의무)
         <p>
           ① 당사는 관련 법령, 이 약관에서 정하는 권리의 행사 및 의무의 이행을
@@ -129,13 +129,13 @@ function Consent() {
           노력을 다합니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제9조 (이용자의 의무)
         <p>
           ① 이용자은 당사에서 제공하는 서비스의 이용과 관련하여 다음 각 호에
           해당하는 행위를 해서는 안 됩니다.
           <br />
-          <div className="tap">
+          <div className='tap'>
             1. 악의의 목적으로 피드백 시스템을 통하여 거짓된 정보를 요청하는
             행위
             <br />
@@ -181,7 +181,7 @@ function Consent() {
           합니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제10조 (서비스의 이용)
         <p>
           ① “앱”은 다음과 같은 서비스를 이용자에게 제공합니다. 단,
@@ -189,7 +189,7 @@ function Consent() {
           위치정보이용약관 및 개인정보 제공에 관한 동의를 추가로 요구할 수
           있으며, 동의하지 않을 경우 서비스의 전부 또는 일부가 제한될 수
           있습니다.
-          <div className="tap">
+          <div className='tap'>
             1. 가맹점 간편결제 결제수단 정보 제공
             <br />
             2. 당사는 이용자에게 별도의 동의를 받은 경우 서비스 이용에 대한
@@ -209,7 +209,7 @@ function Consent() {
           </div>
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제11조 (개인정보의 보호 및 사용)
         <p>
           ① 당사는 이용자의 정보 수집시 원활한 서비스 제공을 위해 필요한
@@ -226,7 +226,7 @@ function Consent() {
           개인정보처리방침에 의거합니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제12조 (당사의 면책)
         <p>
           ① 당사는 이 약관 제10조 제3항, 제4항의 사유로 서비스 제공이 일시적으로
@@ -250,7 +250,7 @@ function Consent() {
           당사는 이에 대해 책임을 지지 않습니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제13조 (저작권 등의 귀속)
         <p>
           ① 당사가 제작한 서비스 내의 콘텐츠에 대한 저작권과 기타 지식재산권은
@@ -264,7 +264,7 @@ function Consent() {
           적용됩니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제14조 (이용자의 고충처리 및 분쟁해결)
         <p>
           ① 당사는 이용자의 편의를 고려하여 이용자의 의견이나 불만을 제시하는
@@ -276,7 +276,7 @@ function Consent() {
           통지합니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제15조 (재판권 및 준거법)
         <p>
           이 약관은 대한민국 법률에 따라 규율되고 해석됩니다. 당사와 이용자 간에
@@ -284,12 +284,12 @@ function Consent() {
           법원을 관할 법원으로 합니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제16조 (서비스 이용약관 변경)
         <p>① 이 서비스 이용약관은 2022. 09. 16. 부터 적용됩니다.</p>
       </h2>
     </div>
   );
-}
+};
 
 export default Consent;

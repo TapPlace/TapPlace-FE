@@ -10,7 +10,7 @@ import {
 
 import '../../style/components/appService/StoreArticle.scss';
 
-function StoreArticle(props: any) {
+const StoreArticle = (props: any) => {
   const { option, map, markers } = props;
   const dispatch = useAppDispatch();
   const category = option.category_group_name;
@@ -172,6 +172,6 @@ function StoreArticle(props: any) {
       </div>
     </article>
   );
-}
+};
 
 export default StoreArticle;

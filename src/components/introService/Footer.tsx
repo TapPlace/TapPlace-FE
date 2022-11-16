@@ -9,7 +9,7 @@ import {
 
 import '../../style/components/introService/Footer.scss';
 
-function Footer() {
+const Footer = () => {
   const { windowX } = useAppSelector(state => state.resize);
   const { page } = useAppSelector(state => state.page);
   const dispatch = useAppDispatch();
@@ -64,6 +64,6 @@ function Footer() {
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

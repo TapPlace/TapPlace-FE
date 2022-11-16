@@ -14,7 +14,7 @@ import {
 
 import '../style/pages/AppMain.scss';
 
-function AppMain() {
+const AppMain = () => {
   const dispatch = useAppDispatch();
   let distance: number = 1;
   const pays = [
@@ -405,6 +405,6 @@ function AppMain() {
       {appVisitAlertFlag && <AppVisitAlert />}
     </>
   );
-}
+};
 
 export default AppMain;

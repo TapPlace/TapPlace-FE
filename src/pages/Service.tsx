@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import '../style/pages/Service.scss';
 
@@ -9,7 +9,7 @@ import IntroMember from '../components/introService/IntroMember';
 import IntroMainService from '../components/introService/IntroMainService';
 import IntroMainFunction from '../components/introService/IntroMainFunction';
 
-function Service() {
+const Service = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -26,6 +26,6 @@ function Service() {
       <Download />
     </>
   );
-}
+};
 
 export default Service;

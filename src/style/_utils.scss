@@ -4,36 +4,51 @@ $mobile: 767px;
 $tablet: 1023px;
 $desktop: 1024px;
 
+// Flex
+@mixin flex-row {
+  display: flex;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+@mixin flex-row-pos($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+@mixin flex-column-pos($justify: center, $align: center) {
+  @include flex-column;
+  justify-content: $justify;
+  align-items: $align;
+}
+// 서비스 페이지
 @mixin line0 {
   color: #4e77fb;
   font-size: 25px;
   font-weight: 400;
 }
-
 @mixin line1 {
   font-weight: 400;
   padding-top: 12px;
 }
-
 @mixin line2 {
   color: $subTextColor;
   padding-top: 20px;
   font-size: 20px;
   font-weight: 400;
 }
-
+// 반응형
 @mixin mobile {
   @media all and (max-width: $mobile) {
     @content;
   }
 }
-
 @mixin tablet {
   @media all and (min-width: ($mobile + 1)) and (max-width: $tablet) {
     @content;
   }
 }
-
 @mixin desktop {
   @media all and (min-width: $desktop) {
     @content;

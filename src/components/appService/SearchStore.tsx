@@ -8,7 +8,7 @@ import {
 
 import '../../style/components/appService/SearchStore.scss';
 
-function SearchStore() {
+const SearchStore = () => {
   const dispatch = useAppDispatch();
   const { mobileShowSearchFlag, windowSize, searchFlag } = useAppSelector(
     state => state.playApp,
@@ -109,6 +109,6 @@ function SearchStore() {
       )}
     </>
   );
-}
+};
 
 export default SearchStore;

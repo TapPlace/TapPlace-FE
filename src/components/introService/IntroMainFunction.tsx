@@ -4,7 +4,7 @@ import PayLogoSlider from './PayLogoSlider';
 
 import '../../style/components/introService/IntroMainFunction.scss';
 
-function IntroMainFunction() {
+const IntroMainFunction = () => {
   const { windowX } = useAppSelector(state => state.resize);
 
   return (
@@ -258,6 +258,6 @@ function IntroMainFunction() {
       </article>
     </div>
   );
-}
+};
 
 export default IntroMainFunction;

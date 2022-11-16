@@ -2,10 +2,10 @@ import React from 'react';
 
 import '../style/pages/Policy.scss';
 
-function Policy() {
+const Policy = () => {
   return (
-    <div id="policyContainer">
-      <h1 id="policyTitle">탭플레이스 개인정보 처리방침</h1>
+    <div id='policyContainer'>
+      <h1 id='policyTitle'>탭플레이스 개인정보 처리방침</h1>
       <hr />
       <p>
         &lt;탭플레이스&gt;('https://www.tapplace.co.kr'이하 '탭플레이스')은(는)
@@ -17,7 +17,7 @@ function Policy() {
       <p style={{ paddingBottom: '56px', color: '#4d4d4d' }}>
         *이 개인정보처리방침은 2022년 9월 24일부터 적용됩니다.
       </p>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제1조 (개인정보의 처리 목적)
         <p>
           &lt;탭플레이스&gt;('https://www.tapplace.co.kr'이하
@@ -25,18 +25,18 @@ function Policy() {
           처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며
           이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의
           동의를 받는 등 필요한 조치를 이행할 예정입니다.
-          <div className="tab">
-            <p className="tabFontBlack">1. 서비스, 정보 제공</p>
+          <div className='tab'>
+            <p className='tabFontBlack'>1. 서비스, 정보 제공</p>
             <p>
               신규 서비스(제품) 개발 및 맞춤 서비스 제공, 이벤트 및 광고성 정보
               제공 및 참여기회 제공 등을 목적으로 개인정보를 처리합니다.
             </p>
-            <p className="tabFontBlack">2. 사용 통계 지표 확인</p>
+            <p className='tabFontBlack'>2. 사용 통계 지표 확인</p>
             <p>
               사용자의 이용 빈도 및 통계의 지표 확인 목적으로 개인정보를
               처리합니다.
             </p>
-            <p className="tabFontBlack">3. 민원사무 처리</p>
+            <p className='tabFontBlack'>3. 민원사무 처리</p>
             <p>
               민원사항 확인, 사실조사를 위한 연락·통지, 처리결과 통보 목적으로
               개인정보를 처리합니다.
@@ -44,7 +44,7 @@ function Policy() {
           </div>
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제2조 (개인정보의 처리 및 보유 기간)
         <p>
           ① &lt;탭플레이스&gt;은(는) 법령에 따른 개인정보 보유·이용기간 또는
@@ -63,7 +63,7 @@ function Policy() {
           </tr>
         </table>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제3조 (처리하는 개인정보의 항목)
         <p>탭플레이스는 다음의 개인정보 항목을 처리하고 있습니다.</p>
         <table>
@@ -89,7 +89,7 @@ function Policy() {
           </tr>
         </table>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제4조 (개인정보의 파기절차 및 파기방법)
         <p>
           ① &lt;탭플레이스&gt; 은(는) 개인정보 보유기간의 경과, 처리목적 달성 등
@@ -99,7 +99,7 @@ function Policy() {
           처리목적이 달성되었을때, 개인정보를 별도의 데이터베이스(DB)로 옮기거나
           보관장소를 달리하여 보존하지 않습니다.
           <br />③ 개인정보 파기의 절차 및 방법은 다음과 같습니다.
-          <div className="tab">
+          <div className='tab'>
             1. 탭플레이스 애플리케이션 내에서 서비스 이용 해지시 사용자로부터
             수집받은 데이터 중, 아래에 기재된 데이터를 서버에서 즉시 삭제합니다.
             <ul>
@@ -115,7 +115,7 @@ function Policy() {
           </div>
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제5조 (정보주체와 법정대리인의 권리⋅의무 및 그 행사방법에 관한 사항)
         <p>
           ① 정보주체는 탭플레이스에 대해 언제든지 개인정보
@@ -136,12 +136,12 @@ function Policy() {
           대리인인지를 확인합니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제6조 (개인정보의 안전성 확보조치에 관한 사항)
         <p>
           탭플레이스는 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고
           있습니다.
-          <div className="tab">
+          <div className='tab'>
             1. 개인정보 취급 직원의 최소화 및 교육개인정보를 취급하는 직원을
             지정하고 담당자에 한정시켜 최소화 하여 개인정보를 관리하는 대책을
             시행하고 있습니다.
@@ -162,7 +162,7 @@ function Policy() {
           </div>
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제7조 (개인정보를 자동으로 수집하는 장치의 설치·운영 및 그 거부에 관한
         사항)
         <p>
@@ -170,14 +170,14 @@ function Policy() {
           ‘쿠키(cookie)’를 사용하지 않습니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제8조 (개인정보 보호책임자에 관한 사항)
         <p>
           ① 탭플레이스 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고,
           개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여
           아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
-          <h2 className="tableName">▶ 개인정보 보호책임자</h2>
-          <table className="tableLongitudinal">
+          <h2 className='tableName'>▶ 개인정보 보호책임자</h2>
+          <table className='tableLongitudinal'>
             <tr>
               <th>성명</th>
               <td>박상현</td>
@@ -198,8 +198,8 @@ function Policy() {
               </td>
             </tr>
           </table>
-          <h2 className="tableName">▶ 개인정보 보호 담당부서</h2>
-          <table className="tableLongitudinal">
+          <h2 className='tableName'>▶ 개인정보 보호 담당부서</h2>
+          <table className='tableLongitudinal'>
             <tr>
               <th>부서명</th>
               <td>개발</td>
@@ -220,14 +220,14 @@ function Policy() {
           것입니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제9조 (개인정보의 열람청구를 접수·처리하는 부서)
         <p>
           정보주체는 ｢개인정보 보호법｣ 제35조에 따른 개인정보의 열람 청구를
           아래의 부서에 할 수 있습니다. &lt;탭플레이스&gt;은(는) 정보주체의
           개인정보 열람청구가 신속하게 처리되도록 노력하겠습니다.
-          <h2 className="tableName">▶ 개인정보 보호 담당부서</h2>
-          <table className="tableLongitudinal">
+          <h2 className='tableName'>▶ 개인정보 보호 담당부서</h2>
+          <table className='tableLongitudinal'>
             <tr>
               <th>부서명</th>
               <td>개발</td>
@@ -243,14 +243,14 @@ function Policy() {
           </table>
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제10조 (정보주체의 권익침해에 대한 구제방법)
         <p>
           정보주체는 개인정보침해로 인한 구제를 받기 위하여
           개인정보분쟁조정위원회, 한국인터넷진흥원 개인정보침해신고센터 등에
           분쟁해결이나 상담 등을 신청할 수 있습니다. 이 밖에 기타 개인정보침해의
           신고, 상담에 대하여는 아래의 기관에 문의하시기 바랍니다.
-          <div className="table">
+          <div className='table'>
             1. 개인정보분쟁조정위원회 : (국번없이) 1833-6972 (www.kopico.go.kr)
             <br />
             2. 개인정보침해신고센터 : (국번없이) 118 (privacy.kisa.or.kr)
@@ -267,7 +267,7 @@ function Policy() {
           중앙행정심판위원회(www.simpan.go.kr) 홈페이지를 참고하시기 바랍니다.
         </p>
       </h2>
-      <h2 className="clauseTitle">
+      <h2 className='clauseTitle'>
         제11조 (개인정보 처리방침 변경)
         <p>① 이 개인정보처리방침은 2022년 9월 24일부터 적용됩니다.</p>
         <p>
@@ -277,6 +277,6 @@ function Policy() {
       </h2>
     </div>
   );
-}
+};
 
 export default Policy;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../../style/components/appService/Feedback.scss';
 
-function Feedback({ options }: any) {
+const Feedback = ({ options }: any) => {
   let payName = '';
   let payImg = '';
   switch (options.pay) {
@@ -76,24 +76,24 @@ function Feedback({ options }: any) {
   const suc = Math.round((100 / all) * options.success);
   const fai = Math.round((100 / all) * options.fail);
   return (
-    <article className="feedbackContainer">
-      <div className="fbTitle">
-        <img src={payImg} alt="logo" />
+    <article className='feedbackContainer'>
+      <div className='fbTitle'>
+        <img src={payImg} alt='logo' />
         {payName}
       </div>
-      <div className="fbExist">
+      <div className='fbExist'>
         <p className={options.exist ? 'fbBoolean T' : 'fbBoolean'}>
           최근결제: {options.exist ? '성공' : '실패'}
         </p>
-        <p className="fbDate">2022.08.20</p>
+        <p className='fbDate'>2022.08.20</p>
       </div>
-      <progress className="progress" value={suc} max="100"></progress>
-      <div className="fbPercent">
-        <p className="paySuccess">성공 {suc}%</p>
-        <p className="payFailure">실패 {fai}%</p>
+      <progress className='progress' value={suc} max='100'></progress>
+      <div className='fbPercent'>
+        <p className='paySuccess'>성공 {suc}%</p>
+        <p className='payFailure'>실패 {fai}%</p>
       </div>
     </article>
   );
-}
+};
 
 export default Feedback;
