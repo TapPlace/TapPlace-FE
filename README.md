@@ -12,8 +12,10 @@
 
 - Commit Styles
 
-  추가 : Add
+  추가 : Feat
 
-  수정 : Modified
+  수정 : Fix
+
+  CSS수정 : Style
 
   코드 리팩토링 : Refactor
