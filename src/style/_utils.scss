@@ -3,6 +3,18 @@ $subTextColor: #707070;
 $mobile: 767px;
 $tablet: 1023px;
 $desktop: 1024px;
+// font ( size | weight | color ), line-height
+@mixin textSize($size, $weight, $color, $line-height) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  line-height: $line-height;
+}
+// width, heigth
+@mixin width-height($width, $height) {
+  width: $width;
+  height: $height;
+}
 
 // Flex
 @mixin flex-row {
@@ -12,12 +24,12 @@ $desktop: 1024px;
   display: flex;
   flex-direction: column;
 }
-@mixin flex-row-pos($justify: center, $align: center) {
+@mixin flex-row-pos($justify: flex-start, $align: stretch) {
   display: flex;
   justify-content: $justify;
   align-items: $align;
 }
-@mixin flex-column-pos($justify: center, $align: center) {
+@mixin flex-column-pos($justify: flex-start, $align: stretch) {
   @include flex-column;
   justify-content: $justify;
   align-items: $align;
