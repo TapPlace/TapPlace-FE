@@ -4,30 +4,29 @@
   #search {
     background: white;
     #searchContainer {
+      @include flex-row;
+      @include width-height(32.7rem, 5.2rem);
       border: 2px solid #4e77fb;
       box-shadow: 0px 0px 12px rgba(78, 119, 251, 0.4);
       border-radius: 12px;
-      display: flex;
       position: relative;
-      width: 90%;
-      margin: 8px 0 8px 5vw;
+      margin: 0.8rem 0 0.8rem 5vw;
       #searchIcon {
         position: absolute;
-        left: 14px;
+        left: 1.4rem;
         top: 50%;
         transform: translateY(-50%);
       }
       #searchStore {
+        @include textStyle(1.7rem, 400, black, 2.2rem);
         border: none;
-        margin: 1px 0;
         width: 100%;
-        height: 50px;
-        margin-left: 44px;
-        margin-right: 44px;
+        height: 100%;
+        margin: 0 4.4rem;
+        padding-top: 0.2rem;
         background: white;
-        font-size: 17px;
         &::placeholder {
-          font-size: 17px;
+          @include textStyle(1.7rem, 400, #707070, 2.2rem);
         }
         &:focus {
           outline: none;
@@ -35,7 +34,7 @@
       }
       #resetSearch {
         position: absolute;
-        right: 14px;
+        right: 1.4rem;
         top: 50%;
         transform: translateY(-50%);
       }
@@ -52,32 +51,30 @@
 
 @include tablet {
   #search {
-    margin-top: 4px;
+    margin-top: 0.4rem;
     #searchContainer {
+      @include flex-row;
       border: 2px solid #4e77fb;
       box-shadow: 0px 0px 12px rgba(78, 119, 251, 0.4);
       border-radius: 12px;
-      display: flex;
       position: relative;
-      width: calc(100% - 48px);
-      margin: 8px 0 8px 24px;
+      @include width-height(72rem, 5.2rem);
+      margin: 0.8rem 0 0.8rem 2.4rem;
       #searchIcon {
         position: absolute;
-        left: 14px;
+        left: 1.8rem;
         top: 50%;
         transform: translateY(-50%);
       }
       #searchStore {
         border: none;
-        margin: 1px 0;
         width: 100%;
-        height: 50px;
-        margin-left: 44px;
-        margin-right: 44px;
+        height: 100%;
+        margin: 0 4.4rem;
         background: white;
-        font-size: 17px;
+        @include textStyle(1.7rem, 400, #212121, 2.2rem);
         &::placeholder {
-          font-size: 17px;
+          @include textStyle(1.7rem, 400, $subTextColor, 2.2rem);
         }
         &:focus {
           outline: none;
@@ -85,7 +82,7 @@
       }
       #resetSearch {
         position: absolute;
-        right: 14px;
+        right: 1.6rem;
         top: 50%;
         transform: translateY(-50%);
       }
@@ -102,41 +99,40 @@
 
 @include desktop {
   #searchContainer {
+    @include flex-row;
     border: 2px solid #4e77fb;
     box-shadow: 0px 0px 12px rgba(78, 119, 251, 0.4);
     border-radius: 12px;
-    display: flex;
     position: relative;
-    margin: 2.08vw 2.08vw 0 2.08vw;
+    margin: 4rem 4rem 0 4rem;
     #searchIcon {
       position: absolute;
-      width: 0.92vw;
-      left: 0.76vw;
+      @include width-height(1.8rem, 1.8rem);
+      left: 1.9rem;
       top: 50%;
       transform: translateY(-50%);
     }
     #searchStore {
       border: none;
-      margin: 1px 0;
-      width: calc(100% - 4.16vw);
-      height: 2.55vw;
-      margin-left: 2.08vw;
-      padding-top: 0.18vw;
+      width: calc(100% - 5.4rem);
+      height: 5.2rem;
+      margin-left: 4.8rem;
+      padding-top: 0.3rem;
       background: white;
-      font-size: 0.88vw;
+      @include textStyle(1.7rem, 400, black, 2.2rem);
       &::placeholder {
-        font-size: 0.88vw;
+        @include textStyle(1.7rem, 400, $subTextColor, 2.2rem);
       }
       &:focus {
         outline: none;
       }
     }
     #resetSearch {
+      @include width-height(2.4rem, 2.4rem);
       position: absolute;
-      right: 0.76vw;
+      right: 1.6rem;
       top: 50%;
       transform: translateY(-50%);
-      width: 1.28vw;
     }
   }
 }

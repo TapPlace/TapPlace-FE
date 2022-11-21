@@ -11,21 +11,12 @@ import '../../style/components/introService/Footer.scss';
 
 const Footer = () => {
   const { windowX } = useAppSelector(state => state.resize);
-  const { page } = useAppSelector(state => state.page);
   const dispatch = useAppDispatch();
 
   return (
     <footer id='footer'>
       <div id='footerContainer'>
         <div id='footer_line1'>
-          {/* <h4 id="footerTitle">
-            <img
-              className="titleImg"
-              src={require('../../img/ServicePage/tap2.png')}
-              alt="tapplace"
-            />
-            Tap Place
-          </h4> */}
           <Link
             to='/'
             onClick={() => {

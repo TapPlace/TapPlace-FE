@@ -2,32 +2,28 @@
 
 @include mobile {
   #main3Container {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
+    @include flex-column;
     #main3title {
-      padding-top: 120px;
-      padding: 120px 0 32px 0;
-      font-size: 25px;
-      color: #23252d;
+      @include textStyle(2.5rem, 400, #23252d, 135%);
       text-align: center;
+      margin: 7rem 0 2rem 0;
     }
     #memberSlider {
-      display: flex;
+      @include flex-row;
       overflow-x: scroll;
     }
     #memberProgressContainer {
       background: #ecf0f3;
       width: 90vw;
       height: 4px;
-      margin: 50px 0 110px 5vw;
+      margin: 5rem 0 11rem 5vw;
       #progressBar {
         width: 10vw;
         height: 4px;
         position: absolute;
         margin-left: 5vw;
         left: 0;
-        background: #4e77fb;
+        background: $mainColor;
       }
     }
   }
@@ -35,23 +31,21 @@
 
 @include tablet {
   #main3Container {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     #main3title {
-      @include line1;
-      padding: 14.6vw 0 7.8vw 0;
-      font-size: 3.9vw;
+      @include textStyle(3.5rem, 400, #23252d, 135%);
+      margin: 2rem 0 7rem 0;
       text-align: center;
     }
     #memberSlider {
-      display: flex;
+      @include flex-row;
       overflow-x: scroll;
     }
     #memberProgressContainer {
       background: #ecf0f3;
       width: 90vw;
       height: 4px;
-      margin: 7.4vw 0 16.8vw 5vw;
+      margin: 6rem 0 15rem 5vw;
       #progressBar {
         width: 10%;
         height: 4px;
@@ -66,22 +60,21 @@
 
 @include desktop {
   #main3Container {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     #main3title {
-      @include line1;
-      padding: 13.6vw 0 4.6vw 0;
-      font-size: 2.6vw;
+      @include textStyle(5rem, 400, #3f4353, 135%);
+      margin: 20rem 0 8rem 0;
       text-align: center;
     }
     #memberSlider {
-      display: flex;
+      @include flex-row;
       overflow-x: scroll;
     }
     #memberProgressContainer {
       background: #ecf0f3;
       width: 60vw;
       margin: 4.7vw 0 0 18.75vw;
+      margin: 8.8rem 0 20rem 18.75vw;
       height: 4px;
       #progressBar {
         width: 10%;

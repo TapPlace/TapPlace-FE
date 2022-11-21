@@ -4,7 +4,7 @@ $mobile: 767px;
 $tablet: 1023px;
 $desktop: 1024px;
 // font ( size | weight | color ), line-height
-@mixin textSize($size, $weight, $color, $line-height) {
+@mixin textStyle($size, $weight, $color, $line-height) {
   font-size: $size;
   font-weight: $weight;
   color: $color;
@@ -15,7 +15,13 @@ $desktop: 1024px;
   width: $width;
   height: $height;
 }
-
+// transform Center
+@mixin transformCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 // Flex
 @mixin flex-row {
   display: flex;
@@ -33,22 +39,6 @@ $desktop: 1024px;
   @include flex-column;
   justify-content: $justify;
   align-items: $align;
-}
-// 서비스 페이지
-@mixin line0 {
-  color: #4e77fb;
-  font-size: 25px;
-  font-weight: 400;
-}
-@mixin line1 {
-  font-weight: 400;
-  padding-top: 12px;
-}
-@mixin line2 {
-  color: $subTextColor;
-  padding-top: 20px;
-  font-size: 20px;
-  font-weight: 400;
 }
 // 반응형
 @mixin mobile {

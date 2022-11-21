@@ -4,10 +4,10 @@
   #footer {
     width: 100vw;
     background: #3f4353;
-    padding: 48px 5vw;
+    padding: 4.8rem 5vw;
     #footerContainer {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
+      @include textStyle(1.4rem, 400, #9fa1a9, 2rem);
       color: white;
       opacity: 0.5;
       #footer_line1 {
@@ -16,21 +16,21 @@
         }
         #footerList {
           .footerItem {
-            padding: 2px 0;
+            padding: 0.2rem 0;
             a {
               color: white;
             }
             &:first-child {
-              padding-top: 24px;
+              margin-top: 2.4rem;
             }
             &:last-child {
-              padding-bottom: 24px;
+              margin-bottom: 2.4rem;
             }
           }
         }
       }
       #footer_line2 {
-        font-weight: 400;
+        @include textStyle(1.4rem, 400, #6e717d, 1.8rem);
       }
     }
   }
@@ -40,22 +40,20 @@
   #footer {
     width: 100vw;
     background: #3f4353;
-    padding: 48px 5vw;
+    padding: 4.8rem 5vw;
     #footerContainer {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       color: white;
       opacity: 0.5;
       #footer_line1 {
-        display: flex;
-        justify-content: space-between;
+        @include flex-row-pos(space-between, '');
         #footerLogo {
-          width: 100px;
+          width: 10rem;
         }
         #footerList {
-          display: flex;
+          @include flex-row;
           .footerItem {
-            padding-right: 10px;
+            padding-right: 1rem;
             a {
               color: white;
             }
@@ -67,17 +65,18 @@
                 content: '';
                 height: 100%;
                 border-right: 1px solid #9fa1a9;
-                padding-left: 10px;
+                margin-left: 1rem;
               }
             }
           }
         }
       }
       #footerHr {
-        margin: 24px 0;
+        margin: 2.4rem 0;
+        border: 1px solid rgba(120, 123, 134, 0.5);
       }
       #footer_line2 {
-        font-weight: 400;
+        @include textStyle(1.5rem, 400, #6e717d, 2rem);
       }
     }
   }
@@ -85,31 +84,28 @@
 
 @include desktop {
   #footer {
-    height: 245px;
+    @include flex-column-pos(center, '');
+    height: 280px;
     background: #3f4353;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    h4 {
-      float: left;
-    }
+    padding: 0 18.75vw;
     #footerContainer {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       color: #9fa1a9;
       #footer_line1 {
         font-size: 0.84vw;
         #footerLogo {
-          width: 5.2vw;
+          width: 13rem;
           opacity: 0.5;
         }
         #footerList {
-          display: flex;
+          @include textStyle(1.5rem, 400, #9fa1a9, 2.1rem);
+          @include flex-row;
           float: right;
-          font-size: 0.78vw;
           .footerItem {
             border-right: 1px solid rbga(120, 123, 134, 0.5);
-            margin-right: 15px;
+            &:not(:last-child) {
+              margin-right: 15px;
+            }
             a {
               color: #9fa1a9;
             }
@@ -122,8 +118,8 @@
                 content: '';
                 background: #9fa1a9;
                 width: 0.1px;
-                height: 12px;
-                margin-left: 15px;
+                height: 1.2rem;
+                margin-left: 1.5rem;
               }
             }
           }
@@ -136,8 +132,7 @@
         background: rgba(120, 123, 134, 0.5);
       }
       #footer_line2 {
-        font-weight: 400;
-        font-size: 0.83vw;
+        @include textStyle(1.5rem, 400, #6e717d, 2rem);
       }
     }
   }

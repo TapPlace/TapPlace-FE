@@ -2,29 +2,35 @@
 
 @include mobile {
   .filterType {
-    &:first-of-type {
-      padding-right: 10px;
+    padding-bottom: 1.6rem;
+    &:first-child {
+      padding: 0 0.4rem 0 2.4rem;
     }
     div {
-      display: flex;
-      align-items: flex-end;
-      border: 1px solid transparent;
+      @include width-height(10.6rem, 3.6rem);
+      @include flex-row-pos(center, center);
+      border: 1px solid #dbdee8;
       border-radius: 1000px;
-      padding: 8px 16px;
       p {
-        display: inline-block;
-        margin-right: 2px;
+        @include textStyle(1.4rem, 400, #212121, 1.8rem);
       }
       img {
-        margin-left: 2px;
-        width: 22px;
+        @include width-height(2.2rem, 2.2rem);
+        margin-top: 0.2rem;
       }
     }
     .choiceFilter {
-      color: $mainColor;
+      background: $mainColor;
       border: 1px solid rgba(78, 119, 251, 0.6);
       background: rgba(78, 119, 251, 0.06);
       border-radius: 20px;
+      p {
+        @include textStyle(1.4rem, 400, $mainColor, 1.8rem);
+      }
+      img {
+        @include width-height(2rem, 2rem);
+        margin-bottom: 0.2rem;
+      }
     }
   }
 }
@@ -33,19 +39,17 @@
   .filterType {
     display: inline-block;
     div {
-      display: flex;
-      align-items: flex-end;
+      @include flex-row-pos(center, center);
+      @include width-height(10.6rem, 3.6rem);
       border: 1px solid #dbdee8;
       border-radius: 1000px;
-      padding: 8px 16px;
       margin-left: 8px;
       p {
-        display: inline-block;
-        margin-right: 2px;
+        @include textStyle(1.5rem, 400, #212121, 2rem);
       }
       img {
-        margin-left: 2px;
-        width: 22px;
+        margin-top: 0.2rem;
+        width: 2.2rem;
       }
     }
     .choiceFilter {
@@ -53,33 +57,32 @@
       border: 1px solid rgba(78, 119, 251, 0.6);
       background: rgba(78, 119, 251, 0.06);
       border-radius: 20px;
+      p {
+        @include textStyle(1.5rem, 400, $mainColor, 2rem);
+      }
+      img {
+        @include textStyle(1.5rem, 400, #212121, 2rem);
+        @include width-height(2rem, 2rem);
+        margin-bottom: 0.2rem;
+      }
     }
   }
 }
 
 @include desktop {
   .filterType {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 6px;
-    border: 1px solid #dbdee8;
-    border-radius: 20px;
     div {
-      padding: 0.42vw 0.22vw 0.42vw 0.84vw;
-      display: flex;
-      align-items: center;
-      font-size: 0.78vw;
+      @include flex-row-pos(center, center);
+      @include width-height(10.6rem, 3.6rem);
+      border: 1px solid #dbdee8;
+      margin-right: 0.6rem;
+      border-radius: 20px;
       color: #333333;
       .vButtonFilter {
-        width: 13px;
-        margin: 0.18vw 0.68vw 0 0.34vw;
+        width: 1.8rem;
       }
       p {
-      }
-      .resetFilter {
-        margin: 0 0.6vw 0 0.18vw;
-        width: 1vw;
+        @include textStyle(1.5rem, 400, #212121, 2rem);
       }
     }
     .choiceFilter {
@@ -87,6 +90,14 @@
       border: 1px solid rgba(78, 119, 251, 0.6);
       background: rgba(78, 119, 251, 0.06);
       border-radius: 20px;
+      p {
+        @include textStyle(1.5rem, 400, $mainColor, 2rem);
+      }
+      img {
+        @include textStyle(1.5rem, 400, #212121, 2rem);
+        @include width-height(1.8rem, 1.8rem);
+        margin-bottom: 0.1rem;
+      }
     }
   }
 }

@@ -3,25 +3,21 @@
 .noShowSide {
   display: none !important;
 }
-#noShow {
-  display: none;
-}
+#noShow,
 .noShow {
   display: none;
 }
 
 @include mobile {
   #appSideMenu {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     position: absolute;
     top: 60px;
-    left: 0;
     width: 100vw;
     z-index: 100;
     #showBtn {
-      display: flex;
-      align-items: flex-end;
+      @include flex-row-pos(center, center);
+      @include width-height(11.2rem, 4rem);
       position: fixed;
       bottom: 28px;
       left: 50%;
@@ -30,76 +26,58 @@
       background: $mainColor;
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
       border-radius: 1000px;
-      padding: 10px 16px;
       img {
-        width: 21px;
-        margin-right: 2px;
+        width: 2.1rem;
+        margin-right: 0.7rem;
       }
       p {
-        font-size: 15px;
-        margin-left: 2px;
-        color: white;
+        @include textStyle(1.5rem, 400, white, 2.1rem);
+        margin-top: 0.2rem;
       }
     }
     #mobileFilterTypeContainer {
+      @include flex-row;
       background: white;
       width: 100vw;
-      display: flex;
-      .filterType {
-        padding-bottom: 16px;
-        &:first-child {
-          padding-left: 5vw;
-        }
-        div {
-          border: 1px solid #dbdee8;
-          p {
-          }
-          img {
-          }
-        }
-      }
     }
   }
   #locationFilter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex-column-pos('', center);
     text-align: center;
     #filterTypeContainer {
-      display: flex;
+      @include flex-row;
+      @include textStyle(1.4rem, 400, #212121, 1.8rem);
       background: white;
-      margin-top: 16px;
+      margin-top: 1.6rem;
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
       border-radius: 100px;
     }
+
     #showFilterTypeContainer {
+      @include width-height(4rem, 4rem);
       position: relative;
-      margin-top: 16px;
-      margin-left: 80vw;
+      margin: 1.6rem 0 0 80vw;
       border: none;
-      width: 40px;
-      height: 40px;
       border-radius: 50%;
       background: #ffffff;
       box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
       #filterCnt {
-        width: 13px;
-        height: 13px;
-        line-height: 13px;
+        @include width-height(1.3rem, 1.3rem);
+        line-height: 1.3rem;
         background: red;
         border-radius: 50%;
         position: absolute;
         top: 0;
         right: 0;
         p {
-          font-size: 9px;
-          margin-left: 1px;
+          @include textStyle(0.9rem, 400, #ffffff, 1.3rem);
+          margin-left: 0.5px;
           color: white;
         }
       }
       img {
-        width: 24px;
-        margin-top: 4px;
+        width: 2.4rem;
+        margin-top: 0.4rem;
       }
     }
   }
@@ -107,24 +85,23 @@
     background: white;
     border-top: 1px solid #dbdee8;
     width: 100vw;
-    height: 100%;
+    height: calc(100vh - 22.8rem);
     overflow-y: scroll;
-    #filterTypeContainer {
-      display: flex;
-      position: absolute;
-      top: 111px;
-      width: 100vw;
-      height: 57px;
-      background: white;
-      padding-left: 5vw;
-    }
+    // #filterTypeContainer {
+    //   display: flex;
+    //   position: absolute;
+    //   top: 111px;
+    //   width: 100vw;
+    //   height: 57px;
+    //   background: white;
+    //   padding-left: 5vw;
+    // }
   }
 }
 
 @include tablet {
   #appSideMenu {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     position: absolute;
     top: 60px;
     left: 0;
@@ -132,8 +109,7 @@
     background: white;
     z-index: 100;
     #showBtn {
-      display: flex;
-      align-items: flex-end;
+      @include flex-row-pos('', flex-end);
       position: absolute;
       top: calc(100vh - 108px);
       left: 50%;
@@ -142,25 +118,23 @@
       background: $mainColor;
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
       border-radius: 1000px;
-      padding: 10px 16px;
+      padding: 1rem 1.6rem;
       img {
-        width: 21px;
-        margin-right: 2px;
+        width: 2.1rem;
+        margin-right: 0.2rem;
       }
       p {
-        font-size: 15px;
-        margin-left: 2px;
-        color: white;
+        @include textStyle(1.5rem, 400, #ffffff, 2.1rem);
+        margin-left: 0.7rem;
       }
     }
   }
   #locationFilter {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
     #filterTypeContainer {
-      display: inline-block;
+      @include textStyle(1.5rem, 400, #212121, 2rem);
       float: right;
-      height: 66px;
-      padding: 12px 24px 0 24px;
+      padding: 1.2rem 2.4rem 0 2.4rem;
     }
   }
   #storeContainer {
@@ -172,39 +146,27 @@
 
 @include desktop {
   #appSideMenu {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     height: calc(100vh - 60px);
+    width: 47rem;
     width: 25vw;
     background: white;
-    #searchCategoryContainer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 80%;
-      padding-top: 1.5vh;
-      #seeMoreImg {
-        height: 5px;
-      }
-    }
     #locationFilter {
-      display: flex;
-      flex-direction: column;
-      width: 80%;
+      @include flex-column;
       #filterTypeContainer {
-        display: flex;
-        margin-left: 2.08vw;
+        @include flex-row;
+        margin-left: 4rem;
       }
     }
     #storeContainer {
       border-top: 1px solid #dbdee8;
       width: 100%;
       height: 100%;
-      margin-top: 1.28vw;
+      margin-top: 3.2rem;
       overflow-y: scroll;
       &::-webkit-scrollbar {
         display: block;
-        width: 0.42vw;
+        width: 8px;
         height: 100%;
       }
       &::-webkit-scrollbar-thumb {

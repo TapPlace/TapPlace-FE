@@ -2,132 +2,121 @@
 
 @include mobile {
   #main2Container {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     #main2_lineTop {
-      @include line2;
+      @include textStyle(1.7rem, 400, #707070, 150%);
       text-align: center;
-      padding: 5.7vw 0 3.4vw 0;
+      padding-bottom: 4.4rem;
     }
     .functionContainer {
       display: flex;
       flex-direction: column;
-      padding: 50px 5vw;
+      padding: 5rem 2.4rem;
       .appScreenImg {
-        width: 260px;
+        width: 27rem;
+        width: 100%;
+        padding: 0 2.7rem;
         margin: 0 auto;
-        margin-top: 52px;
+        margin-top: 5.2rem;
       }
       .functionIntroContainer {
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         .functionTitleContainer {
-          display: flex;
-          align-items: baseline;
+          @include flex-row-pos('', baseline);
           img {
-            padding-right: 10px;
-            width: 34px;
+            margin-right: 0.6rem;
+            width: 2.6rem;
           }
           #feedbackIcon {
-            width: 30px;
+            width: 2rem;
           }
           #registrationIcon {
-            width: 48px;
+            width: 4.2rem;
           }
           .functionTitle {
-            @include line0;
-            font-size: 16px;
+            @include textStyle(1.6rem, 400, $mainColor, 2.2rem);
           }
         }
         #fTC1 {
           align-items: flex-end;
         }
         .functionLine1 {
-          @include line1;
-          font-size: 23px;
-          line-height: 31px;
+          @include textStyle(2.3rem, 400, #3f4353, 137%);
+          margin-top: 0.8rem;
         }
         .functionLine2 {
-          @include line2;
-          font-size: 16px;
-          line-height: 21px;
+          @include textStyle(1.6rem, 400, $subTextColor, 2.1rem);
+          margin-top: 1.2rem;
         }
-
         #regStepContainer {
           #stepNumContainer {
-            display: flex;
+            @include flex-row;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 4rem;
             .stepNum {
+              @include flex-row-pos(center, '');
+              @include width-height(3.2rem, 3.2rem);
+              @include textStyle(2rem, 400, $mainColor, 2.8rem);
               position: relative;
               border: 2px solid $mainColor;
-              width: 32px;
-              height: 32px;
-              line-height: 28px;
               border-radius: 50%;
-              color: $mainColor;
-              margin: 0 15px;
+              margin: 0 1.5rem;
               &:nth-child(1),
               &:nth-child(2) {
                 &::after {
                   content: '';
                   position: absolute;
                   top: 50%;
+                  left: 3rem;
                   background: $mainColor;
-                  width: 96px;
+                  width: 9.6rem;
                   height: 2px;
-                  margin-left: 12px;
                 }
               }
               &:nth-child(2) {
-                margin: 0 80px;
+                margin: 0 8rem;
               }
             }
           }
           #stepTextContainer {
-            display: flex;
+            @include flex-row;
+            margin-top: 1.2rem;
             .stepText {
-              @include line2;
-              font-size: 15px;
+              @include textStyle(1.5rem, 400, #4d4d4d, 2rem);
               &:nth-child(2) {
-                margin: 0 53px 0 40px;
+                margin: 0 5.3rem 0 4rem;
               }
             }
           }
         }
       }
       #appScreenPreviewImgFirst {
-        margin: 0 auto;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin: 3rem auto;
       }
       .appScreenPreviewImg {
-        width: 300px;
+        width: 30rem;
         border-radius: 10px;
         box-shadow: 0px 1px 6px rgb(0 0 0 / 16%);
         margin: 0 auto;
       }
       #appScreenFeedbackImg {
-        width: 300px;
-        height: 320px;
+        @include width-height(30rem, 32rem);
         margin: 0 auto;
-        margin-top: 30px;
+        margin-top: 3rem;
       }
       #appScreenStoreRegImgBox {
+        @include width-height(33rem, 36rem);
         position: relative;
         background: $mainColor;
-        width: 330px;
-        height: 360px;
         border-radius: 40px;
         margin: 0 auto;
-        margin-top: 52px;
+        margin-top: 5.2rem;
         img {
+          @include width-height(26rem, 32.5rem);
           position: absolute;
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          width: 260px;
-          height: 325px;
           margin: 0 auto;
         }
       }
@@ -146,92 +135,85 @@
 @include tablet {
   #main2Container {
     #main2_lineTop {
-      @include line2;
-      font-size: 2.6vw;
+      @include textStyle(2rem, 400, $subTextColor, 150%);
       text-align: center;
-      padding: 5.7vw 0 3.4vw 0;
+      padding-bottom: 4rem;
     }
     .functionContainer {
-      display: flex;
-      justify-content: space-between;
-      padding: 100px 10vw;
+      @include flex-row-pos(space-between, '');
+      padding: 10rem 7.2rem;
       .appScreenImg {
-        width: 33vw;
+        width: 26rem;
       }
       .functionIntroContainer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        @include flex-column-pos(center, '');
         .functionTitleContainer {
-          display: flex;
-          align-items: baseline;
+          @include flex-row-pos('', baseline);
           img {
-            padding-right: 6px;
-            height: 3.2vw;
+            width: 3.2rem;
+            padding-right: 0.6rem;
           }
           .functionTitle {
-            @include line0;
-            font-size: 2.6vw;
+            @include textStyle(2rem, 400, $mainColor, 2.8rem);
+          }
+          #registrationIcon {
+            width: 4.2rem;
           }
         }
         #fTC1 {
           align-items: flex-end;
         }
         .functionLine1 {
-          @include line1;
-          font-size: 3.65vw;
-          line-height: 4.9vw;
+          @include textStyle(2.8rem, 400, #3f4353, 137%);
+          margin-top: 1.2rem;
         }
         .functionLine2 {
-          @include line2;
-          font-size: 2.34vw;
-          line-height: 3vw;
-          padding-bottom: 3.76vw;
+          @include textStyle(1.8rem, 400, $subTextColor, 2.4rem);
+          padding: 1.6rem 0 4.8rem 0;
         }
         .appScreenPreviewImg {
           box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
           border-radius: 10px;
-          margin: 9px 0;
-          width: 38vw;
+          width: 29rem;
+          &:first-of-type {
+            margin-bottom: 1.6rem;
+          }
         }
         #regStepContainer {
           #stepNumContainer {
-            display: flex;
+            @include flex-row;
             text-align: center;
-            margin-top: 20px;
             .stepNum {
+              @include width-height(3.2rem, 3.2rem);
+              @include textStyle(2rem, 400, $mainColor, 2.8rem);
               position: relative;
               border: 2px solid $mainColor;
-              width: 32px;
-              height: 32px;
-              line-height: 26px;
               border-radius: 50%;
-              color: $mainColor;
-              margin: 0 15px;
+              margin: 0 1.5rem;
               &:nth-child(1),
               &:nth-child(2) {
                 &::after {
                   content: '';
                   position: absolute;
                   top: 50%;
+                  left: 3rem;
                   background: $mainColor;
-                  width: 146px;
+                  width: 14.6rem;
                   height: 2px;
-                  margin-left: 12px;
                 }
               }
               &:nth-child(2) {
-                margin: 0 130px;
+                margin: 0 13rem;
               }
             }
           }
           #stepTextContainer {
-            display: flex;
+            @include flex-row;
+            margin-top: 1.6rem;
             .stepText {
-              @include line2;
-              font-size: 15px;
+              @include textStyle(2rem, 400, #4d4d4d, 2.6rem);
               &:nth-child(2) {
-                margin: 0 103px 0 92px;
+                margin: 0 7rem 0 4.6rem;
               }
             }
           }
@@ -240,21 +222,16 @@
       #appScreenStoreRegImgBox {
         position: relative;
         background: $mainColor;
-        // width: 81vw;
-        width: 536px;
-        // height: 70vw;
-        height: 520px;
+        @include width-height(53.6rem, 52rem);
         margin: 0 auto;
-        margin-top: 30px;
+        margin-top: 3rem;
         border-radius: 60px;
         img {
           position: absolute;
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          width: 60%;
-          width: 384px;
-          // height: 730px;
+          width: 38.4rem;
         }
       }
     }
@@ -275,94 +252,77 @@
 @include desktop {
   #main2Container {
     #main2_lineTop {
-      @include line2;
-      font-size: 1.25vw;
+      @include textStyle(2.4rem, 400, $subTextColor, 3.1rem);
       text-align: center;
-      padding: 5.7vw 0 3.4vw 0;
+      padding: 4rem 0 6.5rem 0;
     }
     .functionContainer {
-      display: flex;
-      justify-content: space-between;
-      padding: 100px 24vw;
+      @include flex-row-pos(space-between, '');
+      padding: 10rem 44rem;
       .appScreenImg {
-        width: 20vw;
+        width: 38.4rem;
       }
       .functionIntroContainer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        @include flex-column-pos(center, '');
         .functionTitleContainer {
-          display: flex;
-          align-items: baseline;
+          @include flex-row-pos('', baseline);
           img {
-            padding-right: 6px;
+            padding-right: 0.6rem;
           }
           .functionTitle {
-            @include line0;
-            font-size: 1.3vw;
+            @include textStyle(2.5rem, 400, $mainColor, 3.5rem);
           }
         }
         #fTC1 {
           align-items: flex-end;
         }
         .functionLine1 {
-          @include line1;
-          font-size: 2.1vw;
-          line-height: 2.7vw;
+          @include textStyle(4rem, 400, #3f4353, 137%);
+          margin-top: 1.2rem;
         }
         .functionLine2 {
-          @include line2;
-          font-size: 1vw;
-          line-height: 1.25vw;
-          padding-bottom: 3.76vw;
+          @include textStyle(2rem, 400, $subTextColor, 2.6rem);
+          margin: 2rem 0 8rem 0;
         }
         .appScreenPreviewImg {
           box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
           border-radius: 16px;
-          margin: 9px 0;
-          width: 21.7vw;
+          width: 37.5rem;
+          &:first-of-type {
+            margin-bottom: 1.8rem;
+          }
         }
         #regStepContainer {
-          display: flex;
-          flex-direction: column;
+          @include flex-column;
           #stepNumContainer {
-            display: flex;
-            justify-content: space-between;
+            @include flex-row-pos(space-between, '');
             text-align: center;
-            padding: 0 1.1vw 0 1.3vw;
+            padding: 0 3rem;
             .stepNum {
+              @include width-height(3.2rem, 3.2rem);
+              @include textStyle(2rem, 400, $mainColor, 2.8rem);
               position: relative;
-              border: 1px solid $mainColor;
-              width: 1.8vw;
-              height: 1.8vw;
+              border: 2px solid $mainColor;
               border-radius: 50%;
-              color: $mainColor;
-              font-size: 1.05vw;
               &:nth-child(1),
               &:nth-child(2) {
                 &::after {
                   content: '';
                   position: absolute;
                   top: 50%;
-                  margin-left: 0.6vw;
+                  left: 3rem;
                   background: $mainColor;
-                  width: 7.3vw;
-                  height: 1px;
-                }
-              }
-              &:nth-child(1) {
-                &::after {
-                  margin-left: 0.6vw;
+                  width: 13.6rem;
+                  height: 2px;
                 }
               }
             }
           }
           #stepTextContainer {
-            display: flex;
-            justify-content: space-between;
+            @include flex-row-pos(space-between, '');
+            margin-top: 1.8rem;
             .stepText {
-              @include line2;
-              font-size: 1vw;
+              @include textStyle(2rem, 400, $subTextColor, 2.6rem);
             }
           }
         }
@@ -370,20 +330,19 @@
       #appScreenStoreRegImgBox {
         position: relative;
         background: $mainColor;
-        width: 31vw;
-        height: 28vw;
+        @include width-height(60rem, 53.6rem);
         border-radius: 60px;
         img {
           position: absolute;
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          width: 60%;
+          width: 38.4rem;
         }
       }
     }
     #storeRegistration {
-      padding: 100px 20vw;
+      padding: 10rem 36rem;
     }
     #paymentFeedback {
       background: linear-gradient(

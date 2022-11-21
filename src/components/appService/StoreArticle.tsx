@@ -111,7 +111,7 @@ const StoreArticle = (props: any) => {
         <p className='storeCategory'>{category}</p>
       </div>
       <div className='storeLine2'>
-        <p className='storeMeter'>{option.distance * 1000}m</p>
+        <p className='storeMeter'>{option.distance * 1000}m</p>・
         <p className='storeAddress'>
           {option.road_address_name
             ? `${option.road_address_name}`

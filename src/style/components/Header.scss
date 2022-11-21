@@ -1,8 +1,7 @@
 @import '../utils';
 
 @mixin serviceHeader {
-  display: flex;
-  justify-content: space-between;
+  @include flex-row-pos(space-between, '');
   position: fixed;
   width: 100vw;
   background: white;
@@ -19,12 +18,12 @@
     @include serviceHeader;
     flex-wrap: wrap;
     #mainLogo {
-      height: 16px;
+      height: 18px;
       margin: 24px 0 0 5vw;
     }
     .navToggleBtn {
       color: #b8bdcc;
-      padding-top: 22px;
+      margin: auto 0;
       padding-right: 5vw;
     }
     .navHide {
@@ -41,15 +40,18 @@
       background: white;
     }
     ul {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       li {
         z-index: 2;
         background: white;
         a {
+          @include textStyle(14px, 400, black, 135%);
           width: 100vw;
           display: inline-block;
           padding: 20px 0 20px 5vw;
+        }
+        &:first-of-type {
+          padding-top: 10px;
         }
       }
     }

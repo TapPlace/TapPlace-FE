@@ -7,11 +7,11 @@
       @include flex-column;
       text-align: center;
       #main1_line1 {
-        @include textSize(2.5rem, 400, #23252d, 135%);
+        @include textStyle(2.5rem, 400, #23252d, 135%);
         padding-bottom: 2rem;
       }
       #main1_line2 {
-        @include textSize(1.6rem, 400, #4d4d4d, 145%);
+        @include textStyle(1.6rem, 400, #4d4d4d, 145%);
       }
     }
     #appScreenMain {
@@ -30,10 +30,10 @@
       padding-bottom: 7rem;
       text-align: center;
       #main1_line1 {
-        @include textSize(4rem, 400, #23252d, 135%);
+        @include textStyle(4rem, 400, #23252d, 135%);
       }
       #main1_line2 {
-        @include textSize(1.8rem, 400, $subTextColor, 150%);
+        @include textStyle(1.8rem, 400, $subTextColor, 150%);
         padding-top: 2.4rem;
       }
     }
@@ -50,10 +50,10 @@
     .contentContainer {
       padding-top: 8rem;
       #main1_line1 {
-        @include textSize(6rem, 400, #23252d, 138%);
+        @include textStyle(6rem, 400, #23252d, 138%);
       }
       #main1_line2 {
-        @include textSize(2rem, 400, $subTextColor, 150%);
+        @include textStyle(2rem, 400, $subTextColor, 150%);
         padding-top: 2.4rem;
       }
     }

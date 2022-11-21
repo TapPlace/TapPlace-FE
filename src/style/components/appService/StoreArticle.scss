@@ -3,40 +3,31 @@
 @include mobile {
   .storeArticle {
     border-bottom: 1px solid rgba(219, 222, 232, 0.6);
-    padding: 20px;
+    padding: 2rem;
     &:hover {
       background: #f5f7ff;
     }
     .storeLine1 {
-      display: flex;
-      align-items: flex-end;
+      @include flex-row-pos('', flex-end);
       .storeName {
-        font-size: 18px;
-        font-weight: 400;
-        padding-right: 6px;
+        @include textStyle(1.6rem, 400, #212121, 2.1rem);
+        padding-right: 0.6rem;
       }
       .storeCategory {
-        font-size: 15px;
-        color: $subTextColor;
+        @include textStyle(1.3rem, 400, #9e9e9e, 1.7rem);
       }
     }
     .storeLine2 {
-      display: flex;
-      color: $subTextColor;
-      font-size: 14px;
-      .storeMeter {
-        padding-right: 8px;
-      }
-      .storeAdderss {
-      }
+      @include flex-row;
+      @include textStyle(1.2rem, 400, $subTextColor, 1.6rem);
+      margin-top: 0.4rem;
     }
     .storePaymentMethod {
-      display: flex;
-      align-items: center;
-      padding-top: 16px;
+      @include flex-row-pos('', center);
+      padding-top: 1.2rem;
       img {
-        height: 38px;
-        padding-right: 6px;
+        height: 3.8rem;
+        margin-right: 0.5rem;
       }
     }
   }
@@ -45,40 +36,31 @@
 @include tablet {
   .storeArticle {
     border-bottom: 1px solid rgba(219, 222, 232, 0.6);
-    padding: 20px;
+    padding: 2rem;
     &:hover {
       background: #f5f7ff;
     }
     .storeLine1 {
-      display: flex;
-      align-items: flex-end;
+      @include flex-row-pos('', flex-end);
       .storeName {
-        font-size: 18px;
-        font-weight: 400;
-        padding-right: 6px;
+        @include textStyle(1.8rem, 400, #212121, 2.5rem);
+        padding-right: 0.6rem;
       }
       .storeCategory {
-        font-size: 15px;
-        color: $subTextColor;
+        @include textStyle(1.5rem, 400, #9e9e9e, 2rem);
       }
     }
     .storeLine2 {
-      display: flex;
-      color: $subTextColor;
-      font-size: 14px;
-      .storeMeter {
-        padding-right: 8px;
-      }
-      .storeAdderss {
-      }
+      @include flex-row;
+      @include textStyle(1.4rem, 400, $subTextColor, 1.8rem);
+      margin-top: 0.8rem;
     }
     .storePaymentMethod {
-      display: flex;
-      align-items: center;
-      padding-top: 16px;
+      @include flex-row-pos('', center);
+      padding-top: 1.6rem;
       img {
-        height: 38px;
-        padding-right: 6px;
+        height: 3.8rem;
+        margin-right: 0.6rem;
       }
     }
   }
@@ -87,38 +69,31 @@
 @include desktop {
   .storeArticle {
     border-bottom: 1px solid rgba(219, 222, 232, 0.6);
-    padding: 1vw 2.08vw;
+    padding: 2.4rem 4rem;
     &:hover {
       background: #f5f7ff;
     }
     .storeLine1 {
-      display: flex;
-      align-items: flex-end;
+      @include flex-row-pos('', flex-end);
       .storeName {
-        font-size: 0.92vw;
-        font-weight: 400;
-        padding-right: 0.34vw;
+        @include textStyle(1.8rem, 400, #212121, 2.5rem);
+        padding-right: 0.6rem;
       }
       .storeCategory {
-        font-size: 0.8vw;
-        color: $subTextColor;
+        @include textStyle(1.5rem, 400, #9e9e9e, 2rem);
       }
     }
     .storeLine2 {
-      display: flex;
-      color: $subTextColor;
-      font-size: 0.76vw;
-      .storeMeter {
-        padding-right: 0.42vw;
-      }
+      @include flex-row;
+      @include textStyle(1.4rem, 400, $subTextColor, 1.8rem);
+      margin-top: 0.8rem;
     }
     .storePaymentMethod {
-      display: flex;
-      align-items: center;
-      padding-top: 0.84vw;
+      @include flex-row-pos('', center);
+      margin-top: 1.6rem;
       img {
-        width: 2.28vw;
-        padding-right: 0.34vw;
+        height: 3.8rem;
+        margin-right: 0.6rem;
       }
     }
   }

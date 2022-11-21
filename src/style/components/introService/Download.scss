@@ -2,18 +2,14 @@
 
 @include mobile {
   #main6Container {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     text-align: center;
     #main6_line1 {
-      font-size: 25px;
-      font-weight: 400;
-      padding-bottom: 20px;
+      @include textStyle(2.5rem, 400, #23252d, 135%);
     }
     #main6_line2 {
-      font-size: 18px;
-      color: $subTextColor;
-      line-height: 26px;
+      @include textStyle(1.7rem, 400, $subTextColor, 150%);
+      margin: 2rem 0 4rem 0;
     }
     #mobileBtnSecond {
       display: none;
@@ -23,40 +19,28 @@
 
 @include tablet {
   #main6Container {
-    display: flex;
-    flex-direction: column;
+    @include flex-column-pos('', center);
     text-align: center;
-    align-items: center;
     #main6_line1 {
-      @include line1;
-      font-size: 3.4vw;
-      padding-top: 0;
-      line-height: 4.6vw;
+      @include textStyle(2.8rem, 400, #3f4353, 137%);
     }
     #main6_line2 {
-      @include line2;
-      font-size: 2.35vw;
-      color: #9e9e9e;
+      @include textStyle(1.8rem, 400, $subTextColor, 135%);
+      margin: 2rem 0 4rem 0;
     }
   }
 }
 
 @include desktop {
   #main6Container {
-    display: flex;
-    flex-direction: column;
+    @include flex-column-pos('', center);
     text-align: center;
-    align-items: center;
-    margin-top: 12.5vw;
     #main6_line1 {
-      @include line1;
-      line-height: 2.8vw;
-      font-size: 1.7vw;
+      @include textStyle(4rem, 400, #3f4353, 137%);
     }
     #main6_line2 {
-      @include line2;
-      font-size: 1.25vw;
-      color: #9e9e9e;
+      @include textStyle(2.4rem, 400, $subTextColor, 3.1rem);
+      margin: 2rem 0 5.2rem 0;
     }
   }
 }

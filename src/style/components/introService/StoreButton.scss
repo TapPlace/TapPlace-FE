@@ -4,7 +4,10 @@
   #logoContainer {
     display: flex;
     flex-direction: column;
-    padding: 3.2rem 0 2.4rem;
+    margin: 3.2rem 0 2.4rem;
+    &:last-child {
+      margin-bottom: 10rem;
+    }
     li {
       height: 4.8rem;
       line-height: 4.8rem;
@@ -14,13 +17,13 @@
         margin: 0 auto;
         border-radius: 10px;
         background: $mainColor;
-        @include textSize(1.7rem, 400, #ffffff, 2.4rem);
+        @include textStyle(1.7rem, 400, #ffffff, 2.4rem);
         svg {
-          padding-right: 8px;
+          padding-right: 0.8rem;
         }
       }
       #mobileBtnSecond {
-        @include textSize(1.5rem, 400, $mainColor, 2.1rem);
+        @include textStyle(1.5rem, 400, $mainColor, 2.1rem);
         background: none;
       }
       &:nth-child(2) {
@@ -35,12 +38,15 @@
 @include tablet {
   #logoContainer {
     @include flex-row-pos(center, center);
-    padding: 4.8rem 0 1rem 0;
+    margin: 4.8rem 0 1rem 0;
+    &:last-child {
+      margin-bottom: 15rem;
+    }
     li {
       .storeBtn {
         @include flex-row-pos(center, center);
         @include width-height(17.2rem, 5.6rem);
-        @include textSize(1.7rem, 400, #ffffff, 2.4rem);
+        @include textStyle(1.7rem, 400, #ffffff, 2.4rem);
         background: #23252d;
         border-radius: 10px;
         img {
@@ -60,12 +66,15 @@
 @include desktop {
   #logoContainer {
     @include flex-row-pos(flex-start, center);
-    padding: 5.7rem 0 19.2rem 0;
+    margin: 5.7rem 0 19.2rem 0;
+    &:last-child {
+      margin-bottom: 20rem;
+    }
     li {
       .storeBtn {
         @include flex-row-pos(center, center);
         @include width-height(16.7rem, 6rem);
-        @include textSize(1.7rem, 400, #ffffff, 2.4rem);
+        @include textStyle(1.7rem, 400, #ffffff, 2.4rem);
         background: #23252d;
         border-radius: 10px;
         img {
