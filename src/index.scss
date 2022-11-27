@@ -2,16 +2,13 @@
 
 html {
   @include mobile {
-    // font-size: 2.66666vw;
-    font-size: calc(1.33333vw + 0.61567vh);
+    font-size: 2.66666vw;
   }
   @include tablet {
-    // font-size: 1.30208vw;
-    font-size: calc(0.65104vw + 0.48828vh);
+    font-size: 1.30208vw;
   }
   @include desktop {
-    // font-size: 0.52083333vw;
-    font-size: calc(0.26041vw + 0.46296vh);
+    font-size: 0.52083vw;
   }
 }
 a {

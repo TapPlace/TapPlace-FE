@@ -13,6 +13,8 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
+    "@types/lodash": "^4.14.190",
+    "@types/navermaps": "^3.6.1",
     "@types/node": "^16.11.47",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
@@ -56,9 +58,7 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.186",
-    "@types/navermaps": "^3.0.17",
     "@types/proj4": "^2.5.2",
-    "@types/react-helmet": "^6.1.5"
+    "webpack-bundle-analyzer": "^4.7.0"
   }
 }
