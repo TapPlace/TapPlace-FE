@@ -29,8 +29,13 @@
       @include flex-column;
       height: calc(100vh - 172px);
       overflow-y: scroll;
+      #storeFilter {
+        margin: 2rem 2.4rem 2rem 2.4rem;
+      }
       #paymentFilter {
         border-top: 1px solid rgba(219, 222, 232, 0.6);
+        margin: 0 2.4rem 2rem 2.4rem;
+        padding-top: 2rem;
         .kindOfPay {
           @include textStyle(1.5rem, 400, $subTextColor, 140%);
           padding: 2.4rem 0 1rem 0;
@@ -39,7 +44,6 @@
       #storeFilter,
       #paymentFilter {
         @include flex-column;
-        margin: 2rem 2.4rem;
         .chooseTitle {
           display: flex;
           align-items: center;
@@ -99,8 +103,13 @@
     }
     #addFilter {
       @include flex-column;
+      #storeFilter {
+        margin: 2rem 2.4rem 2rem 2.4rem;
+      }
       #paymentFilter {
         border-top: 1px solid rgba(219, 222, 232, 0.6);
+        margin: 0 2.4rem 2rem 2.4rem;
+        padding-top: 2rem;
         .kindOfPay {
           @include textStyle(1.6rem, 400, $subTextColor, 140%);
           padding: 2.4rem 0 1rem 0;
@@ -109,7 +118,6 @@
       #storeFilter,
       #paymentFilter {
         @include flex-column;
-        margin: 2rem 2.4rem;
         .chooseTitle {
           @include flex-row-pos('', center);
           margin-bottom: 1.7rem;
@@ -170,8 +178,13 @@
     }
     #addFilter {
       @include flex-column;
+      #storeFilter {
+        margin: 2rem 2.4rem;
+      }
       #paymentFilter {
         border-top: 1px solid rgba(219, 222, 232, 0.6);
+        margin: 0 2.4rem 2rem 2.4rem;
+        padding-top: 2rem;
         .kindOfPay {
           @include textStyle(1.6rem, 400, $subTextColor, 140%);
           padding: 2.4rem 0 1rem 0;
@@ -180,7 +193,6 @@
       #storeFilter,
       #paymentFilter {
         @include flex-column;
-        margin: 2rem 2.4rem;
         .chooseTitle {
           @include flex-row-pos('', center);
           margin-bottom: 1.6rem;

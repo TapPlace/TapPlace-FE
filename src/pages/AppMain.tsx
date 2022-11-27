@@ -1,5 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import AppSideMenu from '../components/appService/AppSideMenu';
 import AppVisitAlert from '../components/appService/AppVisitAlert';
 import Filter from '../components/appService/Filter';
@@ -373,7 +379,7 @@ const AppMain = () => {
   };
 
   // 처음 위치 가져오고 가맹점 가져오기
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (locFlag.current) {
       bringMyLocation();
       if (myLocation.latitude !== undefined) locFlag.current = false;

@@ -35,21 +35,23 @@ const AppSideMenu = ({ map, markers }: any) => {
               <MyLocation />
               {window.innerWidth < 768 ? (
                 <>
-                  <ul
-                    id={showFilterType ? 'filterTypeContainer' : 'noShow'}
-                    className={mobileShowStoreFlag ? 'noShow' : ''}
-                  >
-                    <FilterButton />
-                    <li className='filterType'>
-                      <div
-                        onClick={() => {
-                          setShowFilterType(false);
-                        }}
-                      >
-                        <p id='folding'>접어두기</p>
-                      </div>
-                    </li>
-                  </ul>
+                  {!mobileShowStoreFlag && (
+                    <ul
+                      id={showFilterType ? 'filterTypeContainer' : 'noShow'}
+                      className={mobileShowStoreFlag ? 'noShow' : ''}
+                    >
+                      <FilterButton />
+                      <li className='filterType'>
+                        <div
+                          onClick={() => {
+                            setShowFilterType(false);
+                          }}
+                        >
+                          <p id='folding'>접어두기</p>
+                        </div>
+                      </li>
+                    </ul>
+                  )}
                   {/* 모바일(핸드폰) 화면에서 필터를 숨겼다 보였다 하는 버튼 */}
                   <button
                     id={showFilterType ? 'noShow' : 'showFilterTypeContainer'}

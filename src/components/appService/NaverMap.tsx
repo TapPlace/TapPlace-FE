@@ -71,7 +71,7 @@ const NaverMap = (props: any) => {
     lowComponent(map);
 
     // 마지막 지도 화면의 중앙 좌표, 줌 단계 구하기
-    naver.maps.Event.addListener(map, 'idle', function () {
+    naver.maps.Event.addListener(map, 'idle', () => {
       dispatch(
         SET_LAST_LOCATION({
           latitude: map.getCenter()._lat,
@@ -80,9 +80,10 @@ const NaverMap = (props: any) => {
       );
       dispatch(SET_SEARCH_CRITERIA_FLAG(true));
     });
-    naver.maps.Event.addListener(map, 'zoom_changed', function () {
+    naver.maps.Event.addListener(map, 'zoom_changed', () => {
       setZoom(map.getZoom());
     });
+    naver.maps.Event.addListener(map, 'scroll', () => {}, { passive: true });
   };
   // 지도 띄우기 제외한 기능
   const naverFunction = async () => {

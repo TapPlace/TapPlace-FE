@@ -150,7 +150,7 @@
       border-radius: 100px;
     }
     .fbPercent {
-      @include flex-row-pos('', space-between);
+      @include flex-row-pos(space-between, '');
       @include textStyle(1.5rem, 400, $subTextColor, 2rem);
     }
   }
