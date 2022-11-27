@@ -4,7 +4,7 @@ import StoreButton from './StoreButton';
 
 import '../../style/components/introService/Download.scss';
 
-function Download() {
+const Download = () => {
   const { windowX } = useAppSelector(state => state.resize);
 
   return (
@@ -38,6 +38,6 @@ function Download() {
       <StoreButton />
     </div>
   );
-}
+};
 
 export default Download;

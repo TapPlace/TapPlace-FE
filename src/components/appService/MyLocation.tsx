@@ -3,7 +3,7 @@ import { useAppSelector } from '../../redux/hooks';
 
 import '../../style/components/appService/MyLocation.scss';
 
-function MyLocation() {
+const MyLocation = () => {
   const { myAddress, mobileShowStoreFlag } = useAppSelector(
     state => state.playApp,
   );
@@ -14,6 +14,6 @@ function MyLocation() {
       {myAddress} 주변 1km
     </div>
   );
-}
+};
 
 export default MyLocation;

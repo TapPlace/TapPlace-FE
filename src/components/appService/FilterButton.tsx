@@ -9,7 +9,7 @@ import {
 
 import '../../style/components/appService/FilterButton.scss';
 
-function FilterButton() {
+const FilterButton = () => {
   const dispatch = useAppDispatch();
   const { choiceCnt, choiceCategory } = useAppSelector(state => state.playApp);
   // 눌러진 필터링 버튼 리스트
@@ -129,6 +129,6 @@ function FilterButton() {
       </li>
     </>
   );
-}
+};
 
 export default FilterButton;

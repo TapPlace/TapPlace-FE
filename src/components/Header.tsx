@@ -7,30 +7,30 @@ import { initialPage, playAppPage } from '../redux/slices/showPage';
 
 import '../style/components/Header.scss';
 
-function Header() {
+const Header = () => {
   const { page } = useAppSelector(state => state.page);
   const dispatch = useAppDispatch();
 
   // Nav 숨기기
   const [navToggle, setNavToggle] = useState('noshow');
 
-  function onAlert() {
+  const onAlert = () => {
     alert('서비스 준비중입니다.');
-  }
+  };
 
   return (
-    <header id="serviceHeader">
+    <header id='serviceHeader'>
       <img
-        id="mainLogo"
-        src="/img/tapplaceLogo.png"
-        alt="tapplaceLogo"
+        id='mainLogo'
+        src='/img/tapplaceLogo.png'
+        alt='tapplaceLogo'
         onClick={() => {
           window.location.href = '/';
         }}
       />
       {navToggle === 'noshow' && (
         <FontAwesomeIcon
-          className="navToggleBtn"
+          className='navToggleBtn'
           icon={faBars}
           onClick={() => {
             setNavToggle('show');
@@ -39,7 +39,7 @@ function Header() {
       )}
       {navToggle === 'show' && (
         <FontAwesomeIcon
-          className="navToggleBtn"
+          className='navToggleBtn'
           icon={faXmark}
           onClick={() => {
             setNavToggle('noshow');
@@ -48,12 +48,12 @@ function Header() {
       )}
       <nav
         className={navToggle === 'show' ? 'navShow' : 'navHide'}
-        id="serviceNav"
+        id='serviceNav'
       >
         <ul>
           <li>
             <Link
-              to="/"
+              to='/'
               className={page === '' ? 'headerMenu active' : 'headerMenu'}
               onClick={() => {
                 dispatch(initialPage());
@@ -64,18 +64,18 @@ function Header() {
             </Link>
           </li>
           <li>
-            <Link to="/" className="headerMenu" onClick={onAlert}>
+            <Link to='/' className='headerMenu' onClick={onAlert}>
               공지사항
             </Link>
           </li>
           <li>
-            <Link to="/" className="headerMenu" onClick={onAlert}>
+            <Link to='/' className='headerMenu' onClick={onAlert}>
               FAQ
             </Link>
           </li>
           <li>
             <Link
-              to="/playapp"
+              to='/playapp'
               className={
                 page === 'playapp' ? 'headerMenu active' : 'headerMenu'
               }
@@ -91,7 +91,7 @@ function Header() {
       </nav>
       {navToggle === 'show' && (
         <div
-          id="navBackground"
+          id='navBackground'
           onClick={() => {
             setNavToggle('noshow');
           }}
@@ -99,6 +99,6 @@ function Header() {
       )}
     </header>
   );
-}
+};
 
 export default Header;

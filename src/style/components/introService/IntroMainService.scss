@@ -2,82 +2,63 @@
 
 @include mobile {
   #main1Container {
-    padding-top: 50px;
-    // width: 100vw;
+    padding-top: 4rem;
     .contentContainer {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       text-align: center;
       #main1_line1 {
-        padding-bottom: 20px;
-        font-size: 25px;
-        color: #23252d;
-        line-height: 34px;
+        @include textStyle(2.5rem, 400, #23252d, 135%);
+        padding-bottom: 2rem;
       }
       #main1_line2 {
-        font-size: 16px;
-        color: #4d4d4d;
-        line-height: 23px;
+        @include textStyle(1.6rem, 400, #4d4d4d, 145%);
       }
     }
     #appScreenMain {
-      padding-bottom: 88px;
-      margin: 0 auto;
+      width: 37.5rem;
+      filter: none;
     }
   }
 }
 
 @include tablet {
   #main1Container {
-    display: flex;
-    flex-direction: column;
-    padding-top: 88px;
+    @include flex-column;
+    padding-top: 8.8rem;
     align-items: center;
     .contentContainer {
-      padding-bottom: 70px;
+      padding-bottom: 7rem;
       text-align: center;
       #main1_line1 {
-        @include line1;
-        font-size: 4.9vw;
-        line-height: 6.6vw;
+        @include textStyle(4rem, 400, #23252d, 135%);
       }
       #main1_line2 {
-        @include line2;
-        font-size: 1.96vw;
-        line-height: 2.9vw;
-        padding-top: 2.3vw;
+        @include textStyle(1.8rem, 400, $subTextColor, 150%);
+        padding-top: 2.4rem;
       }
     }
     #appScreenMain {
-      width: 60vw;
-      // margin-right: 6vw;
+      width: 56.8rem;
     }
   }
 }
 
 @include desktop {
   #main1Container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-row-pos(center, center);
+    padding-top: 11rem;
     .contentContainer {
-      padding-top: 9vw;
+      padding-top: 8rem;
       #main1_line1 {
-        @include line1;
-        font-size: 3vw;
-        line-height: 4.2vw;
+        @include textStyle(6rem, 400, #23252d, 138%);
       }
       #main1_line2 {
-        @include line2;
-        font-size: 1vw;
-        line-height: 1.6vw;
-        padding-top: 1.3vw;
+        @include textStyle(2rem, 400, $subTextColor, 150%);
+        padding-top: 2.4rem;
       }
     }
     #appScreenMain {
-      padding-top: 4vw;
-      width: 30vw;
-      height: 100%;
+      width: 54.9rem;
     }
   }
 }

@@ -12,7 +12,7 @@ import '../../style/pages/NaverMap.scss';
 
 const { naver }: any = window;
 
-function NaverMap(props: any) {
+const NaverMap = (props: any) => {
   const dispatch = useAppDispatch();
 
   const {
@@ -454,5 +454,5 @@ function NaverMap(props: any) {
       )}
     </>
   );
-}
+};
 export default NaverMap;

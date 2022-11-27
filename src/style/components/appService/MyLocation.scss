@@ -2,40 +2,43 @@
 
 @include mobile {
   #mobileAroundMyLocation {
+    @include textStyle(1.5rem, 400, #212121, 2rem);
     background: white;
     width: 100vw;
-    padding: 3px 0 12px 0;
+    padding: 0.8rem 0 1.2rem 2.4rem;
     text-align: left;
-    padding-left: 5vw;
-    font-size: 15px;
   }
   #aroundMyLocation {
+    @include textStyle(1.5rem, 400, #212121, 2rem);
     background: white;
     width: 100vw;
-    padding: 3px 0 12px 0;
+    padding: 0.4rem 0 1.2rem 0;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
   }
 }
 
 @include tablet {
   #mobileAroundMyLocation {
+    @include textStyle(1.6rem, 400, #212121, 2.1rem);
     display: inline-block;
     height: 66px;
     line-height: 66px;
-    padding: 0 24px;
+    margin-left: 2.4rem;
   }
   #aroundMyLocation {
+    @include textStyle(1.6rem, 400, #212121, 2.1rem);
     display: inline-block;
+    height: 6.6rem;
     height: 66px;
     line-height: 66px;
-    padding: 0 24px;
+    padding-left: 2.4rem;
   }
 }
 
 @include desktop {
   #aroundMyLocation {
+    @include textStyle(2rem, 400, #212121, 2rem);
     float: left;
-    font-size: 1.04vw;
-    padding: 1vw 2.08vw;
+    margin: 4rem 0 2rem 4rem;
   }
 }

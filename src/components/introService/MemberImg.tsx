@@ -13,7 +13,7 @@ type MemberType = {
   sns?: any;
 };
 
-function MemberImg({ id, img, name, position, say, sns }: MemberType) {
+const MemberImg = ({ id, img, name, position, say, sns }: MemberType) => {
   const { windowX } = useAppSelector(state => state.resize);
   const [hover, setHover] = useState(false);
 
@@ -46,6 +46,6 @@ function MemberImg({ id, img, name, position, say, sns }: MemberType) {
       </div>
     </>
   );
-}
+};
 
 export default MemberImg;

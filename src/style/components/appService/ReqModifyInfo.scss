@@ -11,79 +11,62 @@
     flex-direction: column;
     z-index: 1000;
     #modifyHeader {
-      font-size: 17px;
-      font-weight: 400;
+      @include textStyle(1.7rem, 400, #212121, 2.4rem);
       text-align: center;
       height: 60px;
-      padding: 16px 0;
+      line-height: 60px;
       border-bottom: 1px solid rgba(219, 222, 232, 0.6);
       img {
-        width: 20px;
+        width: 2rem;
+        margin-top: 0.2rem;
         position: absolute;
         left: 20px;
         top: 16px;
-        margin-top: 2px;
       }
     }
     .inputTitle {
-      padding-left: 24px;
+      margin-left: 2.4rem;
       font-size: 17px;
       font-weight: 400;
-      &:first-of-type {
-        padding-top: 20px;
-      }
-      &:last-of-type {
-        padding-top: 32px;
-      }
-      padding-bottom: 16px;
+      margin: 2rem 0 1.6rem 2.4rem;
     }
     .inputContent {
+      @include textStyle(1.5rem, 400, #9e9e9e, 160%);
       resize: none;
-      padding: 13px;
-      margin: 0 24px;
+      padding: 1.3rem;
+      margin: 0 2.4rem;
       border: 1px solid #dbdee8;
       border-radius: 8px;
-      font-size: 15px;
-      &::placeholder {
-        line-height: 24px;
-      }
       &:focus {
         outline: 1px solid $mainColor;
       }
     }
     #modifyContent {
-      height: 250px;
-    }
-    #email {
-      height: 52px;
+      height: 26rem;
     }
     #checkContainer {
       position: absolute;
       bottom: 86px;
       display: flex;
       align-items: center;
-      margin: 0 24px 0 24px;
-      font-size: 16px;
-      font-weight: 400;
+      margin: 0 2.4rem;
       width: calc(100vw - 48px);
       img {
-        width: 24px;
-        margin-right: 12px;
+        width: 2.4rem;
+        margin-right: 1.2rem;
         flex-grow: 0;
       }
       p {
-        display: inline-block;
-        color: $mainColor;
+        @include textStyle(1.5rem, 400, $mainColor, 2rem);
       }
       h4 {
-        font-weight: 400;
+        @include textStyle(1.5rem, 400, $subTextColor, 2rem);
         flex-grow: 1;
       }
       #view {
+        @include textStyle(1.5rem, 400, #cccccc, 2rem);
         flex-grow: 0;
         display: inline-block;
-        font-size: 16px;
-        color: #cccccc;
         text-decoration: underline 2px;
         text-align: right;
       }
@@ -116,79 +99,60 @@
     flex-direction: column;
     z-index: 1000;
     #modifyHeader {
-      font-size: 20px;
-      font-weight: 400;
+      @include textStyle(2rem, 400, #212121, 2.8rem);
       text-align: center;
       height: 60px;
-      padding: 16px 0;
+      padding: 1.6rem 0;
       border-bottom: 1px solid rgba(219, 222, 232, 0.6);
       img {
-        width: 24px;
+        width: 2.4rem;
+        margin-top: 0.2rem;
         position: absolute;
         left: 20px;
         top: 16px;
-        margin-top: 2px;
       }
     }
     .inputTitle {
-      padding-left: 24px;
-      font-size: 18px;
-      font-weight: 400;
-      &:first-of-type {
-        padding-top: 20px;
-      }
-      &:last-of-type {
-        padding-top: 32px;
-      }
-      padding-bottom: 16px;
+      @include textStyle(1.8rem, 400, #333333, 140%);
+      margin: 2rem 0 1.2rem 2.4rem;
     }
     .inputContent {
+      @include textStyle(1.6rem, 400, #9e9e9e, 160%);
       resize: none;
-      padding: 15px;
-      margin: 0 24px;
+      padding: 1.5rem;
+      margin: 0 2.4rem;
       border: 1px solid #dbdee8;
       border-radius: 8px;
-      font-size: 16px;
-      &::placeholder {
-        line-height: 25.6px;
-      }
       &:focus {
         outline: 1px solid $mainColor;
       }
     }
     #modifyContent {
-      height: 250px;
-    }
-    #email {
-      height: 50px;
+      height: 26rem;
     }
     #checkContainer {
       position: absolute;
       bottom: 86px;
       display: flex;
       align-items: center;
-      margin: 0 24px 0 24px;
-      font-size: 16px;
-      font-weight: 400;
+      margin: 0 2.4rem;
       width: calc(100vw - 48px);
       img {
-        width: 24px;
-        margin-right: 12px;
+        width: 2.4rem;
+        margin-right: 1.2rem;
         flex-grow: 0;
       }
       p {
-        display: inline-block;
-        color: $mainColor;
+        @include textStyle(1.6rem, 400, $mainColor, 2.1rem);
       }
       h4 {
-        font-weight: 400;
+        @include textStyle(1.6rem, 400, $subTextColor, 2.1rem);
         flex-grow: 1;
       }
       #view {
+        @include textStyle(1.6rem, 400, #cccccc, 2.1rem);
         flex-grow: 0;
         display: inline-block;
-        font-size: 16px;
-        color: #cccccc;
         text-decoration: underline 2px;
         text-align: right;
       }
@@ -212,89 +176,64 @@
 
 @include desktop {
   #modifyInfo {
+    @include flex-column;
     position: relative;
     width: 24.5vw;
     height: 100%;
     border-radius: 12px;
     background: white;
-    display: flex;
-    flex-direction: column;
     position: absolute;
     top: 0;
     left: 0;
     #modifyHeader {
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
+      @include flex-row-pos(space-between, center);
+      @include textStyle(2rem, 400, #212121, 2.8rem);
+      padding: 0 2.4rem;
       text-align: center;
       height: 60px;
       border-bottom: 1px solid rgba(219, 222, 232, 0.6);
-      p {
-        display: inline-block;
-        font-size: 20px;
-        font-weight: 400;
-      }
       img {
-        display: inline-block;
-        width: 24px;
+        width: 2.4rem;
       }
     }
     .inputTitle {
-      padding-left: 24px;
-      font-size: 18px;
-      font-weight: 400;
-      &:last-of-type {
-        padding-top: 32px;
-      }
-      padding-bottom: 16px;
+      @include textStyle(1.8rem, 400, #333333, 140%);
+      margin: 2rem 0 1.2rem 2.4rem;
     }
     .inputContent {
+      @include textStyle(1.6rem, 400, #9e9e9e, 160%);
       resize: none;
-      padding: 15px;
-      margin: 0 24px;
+      padding: 1.5rem;
+      margin: 0 2.4rem;
       border: 1px solid #dbdee8;
       border-radius: 8px;
-      font-size: 16px;
-      &::placeholder {
-        line-height: 25.6px;
-      }
       &:focus {
         outline: 1px solid $mainColor;
       }
     }
     #modifyContent {
-      height: 250px;
-    }
-    #email {
-      height: 50px;
+      height: 26rem;
     }
     #checkContainer {
+      @include flex-row-pos('', flex-end);
       display: flex;
-      position: relative;
       flex: 1;
-      align-items: flex-end;
-      margin: 0 24px 80px 24px;
-      font-size: 16px;
-      font-weight: 400;
+      margin: 0 2.4rem 8rem 2.4rem;
       img {
-        width: 24px;
-        margin-right: 12px;
+        width: 2.4rem;
+        margin-right: 1.2rem;
       }
       p {
-        display: inline-block;
-        color: $mainColor;
+        @include textStyle(1.6rem, 400, $mainColor, 2.1rem);
       }
       h4 {
-        font-weight: 400;
+        @include textStyle(1.6rem, 400, $subTextColor, 2.1rem);
       }
       #view {
-        font-size: 16px;
-        color: #cccccc;
+        @include textStyle(1.6rem, 400, #cccccc, 2.1rem);
         text-decoration: underline 2px;
         position: absolute;
-        right: 0%;
+        right: 2.4rem;
         cursor: pointer;
       }
     }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../../style/components/introService/SNSLogoContainer.scss';
 
-function SNSLogoContainer({ snsLink }: any) {
+const SNSLogoContainer = ({ snsLink }: any) => {
   // console.log(snsLink);
   // for (const key in snsLink) {
   //   console.log(key);
@@ -18,30 +18,30 @@ function SNSLogoContainer({ snsLink }: any) {
   // console.log(snsLink.mail);
 
   return (
-    <ul className="snsLink">
+    <ul className='snsLink'>
       {/* {code && <div dangerouslySetInnerHTML={{ __html: code }}></div>} */}
       <img
         src={require('../../img/ServicePage/SNSLogo/sns.png')}
-        alt="snsLogo"
+        alt='snsLogo'
       />
       <img
         src={require('../../img/ServicePage/SNSLogo/mail.png')}
-        alt="mailLogo"
+        alt='mailLogo'
       />
       <img
         src={require('../../img/ServicePage/SNSLogo/instargram.png')}
-        alt="instargramLogo"
+        alt='instargramLogo'
       />
       <img
         src={require('../../img/ServicePage/SNSLogo/facebook.png')}
-        alt="facebookLogo"
+        alt='facebookLogo'
       />
       <img
         src={require('../../img/ServicePage/SNSLogo/twitter.png')}
-        alt="twitterLogo"
+        alt='twitterLogo'
       />
     </ul>
   );
-}
+};
 
 export default SNSLogoContainer;

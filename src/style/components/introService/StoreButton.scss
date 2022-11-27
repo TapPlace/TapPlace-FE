@@ -4,27 +4,32 @@
   #logoContainer {
     display: flex;
     flex-direction: column;
-    padding: 50px 0 55px;
+    margin: 3.2rem 0 2.4rem;
+    &:last-child {
+      margin-bottom: 10rem;
+    }
     li {
+      height: 4.8rem;
+      line-height: 4.8rem;
       .mobileStoreBtn {
-        font-size: 15px;
-        padding: 16px 80px;
+        @include flex-row-pos(center, center);
+        @include width-height(23rem, 100%);
+        margin: 0 auto;
         border-radius: 10px;
         background: $mainColor;
-        color: white;
+        @include textStyle(1.7rem, 400, #ffffff, 2.4rem);
         svg {
-          padding-right: 8px;
+          padding-right: 0.8rem;
         }
       }
       #mobileBtnSecond {
-        display: block;
-        padding: 0;
-        border: none;
+        @include textStyle(1.5rem, 400, $mainColor, 2.1rem);
         background: none;
-        color: $mainColor;
       }
       &:nth-child(2) {
-        margin-top: 40px;
+        height: 2.1rem;
+        line-height: 2.1rem;
+        margin-top: 2.1rem;
       }
     }
   }
@@ -32,49 +37,27 @@
 
 @include tablet {
   #logoContainer {
-    padding: 64px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-row-pos(center, center);
+    margin: 4.8rem 0 1rem 0;
+    &:last-child {
+      margin-bottom: 15rem;
+    }
     li {
-      float: left;
-      &:first-child {
-        padding-right: 8px;
-      }
-      &:nth-child(2) {
-        padding-right: 20px;
-      }
       .storeBtn {
-        display: flex;
-        align-items: center;
-        padding: 14px 20px 14px 20px;
+        @include flex-row-pos(center, center);
+        @include width-height(17.2rem, 5.6rem);
+        @include textStyle(1.7rem, 400, #ffffff, 2.4rem);
         background: #23252d;
         border-radius: 10px;
         img {
-          float: left;
-          width: 24px;
-          height: 24px;
+          @include width-height(2.4rem, 2.4rem);
         }
         p {
-          float: right;
-          color: white;
-          font-size: 17px;
-          padding-left: 4px;
-          margin-bottom: 1px;
+          padding-left: 0.4rem;
         }
       }
-      #goWeb {
-        text-decoration: none;
-        p {
-          display: inline;
-          font-size: 17px;
-          color: #23252d;
-          line-height: 54px;
-        }
-        img {
-          padding-bottom: 4px;
-          padding-left: 5px;
-        }
+      &:first-child {
+        margin-right: 1.2rem;
       }
     }
   }
@@ -82,48 +65,27 @@
 
 @include desktop {
   #logoContainer {
-    padding: 3vw 0 10vw 0;
-    display: flex;
-    align-items: center;
+    @include flex-row-pos(flex-start, center);
+    margin: 5.7rem 0 19.2rem 0;
+    &:last-child {
+      margin-bottom: 20rem;
+    }
     li {
-      float: left;
-      &:first-child {
-        padding-right: 8px;
-      }
-      &:nth-child(2) {
-        padding-right: 20px;
-      }
       .storeBtn {
-        display: flex;
-        align-items: center;
-        padding: 0.8vw 1.5vw;
+        @include flex-row-pos(center, center);
+        @include width-height(16.7rem, 6rem);
+        @include textStyle(1.7rem, 400, #ffffff, 2.4rem);
         background: #23252d;
         border-radius: 10px;
         img {
-          float: left;
-          width: 1.3vw;
-          height: 1.3vw;
+          @include width-height(2.4rem, 2.4rem);
         }
         p {
-          float: right;
-          color: white;
-          font-size: 0.9vw;
-          padding-left: 0.4vw;
-          margin-bottom: 1px;
+          padding-left: 0.4rem;
         }
       }
-      #goWeb {
-        text-decoration: none;
-        p {
-          display: inline;
-          font-size: 0.9vw;
-          color: #23252d;
-          line-height: 54px;
-        }
-        img {
-          padding: 0 0 0.3vw 6px;
-          width: 1.9vw;
-        }
+      &:first-child {
+        margin-right: 0.8rem;
       }
     }
   }

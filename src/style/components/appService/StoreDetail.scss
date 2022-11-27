@@ -18,31 +18,25 @@
 
 @include mobile {
   #detailContainer {
+    @include width-height(100vw, 74rem);
+    @include flex-column;
     position: absolute;
     bottom: 56px;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
     background: white;
-    padding-top: 20px;
-    height: 68vh;
+    padding-top: 2rem;
     #detailInfo {
       border-bottom: 8px solid #dbdee866;
-      padding: 0 5vw;
+      padding: 0 2.4rem;
       #nameCategoryClose {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex-row-pos(space-between, center);
         #nameCategory {
-          display: flex;
-          align-items: baseline;
+          @include flex-row-pos('', baseline);
           #detailStoreName {
-            font-size: 18px;
-            padding-right: 8px;
+            @include textStyle(1.8rem, 400, #333333, 2.5rem);
+            padding-right: 0.8rem;
           }
           #detailStoreCategory {
-            font-size: 14px;
-            color: $subTextColor;
+            @include textStyle(1.4rem, 400, #9e9e9e, 1.8rem);
           }
         }
         img {
@@ -50,72 +44,62 @@
         }
       }
       #detailBtnContainer {
+        @include width-height(100%, 5.2rem);
+        @include flex-row-pos(center, center);
         border: 1px solid #4e77fb;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        color: #4e77fb;
         background: white;
         border-radius: 10px;
-        margin: 3.95vh 0 2.95vh 0;
+        margin: 3.2rem 0 2.4rem 0;
         cursor: pointer;
-        height: 6.4vh;
         &:first-child {
           border-right: 1px solid #4e77fb;
         }
-        img {
-          margin-right: 5px;
-        }
         #naviImg {
-          height: 3.1vh;
+          height: 2.4rem;
+          margin-bottom: 0.1rem;
         }
         p {
-          margin-left: 5px;
-          font-size: 17px;
+          @include textStyle(1.6rem, 400, $mainColor, 2.1rem);
+          margin-left: 0.6rem;
         }
       }
       hr {
-        background: rgba(219, 222, 232, 0.6);
-        margin-top: 2.45vh;
+        border: 1px solid rgba(219, 222, 232, 0.6);
+        margin-top: 2rem;
       }
       #distanceAddress,
       #phoneNumber,
       #infoModified {
-        display: flex;
-        align-items: center;
-        color: $subTextColor;
-        font-size: 14px;
+        @include flex-row-pos('', center);
+        @include textStyle(1.4rem, 400, $subTextColor, 1.8rem);
         img {
-          padding-right: 10px;
-          height: 15px;
+          margin-right: 1rem;
+          height: 1.6rem;
         }
       }
       #distanceAddress {
-        padding-bottom: 1.72vh;
+        margin-bottom: 1.8rem;
       }
       #infoModified {
-        padding: 2.1vh 0;
+        padding: 1.8rem 0;
         cursor: pointer;
       }
     }
     #paymentMethod {
       overflow-y: scroll;
-      padding: 2.45vh 20px;
+      padding: 2rem 2.4rem;
       h4 {
-        font-weight: 400;
-        font-size: 20px;
+        @include textStyle(1.7rem, 400, #333333, 2.4rem);
       }
     }
     #goApp {
+      @include textStyle(1.7rem, 400, #ffffff, 2.4rem);
       position: fixed;
       bottom: 0px;
       width: 100vw;
       height: 56px;
       background: $mainColor;
       border: none;
-      font-size: 17px;
-      color: white;
       cursor: pointer;
     }
   }
@@ -123,31 +107,25 @@
 
 @include tablet {
   #detailContainer {
+    @include width-height(100vw, 71rem);
     position: absolute;
     bottom: 56px;
-    width: 100vw;
     display: flex;
     flex-direction: column;
     background: #ffffff;
-    height: 600px;
-    padding-top: 20px;
     #detailInfo {
       border-bottom: 8px solid #dbdee866;
-      padding: 0 24px;
+      padding: 2rem 2.4rem;
       #nameCategoryClose {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex-row-pos(space-between, center);
         #nameCategory {
-          display: flex;
-          align-items: baseline;
+          @include flex-row-pos('', baseline);
           #detailStoreName {
-            font-size: 22px;
-            padding-right: 8px;
+            @include textStyle(2.2rem, 400, #212121, 3.1rem);
+            margin-right: 0.8rem;
           }
           #detailStoreCategory {
-            font-size: 16px;
-            color: $subTextColor;
+            @include textStyle(1.6rem, 400, #9e9e9e, 2.1rem);
           }
         }
         img {
@@ -155,72 +133,60 @@
         }
       }
       #detailBtnContainer {
+        @include flex-row-pos(center, center);
+        @include width-height(100%, 5.2rem);
         border: 1px solid #4e77fb;
         color: #4e77fb;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 52px;
         border-radius: 10px;
-        margin: 32px 0 24px 0;
+        margin: 3.2rem 0 2.4rem 0;
         background: none;
-        width: 100%;
         cursor: pointer;
-        img {
-          margin-right: 5px;
-          width: 23px;
-          height: 23px;
-        }
         #naviImg {
-          width: 25px;
-          height: 25px;
+          @include width-height(2.4rem, 2.4rem);
+          margin-bottom: 0.1rem;
         }
         p {
-          margin-left: 5px;
-          font-size: 17px;
+          @include textStyle(1.7rem, 400, $mainColor, 2.2rem);
+          margin-left: 0.6rem;
         }
       }
       hr {
         background: rgba(219, 222, 232, 0.6);
-        margin-top: 20px;
+        margin-top: 2rem;
       }
       #distanceAddress,
       #phoneNumber,
       #infoModified {
-        display: flex;
-        align-items: center;
-        color: $subTextColor;
+        @include flex-row-pos('', center);
+        @include textStyle(1.6rem, 400, #707070, 2.1rem);
         img {
-          padding-right: 10px;
-          height: 18px;
+          height: 1.7rem;
+          padding-right: 1rem;
         }
       }
       #distanceAddress {
-        padding-bottom: 15px;
+        margin-bottom: 1.7rem;
       }
       #infoModified {
         cursor: pointer;
-        padding: 20px 0;
+        padding-top: 2rem;
       }
     }
     #paymentMethod {
       overflow-y: scroll;
-      padding: 20px;
-      padding: 20px 24px;
+      padding: 2rem 2.4rem;
       h4 {
-        font-weight: 400;
-        font-size: 20px;
+        @include textStyle(2rem, 400, #333333, 2.8rem);
       }
     }
     #goApp {
+      @include textStyle(1.7rem, 400, #ffffff, 2.4rem);
       position: fixed;
       bottom: 0px;
       width: 100vw;
       height: 56px;
       background: $mainColor;
       border: none;
-      font-size: 17px;
-      color: white;
       cursor: pointer;
     }
   }
@@ -228,30 +194,25 @@
 
 @include desktop {
   #detailContainer {
+    @include flex-column;
     overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
     background: white;
     height: 100%;
-    padding: 1vw 0;
+    padding: 2rem 0;
     border-radius: 12px;
     #detailInfo {
       border-bottom: 8px solid #dbdee866;
-      padding: 0 1vw;
+      padding: 0 2rem;
       #nameCategoryClose {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex-row-pos(space-between, center);
         #nameCategory {
-          display: flex;
-          align-items: baseline;
+          @include flex-row-pos('', baseline);
           #detailStoreName {
-            font-size: 1.08vw;
-            padding-right: 0.42vw;
+            @include textStyle(2.2rem, 400, #212121, 3.1rem);
+            margin-right: 0.8rem;
           }
           #detailStoreCategory {
-            font-size: 0.84vw;
-            color: $subTextColor;
+            @include textStyle(1.6rem, 400, #9e9e9e, 2.1rem);
           }
         }
         img {
@@ -259,73 +220,59 @@
         }
       }
       #detailBtnContainer {
+        @include flex-row-pos(center, center);
+        @include width-height(100%, 5.2rem);
         border: 1px solid #4e77fb;
-        color: #4e77fb;
-        display: flex;
         border-radius: 10px;
-        margin: 1.6vw 0 1.28vw 0;
-        align-items: center;
-        justify-content: center;
-        padding: 0.76vw 0;
-        width: 100%;
+        margin: 3.3rem 0 2.4rem 0;
         background: white;
         cursor: pointer;
-        img {
-          margin-right: 0.3vw;
-        }
         #naviImg {
-          width: 1.32vw;
+          width: 2.5rem;
+          margin-right: 1rem;
         }
         p {
-          margin-left: 0.3vw;
-          font-size: 0.88vw;
+          @include textStyle(1.7rem, 400, $mainColor, 2.2rem);
+          margin-top: 0.1rem;
         }
       }
 
       hr {
         background: rgba(219, 222, 232, 0.6);
-        margin-top: 1vw;
+        margin-top: 2.4rem;
       }
       #distanceAddress,
       #phoneNumber,
       #infoModified {
-        display: flex;
-        align-items: center;
-        color: $subTextColor;
+        @include flex-row-pos('', center);
+        @include textStyle(1.6rem, 400, $subTextColor, 2.1rem);
+        cursor: pointer;
         img {
-          padding-right: 0.6vw;
-          height: 0.92vw;
+          width: 1.4rem;
+          margin-right: 1.2rem;
         }
       }
       #distanceAddress {
-        padding-bottom: 0.8vw;
-        font-size: 0.8vw;
-      }
-      #phoneNumber {
-        font-size: 0.8vw;
+        margin-bottom: 1.5rem;
       }
       #infoModified {
-        font-size: 0.8vw;
-        padding: 1vw 0;
-        cursor: pointer;
+        padding: 1.7rem 0 2.2rem 0;
       }
     }
     #paymentMethod {
-      padding: 1vw;
+      padding: 2rem;
       h4 {
-        font-weight: 400;
-        font-size: 1vw;
+        @include textStyle(2rem, 400, #333333, 2.8rem);
       }
     }
     #goApp {
+      @include textStyle(1.7rem, 400, #ffffff, 2.4rem);
       position: fixed;
       bottom: 20px;
       width: 24.5vw;
       height: 56px;
       background: $mainColor;
       border: none;
-      font-size: 0.88vw;
-      color: white;
       border-radius: 0 0 12px 12px;
       cursor: pointer;
     }

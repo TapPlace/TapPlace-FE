@@ -1,9 +1,6 @@
 @import '../utils.scss';
 
 // 공통
-.mockupImg {
-  filter: drop-shadow(-15px 0px 10px rgb(185, 184, 184));
-}
 .titleImg {
   padding: 0 5px 1px 0;
   &:last-child {
@@ -12,16 +9,7 @@
     padding-top: 2px;
   }
 }
-#main1_mockupImg {
-  filter: none;
-}
-a {
-  text-decoration: none;
-  color: black;
-}
-ul {
-  list-style: none;
-}
+
 .line0_Img {
   float: left;
   padding-right: 8px;
@@ -32,32 +20,5 @@ ul {
   }
   100% {
     left: 1030px;
-  }
-}
-
-// 모바일
-@include mobile {
-  #appScreenMain {
-    display: block;
-    width: 320px;
-    // width: 90vw;
-    filter: none;
-  }
-}
-
-// 태블릿
-@include tablet {
-}
-
-// PC
-@include desktop {
-  #main1Container,
-  #main4,
-  #footerContainer {
-    padding: 0 18.75vw;
-  }
-  .mockupImg {
-    width: 384px;
-    height: 763px;
   }
 }

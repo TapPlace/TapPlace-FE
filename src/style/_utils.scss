@@ -3,37 +3,54 @@ $subTextColor: #707070;
 $mobile: 767px;
 $tablet: 1023px;
 $desktop: 1024px;
-
-@mixin line0 {
-  color: #4e77fb;
-  font-size: 25px;
-  font-weight: 400;
+// font ( size | weight | color ), line-height
+@mixin textStyle($size, $weight, $color, $line-height) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  line-height: $line-height;
 }
-
-@mixin line1 {
-  font-weight: 400;
-  padding-top: 12px;
+// width, heigth
+@mixin width-height($width, $height) {
+  width: $width;
+  height: $height;
 }
-
-@mixin line2 {
-  color: $subTextColor;
-  padding-top: 20px;
-  font-size: 20px;
-  font-weight: 400;
+// transform Center
+@mixin transformCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
-
+// Flex
+@mixin flex-row {
+  display: flex;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+@mixin flex-row-pos($justify: flex-start, $align: stretch) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+@mixin flex-column-pos($justify: flex-start, $align: stretch) {
+  @include flex-column;
+  justify-content: $justify;
+  align-items: $align;
+}
+// 반응형
 @mixin mobile {
   @media all and (max-width: $mobile) {
     @content;
   }
 }
-
 @mixin tablet {
   @media all and (min-width: ($mobile + 1)) and (max-width: $tablet) {
     @content;
   }
 }
-
 @mixin desktop {
   @media all and (min-width: $desktop) {
     @content;

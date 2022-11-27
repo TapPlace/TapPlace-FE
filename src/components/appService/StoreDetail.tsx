@@ -11,7 +11,7 @@ import proj4 from 'proj4';
 
 import '../../style/components/appService/StoreDetail.scss';
 
-function StoreDetail({ map, markers, setReqModifyFlagView }: any) {
+const StoreDetail = ({ map, markers, setReqModifyFlagView }: any) => {
   const dispatch = useAppDispatch();
   const { myLocation, storeDetailInfo } = useAppSelector(
     state => state.playApp,
@@ -129,6 +129,6 @@ function StoreDetail({ map, markers, setReqModifyFlagView }: any) {
       </div>
     </>
   );
-}
+};
 
 export default StoreDetail;

@@ -4,7 +4,7 @@ import { useAppSelector } from '../../redux/hooks';
 import '../../style/components/introService/PayLogoSlider.scss';
 import PayLogoCollective from './PayLogoCollective';
 
-function PayLogoSlider() {
+const PayLogoSlider = () => {
   const { windowX } = useAppSelector(state => state.resize);
 
   return (
@@ -22,6 +22,6 @@ function PayLogoSlider() {
       </div>
     </>
   );
-}
+};
 
 export default PayLogoSlider;

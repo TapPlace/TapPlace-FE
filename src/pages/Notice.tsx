@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import '../style/pages/Notice.scss';
 
-function Notice() {
+const Notice = () => {
   const [noticeArr, setNoticeArr] = useState([]);
   const [limit, setLimit] = useState(8);
   const [page, setPage] = useState(1);
@@ -76,24 +76,24 @@ function Notice() {
 
   return (
     <>
-      <div id="noticeContainer">
+      <div id='noticeContainer'>
         <h1>공지사항</h1>
-        <div id="noticePostContainer">
+        <div id='noticePostContainer'>
           {dummyNotice
             .slice(offset, offset + limit)
             .map(({ index, title, date, content }) => (
               <Link to={'/notice/' + index}>
-                <article className="noticePost" key={index}>
-                  <h4 className="noticeTitle">{title}</h4>
-                  <p className="noticeDate">{date}</p>
+                <article className='noticePost' key={index}>
+                  <h4 className='noticeTitle'>{title}</h4>
+                  <p className='noticeDate'>{date}</p>
                 </article>
               </Link>
             ))}
         </div>
       </div>
-      <div id="paginationContainer">
+      <div id='paginationContainer'>
         <button
-          className="pageArrow"
+          className='pageArrow'
           onClick={() => setPage(page - 1)}
           disabled={page === 1}
         >
@@ -113,7 +113,7 @@ function Notice() {
             );
           })}
         <button
-          className="pageArrow"
+          className='pageArrow'
           onClick={() => setPage(page + 1)}
           disabled={page === totalPageCnt}
         >
@@ -122,6 +122,6 @@ function Notice() {
       </div>
     </>
   );
-}
+};
 
 export default Notice;

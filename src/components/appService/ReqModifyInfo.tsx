@@ -6,7 +6,7 @@ import { useInput } from '../../hooks/useInput';
 import '../../style/components/appService/ReqModifyInfo.scss';
 import axios from 'axios';
 
-function ReqModifyInfo(props: any) {
+const ReqModifyInfo = (props: any) => {
   const {
     markers,
     agreeFlag,
@@ -105,6 +105,6 @@ function ReqModifyInfo(props: any) {
       )}
     </article>
   );
-}
+};
 
 export default ReqModifyInfo;

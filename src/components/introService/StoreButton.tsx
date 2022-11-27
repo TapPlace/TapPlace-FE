@@ -6,13 +6,13 @@ import { useAppSelector } from '../../redux/hooks';
 
 import '../../style/components/introService/StoreButton.scss';
 
-function StoreButton() {
+const StoreButton = () => {
   const { windowX } = useAppSelector(state => state.resize);
 
   // 현재 다운로드가 안되서 알람 띄우기
-  function onDownload() {
+  const onDownload = () => {
     alert('서비스 준비중 입니다');
-  }
+  };
 
   return (
     <ul id='logoContainer'>
@@ -57,6 +57,6 @@ function StoreButton() {
       )}
     </ul>
   );
-}
+};
 
 export default StoreButton;

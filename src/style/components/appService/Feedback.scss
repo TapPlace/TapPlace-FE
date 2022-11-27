@@ -2,39 +2,29 @@
 
 @include mobile {
   .feedbackContainer {
+    @include flex-column-pos(space-between, '');
     border-bottom: 1px solid lightgray;
-    padding: 16px 0 16px 0;
-    height: 160px;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: column;
-    &:last-of-type {
-      margin-bottom: 56px;
-    }
+    padding: 1.6rem 0 1.6rem 0;
+    height: 16rem;
     .fbTitle {
-      display: flex;
-      align-items: center;
-      font-size: 18px;
+      @include flex-row-pos('', center);
+      @include textStyle(1.5rem, 400, #4d4d4d, 2rem);
       img {
-        width: 38px;
-        height: 38px;
-        margin-right: 12px;
+        @include width-height(3.8rem, 3.8rem);
+        margin-right: 1.2rem;
       }
     }
     .fbExist {
-      display: flex;
-      align-items: baseline;
+      @include flex-row-pos('', baseline);
       .fbBoolean {
-        font-size: 16px;
-        padding-right: 8px;
-        color: #9e9e9e;
+        @include textStyle(1.4rem, 400, #9e9e9e, 2rem);
+        margin-right: 0.8rem;
       }
       .T {
         color: #4e77fb;
       }
       .fbDate {
-        font-size: 15px;
-        color: #9e9e9e;
+        @include textStyle(1.2rem, 400, #9e9e9e, 1.6rem);
       }
     }
     progress {
@@ -54,48 +44,40 @@
       border-radius: 99px;
     }
     .fbPercent {
-      display: flex;
-      justify-content: space-between;
-      color: $subTextColor;
-      font-size: 15px;
+      @include flex-row-pos('', space-between);
+      @include textStyle(1.3rem, 400, $subTextColor, 1.7rem);
     }
   }
 }
+
 @include tablet {
   .feedbackContainer {
+    @include flex-column-pos(space-between, '');
     border-bottom: 1px solid lightgray;
-    padding: 16px 0 16px 0;
-    height: 160px;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: column;
-    &:last-of-type {
-      margin-bottom: 56px;
-    }
+    padding: 1.6rem 0 1.6rem 0;
+    height: 16rem;
+    // &:last-of-type {
+    //   margin-bottom: 56px;
+    // }
     .fbTitle {
-      display: flex;
-      align-items: center;
-      font-size: 18px;
+      @include flex-row-pos('', center);
+      @include textStyle(1.5rem, 400, #4d4d4d, 2rem);
       img {
-        width: 38px;
-        height: 38px;
-        margin-right: 12px;
+        @include width-height(3.8rem, 3.8rem);
+        margin-right: 1.2rem;
       }
     }
     .fbExist {
-      display: flex;
-      align-items: baseline;
+      @include flex-row-pos('', baseline);
       .fbBoolean {
-        font-size: 16px;
-        padding-right: 8px;
-        color: #9e9e9e;
+        @include textStyle(1.4rem, 400, #9e9e9e, 2rem);
+        margin-right: 0.8rem;
       }
       .T {
-        color: #4e77fb;
+        color: $mainColor;
       }
       .fbDate {
-        font-size: 15px;
-        color: #9e9e9e;
+        @include textStyle(1.2rem, 400, #9e9e9e, 1.6rem);
       }
     }
     progress {
@@ -115,53 +97,46 @@
       border-radius: 99px;
     }
     .fbPercent {
-      display: flex;
-      justify-content: space-between;
-      color: $subTextColor;
-      font-size: 15px;
+      @include flex-row-pos(space-between, '');
+      @include textStyle(1.3rem, 400, $subTextColor, 1.7rem);
     }
   }
 }
+
 @include desktop {
   .feedbackContainer {
+    @include flex-column-pos(space-between, '');
     border-bottom: 1px solid lightgray;
-    padding: 0.84vw 0;
-    height: 8.32vw;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: column;
+    padding: 1.6rem 0;
+    height: 16rem;
     &:last-of-type {
       margin-bottom: 56px;
     }
     .fbTitle {
-      display: flex;
-      align-items: center;
-      font-size: 0.92vw;
+      @include flex-row-pos('', center);
+      @include textStyle(1.8rem, 400, #333333, 2.4rem);
       img {
-        width: 1.94vw;
-        margin-right: 0.68vw;
+        width: 3.8rem;
+        margin-right: 1.2rem;
       }
     }
     .fbExist {
-      display: flex;
-      align-items: baseline;
+      @include flex-row-pos('', baseline);
       .fbBoolean {
-        font-size: 0.84vw;
-        padding-right: 0.42vw;
-        color: #9e9e9e;
+        @include textStyle(1.6rem, 400, $subTextColor, 2.2rem);
+        margin-right: 0.8rem;
       }
       .T {
-        color: #4e77fb;
+        color: $mainColor;
       }
       .fbDate {
-        font-size: 0.8vw;
-        color: #9e9e9e;
+        @include textStyle(1.5rem, 400, #9e9e9e, 2rem);
       }
     }
     progress {
       appearance: none;
       width: 100%;
-      height: 0.68vw;
+      height: 12px;
       padding: 0;
       margin: 0;
       border-radius: 100px;
@@ -175,10 +150,8 @@
       border-radius: 100px;
     }
     .fbPercent {
-      display: flex;
-      justify-content: space-between;
-      color: $subTextColor;
-      font-size: 0.8vw;
+      @include flex-row-pos('', space-between);
+      @include textStyle(1.5rem, 400, $subTextColor, 2rem);
     }
   }
 }

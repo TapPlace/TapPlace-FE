@@ -10,7 +10,7 @@ import {
 import '../../style/components/appService/Filter.scss';
 import FilterCategory from './FilterCategory';
 
-function Filter() {
+const Filter = () => {
   const dispatch = useAppDispatch();
   const { filterShowFlag } = useAppSelector(state => state.playApp);
   const chooseStore = [
@@ -181,6 +181,6 @@ function Filter() {
       </button>
     </div>
   );
-}
+};
 
 export default Filter;
