@@ -2,10 +2,7 @@
 
 @include mobile {
   .filterType {
-    padding-bottom: 1.6rem;
-    &:first-child {
-      padding: 0 0.4rem 0 2.4rem;
-    }
+    margin: 0.4rem;
     div {
       @include width-height(10.6rem, 3.6rem);
       @include flex-row-pos(center, center);
@@ -21,7 +18,7 @@
     }
     .choiceFilter {
       background: $mainColor;
-      border: 1px solid rgba(78, 119, 251, 0.6);
+      // border: 1px solid rgba(78, 119, 251, 0.6);
       background: rgba(78, 119, 251, 0.06);
       border-radius: 20px;
       p {

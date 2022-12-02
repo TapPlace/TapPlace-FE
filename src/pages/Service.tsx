@@ -16,6 +16,11 @@ const Service = () => {
     window.addEventListener('resize', () => {
       dispatch(SET_RESIZE(window.innerWidth));
     });
+    return () => {
+      window.removeEventListener('resize', () => {
+        dispatch(SET_RESIZE(window.innerWidth));
+      });
+    };
   }, []);
 
   return (

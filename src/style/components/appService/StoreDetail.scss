@@ -18,7 +18,7 @@
 
 @include mobile {
   #detailContainer {
-    @include width-height(100vw, 74rem);
+    @include width-height(100vw, 56rem);
     @include flex-column;
     position: absolute;
     bottom: 56px;
