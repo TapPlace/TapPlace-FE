@@ -28,7 +28,7 @@ const StoreDetail = ({ map, markers, setReqModifyFlagView }: any) => {
   // 가맹점 상세보기가 띄워졌을 때 피드백 정보를 가져옴
   useEffect(() => {
     axios
-      .post('https://api.tapplace.cloud/pay/list/more', {
+      .post('https://api.tapplace.co.kr/pay/list/more', {
         store_id: storeDetailInfo.store_id,
         pays: storeDetailInfo.pays,
       })
