@@ -7,6 +7,8 @@ import {
   policyPage,
 } from '../../redux/slices/showPage';
 
+import tapplace_logo_black from '../../img/Common/tapplace_logo_black.webp';
+
 import '../../style/components/introService/Footer.scss';
 
 const Footer = () => {
@@ -23,7 +25,7 @@ const Footer = () => {
               dispatch(initialPage());
             }}
           >
-            <img id='footerLogo' src='img/tapplaceLogo2.png' alt='' />
+            <img id='footerLogo' src={tapplace_logo_black} alt='' />
           </Link>
 
           <ul id='footerList'>

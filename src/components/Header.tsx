@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { initialPage, playAppPage } from '../redux/slices/showPage';
 
+import tapplace_logo from '../img/Common/tapplace_logo.webp';
+
 import '../style/components/Header.scss';
 
 const Header = () => {
@@ -22,7 +24,7 @@ const Header = () => {
     <header id='serviceHeader'>
       <img
         id='mainLogo'
-        src='/img/tapplaceLogo.png'
+        src={tapplace_logo}
         alt='tapplaceLogo'
         onClick={() => {
           window.location.href = '/';

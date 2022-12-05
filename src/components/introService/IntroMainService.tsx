@@ -2,6 +2,9 @@ import React from 'react';
 import { useAppSelector } from '../../redux/hooks';
 import StoreButton from './StoreButton';
 
+import mock_1_mobile from '../../img/Service/MockUp/mock_1_mobile.webp';
+import mock_1_dekstop from '../../img/Service/MockUp/mock_1_desktop.webp';
+
 import '../../style/components/introService/IntroMainService.scss';
 
 const IntroMainService = () => {
@@ -35,22 +38,10 @@ const IntroMainService = () => {
       </article>
       {windowX < 768 ? (
         <>
-          <>
-            <img
-              id='appScreenMain'
-              className='mockupImg'
-              src='img/ServicePage/appScreenMainMobile.png'
-              alt='mainImg'
-            />
-          </>
+          <img id='appScreenMain' src={mock_1_mobile} alt='mainImg' />
         </>
       ) : (
-        <img
-          id='appScreenMain'
-          className='mockupImg'
-          src='img/ServicePage/appScreenMain.png'
-          alt='mainMobileImg'
-        />
+        <img id='appScreenMain' src={mock_1_dekstop} alt='mainMobileImg' />
       )}
     </div>
   );

@@ -1,85 +1,101 @@
 import React from 'react';
 
+import kakaoPay from '../../img/PlayApp/PaymentLogo/kakao.webp';
+import naverPay from '../../img/PlayApp/PaymentLogo/naver.webp';
+import payco from '../../img/PlayApp/PaymentLogo/payco.webp';
+import zeroPay from '../../img/PlayApp/PaymentLogo/zero.webp';
+import apple from '../../img/PlayApp/PaymentLogo/apple.webp';
+import contactless from '../../img/PlayApp/PaymentLogo/contactless.webp';
+import googlePay from '../../img/PlayApp/PaymentLogo/google.webp';
+
 import '../../style/components/appService/Feedback.scss';
 
 const Feedback = ({ options }: any) => {
-  let payName = '';
-  let payImg = '';
-  switch (options.pay) {
-    case 'kakaopay':
-      payName = '카카오페이';
-      payImg = 'img/AppPage/PayLogo/kakao.png';
-      break;
-    case 'naverpay':
-      payName = '네이버페이';
-      payImg = 'img/AppPage/PayLogo/naver.png';
-      break;
-    case 'payco':
-      payName = '페이코페이';
-      payImg = 'img/AppPage/PayLogo/payco.png';
-      break;
-    case 'zeropay':
-      payName = '제로페이';
-      payImg = 'img/AppPage/PayLogo/zero.png';
-      break;
-    case 'apple_visa':
-      payName = '애플페이 - VISA';
-      payImg = 'img/AppPage/PayLogo/apple.png';
-      break;
-    case 'apple_master':
-      payName = '애플페이 - MASTER';
-      payImg = 'img/AppPage/PayLogo/apple.png';
-      break;
-    case 'apple_jcb':
-      payName = '애플페이 - JCB';
-      payImg = 'img/AppPage/PayLogo/apple.png';
-      break;
-    case 'conless_visa':
-      payName = '컨택리스 - VISA';
-      payImg = 'img/AppPage/PayLogo/contactless.png';
-      break;
-    case 'conless_master':
-      payName = '컨택리스 - MASTER';
-      payImg = 'img/AppPage/PayLogo/contactless.png';
-      break;
-    case 'conless_amex':
-      payName = '컨택리스 - AMEX';
-      payImg = 'img/AppPage/PayLogo/contactless.png';
-      break;
-    case 'conless_union':
-      payName = '컨택리스 - UNION';
-      payImg = 'img/AppPage/PayLogo/contactless.png';
-      break;
-    case 'conless_jcb':
-      payName = '컨택리스 - JCB';
-      payImg = 'img/AppPage/PayLogo/contactless.png';
-      break;
-    case 'google_visa':
-      payName = '구글페이 - VISA';
-      payImg = 'img/AppPage/PayLogo/google.png';
-      break;
-    case 'google_master':
-      payName = '구글페이 - MASTER';
-      payImg = 'img/AppPage/PayLogo/google.png';
-      break;
-    case 'google_maestro':
-      payName = '구글페이 - MAESTRO';
-      payImg = 'img/AppPage/PayLogo/google.png';
-      break;
-    case 'toss':
-      payName = '토스페이';
-      payImg = 'img/AppPage/PayLogo/kakao.png';
-      break;
-  }
-
   const all = options.success + options.fail;
   const suc = Math.round((100 / all) * options.success);
   const fai = Math.round((100 / all) * options.fail);
+
   return (
     <article className='feedbackContainer'>
       <div className='fbTitle'>
-        <img src={payImg} alt='logo' />
-        {payName}
+        {options.pay === 'kakaopay' ? (
+          <>
+            <img src={kakaoPay} alt='logo' />
+            카카오페이
+          </>
+        ) : options.pay === 'naverpay' ? (
+          <>
+            <img src={naverPay} alt='logo' />
+            네이버페이
+          </>
+        ) : options.pay === 'payco' ? (
+          <>
+            <img src={payco} alt='logo' />
+            페이코페이
+          </>
+        ) : options.pay === 'zeropay' ? (
+          <>
+            <img src={zeroPay} alt='logo' />
+            제로페이
+          </>
+        ) : options.pay === 'apple_visa' ? (
+          <>
+            <img src={apple} alt='logo' />
+            애플페이 - VISA
+          </>
+        ) : options.pay === 'apple_master' ? (
+          <>
+            <img src={apple} alt='logo' />
+            애플페이 - MASTER
+          </>
+        ) : options.pay === 'apple_jcb' ? (
+          <>
+            <img src={apple} alt='logo' />
+            애플페이 - JCB
+          </>
+        ) : options.pay === 'conless_visa' ? (
+          <>
+            <img src={contactless} alt='logo' />
+            컨택리스 - VISA
+          </>
+        ) : options.pay === 'conless_master' ? (
+          <>
+            <img src={contactless} alt='logo' />
+            컨택리스 - MASTER
+          </>
+        ) : options.pay === 'conless_amex' ? (
+          <>
+            <img src={contactless} alt='logo' />
+            컨택리스 - AMEX
+          </>
+        ) : options.pay === 'conless_union' ? (
+          <>
+            <img src={contactless} alt='logo' />
+            컨택리스 - UNION
+          </>
+        ) : options.pay === 'conless_jcb' ? (
+          <>
+            <img src={contactless} alt='logo' />
+            컨택리스 - JCB
+          </>
+        ) : options.pay === 'google_visa' ? (
+          <>
+            <img src={googlePay} alt='logo' />
+            구글페이 - VISA
+          </>
+        ) : options.pay === 'google_master' ? (
+          <>
+            <img src={googlePay} alt='logo' />
+            구글페이 - MASTER
+          </>
+        ) : (
+          options.pay === 'google_maestro' && (
+            <>
+              <img src={googlePay} alt='logo' />
+              구글페이 - MAESTRO
+            </>
+          )
+        )}
       </div>
       <div className='fbExist'>
         <p className={options.exist ? 'fbBoolean T' : 'fbBoolean'}>

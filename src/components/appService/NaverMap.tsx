@@ -10,6 +10,32 @@ import {
 } from '../../redux/slices/PlayApp';
 import '../../style/pages/NaverMap.scss';
 
+import restaruant from '../../img/PlayApp/Marker/restaurant.webp';
+import restaruant_big from '../../img/PlayApp/Marker/restaurant_big.webp';
+import accommodation from '../../img/PlayApp/Marker/accommodation.webp';
+import accommodation_big from '../../img/PlayApp/Marker/accommodation_big.webp';
+import cafe from '../../img/PlayApp/Marker/cafe.webp';
+import cafe_big from '../../img/PlayApp/Marker/cafe_big.webp';
+import drutstore from '../../img/PlayApp/Marker/drugstore.webp';
+import drutstore_big from '../../img/PlayApp/Marker/drugstore_big.webp';
+import etc from '../../img/PlayApp/Marker/etc.webp';
+import etc_big from '../../img/PlayApp/Marker/etc_big.webp';
+import institutions from '../../img/PlayApp/Marker/institutions.webp';
+import institutions_big from '../../img/PlayApp/Marker/institutions_big.webp';
+import parking from '../../img/PlayApp/Marker/parking.webp';
+import parking_big from '../../img/PlayApp/Marker/parking_big.webp';
+import shop from '../../img/PlayApp/Marker/shop.webp';
+import shop_big from '../../img/PlayApp/Marker/shop_big.webp';
+import store from '../../img/PlayApp/Marker/store.webp';
+import store_big from '../../img/PlayApp/Marker/store_big.webp';
+import hospital from '../../img/PlayApp/Marker/hospital.webp';
+import hospital_big from '../../img/PlayApp/Marker/hospital_big.webp';
+import gasStation from '../../img/PlayApp/Marker/gasStation.webp';
+import gasStation_big from '../../img/PlayApp/Marker/gasStation_big.webp';
+
+import location_pin from '../../img/PlayApp/ShowScreen/location_pin.webp';
+import list_reset from '../../img/PlayApp/ShowScreen/list_reset.webp';
+
 const { naver }: any = window;
 
 const NaverMap = (props: any) => {
@@ -165,8 +191,8 @@ const NaverMap = (props: any) => {
     const category = (item: any, i: any, key: any) => {
       if (item[i].category_group_name === '음식점') {
         const markerInfo = item[i];
-        const imgSrc = '/img/AppPage/Marker/restaurant.png';
-        const bigImgSrc = '/img/AppPage/Marker/restaurant_big.png';
+        const imgSrc = restaruant;
+        const bigImgSrc = restaruant_big;
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(item[i].y, item[i].x),
           title: key,
@@ -176,11 +202,11 @@ const NaverMap = (props: any) => {
           },
         });
         otherMarkers.push(marker);
-        markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
+        markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, markerInfo });
       } else if (item[i].category_group_name === '카페') {
         const markerInfo = item[i];
-        const imgSrc = 'img/AppPage/Marker/cafe.png';
-        const bigImgSrc = 'img/AppPage/Marker/cafe_big.png';
+        const imgSrc = cafe;
+        const bigImgSrc = cafe_big;
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(item[i].y, item[i].x),
           title: key,
@@ -190,11 +216,11 @@ const NaverMap = (props: any) => {
           },
         });
         otherMarkers.push(marker);
-        markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
+        markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, markerInfo });
       } else if (item[i].category_group_name === '편의점') {
         const markerInfo = item[i];
-        const imgSrc = '/img/AppPage/Marker/store.png';
-        const bigImgSrc = '/img/AppPage/Marker/store_big.png';
+        const imgSrc = store;
+        const bigImgSrc = store_big;
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(item[i].y, item[i].x),
           title: key,
@@ -204,11 +230,11 @@ const NaverMap = (props: any) => {
           },
         });
         otherMarkers.push(marker);
-        markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
+        markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, markerInfo });
       } else if (item[i].category_group_name === '마트') {
         const markerInfo = item[i];
-        const imgSrc = 'img/AppPage/Marker/mart.png';
-        const bigImgSrc = 'img/AppPage/Marker/mart_big.png';
+        const imgSrc = shop;
+        const bigImgSrc = shop_big;
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(item[i].y, item[i].x),
           map,
@@ -217,11 +243,11 @@ const NaverMap = (props: any) => {
           },
         });
         otherMarkers.push(marker);
-        markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
+        markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, markerInfo });
       } else if (item[i].category_group_name === '주유소') {
         const markerInfo = item[i];
-        const imgSrc = 'img/AppPage/Marker/gasStation.png';
-        const bigImgSrc = 'img/AppPage/Marker/gasStation_big.png';
+        const imgSrc = gasStation;
+        const bigImgSrc = gasStation_big;
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(item[i].y, item[i].x),
           map,
@@ -230,11 +256,11 @@ const NaverMap = (props: any) => {
           },
         });
         otherMarkers.push(marker);
-        markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
+        markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, markerInfo });
       } else if (item[i].category_group_name === '주차장') {
         const markerInfo = item[i];
-        const imgSrc = 'img/AppPage/Marker/parking.png';
-        const bigImgSrc = 'img/AppPage/Marker/parking.png';
+        const imgSrc = parking;
+        const bigImgSrc = parking_big;
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(item[i].y, item[i].x),
           map,
@@ -243,11 +269,11 @@ const NaverMap = (props: any) => {
           },
         });
         otherMarkers.push(marker);
-        markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
+        markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, markerInfo });
       } else if (item[i].category_group_name === '병원') {
         const markerInfo = item[i];
-        const imgSrc = 'img/AppPage/Marker/hospital.png';
-        const bigImgSrc = 'img/AppPage/Marker/hospital_big.png';
+        const imgSrc = hospital;
+        const bigImgSrc = hospital_big;
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(item[i].y, item[i].x),
           map,
@@ -256,11 +282,11 @@ const NaverMap = (props: any) => {
           },
         });
         otherMarkers.push(marker);
-        markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
+        markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, markerInfo });
       } else if (item[i].category_group_name === '약국') {
         const markerInfo = item[i];
-        const imgSrc = 'img/AppPage/Marker/drugstore.png';
-        const bigImgSrc = 'img/AppPage/Marker/drugstore_big.png';
+        const imgSrc = drutstore;
+        const bigImgSrc = drutstore_big;
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(item[i].y, item[i].x),
           map,
@@ -269,11 +295,11 @@ const NaverMap = (props: any) => {
           },
         });
         otherMarkers.push(marker);
-        markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
+        markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, markerInfo });
       } else if (item[i].category_group_name === '숙박') {
         const markerInfo = item[i];
-        const imgSrc = 'img/AppPage/Marker/accommodation.png';
-        const bigImgSrc = 'img/AppPage/Marker/accommodation_big.png';
+        const imgSrc = accommodation;
+        const bigImgSrc = accommodation_big;
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(item[i].y, item[i].x),
           map,
@@ -282,11 +308,11 @@ const NaverMap = (props: any) => {
           },
         });
         otherMarkers.push(marker);
-        markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
+        markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, markerInfo });
       } else if (item[i].category_group_name === '공공기관') {
         const markerInfo = item[i];
-        const imgSrc = 'img/AppPage/Marker/institutions.png';
-        const bigImgSrc = 'img/AppPage/Marker/institutions_big.png';
+        const imgSrc = institutions;
+        const bigImgSrc = institutions_big;
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(item[i].y, item[i].x),
           map,
@@ -295,11 +321,11 @@ const NaverMap = (props: any) => {
           },
         });
         otherMarkers.push(marker);
-        markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
+        markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, markerInfo });
       } else if (item[i].category_group_name === '기타') {
         const markerInfo = item[i];
-        const imgSrc = 'img/AppPage/Marker/etc.png';
-        const bigImgSrc = 'img/AppPage/Marker/etc_big.png';
+        const imgSrc = etc;
+        const bigImgSrc = etc_big;
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(item[i].y, item[i].x),
           map,
@@ -308,7 +334,7 @@ const NaverMap = (props: any) => {
           },
         });
         otherMarkers.push(marker);
-        markerClickEvent({ map, marker, i, bigImgSrc, markerInfo });
+        markerClickEvent({ map, marker, i, imgSrc, bigImgSrc, markerInfo });
       }
     };
     // 마커 상위 컴포넌트로 전달
@@ -348,7 +374,13 @@ const NaverMap = (props: any) => {
     setMarkers(otherMarkers);
   }
   // 마커 클릭 이벤트
-  function markerClickEvent({ map, marker, bigImgSrc, markerInfo }: any) {
+  function markerClickEvent({
+    map,
+    marker,
+    imgSrc,
+    bigImgSrc,
+    markerInfo,
+  }: any) {
     naver.maps.Event.addListener(marker, 'click', function () {
       // 브라우저 크기에 맞는 이벤트 핸들러(마커가 맵 중앙에 가게)
       if (window.innerWidth < 1024) {
@@ -373,10 +405,11 @@ const NaverMap = (props: any) => {
       // 클릭 시 모든 마커 기본 이미지로 변경
       otherMarkers.forEach((marker: any) => {
         if (marker.icon.url.includes('_big')) {
-          let src =
-            marker.icon.url.substring(0, marker.icon.url.indexOf('_')) + '.png';
+          // let src =
+          //   marker.icon.url.substring(0, marker.icon.url.indexOf('_')) +
+          //   '.webp';
           marker.setIcon({
-            url: src,
+            url: imgSrc,
           });
         }
       });
@@ -443,14 +476,14 @@ const NaverMap = (props: any) => {
               dispatch(SET_SEARCH_CRITERIA_FLAG(false));
             }}
           >
-            <img src='img/AppPage/reset.png' alt='reset.png' />
+            <img src={list_reset} alt='reset' />
             <p>
               {window.innerWidth > 1023
                 ? '현 위치에서 가맹점 재탐색'
                 : '위치에서 탐색'}
             </p>
           </button>
-          <img id='locationPin' src='img/AppPage/pin.png' alt='locationPin' />
+          <img id='locationPin' src={location_pin} alt='locationPin' />
         </>
       )}
     </>

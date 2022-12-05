@@ -2,6 +2,18 @@ import React from 'react';
 import { useAppSelector } from '../../redux/hooks';
 import PayLogoSlider from './PayLogoSlider';
 
+import mock_2 from '../../img/Service/MockUp/mock_2.webp';
+import mock_2_titleImg from '../../img/Service/MockUp/mock_2_titleImg.webp';
+import mock_2_ex1 from '../../img/Service/MockUp/mock_2_ex1.webp';
+import mock_2_ex2 from '../../img/Service/MockUp/mock_2_ex2.webp';
+
+import mock_3 from '../../img/Service/MockUp/mock_3.webp';
+import mock_3_titleImg from '../../img/Service/MockUp/mock_3_titleImg.webp';
+import mock_3_ex from '../../img/Service/MockUp/mock_3_ex.webp';
+
+import mock_4 from '../../img/Service/MockUp/mock_4.webp';
+import mock_4_titleImg from '../../img/Service/MockUp/mock_4_titleImg.webp';
+
 import '../../style/components/introService/IntroMainFunction.scss';
 
 const IntroMainFunction = () => {
@@ -30,7 +42,7 @@ const IntroMainFunction = () => {
           <>
             <div className='functionIntroContainer'>
               <div id='fTC1' className='functionTitleContainer'>
-                <img src='img/ServicePage/inquiryIcon.png' alt='inquiryIcon' />
+                <img src={mock_2_titleImg} alt='mock_2_titleImg' />
                 <h1 className='functionTitle'>가맹점 조회</h1>
               </div>
               <h1 className='functionLine1'>
@@ -44,33 +56,25 @@ const IntroMainFunction = () => {
                 결제 가능여부를 미리 알려드릴께요.
               </h1>
             </div>
+            <img src={mock_2} alt='mock_2' className='appScreenImg' />
             <img
-              src='img/ServicePage/appScreenInquiry.png'
-              alt='appScreenInquiry'
-              className='appScreenImg'
-            />
-            <img
-              src='img/ServicePage/appScreenInquiryImg1.png'
-              alt='appScreenInquiryImg1'
+              src={mock_2_ex1}
+              alt='mock_2_ex1'
               className='appScreenPreviewImg'
               id='appScreenPreviewImgFirst'
             />
             <img
-              src='img/ServicePage/appScreenInquiryImg2.png'
-              alt='appScreenInquiryImg2'
+              src={mock_2_ex2}
+              alt='mock_2_ex2'
               className='appScreenPreviewImg'
             />
           </>
         ) : (
           <>
-            <img
-              src='img/ServicePage/appScreenInquiry.png'
-              alt='appScreenInquiry'
-              className='appScreenImg'
-            />
+            <img src={mock_2} alt='mock_2' className='appScreenImg' />
             <div className='functionIntroContainer'>
               <div id='fTC1' className='functionTitleContainer'>
-                <img src='img/ServicePage/inquiryIcon.png' alt='inquiryIcon' />
+                <img src={mock_2_titleImg} alt='mock_2_titleImg' />
                 <h1 className='functionTitle'>가맹점 조회</h1>
               </div>
               <h1 className='functionLine1'>
@@ -84,13 +88,13 @@ const IntroMainFunction = () => {
                 결제 가능여부를 미리 알려드릴께요.
               </h1>
               <img
-                src='img/ServicePage/appScreenInquiryImg1.png'
-                alt='appScreenInquiryImg1'
+                src={mock_2_ex1}
+                alt='mock_2_ex1'
                 className='appScreenPreviewImg'
               />
               <img
-                src='img/ServicePage/appScreenInquiryImg2.png'
-                alt='appScreenInquiryImg2'
+                src={mock_2_ex2}
+                alt='mock_2_ex2'
                 className='appScreenPreviewImg'
               />
             </div>
@@ -103,8 +107,8 @@ const IntroMainFunction = () => {
             <div className='functionIntroContainer'>
               <div className='functionTitleContainer'>
                 <img
-                  src='img/ServicePage/feedbackIcon.png'
-                  alt='feedbackIcon'
+                  src={mock_3_titleImg}
+                  alt='mock_3_titleImg'
                   id='feedbackIcon'
                 />
                 <h1 className='functionTitle'>결제수단 피드백</h1>
@@ -122,14 +126,10 @@ const IntroMainFunction = () => {
                 있어요.
               </h1>
             </div>
+            <img src={mock_3} alt='mock_3' className='appScreenImg' />
             <img
-              src='img/ServicePage/appScreenFeedback.png'
-              alt='appScreenFeedback'
-              className='appScreenImg'
-            />
-            <img
-              src='img/ServicePage/appScreenFeedbackImg.png'
-              alt='appScreenFeedbackImg'
+              src={mock_3_ex}
+              alt='mock_3_ex'
               className='appScreenPreviewImg'
               id='appScreenFeedbackImg'
             />
@@ -139,8 +139,8 @@ const IntroMainFunction = () => {
             <div className='functionIntroContainer'>
               <div className='functionTitleContainer'>
                 <img
-                  src='img/ServicePage/feedbackIcon.png'
-                  alt='feedbackIcon'
+                  src={mock_3_titleImg}
+                  alt='mock_3_titleImg'
                   id='feedbackIcon'
                 />
                 <h1 className='functionTitle'>결제수단 피드백</h1>
@@ -158,17 +158,13 @@ const IntroMainFunction = () => {
                 있어요.
               </h1>
               <img
-                src='img/ServicePage/appScreenFeedbackImg.png'
-                alt='appScreenFeedbackImg'
+                src={mock_3_ex}
+                alt='mock_3_ex'
                 className='appScreenPreviewImg'
                 id='appScreenFeedbackImg'
               />
             </div>
-            <img
-              src='img/ServicePage/appScreenFeedback.png'
-              alt='appScreenFeedback'
-              className='appScreenImg'
-            />
+            <img src={mock_3} alt='mock_3' className='appScreenImg' />
           </>
         )}
       </article>
@@ -178,8 +174,8 @@ const IntroMainFunction = () => {
             <div className='functionIntroContainer'>
               <div className='functionTitleContainer'>
                 <img
-                  src='img/ServicePage/registrationIcon.png'
-                  alt='registrationIcon'
+                  src={mock_4_titleImg}
+                  alt='mock_4_titleImg'
                   id='registrationIcon'
                 />
                 <h1 className='functionTitle'>가맹점 등록</h1>
@@ -208,26 +204,17 @@ const IntroMainFunction = () => {
               </div>
             </div>
             <div id='appScreenStoreRegImgBox'>
-              <img
-                src='img/ServicePage/appScreenRegistration.png'
-                alt='appScreenRegistration'
-              />
+              <img src={mock_4} alt='mock_4' />
             </div>
           </>
         ) : (
           <>
             <div id='appScreenStoreRegImgBox'>
-              <img
-                src='img/ServicePage/appScreenRegistration.png'
-                alt='appScreenRegistration'
-              />
+              <img src={mock_4} alt='mock_4' />
             </div>
             <div id='functionRegContainer' className='functionIntroContainer'>
               <div className='functionTitleContainer'>
-                <img
-                  src='img/ServicePage/registrationIcon.png'
-                  alt='registrationIcon'
-                />
+                <img src={mock_4_titleImg} alt='mock_4_titleImg' />
                 <h1 className='functionTitle'>가맹점 등록</h1>
               </div>
               <h1 className='functionLine1'>

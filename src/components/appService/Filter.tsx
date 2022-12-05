@@ -7,6 +7,9 @@ import {
   SET_FILTER_SHOW_FLAG,
 } from '../../redux/slices/PlayApp';
 
+import back from '../../img/Common/back.webp';
+import filter_reset from '../../img/PlayApp/Filter/filter_reset.webp';
+
 import '../../style/components/appService/Filter.scss';
 import FilterCategory from './FilterCategory';
 
@@ -57,7 +60,7 @@ const Filter = () => {
     <div id='filterContainer' className={filterShowFlag ? '' : 'noShowFilter'}>
       <div id='filterHeader'>
         <img
-          src='img/back.png'
+          src={back}
           alt='back'
           onClick={() => {
             filterReset('all');
@@ -71,7 +74,7 @@ const Filter = () => {
           <div className='chooseTitle'>
             <p>매장선택</p>
             <img
-              src='img/reset.png'
+              src={filter_reset}
               alt='reset'
               onClick={() => {
                 filterReset('category');
@@ -94,7 +97,7 @@ const Filter = () => {
           <div className='chooseTitle'>
             <p>결제수단</p>
             <img
-              src='img/reset.png'
+              src={filter_reset}
               alt='reset'
               onClick={() => {
                 filterReset('pay');

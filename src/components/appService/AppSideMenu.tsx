@@ -7,6 +7,10 @@ import StoreArticle from './StoreArticle';
 import MyLocation from './MyLocation';
 import FilterButton from './FilterButton';
 
+import show_map from '../../img/PlayApp/ShowScreen/show_map.webp';
+import show_list from '../../img/PlayApp/ShowScreen/show_list.webp';
+import filter_open from '../../img/PlayApp/Filter/filter_open.webp';
+
 import '../../style/components/appService/AppSideMenu.scss';
 
 const AppSideMenu = ({ map, markers }: any) => {
@@ -65,7 +69,7 @@ const AppSideMenu = ({ map, markers }: any) => {
                         <p>{choiceCnt.payCnt + choiceCnt.storeCnt}</p>
                       </div>
                     )}
-                    <img src='img/AppPage/filter.png' alt='showfilter' />
+                    <img src={filter_open} alt='showfilter' />
                   </button>
                 </>
               ) : (
@@ -105,12 +109,12 @@ const AppSideMenu = ({ map, markers }: any) => {
             >
               {mobileShowStoreFlag ? (
                 <>
-                  <img src='img/showMap.png' alt='showmap' />
+                  <img src={show_map} alt='showmap' />
                   <p>지도보기</p>
                 </>
               ) : (
                 <>
-                  <img src='img/showList.png' alt='showlist' />
+                  <img src={show_list} alt='showlist' />
                   <p>목록보기</p>
                 </>
               )}

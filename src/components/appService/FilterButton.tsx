@@ -7,6 +7,9 @@ import {
   SET_FILTER_SHOW_FLAG,
 } from '../../redux/slices/PlayApp';
 
+import filter_check from '../../img/PlayApp/Filter/filter_check.webp';
+import filter_close from '../../img/PlayApp/Filter/filter_close.webp';
+
 import '../../style/components/appService/FilterButton.scss';
 
 const FilterButton = () => {
@@ -32,11 +35,7 @@ const FilterButton = () => {
               }}
             >
               <p>매장선택</p>
-              <img
-                className='vButtonFilter'
-                src='img/AppPage/Vbutton.png'
-                alt='vButton'
-              />
+              <img className='vButtonFilter' src={filter_check} alt='vButton' />
             </div>
           </>
         ) : (
@@ -51,7 +50,7 @@ const FilterButton = () => {
               </p>
               <img
                 className='resetFilter'
-                src='img/closeBlue.png'
+                src={filter_close}
                 alt='close'
                 onClick={() => {
                   filterList.forEach((ele: any) => {
@@ -84,11 +83,7 @@ const FilterButton = () => {
               }}
             >
               <p>결제수단</p>
-              <img
-                className='vButtonFilter'
-                src='img/AppPage/Vbutton.png'
-                alt='vButton'
-              />
+              <img className='vButtonFilter' src={filter_check} alt='vButton' />
             </div>
           </>
         ) : (
@@ -103,7 +98,7 @@ const FilterButton = () => {
               </p>
               <img
                 className='resetFilter'
-                src='img/closeBlue.png'
+                src={filter_close}
                 alt='close'
                 onClick={() => {
                   filterList.forEach((ele: any) => {

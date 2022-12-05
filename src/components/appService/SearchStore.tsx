@@ -6,6 +6,9 @@ import {
   SET_SEARCH_WORD,
 } from '../../redux/slices/PlayApp';
 
+import search_list from '../../img/PlayApp/Filter/search_list.webp';
+import search_close from '../../img/PlayApp/Filter/search_close.webp';
+
 import '../../style/components/appService/SearchStore.scss';
 
 const SearchStore = () => {
@@ -45,11 +48,7 @@ const SearchStore = () => {
             id='searchContainer'
             className={mobileShowSearchFlag ? '' : 'noShowSide'}
           >
-            <img
-              id='searchIcon'
-              src='img/AppPage/search.png'
-              alt='searchIcon'
-            />
+            <img id='searchIcon' src={search_list} alt='searchIcon' />
             <input
               type='text'
               name='searchStore'
@@ -63,7 +62,7 @@ const SearchStore = () => {
             {inputWord && (
               <img
                 id='resetSearch'
-                src='img/close.png'
+                src={search_close}
                 alt='close'
                 onClick={() => {
                   setInputWord('');
@@ -77,11 +76,7 @@ const SearchStore = () => {
       ) : (
         <>
           <div id='searchContainer'>
-            <img
-              id='searchIcon'
-              src='img/AppPage/search.png'
-              alt='searchIcon'
-            />
+            <img id='searchIcon' src={search_list} alt='searchIcon' />
             <input
               type='text'
               name='searchStore'
@@ -95,7 +90,7 @@ const SearchStore = () => {
             {inputWord && (
               <img
                 id='resetSearch'
-                src='img/close.png'
+                src={search_close}
                 alt='close'
                 onClick={() => {
                   setInputWord('');
