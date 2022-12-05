@@ -9,6 +9,12 @@ import {
 import Feedback from './Feedback';
 import proj4 from 'proj4';
 
+import close from '../../img/PlayApp/Filter/search_close.webp';
+import navigation from '../../img/PlayApp/StoreDetail/navigation.webp';
+import location_black from '../../img/PlayApp/StoreDetail/location_black.webp';
+import call from '../../img/PlayApp/StoreDetail/call.webp';
+import pencil from '../../img/PlayApp/StoreDetail/pencil.webp';
+
 import '../../style/components/appService/StoreDetail.scss';
 
 const StoreDetail = ({ map, markers, setReqModifyFlagView }: any) => {
@@ -22,7 +28,7 @@ const StoreDetail = ({ map, markers, setReqModifyFlagView }: any) => {
   // 가맹점 상세보기가 띄워졌을 때 피드백 정보를 가져옴
   useEffect(() => {
     axios
-      .post('https://api.tapplace.cloud/pay/list/more', {
+      .post('https://api.tapplace.co.kr/pay/list/more', {
         store_id: storeDetailInfo.store_id,
         pays: storeDetailInfo.pays,
       })
@@ -44,7 +50,7 @@ const StoreDetail = ({ map, markers, setReqModifyFlagView }: any) => {
               </p>
             </div>
             <img
-              src='img/close.png'
+              src={close}
               alt='closeDetail'
               onClick={() => {
                 dispatch(SET_MOBILE_SHOW_SEARCH_FLAG(true));
@@ -83,17 +89,17 @@ const StoreDetail = ({ map, markers, setReqModifyFlagView }: any) => {
               );
             }}
           >
-            <img id='naviImg' src='img/AppPage/navigation.png' alt='navi' />
+            <img id='naviImg' src={navigation} alt='navi' />
             <p>길찾기</p>
           </button>
           <div id='distanceAddress'>
-            <img src='img/AppPage/location_black.png' alt='location' />
+            <img src={location_black} alt='location' />
             {storeDetailInfo.road_address_name
               ? storeDetailInfo.road_address_name
               : storeDetailInfo.address_name}
           </div>
           <div id='phoneNumber'>
-            <img src='img/AppPage/call.png' alt='call' />
+            <img src={call} alt='call' />
             {storeDetailInfo.phone
               ? storeDetailInfo.phone
               : '가맹점의 번호가 등록되어있지 않습니다'}
@@ -105,7 +111,7 @@ const StoreDetail = ({ map, markers, setReqModifyFlagView }: any) => {
               setReqModifyFlagView(true);
             }}
           >
-            <img src='img/AppPage/pencil.png' alt='pencil' />
+            <img src={pencil} alt='pencil' />
             정보 수정 요청
           </div>
         </article>

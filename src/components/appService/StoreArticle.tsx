@@ -8,6 +8,37 @@ import {
   SET_SEARCH_CRITERIA_FLAG,
 } from '../../redux/slices/PlayApp';
 
+import restaruant from '../../img/PlayApp/Marker/restaurant.webp';
+import restaruant_big from '../../img/PlayApp/Marker/restaurant_big.webp';
+import accommodation from '../../img/PlayApp/Marker/accommodation.webp';
+import accommodation_big from '../../img/PlayApp/Marker/accommodation_big.webp';
+import cafe from '../../img/PlayApp/Marker/cafe.webp';
+import cafe_big from '../../img/PlayApp/Marker/cafe_big.webp';
+import drutstore from '../../img/PlayApp/Marker/drugstore.webp';
+import drutstore_big from '../../img/PlayApp/Marker/drugstore_big.webp';
+import etc from '../../img/PlayApp/Marker/etc.webp';
+import etc_big from '../../img/PlayApp/Marker/etc_big.webp';
+import institutions from '../../img/PlayApp/Marker/institutions.webp';
+import institutions_big from '../../img/PlayApp/Marker/institutions_big.webp';
+import parking from '../../img/PlayApp/Marker/parking.webp';
+import parking_big from '../../img/PlayApp/Marker/parking_big.webp';
+import shop from '../../img/PlayApp/Marker/shop.webp';
+import shop_big from '../../img/PlayApp/Marker/shop_big.webp';
+import store from '../../img/PlayApp/Marker/store.webp';
+import store_big from '../../img/PlayApp/Marker/store_big.webp';
+import hospital from '../../img/PlayApp/Marker/hospital.webp';
+import hospital_big from '../../img/PlayApp/Marker/hospital_big.webp';
+import gasStation from '../../img/PlayApp/Marker/gasStation.webp';
+import gasStation_big from '../../img/PlayApp/Marker/gasStation_big.webp';
+
+import applePay from '../../img/PlayApp/PaymentLogo/apple.webp';
+import contactless from '../../img/PlayApp/PaymentLogo/contactless.webp';
+import googlePay from '../../img/PlayApp/PaymentLogo/google.webp';
+import kakaoPay from '../../img/PlayApp/PaymentLogo/kakao.webp';
+import naverPay from '../../img/PlayApp/PaymentLogo/naver.webp';
+import payco from '../../img/PlayApp/PaymentLogo/payco.webp';
+import zeroPay from '../../img/PlayApp/PaymentLogo/zero.webp';
+
 import '../../style/components/appService/StoreArticle.scss';
 
 const StoreArticle = (props: any) => {
@@ -21,39 +52,50 @@ const StoreArticle = (props: any) => {
   // Article 클릭 시 맞는 마커 선택하여 상위 컴포넌트로 전달
   const choiceArticle = () => {
     markers.forEach((marker: any) => {
+      // 이미지 분류
+      const category = marker.icon.url.substring(
+        marker.icon.url.indexOf('/', 8) + 1,
+        marker.icon.url.indexOf('.'),
+      );
+      // 이미지 변경
+      const setImg = (img: any) => {
+        marker.setIcon({
+          url: img,
+        });
+      };
+      // 큰 이미지로 바뀌어 있는 마커 기본 이미지로 변경
       if (marker.icon.url.includes('_big')) {
-        let src =
-          marker.icon.url.substring(0, marker.icon.url.indexOf('_')) + '.png';
-        marker.setIcon({
-          url: src,
-        });
+        if (category === 'restaruant_big') setImg(restaruant);
+        else if (category === 'cafe_big') setImg(cafe);
+        else if (category === 'store_big') setImg(store);
+        else if (category === 'shop_big') setImg(shop);
+        else if (category === 'gasStation_big') setImg(gasStation);
+        else if (category === 'parking_big') setImg(parking);
+        else if (category === 'hospital_big') setImg(hospital);
+        else if (category === 'drugstore_big') setImg(drutstore);
+        else if (category === 'accommodation_big') setImg(accommodation);
+        else if (category === 'institutions_big') setImg(institutions);
+        else if (category === 'etc_big') setImg(etc);
       }
+
       if (Number(marker.title) === option.num) {
-        const bigImg =
-          marker.icon.url.substring(0, marker.icon.url.indexOf('.')) +
-          '_big.png';
-        marker.setIcon({
-          url: bigImg,
-        });
+        if (option.category_group_name === '음식점') setImg(restaruant_big);
+        else if (option.category_group_name === '카페') setImg(cafe_big);
+        else if (option.category_group_name === '편의점') setImg(store_big);
+        else if (option.category_group_name === '마트') setImg(shop_big);
+        else if (option.category_group_name === '주유소')
+          setImg(gasStation_big);
+        else if (option.category_group_name === '주차장') setImg(parking_big);
+        else if (option.category_group_name === '병원') setImg(hospital_big);
+        else if (option.category_group_name === '약국') setImg(drutstore_big);
+        else if (option.category_group_name === '숙박')
+          setImg(accommodation_big);
+        else if (option.category_group_name === '공공기관')
+          setImg(institutions_big);
+        else if (option.category_group_name === '기타') setImg(etc_big);
       }
     });
   };
-  let src = '';
-  // 이미지 src 정하기
-  switch (category) {
-    case '음식점':
-      src = 'img/AppPage/restaurant.png';
-      break;
-    case '편의점':
-      src = 'img/AppPage/store.png';
-      break;
-    case '카페':
-      src = 'img/AppPage/cafe.png';
-      break;
-    default:
-      src = 'img/AppPage/Vbutton.png';
-      break;
-  }
 
   return (
     <article
@@ -121,53 +163,32 @@ const StoreArticle = (props: any) => {
       <div className='storePaymentMethod'>
         {option.pays.map((pay: string) => {
           if (pay === 'kakaopay') {
-            return (
-              <img key={pay} src='img/AppPage/PayLogo/kakao.png' alt='kakao' />
-            );
+            return <img key={pay} src={kakaoPay} alt='kakao' />;
           }
           if (pay === 'naverpay') {
-            return (
-              <img key={pay} src='img/AppPage/PayLogo/naver.png' alt='naver' />
-            );
+            return <img key={pay} src={naverPay} alt='naver' />;
           }
           if (pay === 'payco') {
-            return (
-              <img key={pay} src='img/AppPage/PayLogo/payco.png' alt='payco' />
-            );
+            return <img key={pay} src={payco} alt='payco' />;
           }
           if (pay === 'zeropay') {
-            return (
-              <img key={pay} src='img/AppPage/PayLogo/zero.png' alt='zero' />
-            );
+            return <img key={pay} src={zeroPay} alt='zero' />;
           }
           if (pay === ('apple_visa' || 'apple_master' || 'apple_jcb')) {
-            return (
-              <img key={pay} src='img/AppPage/PayLogo/apple.png' alt='apple' />
-            );
+            return <img key={pay} src={applePay} alt='apple' />;
           }
           if (pay === ('conless_visa' || 'conless_master' || 'conless_jcb')) {
-            return (
-              <img
-                key={pay}
-                src='img/AppPage/PayLogo/contactless.png'
-                alt='conless'
-              />
-            );
+            return <img key={pay} src={contactless} alt='conless' />;
           }
           if (pay === ('google_visa' || 'google_master' || 'google_jcb')) {
-            return (
-              <img
-                key={pay}
-                src='img/AppPage/PayLogo/google.png'
-                alt='google'
-              />
-            );
+            return <img key={pay} src={googlePay} alt='google' />;
           }
-          if (pay === 'toss') {
-            return (
-              <img key={pay} src='img/AppPage/PayLogo/toss.png' alt='toss' />
-            );
-          } else return '';
+          // if (pay === 'toss') {
+          //   return (
+          //     <img key={pay} src='img/AppPage/PayLogo/toss.png' alt='toss' />
+          //   );
+          // }
+          else return '';
         })}
       </div>
     </article>

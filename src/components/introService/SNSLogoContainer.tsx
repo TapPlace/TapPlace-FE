@@ -1,5 +1,11 @@
 import React from 'react';
 
+import sns from '../../img/Service/SNSLogo/sns.webp';
+import mail from '../../img/Service/SNSLogo/mail.webp';
+import instargram from '../../img/Service/SNSLogo/instargram.webp';
+import facebook from '../../img/Service/SNSLogo/facebook.webp';
+import twitter from '../../img/Service/SNSLogo/twitte.webp';
+
 import '../../style/components/introService/SNSLogoContainer.scss';
 
 const SNSLogoContainer = ({ snsLink }: any) => {
@@ -20,26 +26,11 @@ const SNSLogoContainer = ({ snsLink }: any) => {
   return (
     <ul className='snsLink'>
       {/* {code && <div dangerouslySetInnerHTML={{ __html: code }}></div>} */}
-      <img
-        src={require('../../img/ServicePage/SNSLogo/sns.png')}
-        alt='snsLogo'
-      />
-      <img
-        src={require('../../img/ServicePage/SNSLogo/mail.png')}
-        alt='mailLogo'
-      />
-      <img
-        src={require('../../img/ServicePage/SNSLogo/instargram.png')}
-        alt='instargramLogo'
-      />
-      <img
-        src={require('../../img/ServicePage/SNSLogo/facebook.png')}
-        alt='facebookLogo'
-      />
-      <img
-        src={require('../../img/ServicePage/SNSLogo/twitter.png')}
-        alt='twitterLogo'
-      />
+      <img src={sns} alt='snsLogo' />
+      <img src={mail} alt='mailLogo' />
+      <img src={instargram} alt='instargramLogo' />
+      <img src={facebook} alt='facebookLogo' />
+      <img src={twitter} alt='twitterLogo' />
     </ul>
   );
 };

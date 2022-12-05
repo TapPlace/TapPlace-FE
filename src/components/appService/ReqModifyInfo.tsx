@@ -2,9 +2,14 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { SET_DETAIL_FLAG } from '../../redux/slices/PlayApp';
 import { useInput } from '../../hooks/useInput';
+import axios from 'axios';
+
+import back from '../../img/Common/back.webp';
+import close from '../../img/PlayApp/Filter/search_close.webp';
+import check_act from '../../img/PlayApp/VisitAlert/visitAlert_check.webp';
+import check_inact from '../../img/PlayApp/check_inact.webp';
 
 import '../../style/components/appService/ReqModifyInfo.scss';
-import axios from 'axios';
 
 const ReqModifyInfo = (props: any) => {
   const {
@@ -25,7 +30,7 @@ const ReqModifyInfo = (props: any) => {
     <article id='modifyInfo'>
       <header id='modifyHeader'>
         <img
-          src='img/back.png'
+          src={back}
           alt='back'
           onClick={() => {
             setReqModifyFlagView(false);
@@ -34,7 +39,7 @@ const ReqModifyInfo = (props: any) => {
         <p>정보 수정 요청</p>
         {windowSize.width > 1023 && (
           <img
-            src='img/close.png'
+            src={close}
             alt='close'
             onClick={() => {
               dispatch(SET_DETAIL_FLAG(false));
@@ -64,9 +69,9 @@ const ReqModifyInfo = (props: any) => {
       ></textarea>
       <div id='checkContainer'>
         {agreeFlag ? (
-          <img src='img/AppPage/check.png' alt='check' />
+          <img src={check_act} alt='check' />
         ) : (
-          <img src='img/AppPage/check_inact.png' alt='check_inact' />
+          <img src={check_inact} alt='check_inact' />
         )}
         <p>[필수]</p>
         <h4>&nbsp;개인정보 수집, 이용동의</h4>

@@ -2,6 +2,9 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { SET_DETAIL_FLAG } from '../../redux/slices/PlayApp';
 
+import back from '../../img/Common/back.webp';
+import close from '../../img/PlayApp/Filter/search_close.webp';
+
 import '../../style/components/appService/SideMenuAgree.scss';
 import '../../style/pages/Policy.scss';
 import '../../style/pages/Consent.scss';
@@ -16,7 +19,7 @@ const SideMenuAgree = (props: any) => {
     <article id='agreeContainer'>
       <div id='agreeHeader'>
         <img
-          src='img/back.png'
+          src={back}
           alt='back'
           onClick={() => {
             setAgreeViewFlag(false);
@@ -25,7 +28,7 @@ const SideMenuAgree = (props: any) => {
         <p>개인정보 수집 및 이용동의</p>
         {windowSize.width > 1023 && (
           <img
-            src='img/close.png'
+            src={close}
             alt='close'
             onClick={() => {
               dispatch(SET_DETAIL_FLAG(false));
