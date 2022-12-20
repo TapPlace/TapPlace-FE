@@ -24,12 +24,12 @@
 ├── public # index.html, Image Files
 ├── script # script
 └── src
-	├── components # Components View
-	├── hooks # Custom Hook
-	├── img # Image Files
-	├── pages # Page View
-	├── redux # Redux File
-	└── style # CSS File
+   ├── components # Components View
+   ├── hooks # Custom Hook
+   ├── img # Image Files
+   ├── pages # Page View
+   ├── redux # Redux File
+   └── style # CSS File
 ```
 
 ## 커밋 스타일
