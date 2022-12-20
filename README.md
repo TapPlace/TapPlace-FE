@@ -3,6 +3,8 @@
 
 컨택리스 가맹점 확인
 
+---
+
 ## 배포링크
 
 링크 : https://tapplace.co.kr
@@ -30,6 +32,8 @@
 	├── pages # Page View
 	├── redux # Redux File
 	└── style # CSS File
+	
+```
 
 ## 커밋 스타일
 
