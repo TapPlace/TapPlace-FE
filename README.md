@@ -30,7 +30,6 @@
 	├── pages # Page View
 	├── redux # Redux File
 	└── style # CSS File
-	
 ```
 
 ## 커밋 스타일
