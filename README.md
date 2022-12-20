@@ -1,6 +1,15 @@
+
 # 탭플레이스 - TapPlace
 
 컨택리스 가맹점 확인
+
+---
+
+## 배포링크
+
+링크 : https://tapplace.co.kr
+
+## 개발환경
 
 - FrontEnd
 
@@ -8,7 +17,23 @@
 
   프레임워크 : React
 
-  라이브러리 : Redux, ReduxToolkit, Axios, SCSS, FontAwesome ... 추가 예정
+  라이브러리 : Redux, ReduxToolkit, Axios, SCSS, FontAwesome ...
+
+## 프로젝트 구조
+
+```bash
+├── config # eject
+├── public # index.html, Image Files
+├── script # script
+└── src
+	├── components # Components View
+	├── hooks # Custom Hook
+	├── img # Image Files
+	├── pages # Page View
+	├── redux # Redux File
+	└── style # CSS File
+
+## 커밋 스타일
 
 - Commit Styles
 
