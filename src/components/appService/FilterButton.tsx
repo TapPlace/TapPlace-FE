@@ -1,20 +1,15 @@
 import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import {
-  SET_CHOICE_CATEGORY,
-  SET_CHOICE_CNT,
-  SET_FILTER_APPLY_FLAG,
-  SET_FILTER_SHOW_FLAG,
-} from '../../redux/slices/PlayApp';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { SET_CHOICE_CATEGORY, SET_CHOICE_CNT, SET_FILTER_APPLY_FLAG, SET_FILTER_SHOW_FLAG } from 'redux/slices/PlayApp';
 
-import filter_check from '../../img/PlayApp/Filter/filter_check.webp';
-import filter_close from '../../img/PlayApp/Filter/filter_close.webp';
+import filter_check from 'img/PlayApp/Filter/filter_check.webp';
+import filter_close from 'img/PlayApp/Filter/filter_close.webp';
 
-import '../../style/components/appService/FilterButton.scss';
+import 'style/components/appService/FilterButton.scss';
 
 const FilterButton = () => {
   const dispatch = useAppDispatch();
-  const { choiceCnt, choiceCategory } = useAppSelector(state => state.playApp);
+  const { choiceCnt, choiceCategory } = useAppSelector((state) => state.playApp);
   // 눌러진 필터링 버튼 리스트
   const filterList = document.querySelectorAll('.filter.active');
   // 둘 다 0이면 필터 플래그를 false
@@ -26,7 +21,7 @@ const FilterButton = () => {
 
   return (
     <>
-      <li className='filterType'>
+      <li className="filterType">
         {choiceCnt.storeCnt === 0 ? (
           <>
             <div
@@ -35,12 +30,12 @@ const FilterButton = () => {
               }}
             >
               <p>매장선택</p>
-              <img className='vButtonFilter' src={filter_check} alt='vButton' />
+              <img className="vButtonFilter" src={filter_check} alt="vButton" />
             </div>
           </>
         ) : (
           <>
-            <div className='choiceFilter'>
+            <div className="choiceFilter">
               <p
                 onClick={() => {
                   dispatch(SET_FILTER_SHOW_FLAG(true));
@@ -49,9 +44,9 @@ const FilterButton = () => {
                 {'매장선택 ' + choiceCnt.storeCnt}
               </p>
               <img
-                className='resetFilter'
+                className="resetFilter"
                 src={filter_close}
-                alt='close'
+                alt="close"
                 onClick={() => {
                   filterList.forEach((ele: any) => {
                     if (ele.id.includes('store')) ele.className = 'filter';
@@ -60,13 +55,13 @@ const FilterButton = () => {
                     SET_CHOICE_CNT({
                       storeCnt: 0,
                       payCnt: choiceCnt.payCnt,
-                    }),
+                    })
                   );
                   dispatch(
                     SET_CHOICE_CATEGORY({
                       store: [],
                       pay: choiceCategory.pay,
-                    }),
+                    })
                   );
                 }}
               />
@@ -74,7 +69,7 @@ const FilterButton = () => {
           </>
         )}
       </li>
-      <li className='filterType'>
+      <li className="filterType">
         {choiceCnt.payCnt === 0 ? (
           <>
             <div
@@ -83,12 +78,12 @@ const FilterButton = () => {
               }}
             >
               <p>결제수단</p>
-              <img className='vButtonFilter' src={filter_check} alt='vButton' />
+              <img className="vButtonFilter" src={filter_check} alt="vButton" />
             </div>
           </>
         ) : (
           <>
-            <div className='choiceFilter'>
+            <div className="choiceFilter">
               <p
                 onClick={() => {
                   dispatch(SET_FILTER_SHOW_FLAG(true));
@@ -97,9 +92,9 @@ const FilterButton = () => {
                 {'결제수단 ' + choiceCnt.payCnt}
               </p>
               <img
-                className='resetFilter'
+                className="resetFilter"
                 src={filter_close}
-                alt='close'
+                alt="close"
                 onClick={() => {
                   filterList.forEach((ele: any) => {
                     if (!ele.id.includes('store')) ele.className = 'filter';
@@ -108,13 +103,13 @@ const FilterButton = () => {
                     SET_CHOICE_CNT({
                       storeCnt: choiceCnt.storeCnt,
                       payCnt: 0,
-                    }),
+                    })
                   );
                   dispatch(
                     SET_CHOICE_CATEGORY({
                       store: choiceCategory.store,
                       pay: [],
-                    }),
+                    })
                   );
                 }}
               />

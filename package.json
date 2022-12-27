@@ -68,17 +68,12 @@
     "sass": "^1.54.3",
     "sass-loader": "^12.3.0",
     "semver": "^7.3.5",
-    "slick-carousel": "^1.8.1",
     "source-map-loader": "^3.0.0",
     "style-loader": "^3.3.1",
-    "tailwindcss": "^3.0.2",
     "terser-webpack-plugin": "^5.2.5",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4",
-    "webpack": "^5.64.4",
-    "webpack-dev-server": "^4.6.0",
-    "webpack-manifest-plugin": "^4.0.2",
-    "workbox-webpack-plugin": "^6.4.1"
+    "webpack": "^5.64.4"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -107,6 +102,7 @@
   },
   "devDependencies": {
     "@types/proj4": "^2.5.2",
+    "cra-bundle-analyzer": "^0.1.1",
     "webpack-bundle-analyzer": "^4.7.0"
   },
   "jest": {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import ReqModifyInfo from './ReqModifyInfo';
 import StoreDetail from './StoreDetail';
-
-import '../../style/components/appService/StoreSideMenu.scss';
 import SideMenuAgree from './SideMenuAgree';
+
+import 'style/components/appService/StoreSideMenu.scss';
 
 const StoreSideMenu = ({ map, markers }: any) => {
   const [reqModifyViewFlag, setReqModifyViewFlag] = useState(false);
@@ -23,7 +23,7 @@ const StoreSideMenu = ({ map, markers }: any) => {
   };
 
   return (
-    <article id='storeSideContainer'>
+    <article id="storeSideContainer">
       {reqModifyViewFlag ? (
         agreeViewFlag ? (
           <SideMenuAgree
@@ -42,11 +42,7 @@ const StoreSideMenu = ({ map, markers }: any) => {
           />
         )
       ) : (
-        <StoreDetail
-          map={map}
-          markers={markers}
-          setReqModifyFlagView={_setReqModifyViewFlag}
-        />
+        <StoreDetail map={map} markers={markers} setReqModifyFlagView={_setReqModifyViewFlag} />
       )}
     </article>
   );

@@ -1,8 +1,7 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import '../style/pages/Notice.scss';
+import 'style/pages/Notice.scss';
 
 const Notice = () => {
   const [noticeArr, setNoticeArr] = useState([]);
@@ -76,47 +75,33 @@ const Notice = () => {
 
   return (
     <>
-      <div id='noticeContainer'>
+      <div id="noticeContainer">
         <h1>공지사항</h1>
-        <div id='noticePostContainer'>
-          {dummyNotice
-            .slice(offset, offset + limit)
-            .map(({ index, title, date, content }) => (
-              <Link to={'/notice/' + index}>
-                <article className='noticePost' key={index}>
-                  <h4 className='noticeTitle'>{title}</h4>
-                  <p className='noticeDate'>{date}</p>
-                </article>
-              </Link>
-            ))}
+        <div id="noticePostContainer">
+          {dummyNotice.slice(offset, offset + limit).map(({ index, title, date, content }) => (
+            <Link to={'/notice/' + index}>
+              <article className="noticePost" key={index}>
+                <h4 className="noticeTitle">{title}</h4>
+                <p className="noticeDate">{date}</p>
+              </article>
+            </Link>
+          ))}
         </div>
       </div>
-      <div id='paginationContainer'>
-        <button
-          className='pageArrow'
-          onClick={() => setPage(page - 1)}
-          disabled={page === 1}
-        >
+      <div id="paginationContainer">
+        <button className="pageArrow" onClick={() => setPage(page - 1)} disabled={page === 1}>
           &lt;
         </button>
         {Array(totalPageCnt)
           .fill('')
           .map((_, idx) => {
             return (
-              <button
-                className={page === idx + 1 ? 'pageActive' : ''}
-                key={idx + 1}
-                onClick={() => setPage(idx + 1)}
-              >
+              <button className={page === idx + 1 ? 'pageActive' : ''} key={idx + 1} onClick={() => setPage(idx + 1)}>
                 {idx + 1}
               </button>
             );
           })}
-        <button
-          className='pageArrow'
-          onClick={() => setPage(page + 1)}
-          disabled={page === totalPageCnt}
-        >
+        <button className="pageArrow" onClick={() => setPage(page + 1)} disabled={page === totalPageCnt}>
           &gt;
         </button>
       </div>

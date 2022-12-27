@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import {
   SET_DETAIL_FLAG,
   SET_DETAIL_INFO,
@@ -7,34 +7,34 @@ import {
   SET_MY_ADDRESS,
   SET_MOBILE_SHOW_SEARCH_FLAG,
   SET_SEARCH_CRITERIA_FLAG,
-} from '../../redux/slices/PlayApp';
-import '../../style/pages/NaverMap.scss';
+} from 'redux/slices/PlayApp';
+import 'style/pages/NaverMap.scss';
 
-import restaruant from '../../img/PlayApp/Marker/restaurant.webp';
-import restaruant_big from '../../img/PlayApp/Marker/restaurant_big.webp';
-import accommodation from '../../img/PlayApp/Marker/accommodation.webp';
-import accommodation_big from '../../img/PlayApp/Marker/accommodation_big.webp';
-import cafe from '../../img/PlayApp/Marker/cafe.webp';
-import cafe_big from '../../img/PlayApp/Marker/cafe_big.webp';
-import drutstore from '../../img/PlayApp/Marker/drugstore.webp';
-import drutstore_big from '../../img/PlayApp/Marker/drugstore_big.webp';
-import etc from '../../img/PlayApp/Marker/etc.webp';
-import etc_big from '../../img/PlayApp/Marker/etc_big.webp';
-import institutions from '../../img/PlayApp/Marker/institutions.webp';
-import institutions_big from '../../img/PlayApp/Marker/institutions_big.webp';
-import parking from '../../img/PlayApp/Marker/parking.webp';
-import parking_big from '../../img/PlayApp/Marker/parking_big.webp';
-import shop from '../../img/PlayApp/Marker/shop.webp';
-import shop_big from '../../img/PlayApp/Marker/shop_big.webp';
-import store from '../../img/PlayApp/Marker/store.webp';
-import store_big from '../../img/PlayApp/Marker/store_big.webp';
-import hospital from '../../img/PlayApp/Marker/hospital.webp';
-import hospital_big from '../../img/PlayApp/Marker/hospital_big.webp';
-import gasStation from '../../img/PlayApp/Marker/gasStation.webp';
-import gasStation_big from '../../img/PlayApp/Marker/gasStation_big.webp';
+import restaruant from 'img/PlayApp/Marker/restaurant.webp';
+import restaruant_big from 'img/PlayApp/Marker/restaurant_big.webp';
+import accommodation from 'img/PlayApp/Marker/accommodation.webp';
+import accommodation_big from 'img/PlayApp/Marker/accommodation_big.webp';
+import cafe from 'img/PlayApp/Marker/cafe.webp';
+import cafe_big from 'img/PlayApp/Marker/cafe_big.webp';
+import drutstore from 'img/PlayApp/Marker/drugstore.webp';
+import drutstore_big from 'img/PlayApp/Marker/drugstore_big.webp';
+import etc from 'img/PlayApp/Marker/etc.webp';
+import etc_big from 'img/PlayApp/Marker/etc_big.webp';
+import institutions from 'img/PlayApp/Marker/institutions.webp';
+import institutions_big from 'img/PlayApp/Marker/institutions_big.webp';
+import parking from 'img/PlayApp/Marker/parking.webp';
+import parking_big from 'img/PlayApp/Marker/parking_big.webp';
+import shop from 'img/PlayApp/Marker/shop.webp';
+import shop_big from 'img/PlayApp/Marker/shop_big.webp';
+import store from 'img/PlayApp/Marker/store.webp';
+import store_big from 'img/PlayApp/Marker/store_big.webp';
+import hospital from 'img/PlayApp/Marker/hospital.webp';
+import hospital_big from 'img/PlayApp/Marker/hospital_big.webp';
+import gasStation from 'img/PlayApp/Marker/gasStation.webp';
+import gasStation_big from 'img/PlayApp/Marker/gasStation_big.webp';
 
-import location_pin from '../../img/PlayApp/ShowScreen/location_pin.webp';
-import list_reset from '../../img/PlayApp/ShowScreen/list_reset.webp';
+import location_pin from 'img/PlayApp/ShowScreen/location_pin.webp';
+import list_reset from 'img/PlayApp/ShowScreen/list_reset.webp';
 
 const { naver }: any = window;
 
@@ -55,7 +55,7 @@ const NaverMap = (props: any) => {
     searchStore,
     searchWord,
     searchCriteriaFlag,
-  } = useAppSelector(state => state.playApp);
+  } = useAppSelector((state) => state.playApp);
   const [naverMap, setNaverMap]: any = useState();
   const [zoom, setZoom] = useState(18);
   const otherMarkers: Array<any> = [];
@@ -102,7 +102,7 @@ const NaverMap = (props: any) => {
         SET_LAST_LOCATION({
           latitude: map.getCenter()._lat,
           longitude: map.getCenter()._lng,
-        }),
+        })
       );
       dispatch(SET_SEARCH_CRITERIA_FLAG(true));
     });
@@ -137,10 +137,7 @@ const NaverMap = (props: any) => {
         naver.maps.Service.reverseGeocode(
           {
             coords: latlng,
-            orders: [
-              naver.maps.Service.OrderType.ADDR,
-              naver.maps.Service.OrderType.ROAD_ADDR,
-            ].join(','),
+            orders: [naver.maps.Service.OrderType.ADDR, naver.maps.Service.OrderType.ROAD_ADDR].join(','),
           },
           function (status: any, response: any) {
             if (status === naver.maps.Service.Status.ERROR) {
@@ -151,7 +148,7 @@ const NaverMap = (props: any) => {
             const secondSpace = myAddress.indexOf(' ', firstSpace);
             myAddress = myAddress.substr(firstSpace, secondSpace);
             dispatch(SET_MY_ADDRESS(myAddress));
-          },
+          }
         );
       };
       searchAddress(naverMap.center);
@@ -160,10 +157,7 @@ const NaverMap = (props: any) => {
       if (lastLocation.latitude !== undefined) {
         const circle = new naver.maps.Circle({
           map: naverMap,
-          center: new naver.maps.LatLng(
-            lastLocation.latitude,
-            lastLocation.longitude,
-          ),
+          center: new naver.maps.LatLng(lastLocation.latitude, lastLocation.longitude),
           radius: 1000,
           fillColor: 'rgba(78, 119, 251, 0.03)',
           strokeColor: 'rgba(78, 119, 251, 0.5)',
@@ -173,10 +167,7 @@ const NaverMap = (props: any) => {
       } else {
         const circle = new naver.maps.Circle({
           map: naverMap,
-          center: new naver.maps.LatLng(
-            myLocation.latitude,
-            myLocation.longitude,
-          ),
+          center: new naver.maps.LatLng(myLocation.latitude, myLocation.longitude),
           radius: 1000,
           fillColor: 'rgba(78, 119, 251, 0.03)',
           strokeColor: 'rgba(78, 119, 251, 0.5)',
@@ -374,13 +365,7 @@ const NaverMap = (props: any) => {
     setMarkers(otherMarkers);
   }
   // 마커 클릭 이벤트
-  function markerClickEvent({
-    map,
-    marker,
-    imgSrc,
-    bigImgSrc,
-    markerInfo,
-  }: any) {
+  function markerClickEvent({ map, marker, imgSrc, bigImgSrc, markerInfo }: any) {
     naver.maps.Event.addListener(marker, 'click', function () {
       // 브라우저 크기에 맞는 이벤트 핸들러(마커가 맵 중앙에 가게)
       if (window.innerWidth < 1024) {
@@ -454,7 +439,7 @@ const NaverMap = (props: any) => {
   return (
     <>
       <div
-        id='map'
+        id="map"
         style={{
           width: '100%',
           height: '100%',
@@ -464,7 +449,7 @@ const NaverMap = (props: any) => {
       {searchCriteriaFlag && (
         <>
           <button
-            id='searchCriteriaBtn'
+            id="searchCriteriaBtn"
             onClick={() => {
               if (_circle !== undefined) {
                 _circle.setMap(null);
@@ -476,14 +461,10 @@ const NaverMap = (props: any) => {
               dispatch(SET_SEARCH_CRITERIA_FLAG(false));
             }}
           >
-            <img src={list_reset} alt='reset' />
-            <p>
-              {window.innerWidth > 1023
-                ? '현 위치에서 가맹점 재탐색'
-                : '위치에서 탐색'}
-            </p>
+            <img src={list_reset} alt="reset" />
+            <p>{window.innerWidth > 1023 ? '현 위치에서 가맹점 재탐색' : '위치에서 탐색'}</p>
           </button>
-          <img id='locationPin' src={location_pin} alt='locationPin' />
+          <img id="locationPin" src={location_pin} alt="locationPin" />
         </>
       )}
     </>

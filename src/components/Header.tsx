@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { initialPage, playAppPage } from '../redux/slices/showPage';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { initialPage, playAppPage } from 'redux/slices/showPage';
 
-import tapplace_logo from '../img/Common/tapplace_logo.webp';
+import tapplace_logo from 'img/Common/tapplace_logo.webp';
 
-import '../style/components/Header.scss';
+import 'style/components/Header.scss';
 
 const Header = () => {
-  const { page } = useAppSelector(state => state.page);
+  const { page } = useAppSelector((state) => state.page);
   const dispatch = useAppDispatch();
 
   // Nav 숨기기
@@ -21,18 +21,18 @@ const Header = () => {
   };
 
   return (
-    <header id='serviceHeader'>
+    <header id="serviceHeader">
       <img
-        id='mainLogo'
+        id="mainLogo"
         src={tapplace_logo}
-        alt='tapplaceLogo'
+        alt="tapplaceLogo"
         onClick={() => {
           window.location.href = '/';
         }}
       />
       {navToggle === 'noshow' && (
         <FontAwesomeIcon
-          className='navToggleBtn'
+          className="navToggleBtn"
           icon={faBars}
           onClick={() => {
             setNavToggle('show');
@@ -41,21 +41,18 @@ const Header = () => {
       )}
       {navToggle === 'show' && (
         <FontAwesomeIcon
-          className='navToggleBtn'
+          className="navToggleBtn"
           icon={faXmark}
           onClick={() => {
             setNavToggle('noshow');
           }}
         />
       )}
-      <nav
-        className={navToggle === 'show' ? 'navShow' : 'navHide'}
-        id='serviceNav'
-      >
+      <nav className={navToggle === 'show' ? 'navShow' : 'navHide'} id="serviceNav">
         <ul>
           <li>
             <Link
-              to='/'
+              to="/"
               className={page === '' ? 'headerMenu active' : 'headerMenu'}
               onClick={() => {
                 dispatch(initialPage());
@@ -66,21 +63,19 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to='/' className='headerMenu' onClick={onAlert}>
+            <Link to="/" className="headerMenu" onClick={onAlert}>
               공지사항
             </Link>
           </li>
           <li>
-            <Link to='/' className='headerMenu' onClick={onAlert}>
+            <Link to="/" className="headerMenu" onClick={onAlert}>
               FAQ
             </Link>
           </li>
           <li>
             <Link
-              to='/playapp'
-              className={
-                page === 'playapp' ? 'headerMenu active' : 'headerMenu'
-              }
+              to="/playapp"
+              className={page === 'playapp' ? 'headerMenu active' : 'headerMenu'}
               onClick={() => {
                 dispatch(playAppPage());
                 setNavToggle('noshow');
@@ -93,7 +88,7 @@ const Header = () => {
       </nav>
       {navToggle === 'show' && (
         <div
-          id='navBackground'
+          id="navBackground"
           onClick={() => {
             setNavToggle('noshow');
           }}

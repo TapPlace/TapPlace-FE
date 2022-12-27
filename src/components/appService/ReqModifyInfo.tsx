@@ -1,37 +1,29 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { SET_DETAIL_FLAG } from '../../redux/slices/PlayApp';
-import { useInput } from '../../hooks/useInput';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { SET_DETAIL_FLAG } from 'redux/slices/PlayApp';
+import { useInput } from 'hooks/useInput';
 import axios from 'axios';
 
-import back from '../../img/Common/back.webp';
-import close from '../../img/PlayApp/Filter/search_close.webp';
-import check_act from '../../img/PlayApp/VisitAlert/visitAlert_check.webp';
-import check_inact from '../../img/PlayApp/check_inact.webp';
+import back from 'img/Common/back.webp';
+import close from 'img/PlayApp/Filter/search_close.webp';
+import check_act from 'img/PlayApp/VisitAlert/visitAlert_check.webp';
+import check_inact from 'img/PlayApp/check_inact.webp';
 
-import '../../style/components/appService/ReqModifyInfo.scss';
+import 'style/components/appService/ReqModifyInfo.scss';
 
 const ReqModifyInfo = (props: any) => {
-  const {
-    markers,
-    agreeFlag,
-    setAgreeFlag,
-    setReqModifyFlagView,
-    setAgreeViewFlag,
-  } = props;
+  const { markers, agreeFlag, setAgreeFlag, setReqModifyFlagView, setAgreeViewFlag } = props;
   const dispatch = useAppDispatch();
-  const { windowSize, storeDetailInfo } = useAppSelector(
-    state => state.playApp,
-  );
+  const { windowSize, storeDetailInfo } = useAppSelector((state) => state.playApp);
 
   const [content, setContent] = useInput('');
 
   return (
-    <article id='modifyInfo'>
-      <header id='modifyHeader'>
+    <article id="modifyInfo">
+      <header id="modifyHeader">
         <img
           src={back}
-          alt='back'
+          alt="back"
           onClick={() => {
             setReqModifyFlagView(false);
           }}
@@ -40,14 +32,12 @@ const ReqModifyInfo = (props: any) => {
         {windowSize.width > 1023 && (
           <img
             src={close}
-            alt='close'
+            alt="close"
             onClick={() => {
               dispatch(SET_DETAIL_FLAG(false));
               markers.forEach((marker: any) => {
                 if (marker.icon.url.includes('_big')) {
-                  let src =
-                    marker.icon.url.substring(0, marker.icon.url.indexOf('_')) +
-                    '.png';
+                  let src = marker.icon.url.substring(0, marker.icon.url.indexOf('_')) + '.png';
                   marker.setIcon({
                     url: src,
                   });
@@ -58,25 +48,21 @@ const ReqModifyInfo = (props: any) => {
           />
         )}
       </header>
-      <p className='inputTitle'>수정내용</p>
+      <p className="inputTitle">수정내용</p>
       <textarea
-        id='modifyContent'
-        className='inputContent'
+        id="modifyContent"
+        className="inputContent"
         value={content}
         onChange={setContent}
-        placeholder='잘못되었거나 변경된 정보가 있다면 알려주세요&#13;&#10;예) 가맹점 이름: OO점 -> OO점'
-        autoComplete='off'
+        placeholder="잘못되었거나 변경된 정보가 있다면 알려주세요&#13;&#10;예) 가맹점 이름: OO점 -> OO점"
+        autoComplete="off"
       ></textarea>
-      <div id='checkContainer'>
-        {agreeFlag ? (
-          <img src={check_act} alt='check' />
-        ) : (
-          <img src={check_inact} alt='check_inact' />
-        )}
+      <div id="checkContainer">
+        {agreeFlag ? <img src={check_act} alt="check" /> : <img src={check_inact} alt="check_inact" />}
         <p>[필수]</p>
         <h4>&nbsp;개인정보 수집, 이용동의</h4>
         <p
-          id='view'
+          id="view"
           onClick={() => {
             setAgreeViewFlag(true);
           }}
@@ -86,8 +72,8 @@ const ReqModifyInfo = (props: any) => {
       </div>
       {agreeFlag ? (
         <button
-          id='reqBtn'
-          className='checkFlag'
+          id="reqBtn"
+          className="checkFlag"
           onClick={() => {
             setAgreeFlag(false);
             setReqModifyFlagView(false);
@@ -97,16 +83,16 @@ const ReqModifyInfo = (props: any) => {
                 content: content,
                 store_id: storeDetailInfo.store_id,
               })
-              .then(res => {
+              .then((res) => {
                 alert('정보 수정 요청 전송 완료');
               })
-              .catch(err => console.error(err));
+              .catch((err) => console.error(err));
           }}
         >
           요청하기
         </button>
       ) : (
-        <button id='reqBtn'>요청하기</button>
+        <button id="reqBtn">요청하기</button>
       )}
     </article>
   );

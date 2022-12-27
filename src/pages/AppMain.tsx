@@ -1,24 +1,14 @@
 import axios from 'axios';
-import React, {
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
-import AppSideMenu from '../components/appService/AppSideMenu';
-import AppVisitAlert from '../components/appService/AppVisitAlert';
-import Filter from '../components/appService/Filter';
-import NaverMap from '../components/appService/NaverMap';
-import StoreSideMenu from '../components/appService/StoreSideMenu';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import {
-  SET_FILTER_STORE,
-  SET_MY_LOCATION,
-  SET_STORE_IN_DISTANCE,
-} from '../redux/slices/PlayApp';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import AppSideMenu from 'components/appService/AppSideMenu';
+import AppVisitAlert from 'components/appService/AppVisitAlert';
+import Filter from 'components/appService/Filter';
+import NaverMap from 'components/appService/NaverMap';
+import StoreSideMenu from 'components/appService/StoreSideMenu';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { SET_FILTER_STORE, SET_MY_LOCATION, SET_STORE_IN_DISTANCE } from 'redux/slices/PlayApp';
 
-import '../style/pages/AppMain.scss';
+import 'style/pages/AppMain.scss';
 
 const AppMain = () => {
   const dispatch = useAppDispatch();
@@ -51,7 +41,7 @@ const AppMain = () => {
     appVisitAlertFlag,
     searchStore,
     searchWord,
-  } = useAppSelector(state => state.playApp);
+  } = useAppSelector((state) => state.playApp);
   // 네이버 Map 객체 저장
   const [map, setMap]: any = useState();
   const [markers, setMarkers]: any = useState([]);
@@ -74,7 +64,7 @@ const AppMain = () => {
           SET_MY_LOCATION({
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
-          }),
+          })
         );
         bringStores();
       });
@@ -84,7 +74,7 @@ const AppMain = () => {
         SET_MY_LOCATION({
           latitude: 37.3586704,
           longitude: 127.105499,
-        }),
+        })
       );
       bringStores();
     }
@@ -101,12 +91,12 @@ const AppMain = () => {
           pays: pays,
           user_id: '',
         })
-        .then(res => {
+        .then((res) => {
           const stores = res.data.stores;
           dispatch(SET_STORE_IN_DISTANCE(stores));
           filteringStores(stores);
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
         });
     } else {
@@ -118,12 +108,12 @@ const AppMain = () => {
           pays: pays,
           user_id: '',
         })
-        .then(res => {
+        .then((res) => {
           const stores = res.data.stores;
           dispatch(SET_STORE_IN_DISTANCE(stores));
           filteringStores(stores);
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
         });
     }
@@ -141,7 +131,7 @@ const AppMain = () => {
 
     // 검색과 필터 둘 다 적용될 경우
     if (filterApplyFlag && searchFlag) {
-      filterList.forEach(filter => {
+      filterList.forEach((filter) => {
         switch (filter.id) {
           case 'store0':
             filStore.push('음식점');
@@ -231,8 +221,7 @@ const AppMain = () => {
       // 카테고리, 페이가 있는 경우
       else if (filStore.length !== 0 && filPay.length !== 0) {
         searchResult.forEach((store: any) => {
-          if (filStore.indexOf(store.category_group_name) !== -1)
-            filteringStore.push(store);
+          if (filStore.indexOf(store.category_group_name) !== -1) filteringStore.push(store);
         });
         // 필터링 된 배열이 있으면 페이로 한 번 더 필터링
         if (filteringStore !== undefined) {
@@ -255,7 +244,7 @@ const AppMain = () => {
     }
     // 필터만 적용될 경우
     else if (filterApplyFlag && searchFlag === false) {
-      filterList.forEach(filter => {
+      filterList.forEach((filter) => {
         switch (filter.id) {
           case 'store0':
             filStore.push('음식점');
@@ -343,8 +332,7 @@ const AppMain = () => {
       // 카테고리, 페이가 있는 경우
       else if (filStore.length !== 0 && filPay.length !== 0) {
         _store.forEach((store: any) => {
-          if (filStore.indexOf(store.category_group_name) !== -1)
-            filteringStore.push(store);
+          if (filStore.indexOf(store.category_group_name) !== -1) filteringStore.push(store);
         });
         filteringStore.forEach((store: any) => {
           for (let i = 0; i < filPay.length; i++) {
@@ -396,7 +384,7 @@ const AppMain = () => {
 
   return (
     <>
-      <main id='mobileMain'>
+      <main id="mobileMain">
         <NaverMap
           propFunction={setMapFunction}
           markersFunction={setMarkersFunction}

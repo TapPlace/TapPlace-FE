@@ -1,62 +1,57 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import {
   SET_DETAIL_FLAG,
   SET_DETAIL_INFO,
   SET_MOBILE_SHOW_STORE_FLAG,
   SET_MOBILE_SHOW_SEARCH_FLAG,
   SET_SEARCH_CRITERIA_FLAG,
-} from '../../redux/slices/PlayApp';
+} from 'redux/slices/PlayApp';
 
-import restaruant from '../../img/PlayApp/Marker/restaurant.webp';
-import restaruant_big from '../../img/PlayApp/Marker/restaurant_big.webp';
-import accommodation from '../../img/PlayApp/Marker/accommodation.webp';
-import accommodation_big from '../../img/PlayApp/Marker/accommodation_big.webp';
-import cafe from '../../img/PlayApp/Marker/cafe.webp';
-import cafe_big from '../../img/PlayApp/Marker/cafe_big.webp';
-import drutstore from '../../img/PlayApp/Marker/drugstore.webp';
-import drutstore_big from '../../img/PlayApp/Marker/drugstore_big.webp';
-import etc from '../../img/PlayApp/Marker/etc.webp';
-import etc_big from '../../img/PlayApp/Marker/etc_big.webp';
-import institutions from '../../img/PlayApp/Marker/institutions.webp';
-import institutions_big from '../../img/PlayApp/Marker/institutions_big.webp';
-import parking from '../../img/PlayApp/Marker/parking.webp';
-import parking_big from '../../img/PlayApp/Marker/parking_big.webp';
-import shop from '../../img/PlayApp/Marker/shop.webp';
-import shop_big from '../../img/PlayApp/Marker/shop_big.webp';
-import store from '../../img/PlayApp/Marker/store.webp';
-import store_big from '../../img/PlayApp/Marker/store_big.webp';
-import hospital from '../../img/PlayApp/Marker/hospital.webp';
-import hospital_big from '../../img/PlayApp/Marker/hospital_big.webp';
-import gasStation from '../../img/PlayApp/Marker/gasStation.webp';
-import gasStation_big from '../../img/PlayApp/Marker/gasStation_big.webp';
+import restaruant from 'img/PlayApp/Marker/restaurant.webp';
+import restaruant_big from 'img/PlayApp/Marker/restaurant_big.webp';
+import accommodation from 'img/PlayApp/Marker/accommodation.webp';
+import accommodation_big from 'img/PlayApp/Marker/accommodation_big.webp';
+import cafe from 'img/PlayApp/Marker/cafe.webp';
+import cafe_big from 'img/PlayApp/Marker/cafe_big.webp';
+import drutstore from 'img/PlayApp/Marker/drugstore.webp';
+import drutstore_big from 'img/PlayApp/Marker/drugstore_big.webp';
+import etc from 'img/PlayApp/Marker/etc.webp';
+import etc_big from 'img/PlayApp/Marker/etc_big.webp';
+import institutions from 'img/PlayApp/Marker/institutions.webp';
+import institutions_big from 'img/PlayApp/Marker/institutions_big.webp';
+import parking from 'img/PlayApp/Marker/parking.webp';
+import parking_big from 'img/PlayApp/Marker/parking_big.webp';
+import shop from 'img/PlayApp/Marker/shop.webp';
+import shop_big from 'img/PlayApp/Marker/shop_big.webp';
+import store from 'img/PlayApp/Marker/store.webp';
+import store_big from 'img/PlayApp/Marker/store_big.webp';
+import hospital from 'img/PlayApp/Marker/hospital.webp';
+import hospital_big from 'img/PlayApp/Marker/hospital_big.webp';
+import gasStation from 'img/PlayApp/Marker/gasStation.webp';
+import gasStation_big from 'img/PlayApp/Marker/gasStation_big.webp';
 
-import applePay from '../../img/PlayApp/PaymentLogo/apple.webp';
-import contactless from '../../img/PlayApp/PaymentLogo/contactless.webp';
-import googlePay from '../../img/PlayApp/PaymentLogo/google.webp';
-import kakaoPay from '../../img/PlayApp/PaymentLogo/kakao.webp';
-import naverPay from '../../img/PlayApp/PaymentLogo/naver.webp';
-import payco from '../../img/PlayApp/PaymentLogo/payco.webp';
-import zeroPay from '../../img/PlayApp/PaymentLogo/zero.webp';
+import applePay from 'img/PlayApp/PaymentLogo/apple.webp';
+import contactless from 'img/PlayApp/PaymentLogo/contactless.webp';
+import googlePay from 'img/PlayApp/PaymentLogo/google.webp';
+import kakaoPay from 'img/PlayApp/PaymentLogo/kakao.webp';
+import naverPay from 'img/PlayApp/PaymentLogo/naver.webp';
+import payco from 'img/PlayApp/PaymentLogo/payco.webp';
+import zeroPay from 'img/PlayApp/PaymentLogo/zero.webp';
 
-import '../../style/components/appService/StoreArticle.scss';
+import 'style/components/appService/StoreArticle.scss';
 
 const StoreArticle = (props: any) => {
   const { option, map, markers } = props;
   const dispatch = useAppDispatch();
   const category = option.category_group_name;
   const name = option.place_name;
-  const { storeDetailFlag, windowSize } = useAppSelector(
-    state => state.playApp,
-  );
+  const { storeDetailFlag, windowSize } = useAppSelector((state) => state.playApp);
   // Article 클릭 시 맞는 마커 선택하여 상위 컴포넌트로 전달
   const choiceArticle = () => {
     markers.forEach((marker: any) => {
       // 이미지 분류
-      const category = marker.icon.url.substring(
-        marker.icon.url.indexOf('/', 8) + 1,
-        marker.icon.url.indexOf('.'),
-      );
+      const category = marker.icon.url.substring(marker.icon.url.indexOf('/', 8) + 1, marker.icon.url.indexOf('.'));
       // 이미지 변경
       const setImg = (img: any) => {
         marker.setIcon({
@@ -83,15 +78,12 @@ const StoreArticle = (props: any) => {
         else if (option.category_group_name === '카페') setImg(cafe_big);
         else if (option.category_group_name === '편의점') setImg(store_big);
         else if (option.category_group_name === '마트') setImg(shop_big);
-        else if (option.category_group_name === '주유소')
-          setImg(gasStation_big);
+        else if (option.category_group_name === '주유소') setImg(gasStation_big);
         else if (option.category_group_name === '주차장') setImg(parking_big);
         else if (option.category_group_name === '병원') setImg(hospital_big);
         else if (option.category_group_name === '약국') setImg(drutstore_big);
-        else if (option.category_group_name === '숙박')
-          setImg(accommodation_big);
-        else if (option.category_group_name === '공공기관')
-          setImg(institutions_big);
+        else if (option.category_group_name === '숙박') setImg(accommodation_big);
+        else if (option.category_group_name === '공공기관') setImg(institutions_big);
         else if (option.category_group_name === '기타') setImg(etc_big);
       }
     });
@@ -99,7 +91,7 @@ const StoreArticle = (props: any) => {
 
   return (
     <article
-      className='storeArticle'
+      className="storeArticle"
       onClick={() => {
         dispatch(SET_MOBILE_SHOW_STORE_FLAG(false));
         dispatch(SET_MOBILE_SHOW_SEARCH_FLAG(false));
@@ -116,7 +108,7 @@ const StoreArticle = (props: any) => {
             pays: option.pays,
             x: option.x,
             y: option.y,
-          }),
+          })
         );
         choiceArticle();
         let _marker: any;
@@ -148,40 +140,38 @@ const StoreArticle = (props: any) => {
         }
       }}
     >
-      <div className='storeLine1'>
-        <h4 className='storeName'>{name}</h4>
-        <p className='storeCategory'>{category}</p>
+      <div className="storeLine1">
+        <h4 className="storeName">{name}</h4>
+        <p className="storeCategory">{category}</p>
       </div>
-      <div className='storeLine2'>
-        <p className='storeMeter'>{option.distance * 1000}m</p>・
-        <p className='storeAddress'>
-          {option.road_address_name
-            ? `${option.road_address_name}`
-            : `${option.place_name}`}
+      <div className="storeLine2">
+        <p className="storeMeter">{option.distance * 1000}m</p>・
+        <p className="storeAddress">
+          {option.road_address_name ? `${option.road_address_name}` : `${option.place_name}`}
         </p>
       </div>
-      <div className='storePaymentMethod'>
+      <div className="storePaymentMethod">
         {option.pays.map((pay: string) => {
           if (pay === 'kakaopay') {
-            return <img key={pay} src={kakaoPay} alt='kakao' />;
+            return <img key={pay} src={kakaoPay} alt="kakao" />;
           }
           if (pay === 'naverpay') {
-            return <img key={pay} src={naverPay} alt='naver' />;
+            return <img key={pay} src={naverPay} alt="naver" />;
           }
           if (pay === 'payco') {
-            return <img key={pay} src={payco} alt='payco' />;
+            return <img key={pay} src={payco} alt="payco" />;
           }
           if (pay === 'zeropay') {
-            return <img key={pay} src={zeroPay} alt='zero' />;
+            return <img key={pay} src={zeroPay} alt="zero" />;
           }
           if (pay === ('apple_visa' || 'apple_master' || 'apple_jcb')) {
-            return <img key={pay} src={applePay} alt='apple' />;
+            return <img key={pay} src={applePay} alt="apple" />;
           }
           if (pay === ('conless_visa' || 'conless_master' || 'conless_jcb')) {
-            return <img key={pay} src={contactless} alt='conless' />;
+            return <img key={pay} src={contactless} alt="conless" />;
           }
           if (pay === ('google_visa' || 'google_master' || 'google_jcb')) {
-            return <img key={pay} src={googlePay} alt='google' />;
+            return <img key={pay} src={googlePay} alt="google" />;
           }
           // if (pay === 'toss') {
           //   return (
