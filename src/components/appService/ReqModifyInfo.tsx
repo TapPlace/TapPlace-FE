@@ -4,10 +4,7 @@ import { SET_DETAIL_FLAG } from 'redux/slices/PlayApp';
 import { useInput } from 'hooks/useInput';
 import axios from 'axios';
 
-import back from 'img/Common/back.webp';
-import close from 'img/PlayApp/Filter/search_close.webp';
-import check_act from 'img/PlayApp/VisitAlert/visitAlert_check.webp';
-import check_inact from 'img/PlayApp/check_inact.webp';
+import { back, close, check_act, check_inact } from 'constants/CommonImg';
 
 import 'style/components/appService/ReqModifyInfo.scss';
 

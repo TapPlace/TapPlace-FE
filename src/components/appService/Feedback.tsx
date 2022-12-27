@@ -1,12 +1,6 @@
 import React from 'react';
 
-import kakaoPay from 'img/PlayApp/PaymentLogo/kakao.webp';
-import naverPay from 'img/PlayApp/PaymentLogo/naver.webp';
-import payco from 'img/PlayApp/PaymentLogo/payco.webp';
-import zeroPay from 'img/PlayApp/PaymentLogo/zero.webp';
-import apple from 'img/PlayApp/PaymentLogo/apple.webp';
-import contactless from 'img/PlayApp/PaymentLogo/contactless.webp';
-import googlePay from 'img/PlayApp/PaymentLogo/google.webp';
+import { kakaoPay, applePay, naverPay, zeroPay, contactless, googlePay, payco } from 'constants/PaymentLogoImg';
 
 import 'style/components/appService/Feedback.scss';
 
@@ -40,17 +34,17 @@ const Feedback = ({ options }: any) => {
           </>
         ) : options.pay === 'apple_visa' ? (
           <>
-            <img src={apple} alt="logo" />
+            <img src={applePay} alt="logo" />
             애플페이 - VISA
           </>
         ) : options.pay === 'apple_master' ? (
           <>
-            <img src={apple} alt="logo" />
+            <img src={applePay} alt="logo" />
             애플페이 - MASTER
           </>
         ) : options.pay === 'apple_jcb' ? (
           <>
-            <img src={apple} alt="logo" />
+            <img src={applePay} alt="logo" />
             애플페이 - JCB
           </>
         ) : options.pay === 'conless_visa' ? (

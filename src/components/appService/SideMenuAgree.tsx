@@ -2,8 +2,7 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { SET_DETAIL_FLAG } from 'redux/slices/PlayApp';
 
-import back from 'img/Common/back.webp';
-import close from 'img/PlayApp/Filter/search_close.webp';
+import { back, close } from 'constants/CommonImg';
 
 import 'style/components/appService/SideMenuAgree.scss';
 import 'style/pages/Policy.scss';

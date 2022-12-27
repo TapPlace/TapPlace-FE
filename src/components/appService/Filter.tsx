@@ -1,21 +1,16 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { SET_CHOICE_CATEGORY, SET_CHOICE_CNT, SET_FILTER_APPLY_FLAG, SET_FILTER_SHOW_FLAG } from 'redux/slices/PlayApp';
+import { back, filter_reset } from 'constants/CommonImg';
+import { chooseStore, choosePay, chooseApple, chooseGoogle, chooseContactless } from 'constants/ChooseFilter';
 
-import back from 'img/Common/back.webp';
-import filter_reset from 'img/PlayApp/Filter/filter_reset.webp';
-
-import 'style/components/appService/Filter.scss';
 import FilterCategory from './FilterCategory';
+import 'style/components/appService/Filter.scss';
 
 const Filter = () => {
   const dispatch = useAppDispatch();
   const { filterShowFlag } = useAppSelector((state) => state.playApp);
-  const chooseStore = ['음식점', '카페', '편의점', '마트', '주유소', '주차장', '병원', '약국', '숙박', '공공기관'];
-  const choosePay = ['카카오페이', '네이버페이', '제로페이', '페이코'];
-  const chooseApple = ['VISA', 'MASTER CARD', 'JCB'];
-  const chooseGoogle = ['VISA', 'MASTER CARD', 'MAESTRO'];
-  const chooseContactles = ['VISA', 'MASTER CARD', 'UnionPay', 'JCB', 'AMERICAN EXPRESS (AMEX)'];
+
   // 필터를 리셋
   const filterReset = (reset: any) => {
     const filterList = document.querySelectorAll('.filter.active');
@@ -95,7 +90,7 @@ const Filter = () => {
           </ul>
           <h4 className="kindOfPay">컨택리스 카드</h4>
           <ul id="conlessFilter" className="chooseFilter">
-            {chooseContactles.map((item, idx) => {
+            {chooseContactless.map((item, idx) => {
               return <FilterCategory key={'conless' + idx} item={item} id={'conless' + idx} />;
             })}
           </ul>

@@ -5,11 +5,7 @@ import { SET_DETAIL_FLAG, SET_MOBILE_SHOW_SEARCH_FLAG, SET_SEARCH_CRITERIA_FLAG 
 import Feedback from './Feedback';
 import proj4 from 'proj4';
 
-import close from 'img/PlayApp/Filter/search_close.webp';
-import navigation from 'img/PlayApp/StoreDetail/navigation.webp';
-import location_black from 'img/PlayApp/StoreDetail/location_black.webp';
-import call from 'img/PlayApp/StoreDetail/call.webp';
-import pencil from 'img/PlayApp/StoreDetail/pencil.webp';
+import { close, navigation, location_black, call, pencil } from 'constants/CommonImg';
 
 import 'style/components/appService/StoreDetail.scss';
 

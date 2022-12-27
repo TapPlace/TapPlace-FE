@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAppDispatch } from 'redux/hooks';
 import { SET_APP_VISIT_ALERT_FLAG } from 'redux/slices/PlayApp';
 
-import visitAlert_main from 'img/PlayApp/VisitAlert/visitAlert_mainImg.webp';
-import visitAlert_check from 'img/PlayApp/VisitAlert/visitAlert_check.webp';
-import download from 'img/Service/StoreDownload/store_download.webp';
+import { visitAlert_main, visitAlert_check, download } from 'constants/CommonImg';
 
 import 'style/components/appService/AppVisitAlert.scss';
 

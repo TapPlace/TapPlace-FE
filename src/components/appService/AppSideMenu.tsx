@@ -7,9 +7,7 @@ import StoreArticle from './StoreArticle';
 import MyLocation from './MyLocation';
 import FilterButton from './FilterButton';
 
-import show_map from 'img/PlayApp/ShowScreen/show_map.webp';
-import show_list from 'img/PlayApp/ShowScreen/show_list.webp';
-import filter_open from 'img/PlayApp/Filter/filter_open.webp';
+import { show_map, show_list, filter_open } from 'constants/CommonImg';
 
 import '../../style/components/appService/AppSideMenu.scss';
 

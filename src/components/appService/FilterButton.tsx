@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { SET_CHOICE_CATEGORY, SET_CHOICE_CNT, SET_FILTER_APPLY_FLAG, SET_FILTER_SHOW_FLAG } from 'redux/slices/PlayApp';
 
-import filter_check from 'img/PlayApp/Filter/filter_check.webp';
-import filter_close from 'img/PlayApp/Filter/filter_close.webp';
+import { filter_check, filter_close } from 'constants/CommonImg';
 
 import 'style/components/appService/FilterButton.scss';
 

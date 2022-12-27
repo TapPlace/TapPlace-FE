@@ -7,30 +7,13 @@ import NaverMap from 'components/appService/NaverMap';
 import StoreSideMenu from 'components/appService/StoreSideMenu';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { SET_FILTER_STORE, SET_MY_LOCATION, SET_STORE_IN_DISTANCE } from 'redux/slices/PlayApp';
+import pays from 'constants/Payment';
 
 import 'style/pages/AppMain.scss';
 
 const AppMain = () => {
   const dispatch = useAppDispatch();
   let distance: number = 1;
-  const pays = [
-    'kakaopay',
-    'naverpay',
-    'payco',
-    'zeropay',
-    'apple_visa',
-    'apple_master',
-    'apple_jcb',
-    'conless_visa',
-    'conless_master',
-    'conless_amex',
-    'conless_union',
-    'conless_jcb',
-    'google_visa',
-    'google_master',
-    'google_maestro',
-    'toss',
-  ];
   const {
     myLocation,
     lastLocation,
@@ -39,7 +22,6 @@ const AppMain = () => {
     searchFlag,
     filterApplyFlag,
     appVisitAlertFlag,
-    searchStore,
     searchWord,
   } = useAppSelector((state) => state.playApp);
   // 네이버 Map 객체 저장

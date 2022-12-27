@@ -2,8 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { SET_SEARCH_FLAG, SET_SEARCH_STORE, SET_SEARCH_WORD } from 'redux/slices/PlayApp';
 
-import search_list from 'img/PlayApp/Filter/search_list.webp';
-import search_close from 'img/PlayApp/Filter/search_close.webp';
+import { search_list, search_close } from 'constants/CommonImg';
 
 import 'style/components/appService/SearchStore.scss';
 
