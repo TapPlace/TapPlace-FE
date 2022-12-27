@@ -4,6 +4,19 @@ import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { SET_DETAIL_FLAG, SET_MOBILE_SHOW_SEARCH_FLAG, SET_SEARCH_CRITERIA_FLAG } from 'redux/slices/PlayApp';
 import Feedback from './Feedback';
 import proj4 from 'proj4';
+import {
+  restaruant,
+  accommodation,
+  cafe,
+  drutstore,
+  etc,
+  institutions,
+  parking,
+  shop,
+  store,
+  hospital,
+  gasStation,
+} from 'constants/MarkerImg';
 
 import { close, navigation, location_black, call, pencil } from 'constants/CommonImg';
 
@@ -12,9 +25,31 @@ import 'style/components/appService/StoreDetail.scss';
 const StoreDetail = ({ map, markers, setReqModifyFlagView }: any) => {
   const dispatch = useAppDispatch();
   const { myLocation, storeDetailInfo } = useAppSelector((state) => state.playApp);
-
   // storeDetailInfo 피드백 변수
   const [feedback, setFeedback]: any = useState();
+
+  const changeDefaultImg = (marker: any) => {
+    const category = storeDetailInfo.category_group_name;
+    const setImg = (img: any) => {
+      marker.setIcon({
+        url: img,
+      });
+    };
+    if (marker.icon.url.includes('_big')) {
+      if (category === '음식점') setImg(restaruant);
+      else if (category === '카페') setImg(cafe);
+      else if (category === '편의점') setImg(store);
+      else if (category === '가게') setImg(shop);
+      else if (category === '주유소') setImg(gasStation);
+      else if (category === '주차장') setImg(parking);
+      else if (category === '병원') setImg(hospital);
+      else if (category === '약국') setImg(drutstore);
+      else if (category === '편의시설') setImg(accommodation);
+      else if (category === '공공기관') setImg(institutions);
+      else if (category === '기타') setImg(etc);
+    }
+  };
+
   // 가맹점 상세보기가 띄워졌을 때 피드백 정보를 가져옴
   useEffect(() => {
     axios
@@ -45,12 +80,7 @@ const StoreDetail = ({ map, markers, setReqModifyFlagView }: any) => {
                 dispatch(SET_DETAIL_FLAG(false));
                 markers.forEach((marker: any) => {
                   if (marker.icon.url.includes('_big')) {
-                    map.setCenter(marker.position);
-                    let src = marker.icon.url.substring(0, marker.icon.url.indexOf('_')) + '.png';
-                    marker.setIcon({
-                      url: src,
-                    });
-                    return false;
+                    changeDefaultImg(marker);
                   }
                 });
                 dispatch(SET_SEARCH_CRITERIA_FLAG(false));

@@ -5,15 +5,13 @@ import { SET_SEARCH_FLAG, SET_SEARCH_STORE, SET_SEARCH_WORD } from 'redux/slices
 import { search_list, search_close } from 'constants/CommonImg';
 
 import 'style/components/appService/SearchStore.scss';
+import useInput from 'hooks/useInput';
 
 const SearchStore = () => {
   const dispatch = useAppDispatch();
   const { mobileShowSearchFlag, windowSize, searchFlag } = useAppSelector((state) => state.playApp);
   // 검색어 입력
-  const [inputWord, setInputWord] = useState('');
-  const onChangeInputWord = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputWord(e.target.value);
-  }, []);
+  const [inputWord, setInputWord] = useInput('');
   // 엔터 키 입력 이벤트
   const onClick = () => {
     if (!searchFlag) dispatch(SET_SEARCH_FLAG(true));
@@ -42,7 +40,7 @@ const SearchStore = () => {
               id="searchStore"
               value={inputWord}
               placeholder="가맹점을 찾아보세요"
-              onChange={onChangeInputWord}
+              onChange={setInputWord}
               onKeyPress={onPressEnter}
               autoComplete="off"
             />
@@ -70,7 +68,7 @@ const SearchStore = () => {
               id="searchStore"
               value={inputWord}
               placeholder="가맹점을 찾아보세요"
-              onChange={onChangeInputWord}
+              onChange={setInputWord}
               onKeyPress={onPressEnter}
               autoComplete="off"
             />

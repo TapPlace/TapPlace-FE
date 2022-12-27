@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { SET_DETAIL_FLAG } from 'redux/slices/PlayApp';
-import { useInput } from 'hooks/useInput';
+import useInput from 'hooks/useInput';
 import axios from 'axios';
 
 import { back, close, check_act, check_inact } from 'constants/CommonImg';

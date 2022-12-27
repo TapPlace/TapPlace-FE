@@ -1,13 +1,12 @@
 import React from 'react';
 
 import { kakaoPay, applePay, naverPay, zeroPay, contactless, googlePay, payco } from 'constants/PaymentLogoImg';
-
 import 'style/components/appService/Feedback.scss';
 
+import feedbackPercent from 'utils/feedbackPercent';
+
 const Feedback = ({ options }: any) => {
-  const all = options.success + options.fail;
-  const suc = Math.round((100 / all) * options.success);
-  const fai = Math.round((100 / all) * options.fail);
+  const { suc, fai } = feedbackPercent(options);
 
   return (
     <article className="feedbackContainer">

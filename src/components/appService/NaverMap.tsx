@@ -389,9 +389,6 @@ const NaverMap = (props: any) => {
       // 클릭 시 모든 마커 기본 이미지로 변경
       otherMarkers.forEach((marker: any) => {
         if (marker.icon.url.includes('_big')) {
-          // let src =
-          //   marker.icon.url.substring(0, marker.icon.url.indexOf('_')) +
-          //   '.webp';
           marker.setIcon({
             url: imgSrc,
           });
