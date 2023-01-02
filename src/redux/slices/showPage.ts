@@ -12,34 +12,27 @@ export const showPage = createSlice({
   name: 'page',
   initialState,
   reducers: {
-    initialPage: state => {
+    initialPage: (state) => {
       state.page = '';
     },
-    noticePage: state => {
+    noticePage: (state) => {
       state.page = 'notice';
     },
-    faqPage: state => {
+    faqPage: (state) => {
       state.page = 'faq';
     },
-    playAppPage: state => {
+    playAppPage: (state) => {
       state.page = 'playapp';
     },
-    consentPage: state => {
+    consentPage: (state) => {
       state.page = 'consent';
     },
-    policyPage: state => {
+    policyPage: (state) => {
       state.page = 'policy';
     },
   },
 });
 
-export const {
-  initialPage,
-  noticePage,
-  faqPage,
-  playAppPage,
-  consentPage,
-  policyPage,
-} = showPage.actions;
+export const { initialPage, noticePage, faqPage, playAppPage, consentPage, policyPage } = showPage.actions;
 
 export default showPage;

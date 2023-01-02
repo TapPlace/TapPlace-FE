@@ -1,4 +1,6 @@
-const pays = [
+type paymentsType = Array<string>;
+
+const pays: paymentsType = [
   'kakaopay',
   'naverpay',
   'payco',
