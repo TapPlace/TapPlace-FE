@@ -1,3 +1,5 @@
+# NextJS 버전으로 리팩토링 하였습니다. 해당 레포로 이동해주세요. https://github.com/TapPlace/TapPlace-FE-Nextjs
+
 
 # 탭플레이스 - TapPlace
 
